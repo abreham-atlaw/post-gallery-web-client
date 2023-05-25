@@ -9,19 +9,18 @@ export default abstract class ViewModel<S>{
 		this.state = state;
 	}
 
-	protected setState(state: S){
+	public setState(state: S){
 		this.stateSetter(state)
 		this.state = state;
 	}
 
-	protected updateAfter(callback: Function){
+	public updateAfter(callback: Function){
 		callback()
 		this.setState(this.state);
 	}
 
-	protected syncState(){
+	public syncState(){
 		this.setState(this.state);
 	}
-
 
 }

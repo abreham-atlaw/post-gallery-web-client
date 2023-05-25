@@ -20,9 +20,10 @@
     "noFallthroughCasesInSwitch": true,
 	"paths":{
 		"@/*": ["./src/*"]
-	}
+	},
+	"esModuleInterop": true,
   },
-  "include": ["src"],
+  "include": ["src", "src/lib/components/.tsx"],
   "references": [{ 
 	"path": "./tsconfig.node.json",
   },
