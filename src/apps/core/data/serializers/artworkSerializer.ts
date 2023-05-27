@@ -26,13 +26,13 @@ export default class ArtworkSerializer extends Serializer<Artwork, DocumentData>
 	deserialize(data: DocumentData): Artwork {
 	  return new Artwork(
 		data.id,
-		data.artistId,
+		data.artist_id,
 		data.name,
 		data.description,
 		data.price,
 		data.dimension,
 		data.status,
-		this.dateSerializer.deserialize(data.creationDate),
+		this.dateSerializer.deserialize(data.creation_date),
 		data.mediaUsed,
 		data.images
 	  );

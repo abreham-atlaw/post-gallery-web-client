@@ -1,4 +1,4 @@
-import { Field, TextField } from "@/lib/forms/fields"
+import Field, { TextField } from "@/lib/forms/fields"
 import Form from "@/lib/forms/form"
 
 

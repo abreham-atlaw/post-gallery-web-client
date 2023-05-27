@@ -5,6 +5,7 @@ import { AuthenticationStatus } from "./apps/auth/data/repositories/authenticato
 import { EmailVerificationView } from "./__mocks__/apps/auth/presentation/views/emailVerificationView";
 import AuthenticatedComponent from "./apps/auth/presentation/components/AuthenticatedComponent";
 import LoginView from "./__mocks__/apps/auth/presentation/views/loginView";
+import SearchView from "./__mocks__/apps/core/presentation/views/SearchView";
 
 
 export default class PGRouter extends React.Component{
@@ -25,6 +26,7 @@ export default class PGRouter extends React.Component{
 					</AuthenticatedComponent>
 				}/>
 
+				<Route path="/search" element={<SearchView />}/>
 				<Route path="/home" element={
 					<AuthenticatedComponent validStatus={[AuthenticationStatus.authenticated]}>
 					{/*

@@ -1,4 +1,4 @@
-export class Field<T>{
+export default class Field<T>{
 
 	public value :T | null = null;
 	public error : string | null = null;
@@ -9,18 +9,18 @@ export class Field<T>{
 	constructor(required: boolean = true, validator: Function|null = null, liveValidate: boolean = true){
 		this.required = required;
 		this.validator = validator;
-		this.liveValidate = liveValidate
+		this.liveValidate = liveValidate;
 	}
 
-	public isValid(): boolean{
-		this.error = this.validate();
+	public async isValid(): Promise<boolean>{
+		this.error = await this.validate();
 		if(this.error === null){
 			return true;
 		}
 		return false
 	}
 
-	protected validate(): string | null{
+	protected async validate(): Promise<string | null>{
 		if(this.required && this.getValue() === null){
 			return "This field is required";
 		}
@@ -34,10 +34,10 @@ export class Field<T>{
 		return this.value;
 	}
 
-	public setValue(value: T|null){
+	public async setValue(value: T|null){
 		this.value = value;
 		if(this.liveValidate){
-			this.isValid()
+			await this.isValid()
 		}
 	}
 

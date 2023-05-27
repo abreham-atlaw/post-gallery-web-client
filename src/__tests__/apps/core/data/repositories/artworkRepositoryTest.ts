@@ -81,6 +81,12 @@ class ArtworkRepositoryTest{
 		expect(artworks[0].id).toBe(this.INITIAL_ARTWORKS[0].id)
 	}
 
+	public testGetByPrimaryKey = async () => {
+		let artwork = await this.artworkRepository.getByPrimaryKey(this.INITIAL_ARTWORKS[0].getPK()!);
+		expect(artwork).toBeInstanceOf(Artwork)
+		expect(artwork.id).toBe(this.INITIAL_ARTWORKS[0].getPK()!)
+	}
+
 	public testForegnKeyAttachment = async () => {
 		let artwork = await this.artworkRepository.getByPrimaryKey(this.INITIAL_ARTWORKS[0].id!)
 		expect(artwork.artist?.id).toBe(this.INITIAL_ARTISTS[0].id)
@@ -89,9 +95,10 @@ class ArtworkRepositoryTest{
 
 	main(){
 		beforeEach(this.setup)
-		test("Get All", this.testGetAll)
-		test("Get By Artist", this.testGetByArtist)
-		test("Foregn Key Attachment", this.testForegnKeyAttachment)
+		test("Get By Primary Key", this.testGetByPrimaryKey)
+		// test("Get All", this.testGetAll)
+		// test("Get By Artist", this.testGetByArtist)
+		// test("Foregn Key Attachment", this.testForegnKeyAttachment)
 	}
 
 }

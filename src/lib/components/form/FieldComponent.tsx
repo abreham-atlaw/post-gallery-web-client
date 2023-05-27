@@ -1,4 +1,4 @@
-import { Field } from "@/lib/forms/fields";
+import Field from "@/lib/forms/fields";
 import React from "react";
 
 
@@ -6,12 +6,13 @@ export interface FieldComponentProps<T>{
 
 	field: Field<T>
 	syncer?: Function
-
+	onChanged: Function
 }
 
 export abstract class FieldComponent<T> extends React.Component<FieldComponentProps<T>>{
 
 	private sync?: Function
+	private externalOnChanged?: Function
 
 	constructor(props: FieldComponentProps<T>){
 		super(props);
@@ -19,19 +20,23 @@ export abstract class FieldComponent<T> extends React.Component<FieldComponentPr
 			field: props.field
 		}
 		this.sync = props.syncer
+		this.externalOnChanged = props.onChanged
 	}
 
 	protected getField(): Field<T>{
 		return this.props.field;
 	}
 
-	private onChange = (value: T) => {
-		this.getField().setValue(value);
+	private onChange = async (value: T) => {
+		await this.getField().setValue(value);
 		this.setState({
 			field: this.getField()
 		})
 		if(this.sync != undefined){
 			this.sync();
+		}
+		if(this.externalOnChanged != undefined){
+			this.externalOnChanged(value)
 		}
 	}
 

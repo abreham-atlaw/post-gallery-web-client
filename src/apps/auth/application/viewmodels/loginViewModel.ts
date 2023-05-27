@@ -13,6 +13,7 @@ export default class LoginViewModel extends AsyncViewModel<LoginState>{
 
 
 	public async signInWithPG(){
+		await this.form.validate(true)
 		this.asyncCall(
 			async (state: LoginState) => {
 				await this.repository.signInWithPG(new PGSigninRequest(

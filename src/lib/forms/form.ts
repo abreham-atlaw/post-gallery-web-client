@@ -1,4 +1,4 @@
-import { Field } from "./fields.ts";
+import Field  from "./fields.ts";
 
 
 export default abstract class Form{
@@ -7,19 +7,19 @@ export default abstract class Form{
 	abstract getFields(): Array<Field<any>>
 
 
-	public validate(throw_error: boolean = false): boolean{
+	public async validate(throw_error: boolean = false): Promise<boolean>{
 
 		let valid = true;
-		this.getFields().forEach(
-			function (field: Field<any>){
-				if(!field.isValid()){
-					valid = false;
-				}
+
+		for(let field of this.getFields()){
+			if(!(await field.isValid())){
+				valid = false
 			}
-		)
+		}
 		if(throw_error && !valid){
 			throw new ValidationException();
 		}
+
 		return valid;
 
 	}
