@@ -18,13 +18,15 @@ class ArtworkRepositoryTest{
 		new Artist(
 			"Ar00001",
 			"Jermaine Cole",
-			35,
 			Gender.male,
 			"+251911223344",
 			"jcole@dreamville.com",
-			"Ethiopian"
+			"Ethiopian",
+			"The quick brown fox jumps over the lazy dog.",
+			new Date(Date.now())
 		)
 	]
+
 
 	private INITIAL_ARTWORKS = [
 		new Artwork(
@@ -40,7 +42,8 @@ class ArtworkRepositoryTest{
 			},
 			Status.onSale,
 			new Date(Date.now()),
-			"paper"
+			"paper",
+			["gs://sdjfkljasdlfkjadslkfj;alsds"]
 		)
 	]
 
@@ -54,6 +57,7 @@ class ArtworkRepositoryTest{
 		}
 		for(let artwork of this.INITIAL_ARTWORKS){
 			await this.artworkRepository.save(artwork)
+			artwork.artist = this.INITIAL_ARTISTS[0]
 		}
 		
 	}

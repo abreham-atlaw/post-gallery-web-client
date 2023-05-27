@@ -29,6 +29,8 @@ export default class Artwork implements Model<string>{
 	public creationDate: Date;
 	public mediaUsed: string;
 
+	public images: string[];
+
 	public artist?: Artist
 
 
@@ -41,7 +43,8 @@ export default class Artwork implements Model<string>{
 		dimension: Dimension,
 		status: Status,
 		creationDate: Date,
-		mediaUsed: string
+		mediaUsed: string,
+		images: string[]
 	){
 		this.id = id;
 		this.artistId = artistId;
@@ -52,6 +55,7 @@ export default class Artwork implements Model<string>{
 		this.status = status;
 		this.creationDate = creationDate;
 		this.mediaUsed = mediaUsed;
+		this.images = images
 	}
 
 	getPK(): string | null {
