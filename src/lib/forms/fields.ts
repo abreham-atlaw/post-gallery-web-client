@@ -21,7 +21,6 @@ export class Field<T>{
 	}
 
 	protected validate(): string | null{
-		console.log("Validating")
 		if(this.required && this.getValue() === null){
 			return "This field is required";
 		}

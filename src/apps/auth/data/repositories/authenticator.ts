@@ -1,5 +1,4 @@
-import { User, applyActionCode, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth/cordova";
+import { User, applyActionCode, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
 import AuthProviders from "../../di/authProviders";
 
 
@@ -34,8 +33,9 @@ export default class Authenticator{
 	}
 
 	public async getWithGoogle(): Promise<User>{
-		let provider = new GoogleAuthProvider();
-		return (await signInWithPopup(await AuthProviders.provideAuth(), provider)).user;
+		throw Error("Unimplemented")
+		// let provider = new GoogleAuthProvider();
+		// return (await signInWithPopup(await AuthProviders.provideAuth(), provider)).user;
 	}
 
 	public async getWithApple(): Promise<User>{

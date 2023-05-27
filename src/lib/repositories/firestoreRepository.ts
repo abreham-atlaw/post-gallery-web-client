@@ -12,6 +12,8 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	private collectionName: string;
 	private primaryKeyColumn: string;
 	private serializer: Serializer<M, DocumentData>;
+	private attachMode: boolean = true;
+
  	constructor(
 		firestore: Firestore,
 		collectionName: string,
@@ -37,8 +39,34 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	}
 
 	public async getByPrimaryKey(pk: P): Promise<M>{
-		let doc = await this.getDocument(pk);
-		return this.serializer.deserialize(doc.data());
+		return await this.firebaseFetch(
+			async () => {
+				return (await this.getDocument(pk)).data()
+			},
+			false
+		) as M;
+	}
+
+	private async processDocumentData(data: DocumentData): Promise<M>{
+		let instance = this.serializer.deserialize(data)
+		if(this.attachMode){
+			await this.attachForeignKeys(instance)
+		}
+		return instance;
+	}
+
+	private async firebaseFetch(fetcher: Function, many: boolean = false): Promise<M|M[]>{
+
+		let data: DocumentData | DocumentData[] = await fetcher()
+		if(many){
+			let instances: M[] = []
+			for(let instanceData of (data as DocumentData[])){
+				instances.push(await this.processDocumentData(instanceData))
+			}
+			return instances;
+		}
+		return await this.processDocumentData(data);
+
 	}
 
 	public abstract generateNewPK(instance: M): Promise<P>
@@ -55,7 +83,7 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	public async update(instance: M){
 		let document = await this.getDocument(instance.getPK()!);
 		let data = this.serializer.serialize(instance);
-		await setDoc(doc(this.collection, this.collectionName, document.id), data);
+		await setDoc(doc(this.collection, document.id), data);
 	}
 
 	public async save(instance: M){
@@ -72,12 +100,18 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	}
 
 	public async getAll(): Promise<M[]> {
-		let querySnapshots = await getDocs(this.collection);
-		return this.serializer.deserializeMany(querySnapshots.docs.map(
-			(snapshot: QueryDocumentSnapshot<DocumentData>) => {
-				return snapshot.data;
-			}
-		));
+		return await this.firebaseFetch(
+			async () => {
+				return (await getDocs(this.collection)).docs.map((snapshot: QueryDocumentSnapshot<DocumentData>) => { return snapshot.data() });
+			},
+			true
+		) as M[]
 	}
+
+	public setAttachMode(mode: boolean){
+		this.attachMode = mode;
+	}
+
+	public abstract attachForeignKeys(instance: M): Promise<void>
 }
 

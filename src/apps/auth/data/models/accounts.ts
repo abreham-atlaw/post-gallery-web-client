@@ -41,19 +41,19 @@ export class Client extends Account{
 }
 
 
-export class Artist extends Account{
+// export class Artist extends Account{
 
-	constructor(id: string, fullName: string, phoneNumber: string){
-		super(id, fullName, phoneNumber, Role.artist);
-	}
+// 	constructor(id: string, fullName: string, phoneNumber: string){
+// 		super(id, fullName, phoneNumber, Role.artist);
+// 	}
 
-}
+// }
 
 
-export class Admin extends Account{
+// export class Admin extends Account{
 
-	constructor(id: string, fullName: string, phoneNumber: string){
-		super(id, fullName, phoneNumber, Role.admin);
-	}
+// 	constructor(id: string, fullName: string, phoneNumber: string){
+// 		super(id, fullName, phoneNumber, Role.admin);
+// 	}
 
-}
+// }

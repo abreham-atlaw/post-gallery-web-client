@@ -17,12 +17,12 @@ class ClientRepositoryTest{
 
 	private repository?: ClientRepository;
 
-	private async setup(){
+	public async setup(){
 		CoreProviders.provideFirebaseApp();
 		this.repository = new ClientRepository();
 	}
 
-	private async testSignUp(){
+	public async testSignUp(){
 		let account: Client = await this.repository!.signUpWithPG(this.PGSIGNUP_REQUEST);
 		assert.equal(account.fullName, this.PGSIGNUP_REQUEST.fullName);
 	}
@@ -30,11 +30,21 @@ class ClientRepositoryTest{
 
 	async main(){
 		await this.setup();
-		describe("Test Signup", this.testSignUp);
+		test("Test Signup", async () => {
+			await this.testSignUp()
+		});
 	}
 
 
 }
 
-const test = new ClientRepositoryTest();
-test.main();
+const testCase = new ClientRepositoryTest();
+
+beforeAll(async () => {
+	await testCase.setup()
+}, 100000)
+
+test("Test Signup", async () => {
+	await testCase.testSignUp()
+});
+

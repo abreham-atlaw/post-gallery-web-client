@@ -25,10 +25,8 @@ export default class AuthProviders{
 			fetched = true
 		})
 		while(!fetched){
-			console.log("Sleeping...")
 			await sleep(1000)
 		}
-		console.log("Returning")
 		return getAuth(CoreProviders.provideFirebaseApp());
 	}
 

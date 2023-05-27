@@ -59,4 +59,8 @@ export default class ClientRepository extends FireStoreRepository<string, Client
 		return this.getByPrimaryKey(user.uid)
 	}
 
+	public async attachForeignKeys(_instance: Client): Promise<void> {
+		return;
+	}
+
 }
