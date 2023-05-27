@@ -24,4 +24,12 @@ export default class SignUpViewModel extends AsyncViewModel<SignupState>{
 		)
 	}
 
+	public async signupWithGoogle(){
+		this.asyncCall(
+			async () => {
+				await this.repository.signInWithGoogle()
+			}
+		)
+	}
+
 }

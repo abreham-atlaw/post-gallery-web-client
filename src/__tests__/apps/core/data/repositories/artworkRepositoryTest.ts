@@ -96,9 +96,9 @@ class ArtworkRepositoryTest{
 	main(){
 		beforeEach(this.setup)
 		test("Get By Primary Key", this.testGetByPrimaryKey)
-		// test("Get All", this.testGetAll)
-		// test("Get By Artist", this.testGetByArtist)
-		// test("Foregn Key Attachment", this.testForegnKeyAttachment)
+		test("Get All", this.testGetAll)
+		test("Get By Artist", this.testGetByArtist)
+		test("Foregn Key Attachment", this.testForegnKeyAttachment)
 	}
 
 }

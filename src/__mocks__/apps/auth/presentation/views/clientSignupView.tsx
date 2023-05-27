@@ -26,6 +26,10 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 		this.viewModel.signUpWithPG();
 	}
 
+	handleSignupGoogle = () => {
+		this.viewModel.signupWithGoogle();
+	}
+
 	getForm = () => {
 		return this.viewModel.state.form;
 	}
@@ -55,6 +59,8 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 					<TextFieldComponent field={this.state.form.password} syncer={this.viewModel.syncState}/>
 					<button>Submit</button>
 				</form>
+
+				<button onClick={this.handleSignupGoogle}> Sign Up with Google</button>
 			</div>
 		)
 	}

@@ -6,7 +6,7 @@ export interface FieldComponentProps<T>{
 
 	field: Field<T>
 	syncer?: Function
-	onChanged: Function
+	onChanged?: Function
 }
 
 export abstract class FieldComponent<T> extends React.Component<FieldComponentProps<T>>{
