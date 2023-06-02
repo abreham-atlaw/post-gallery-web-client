@@ -44,7 +44,7 @@ export abstract class FieldComponent<T> extends React.Component<FieldComponentPr
 
 	protected constructErrorTextNode(value: T | null, error: string | null): React.ReactNode{
 		return (
-			<p>{String(value)} is not a valid value. Error: {error}</p>
+			<p className="text-red-500 ">{String(value)} is not a valid value. Error: {error}</p>
 		)
 	}
 	render(): React.ReactNode {
