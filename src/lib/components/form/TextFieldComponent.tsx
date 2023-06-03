@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-import { FieldComponent } from "./FieldComponent";
+import { FieldComponent, FieldComponentProps } from "./FieldComponent";
 
 
 
-export default class TextFieldComponent extends FieldComponent<string>{
+export default class TextFieldComponent extends FieldComponent<string, FieldComponentProps<string>>{
 	
 	protected constructInputNode(value: string | null, callback: Function): ReactNode {
 		return (

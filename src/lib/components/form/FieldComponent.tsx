@@ -9,12 +9,12 @@ export interface FieldComponentProps<T>{
 	onChanged?: Function
 }
 
-export abstract class FieldComponent<T> extends React.Component<FieldComponentProps<T>>{
+export abstract class FieldComponent<T, P extends FieldComponentProps<T>> extends React.Component<P, FieldComponentProps<T>>{
 
 	private sync?: Function
 	private externalOnChanged?: Function
 
-	constructor(props: FieldComponentProps<T>){
+	constructor(props: P){
 		super(props);
 		this.state = {
 			field: props.field

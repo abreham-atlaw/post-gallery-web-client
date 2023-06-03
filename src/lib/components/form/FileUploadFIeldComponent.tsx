@@ -10,7 +10,7 @@ interface FileUploadFieldComponentProps extends FieldComponentProps<string>{
 
 }
 
-export default class FileUploadFieldComponent extends FieldComponent<string>{
+export default class FileUploadFieldComponent extends FieldComponent<string, FileUploadFieldComponentProps>{
 	
 	private fileStorage: FileStorage
 
