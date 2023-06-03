@@ -43,7 +43,12 @@ class ArtworkRepositoryTest{
 			Status.onSale,
 			new Date(Date.now()),
 			"paper",
-			["gs://sdjfkljasdlfkjadslkfj;alsds"]
+			[
+				"https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/01.webp?alt=media&token=058ccb8d-ac65-427f-8147-36593d3fe2de&_gl=1*1kvb6ex*_ga*NjY3NDQzOTg2LjE2ODUwOTk5NTU.*_ga_CW55HF8NVT*MTY4NTgxMDY3Ny42LjEuMTY4NTgxMTA3Mi4wLjAuMA..",
+				"https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/2.jpg?alt=media&token=030bfbc8-e8b1-4384-915f-b87320bf3c35&_gl=1*ybbu21*_ga*NjY3NDQzOTg2LjE2ODUwOTk5NTU.*_ga_CW55HF8NVT*MTY4NTgxMDY3Ny42LjEuMTY4NTgxMTE3My4wLjAuMA..",
+				"https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/3.jpg?alt=media&token=98713d61-1351-40d5-9393-51dd3252d282&_gl=1*rfukq3*_ga*NjY3NDQzOTg2LjE2ODUwOTk5NTU.*_ga_CW55HF8NVT*MTY4NTgxMDY3Ny42LjEuMTY4NTgxMTE4My4wLjAuMA..",
+				"https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/4.jpg?alt=media&token=546f926f-77ac-4fad-b64e-e02db8eaa216&_gl=1*1h4cwdq*_ga*NjY3NDQzOTg2LjE2ODUwOTk5NTU.*_ga_CW55HF8NVT*MTY4NTgxMDY3Ny42LjEuMTY4NTgxMTE5My4wLjAuMA.."
+			]
 		)
 	]
 
