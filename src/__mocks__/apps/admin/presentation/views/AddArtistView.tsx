@@ -1,5 +1,5 @@
 import AddArtistViewModel from "@/apps/admin/application/viewmodels/addArtistViewModel"
-import WriteArtistView from "./writeArtistView"
+import WriteArtistView from "./WriteArtistView"
 import EditArtistViewModel from "@/apps/admin/application/viewmodels/editArtistViewModel"
 
 
