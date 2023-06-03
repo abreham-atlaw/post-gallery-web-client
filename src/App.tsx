@@ -1,16 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import ClientSignupView from './__mocks__/apps/auth/presentation/views/clientSignupView'
 import PGRouter from './Router'
+import ClientSignupView from './__mocks__/apps/auth/presentation/views/clientSignupView'
+import LoginView from './__mocks__/apps/auth/presentation/views/loginView'
+import MobileSignUpView from './__mocks__/apps/auth/presentation/views/mobileClientSignUpView'
+import ArtworkDetailView from './__mocks__/apps/core/presentation/views/ArtworkDetailView'
+import SearchView from './__mocks__/apps/core/presentation/views/SearchView'
+import './index.css'
 
 
 function App() {
 
   return (
     <>
-		<PGRouter/>
+      <ArtworkDetailView artworkID={'Pg00001'}  />
+
     </>
   )
 }
