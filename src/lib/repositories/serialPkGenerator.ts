@@ -26,6 +26,7 @@ export default class SerialPkGenerator<M extends Model<string>>{
 		let pks = (await this.repository.getAll())
 		.filter((instance: M) => {return (instance.getPK()!=null && instance.getPK()!.startsWith(this.prefix))})
 		.map((instance: M) => instance.getPK()!)
+		.sort()
 		if(pks.length == 0){
 			return this.generateIDFromSerial(-1)
 		}
