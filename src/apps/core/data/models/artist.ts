@@ -17,7 +17,6 @@ export default class Artist implements Model<string>{
 
 	public artworks?: Artwork[];
 
-
 	public constructor(
 		id: string | null = null,
 		fullName: string,
