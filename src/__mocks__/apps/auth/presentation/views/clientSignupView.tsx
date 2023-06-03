@@ -98,7 +98,7 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 
 					{/* Left */}
 					<div className="w-6/12 min-h-screen flex items-center justify-center bg-[url('./assets/LGBG.png')] bg-center bg-cover ">
-						<div className="w-3/4 max-w-xl my-20 p-9 bg-[url('./assets/LGRegisterBG.png')] bg-cover bg-no-repeat bg-center rounded-2xl ">	
+						<div className="w-3/4 xl:max-w-lg  my-20 p-9 bg-[url('./assets/LGRegisterBG.png')] bg-cover bg-no-repeat bg-center rounded-2xl ">	
 							<p className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</p>	
 							<p className="mt-12 text-4xl font-medium">Step into a world of imagination and inspiration, where every stroke of the brush and every splash of color tells a story - come and experience the breathtaking beauty of creativity at our art gallery</p>
 							
@@ -118,7 +118,7 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 								<LineWithWidth10 />
 							</div>
 		
-							<div className="mx-auto flex flex-row justify-center items-center h-20 w-fit px-12 mt-5 bg-white rounded-full">
+							<div className="mx-auto flex flex-row justify-center items-center h-20 w-fit px-12 mt-2 bg-white rounded-full">
 								<img className="h-12 pr-3.5 bg-contain" src={PGLogin} />		
 								<button className="font-medium text-3xl text-center text-black" onClick={this.handleSignupGoogle}>PostGallary Account</button>
 							</div>
