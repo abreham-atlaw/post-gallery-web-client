@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom'
 import AuthProviders from './apps/auth/di/authProviders.ts'
 
 //Initialization 
-await CoreProviders.provideFirebaseApp();
+CoreProviders.provideFirebaseApp();
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
 	<BrowserRouter>
