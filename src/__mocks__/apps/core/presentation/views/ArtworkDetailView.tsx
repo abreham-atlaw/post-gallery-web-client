@@ -103,9 +103,9 @@ export default class ArtworkDetailView extends React.Component<ArtworkDetailView
 					<div className="bg-white  rounded-xl px-10 py-10 mx-10 mb-10">
 						<div className="flex flex-row items-center">
 							<div className="w-14 h-14 mb-3 bg-[url('./assets/LoginRegisterBG.png')] bg-center bg-cover rounded-full"></div>
-							<p className="ml-2 text-2xl">Amanul Mehari</p>
+							<p className="ml-2 text-2xl">{this.state.artwork!.artist?.fullName} </p>
 						</div>
-						<DescriptionComponent description={this.state.artwork!.description} />
+						<p className="text-base leading-5">{this.state.artwork!.artist?.biography}</p>
 					</div>
 				</div>
 			</div>
@@ -158,7 +158,7 @@ type SlideshowProps = {
 	);
   }
 
-  const DescriptionComponent = ({ description }: { description: string }) => {
+  const DescriptionComponent = ({ description }: { description: String }) => {
 	const [showMore, setShowMore] = useState(false);
   
 	const toggleShowMore = () => {
