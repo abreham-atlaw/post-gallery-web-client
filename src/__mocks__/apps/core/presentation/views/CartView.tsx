@@ -1,7 +1,7 @@
 import ArtworkDetailState from "@/apps/core/application/state/artworkDetailState";
 import ArtworkDetailViewModel from "@/apps/core/application/viewmodels/artworkDetailViewModel";
 import { AsyncStatus } from "@/lib/state/asyncState";
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Back from '@/assets/back.png'
 import CheckOut1 from '@/assets/CheckOut1.png'

@@ -1,10 +1,10 @@
-import { AsyncState, AsyncStatus } from "./asyncState";
+import { AsyncStatus } from "./asyncState";
 
 
 export default class BaseState{
 
 	public context: Record<string, any>;
-	public initState? = {
+	public initState = {
 		status: AsyncStatus.loading,
 		error: null,
 	};
