@@ -36,7 +36,7 @@ export default class EditArtworkViewModel extends AsyncViewModel<WriteArtworkSta
 		artwork.status = form.status.getValue()!
 		artwork.creationDate = form.creationDate.getValue()!
 		artwork.mediaUsed = form.mediaUsed.getValue()!
-		artwork.images = form.images.getValue()!
+		artwork.images = form.images.getValue() as string[]
 	}
 
 	async init(artworkID: string){

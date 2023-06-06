@@ -28,7 +28,7 @@ export default class SerialPkGenerator<M extends Model<string>>{
 		.map((instance: M) => instance.getPK()!)
 		.sort()
 		if(pks.length == 0){
-			return this.generateIDFromSerial(-1)
+			return this.generateIDFromSerial(0)
 		}
 		return pks[pks.length - 1]
 	}

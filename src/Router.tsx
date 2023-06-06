@@ -10,6 +10,7 @@ import { RoutedArtworkDetailView } from "./__mocks__/apps/core/presentation/view
 import AddArtistView from "./__mocks__/apps/admin/presentation/views/AddArtistView";
 import AddArtworkView from "./__mocks__/apps/admin/presentation/views/AddArtworkView";
 import CartView from "./__mocks__/apps/core/presentation/views/CartViewNew";
+import AddExhibitionView from "./__mocks__/apps/admin/presentation/views/AddExhibitionView";
 
 
 export default class PGRouter extends React.Component{
@@ -53,7 +54,7 @@ export default class PGRouter extends React.Component{
 
 				<Route path="/admin/artist/add" element={<AddArtistView/>} />
 				<Route path="/admin/artwork/add" element={<AddArtworkView/>} />
-
+				<Route path="/admin/exhibition/add" element={<AddExhibitionView/>} />
 
 			</Routes>
 		)
