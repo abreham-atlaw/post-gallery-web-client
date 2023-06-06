@@ -4,11 +4,10 @@ import { Status } from "@/apps/core/data/models/artwork";
 import DefaultFileUploadComponent from "@/apps/core/presentation/components/DefaultFileUploadComponent";
 import DateFieldComponent from "@/lib/components/form/DateFieldComponent";
 import EnumFieldComponent from "@/lib/components/form/EnumFieldComponent";
-import FileUploadFieldComponent from "@/lib/components/form/FileUploadFIeldComponent";
 import ListFieldComponent from "@/lib/components/form/ListFieldComponent";
 import NumberFieldComponent from "@/lib/components/form/NumberFieldComponent";
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
-import Field, { TextField } from "@/lib/forms/fields";
+import Field from "@/lib/forms/fields";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import React, { FormEvent } from "react";
 

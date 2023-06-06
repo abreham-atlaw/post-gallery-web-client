@@ -29,7 +29,7 @@ export default class ListFieldComponent<T> extends FieldComponent<(T|null)[], Li
 		this.setState(this.state)
 	}
 
-	protected constructInputNode(values: (T|null)[] | null, callback: Function): ReactNode {
+	protected constructInputNode(_values: (T|null)[] | null, _callback: Function): ReactNode {
 
 		return (
 			<div>
