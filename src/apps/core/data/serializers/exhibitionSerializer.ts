@@ -14,9 +14,12 @@ export default class ExhibitionSerializer extends Serializer<Exhibition, Documen
       artist_id: instance.artistId,
       name: instance.name,
       description: instance.description,
-      start_date: instance.startDate,
-      end_date: instance.endDate,
-      venue: instance.venue
+      start_date: this.dateSerializer.serialize(instance.dateRange.startDate),
+      end_date: this.dateSerializer.serialize(instance.dateRange.endDate),
+	  start_time: instance.timeFrame.startTime,
+	  end_time: instance.timeFrame.endTime,
+      venue: instance.venue,
+	  curator: instance.curator
     };
   }
 
@@ -26,9 +29,16 @@ export default class ExhibitionSerializer extends Serializer<Exhibition, Documen
       data.artist_id,
       data.name,
       data.description,
-      this.dateSerializer.deserialize(data.start_date),
-      this.dateSerializer.deserialize(data.end_date),
-      data.venue
+	  {
+		startDate: this.dateSerializer.deserialize(data.start_date),
+		endDate: this.dateSerializer.deserialize(data.end_date)
+	  },
+	  {
+		startTime: data.start_time,
+		endTime: data.end_time
+	  },
+      data.venue,
+	  data.curator
     );
   }
 }

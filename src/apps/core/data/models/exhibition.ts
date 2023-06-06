@@ -2,6 +2,20 @@ import Model from "@/lib/models/model";
 import Artist from "./artist";
 
 
+interface DateRange{
+
+	startDate: Date
+	endDate: Date
+
+}
+
+interface TimeRange{
+
+	startTime: number;
+	endTime: number;
+
+}
+
 export default class Exhibition implements Model<string>{
 
 	public id: string | null;
@@ -10,28 +24,35 @@ export default class Exhibition implements Model<string>{
 
 	public name: string;
 	public description: string;
-	public startDate: Date;
-	public endDate: Date;
+
+	public dateRange: DateRange
+	public timeFrame: TimeRange
+
 	public venue: string;
+	public curator: string;
 
 	public artist?: Artist;
+
+
 
 	constructor(
 		id: string | null,
 		artistId: string,
 		name: string,
 		description: string,
-		startDate: Date,
-		endDate: Date,
-		venue: string
+		dateRange: DateRange,
+		timeFrame: TimeRange,
+		venue: string,
+		curator: string
 	){
 		this.id = id;
 		this.artistId = artistId;
 		this.name = name;
 		this.description = description;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.dateRange = dateRange;
 		this.venue = venue;
+		this.curator = curator;
+		this.timeFrame = timeFrame
 	}
 
 	getPK(): string | null {
