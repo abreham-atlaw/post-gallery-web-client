@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <CartView artworkID={'Pg00001'}  />
+      <PGRouter />
 
     </>
   )

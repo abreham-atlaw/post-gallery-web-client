@@ -8,8 +8,8 @@ import LoginView from "./__mocks__/apps/auth/presentation/views/loginView";
 import SearchView from "./__mocks__/apps/core/presentation/views/SearchView";
 import { RoutedArtworkDetailView } from "./__mocks__/apps/core/presentation/views/ArtworkDetailView";
 import AddArtistView from "./__mocks__/apps/admin/presentation/views/AddArtistView";
-import AddArtworkViewModel from "./apps/admin/application/viewmodels/addArtworkViewModel";
 import AddArtworkView from "./__mocks__/apps/admin/presentation/views/AddArtworkView";
+import CartView from "./__mocks__/apps/core/presentation/views/CartViewNew";
 
 
 export default class PGRouter extends React.Component{
@@ -36,6 +36,7 @@ export default class PGRouter extends React.Component{
 
 				<Route path="/search" element={<SearchView />}/>
 				<Route path="/artwork/:id" element={<RoutedArtworkDetailView/>}/>
+				<Route path="/cart" element={<CartView />}/>
 				
 
 				<Route path="/home" element={

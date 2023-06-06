@@ -1,3 +1,4 @@
+import Cart from "@/apps/core/data/models/cart";
 import Model from "@/lib/models/model";
 
 export enum Role{
@@ -34,8 +35,12 @@ export class Account implements Model<string>{
 
 export class Client extends Account{
 
-	constructor(id: string, fullName: string, phoneNumber: string){
+
+	public cart: Cart;
+
+	constructor(id: string, fullName: string, phoneNumber: string, cart: Cart){
 		super(id, fullName, phoneNumber, Role.client);
+		this.cart = cart;
 	}
 
 }

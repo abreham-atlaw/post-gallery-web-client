@@ -5,11 +5,14 @@ import { FireStoreRepository } from "@/lib/repositories/firestoreRepository";
 import { PGSigninRequest } from "../models/signInRequests";
 import { PGSignupRequest } from "../models/signupRequests";
 import Authenticator from "./authenticator";
+import Cart from "@/apps/core/data/models/cart";
 
 
 export default class ClientRepository extends FireStoreRepository<string, Client>{
 
 	private authenticator: Authenticator  = new Authenticator();
+
+	private artworkRepository = CoreProviders.provideArtworkRepository();
 
 	constructor(){
 		super(
@@ -26,7 +29,7 @@ export default class ClientRepository extends FireStoreRepository<string, Client
 
 	public async signUpWithPG(request: PGSignupRequest): Promise<Client>{
 		let user = await this.authenticator.createWithEmail(request.email, request.password);
-		let client = new Client(user.uid, request.fullName, request.phoneNumber);
+		let client = new Client(user.uid, request.fullName, request.phoneNumber, Cart.createEmpty());
 		await this.create(client);
 		return client;
 	}
@@ -38,7 +41,7 @@ export default class ClientRepository extends FireStoreRepository<string, Client
 
 	public async signInWithGoogle(): Promise<Client>{
 		let user = await this.authenticator.getWithGoogle();
-		let client = new Client(user.uid, user.displayName!, user.phoneNumber!);
+		let client = new Client(user.uid, user.displayName!, user.phoneNumber!, Cart.createEmpty());
 		await this.create(client);
 		return client;
 
@@ -46,7 +49,7 @@ export default class ClientRepository extends FireStoreRepository<string, Client
 
 	public async signInWithApple(): Promise<Client>{
 		let user = await this.authenticator.getWithApple();
-		let client = new Client(user.uid, user.displayName!, user.phoneNumber!);
+		let client = new Client(user.uid, user.displayName!, user.phoneNumber!, Cart.createEmpty());
 		await this.create(client);
 		return client;
 	}
@@ -60,7 +63,12 @@ export default class ClientRepository extends FireStoreRepository<string, Client
 	}
 
 	public async attachForeignKeys(_instance: Client): Promise<void> {
-		return;
+		_instance.cart.items = [];
+		for(let artworkId of _instance.cart.itemsIds){
+			_instance.cart.items.push(
+				await this.artworkRepository.getByPrimaryKey(artworkId)
+			)
+		}
 	}
 
 }

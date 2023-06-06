@@ -6,6 +6,8 @@ import ArtworkRepository from "../data/repositories/artworkRepository";
 import FileStorage from "@/lib/filestorage/fileStorage";
 import FirebaseFileStorage from "@/lib/filestorage/firebaseFileStorage";
 import { getStorage } from "firebase/storage";
+import ContextInjector from "@/lib/viewmodel/contextInjector";
+import ClientInjector from "@/apps/auth/application/injectors/clientInjector";
 
 
 
@@ -42,6 +44,12 @@ export default class CoreProviders{
 
 	public static provideDefaultFileStorage(): FileStorage{
 		return new FirebaseFileStorage(getStorage())
+	}
+
+	public static provideDefaultInjectors(): ContextInjector[]{
+		return [
+			new ClientInjector()
+		]
 	}
 
 }
