@@ -1,8 +1,10 @@
 import WriteArtistState from "@/apps/admin/application/states/writeArtistState";
 import EditArtistViewModel from "@/apps/admin/application/viewmodels/editArtistViewModel";
 import { Gender } from "@/apps/core/data/models/gender";
+import DefaultFileUploadComponent from "@/apps/core/presentation/components/DefaultFileUploadComponent";
 import DateFieldComponent from "@/lib/components/form/DateFieldComponent";
 import EnumFieldComponent from "@/lib/components/form/EnumFieldComponent";
+import FileUploadFieldComponent from "@/lib/components/form/FileUploadFIeldComponent";
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import React, { FormEvent } from "react";
@@ -64,6 +66,10 @@ export default abstract class WriteArtistView<P> extends React.Component<P, Writ
 				<div>
 					<label htmlFor="biography">Biography:</label>
 					<TextFieldComponent field={this.state.form.biography} syncer={this.viewModel.syncState} />
+				</div>
+				<div>
+					<label htmlFor="avatar">Avatar:</label>
+					<DefaultFileUploadComponent field={this.state.form.avatar} syncer={this.viewModel.syncState} />
 				</div>
 				<button type="submit">Submit</button>
 				</form>

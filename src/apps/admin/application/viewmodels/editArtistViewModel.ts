@@ -18,6 +18,7 @@ export default class EditArtistViewModel extends AsyncViewModel<WriteArtistState
 		form.gender.setValue(artist.gender)
 		form.nationality.setValue(artist.nationality)
 		form.phoneNumber.setValue(artist.phoneNumber)
+		form.avatar.setValue(artist.avatar)
 	}
 
 	protected syncFormToArtist(form: ArtistForm){
@@ -29,6 +30,7 @@ export default class EditArtistViewModel extends AsyncViewModel<WriteArtistState
 		artist.gender = form.gender.getValue()!
 		artist.nationality = form.nationality.getValue()!
 		artist.phoneNumber = form.phoneNumber.getValue()!
+		artist.avatar = form.avatar.getValue()!
 	}
 
 	async init(artistID: string){
@@ -46,7 +48,6 @@ export default class EditArtistViewModel extends AsyncViewModel<WriteArtistState
 			this.syncFormToArtist(this.state.form)
 			await this.repository.save(this.state.artist!)
 		})
-		this.repository
 
 
 	}

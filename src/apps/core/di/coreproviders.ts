@@ -3,6 +3,9 @@ import { FirebaseApp, initializeApp } from "firebase/app"
 import { Firestore, getFirestore } from "firebase/firestore";
 import ArtistRepository from "../data/repositories/artistRepository";
 import ArtworkRepository from "../data/repositories/artworkRepository";
+import FileStorage from "@/lib/filestorage/fileStorage";
+import FirebaseFileStorage from "@/lib/filestorage/firebaseFileStorage";
+import { getStorage } from "firebase/storage";
 
 
 
@@ -35,6 +38,10 @@ export default class CoreProviders{
 			this.artWorkRepository = new ArtworkRepository();
 		}
 		return this.artWorkRepository;
+	}
+
+	public static provideDefaultFileStorage(): FileStorage{
+		return new FirebaseFileStorage(getStorage())
 	}
 
 }

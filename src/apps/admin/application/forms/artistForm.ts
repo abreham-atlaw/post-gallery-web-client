@@ -13,6 +13,8 @@ export default class ArtistForm extends Form{
 	nationality: TextField = new TextField()
 	dateOfBirth: Field<Date> = new Field<Date>()
 	biography: TextField = new TextField()
+	avatar: TextField = new TextField()
+	
 
 	getFields(): Field<any>[] {
 		return [

@@ -14,6 +14,7 @@ export default class Artist implements Model<string>{
 	public nationality: string;
 	public dateOfBirth: Date;
 	public biography: string;
+	public avatar: string;
 
 	public artworks?: Artwork[];
 
@@ -25,7 +26,8 @@ export default class Artist implements Model<string>{
 		email: string,
 		nationality: string,
 		biography: string,
-		dateOfBirth: Date
+		dateOfBirth: Date,
+		avatar: string
 	){
 		this.id = id;
 		this.fullName = fullName;
@@ -35,6 +37,7 @@ export default class Artist implements Model<string>{
 		this.nationality = nationality
 		this.biography = biography
 		this.dateOfBirth = dateOfBirth
+		this.avatar = avatar
 	}
 
 
