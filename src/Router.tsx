@@ -11,6 +11,8 @@ import AddArtistView from "./__mocks__/apps/admin/presentation/views/AddArtistVi
 import AddArtworkView from "./__mocks__/apps/admin/presentation/views/AddArtworkView";
 import CartView from "./__mocks__/apps/core/presentation/views/CartViewNew";
 import AddExhibitionView from "./__mocks__/apps/admin/presentation/views/AddExhibitionView";
+import ExhibitionListView from "./__mocks__/apps/core/presentation/views/ExhibitionListView";
+import ExhibitionDetailView, { RoutedExhibitionDetailView } from "./__mocks__/apps/core/presentation/views/ExhibitionDetailView";
 
 
 export default class PGRouter extends React.Component{
@@ -21,7 +23,6 @@ export default class PGRouter extends React.Component{
 			<Routes>
 				<Route path="/auth/signup/" element={<ClientSignupView />}/>
 				<Route path="/auth/login/" element={<LoginView />}/>
-				
 				<Route path="/auth/email-verify/" element={
 					<AuthenticatedComponent validStatus={[AuthenticationStatus.verification]} redirectionMap={new Map<AuthenticationStatus, string>([
 						[AuthenticationStatus.none, "/auth/login"],
@@ -38,7 +39,9 @@ export default class PGRouter extends React.Component{
 				<Route path="/search" element={<SearchView />}/>
 				<Route path="/artwork/:id" element={<RoutedArtworkDetailView/>}/>
 				<Route path="/cart" element={<CartView />}/>
-				
+				<Route path="/exhibitions" element={<ExhibitionListView />}/>
+				<Route path="/exhibition/:id" element={<RoutedExhibitionDetailView />}/>
+
 
 				<Route path="/home" element={
 					

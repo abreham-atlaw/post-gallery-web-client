@@ -21,22 +21,25 @@ export default abstract class ViewModel<S extends BaseState>{
 	}
 
 	public async onInit(){
-		
+		for(let injector of this.injectors){
+			await injector.inject(this.state.context, this)
+		}
+	}
+
+	public async initialize(){
 		let initHandler = new FunctionalAsyncHandler<BaseState>(
 			this,
 			async () => {
-				for(let injector of this.injectors){
-					await injector.inject(this.state.context, this)
-					this.syncState()
-				}
+				await this.onInit()
 			},
 			undefined,
 			undefined,
 			undefined,
-			() => {return this.state.initState}
+			() => {
+				return this.state.initState
+			}
 		)
 		await initHandler.handle({});
-
 	}
 
 	public setState(state: S){

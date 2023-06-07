@@ -25,7 +25,7 @@ export default abstract class ViewModelView<V extends ViewModel<S>, P = {}, S ex
 	abstract onCreateState(): S
 
 	componentDidMount(): void {
-		this.getViewModel().onInit()
+		this.getViewModel().initialize()
 	}
 
 	onCreateMain(): React.ReactNode{
