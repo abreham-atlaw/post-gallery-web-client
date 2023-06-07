@@ -1,3 +1,4 @@
+import BaseState from "./baseState";
 
 
 export enum AsyncStatus{
@@ -7,12 +8,13 @@ export enum AsyncStatus{
 	failed = 3
 }
 
-export class AsyncState {
+export class AsyncState extends BaseState{
 
 	public status: AsyncStatus;
 	public error: Error;
 
-	constructor(status: AsyncStatus = AsyncStatus.none, error: any = null){
+	constructor(status: AsyncStatus = AsyncStatus.none, error: any = null, context?: object){
+		super(context);
 		this.status = status;
 		this.error = error;
 	}

@@ -1,9 +1,10 @@
 import AsyncHandler from "./asyncHandler";
 import ViewModel from "./viewmodel";
 import { AsyncState } from "../state/asyncState";
+import BaseState from "../state/baseState";
 
 
-class FunctionalAsyncHandler<S> extends AsyncHandler<any, S>{
+export class FunctionalAsyncHandler<S extends BaseState> extends AsyncHandler<any, S>{
 
 	private onEventCallback: Function;
 
@@ -38,7 +39,7 @@ class FunctionalAsyncHandler<S> extends AsyncHandler<any, S>{
 }
 
 
-export default class AsyncViewModel<S> extends ViewModel<S>{
+export default class AsyncViewModel<S extends BaseState> extends ViewModel<S>{
 	
 	
 	protected async asyncCall(

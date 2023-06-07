@@ -12,10 +12,9 @@ export default class FirebaseFileStorage implements FileStorage{
 	}
 
 	async store(file: File): Promise<string> {
-		let snapshot = await uploadBytes(this.storageReference, file)
+		let fileReference = ref(this.storageReference, file.name)
+		let snapshot = await uploadBytes(fileReference, file)
 		return await getDownloadURL(snapshot.ref)
 	}
-
-
 
 }

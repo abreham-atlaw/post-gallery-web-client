@@ -1,6 +1,7 @@
 import WriteArtistState from "@/apps/admin/application/states/writeArtistState";
 import EditArtistViewModel from "@/apps/admin/application/viewmodels/editArtistViewModel";
 import { Gender } from "@/apps/core/data/models/gender";
+import DefaultFileUploadComponent from "@/apps/core/presentation/components/DefaultFileUploadComponent";
 import DateFieldComponent from "@/lib/components/form/DateFieldComponent";
 import EnumFieldComponent from "@/lib/components/form/EnumFieldComponent";
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
@@ -53,7 +54,41 @@ export default abstract class WriteArtistView<P> extends React.Component<P, Writ
 					</form>
 				</div>
 				Status: {this.state.status}
-
+				<form onSubmit={this.handleSubmit}>
+				<div>
+					<label htmlFor="fullName">Full Name:</label>
+					<TextFieldComponent field={this.state.form.fullName} syncer={this.viewModel.syncState} />
+				</div>
+				<div>
+					<label htmlFor="gender">Gender:</label>
+					<EnumFieldComponent field={this.state.form.gender} enumClass={Gender} syncer={this.viewModel.syncState} />
+				</div>
+				<div>
+					<label htmlFor="email">Email:</label>
+					<TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState} />
+				</div>
+				<div>
+					<label htmlFor="phoneNumber">Phone Number:</label>
+					<TextFieldComponent field={this.state.form.phoneNumber} syncer={this.viewModel.syncState} />
+				</div>
+				<div>
+					<label htmlFor="nationality">Nationality:</label>
+					<TextFieldComponent field={this.state.form.nationality} syncer={this.viewModel.syncState} />
+				</div>
+				<div>
+					<label htmlFor="dateOfBirth">Date of Birth:</label>
+					<DateFieldComponent field={this.state.form.dateOfBirth} syncer={this.viewModel.syncState} />
+				</div>
+				<div>
+					<label htmlFor="biography">Biography:</label>
+					<TextFieldComponent field={this.state.form.biography} syncer={this.viewModel.syncState} />
+				</div>
+				<div>
+					<label htmlFor="avatar">Avatar:</label>
+					<DefaultFileUploadComponent field={this.state.form.avatar} syncer={this.viewModel.syncState} />
+				</div>
+				<button type="submit">Submit</button>
+				</form>
 			</div>
 		)
 	}

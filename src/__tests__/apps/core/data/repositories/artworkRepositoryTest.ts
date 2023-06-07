@@ -23,7 +23,8 @@ class ArtworkRepositoryTest{
 			"jcole@dreamville.com",
 			"Ethiopian",
 			"The quick brown fox jumps over the lazy dog.",
-			new Date(Date.now())
+			new Date(Date.now()),
+			"https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/b04.jpg?alt=media&token=3dfe12ca-5298-45f0-ba5e-f814e7e3facd&_gl=1*fiz62q*_ga*NjY3NDQzOTg2LjE2ODUwOTk5NTU.*_ga_CW55HF8NVT*MTY4NTk1MjQ3Mi44LjEuMTY4NTk1MjU4Ni4wLjAuMA.."
 		)
 	]
 

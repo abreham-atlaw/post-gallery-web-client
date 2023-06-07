@@ -65,3 +65,68 @@ export class TextField extends Field<string>{
 	}
 
 }
+
+
+export class ListField<T> extends Field<(T | null)[]>{
+
+
+	private generator: Function;
+	private fields: Field<T>[] = [];
+
+	constructor(generator?: Function, required?: boolean, validator?: Function, liveValidate?: boolean){
+		super(required, validator, liveValidate)
+		this.generator = generator ?? (() => {return new Field<T>()})
+	}
+
+	public add(): Field<T>{
+		let field = this.generator();
+		this.fields.push(field);
+		return field;
+	}
+
+	public pop(i?: number): Field<T>{
+		if(i === undefined){
+			i = this.fields.length - 1;
+		}
+		let field = this.fields[i];
+		this.fields.splice(i, 1)
+		return field
+	} 
+
+	public getValue(): (T | null)[] | null {
+		return this.fields.map((field: Field<T>) => {return field.getValue()})
+	}
+
+	public async setValue(values: (T | null)[] | null): Promise<void> {
+		this.fields = []
+		if(values === null){
+			return;
+		}
+		for(let value of values){
+			let field: Field<T> = this.add();
+			field.setValue(value)
+		}	
+	}
+
+	public getFields(): Field<T>[]{
+		return this.fields;
+	}
+
+	protected async validate(): Promise<string | null> {
+		
+		let validationError: string | null = null;
+		for(let i=0; i<this.getFields().length; i++){
+			let field = this.getFields()[i];
+			if(await field.isValid()){
+				continue;
+			}
+			if(validationError === null){
+				validationError = "";
+			}
+			validationError = `${validationError}\n${i}. ${field.error}`
+		}
+		return validationError;
+
+	}
+
+}
