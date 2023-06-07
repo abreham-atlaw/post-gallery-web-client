@@ -4,7 +4,6 @@ import { Gender } from "@/apps/core/data/models/gender";
 import DefaultFileUploadComponent from "@/apps/core/presentation/components/DefaultFileUploadComponent";
 import DateFieldComponent from "@/lib/components/form/DateFieldComponent";
 import EnumFieldComponent from "@/lib/components/form/EnumFieldComponent";
-import FileUploadFieldComponent from "@/lib/components/form/FileUploadFIeldComponent";
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import React, { FormEvent, useEffect, useState } from "react";

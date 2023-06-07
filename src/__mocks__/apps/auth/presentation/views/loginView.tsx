@@ -24,9 +24,13 @@ export default class LoginView extends React.Component<any, LoginState>{
 		this.viewModel.signInWithPG();
 	} 
 
+	private handleLoginWithGoogle = () => {
+		this.viewModel.signInWithGoogle()
+	}
+
 	render(): React.ReactNode {
 		if(this.state.status === AsyncStatus.done){
-			return (<Navigate to="/home" />)
+			return (<Navigate to="/search" />)
 		}
 		return (
 			<div className="bg-[url('./assets/LoginRegisterBG.png')] bg-center bg-cover min-h-screen w-screen text-white">
@@ -57,14 +61,14 @@ export default class LoginView extends React.Component<any, LoginState>{
 				{/* --------------------------- */}
 
 				<div className="hidden lg:flex lg:flex-row ">
-
+					
 					{/* Left */}
 					<div className="w-6/12 min-h-screen flex items-center justify-center bg-[url('./assets/LGBG.png')] bg-center bg-cover ">
 						<div className="w-3/4 max-w-lg my-20 p-9 bg-[url('./assets/LGRegisterBG.png')] bg-cover bg-no-repeat bg-center rounded-2xl ">	
 							<p className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</p>	
 							<p className="mt-12 text-4xl font-medium">Step into a world of imagination and inspiration, where every stroke of the brush and every splash of color tells a story - come and experience the breathtaking beauty of creativity at our art gallery</p>
 							
-							<div className="mx-auto flex flex-row justify-center items-center h-20 w-fit px-12 mt-12 bg-black rounded-full">
+							<div className="mx-auto flex flex-row justify-center items-center h-20 w-fit px-12 mt-12 bg-black rounded-full" onClick={this.handleLoginWithGoogle}>
 								<img className="h-12 pr-3.5 bg-contain" src={Google} />		
 								<button className="font-medium text-3xl text-center" >Continue with Google</button>
 							</div>
@@ -90,13 +94,13 @@ export default class LoginView extends React.Component<any, LoginState>{
 						<p className="text-6xl font-medium ">TO POST GALLERY</p>
 						<p className="text-4xl">Create your post gallery account</p>
 						<p className="text-6xl mt-2 mb-4">SignIn</p>
-						<form className="w-full">
+						<form className="w-full" onSubmit={this.handleSubmit}>
 							{this.state.error?.message}
 							<p className="text-xl mt-2.5">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState}/>
-							<p className="text-xl mt-2.5">Password:</p> <TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState}/>
+							<p className="text-xl mt-2.5">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.viewModel.syncState}/>
 							<div className="flex flex-row justify-center text-center pt-6">
 								<p className="text-2xl font-normal text-[#9b9b9b]">I dont have an account? </p>
-								<p className="text-2xl font-medium">Create account.</p>
+								<p className="text-2xl font-medium"><a href="/auth/signup">Create account</a></p>
 							</div>
 							<div className="flex justify-center items-center w-56 m-auto mt-9 h-20 pt-2 pb-2.5 bg-black text-white rounded-full">
 								<button className="justify-center text-3xl">Continue</button>

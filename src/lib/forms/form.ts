@@ -17,7 +17,7 @@ export default abstract class Form{
 			}
 		}
 		if(throw_error && !valid){
-			throw new ValidationException();
+			throw new ValidationException("Error in form");
 		}
 
 		return valid;
