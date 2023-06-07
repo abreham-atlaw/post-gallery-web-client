@@ -29,10 +29,14 @@ export default class PGRouter extends React.Component{
 						[AuthenticationStatus.authenticated, "/home"]
 					])}>
 
+
 						<EmailVerificationView />
+					
 					
 					</AuthenticatedComponent>
 				}/>
+
+				
 
 				
 
@@ -44,6 +48,7 @@ export default class PGRouter extends React.Component{
 
 
 				<Route path="/home" element={
+					
 					
 					<AuthenticatedComponent validStatus={[AuthenticationStatus.authenticated]}>
 					

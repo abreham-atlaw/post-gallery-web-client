@@ -1,9 +1,15 @@
 import CheckoutState from "@/apps/core/application/state/checkOutState";
 import CheckoutViewModel from "@/apps/core/application/viewmodels/checkoutViewModel";
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
-import React, { FormEvent } from "react";
-
-
+import React, { ChangeEvent, FC, FormEvent, ReactNode, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Back from '@/assets/back.png'
+import CheckOut1 from '@/assets/CheckOut1.png'
+import CheckOut2 from '@/assets/CheckOut2.png'
+import CheckOut3 from '@/assets/CheckOut3.png'
+import CheckOut4 from '@/assets/CheckOut4.png'
+import Upload from '@/assets/Upload.png'
+import { FieldComponent, FieldComponentProps } from "@/lib/components/form/FieldComponent";
 
 export default class CheckOutView extends React.Component<any, CheckoutState>{
 
@@ -20,23 +26,169 @@ export default class CheckOutView extends React.Component<any, CheckoutState>{
 		event.preventDefault();
 		this.viewModel.checkout();
 	}
+	
 
 	render(): React.ReactNode {
 		
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<div className="bg-[#F6F6F6] min-h-screen" >
+				<div className="bg-white px-6 pt-12 pb-12 lg:hidden">
+					<img className="h-8 mb-4" src={Back} />
+					<div className="text-4xl font-medium pb-3.5 border-b-2 border-[#CBCACA]">CheckOut</div>
 
-				<TextFieldComponent field={this.state.form.firstName} syncer={this.viewModel.syncState}/>
-				<TextFieldComponent field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
-				<TextFieldComponent field={this.state.form.address} syncer={this.viewModel.syncState}/>
-				<TextFieldComponent field={this.state.form.address2} syncer={this.viewModel.syncState}/>
-				<TextFieldComponent field={this.state.form.country} syncer={this.viewModel.syncState}/>
-				<button type="submit">Submit</button>
+					<p className="text-2xl my-4">Shipping address</p>
 
-			</form>
+					<TextFieldComponents placeholder="First Name*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<div className="h-4"></div>
+					<TextFieldComponents placeholder="Last name*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<div className="h-4"></div>
+					<TextFieldComponents placeholder="Address*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<div className="h-4"></div>
+					<TextFieldComponents placeholder="Address 2" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<div className="h-4"></div>
+					<TextFieldComponents placeholder="Country*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<div className="h-4"></div>
+					<TextFieldComponents placeholder="City*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<div className="h-4"></div>
+					<TextFieldComponents placeholder="State/Region*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<div className="h-4"></div>
+					<TextFieldComponents placeholder="Zip/PostalCode*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<div className="h-4"></div>
+					<TextFieldComponents placeholder="Phone number*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+                    
+                    <div className="flex justify-center items-center w-full m-auto my-6 pt-3 pb-4 bg-black text-white rounded-md">
+                        <button className="justify-center text-2xl">Save shipping address</button>
+                    </div>
+					<p className="text-2xl font-medium ">Estimated Total:</p>
+
+					<div className="mt-2 flex flex-row justify-between text-xl pr-8">
+						<p>Art Price: </p>
+						<p>70000</p> 
+					</div>
+					<div className="flex flex-row justify-between text-xl text-left pr-8">
+						<p>Shipping price:</p>
+						<p>8000</p> 
+					</div>
+					<div className="flex flex-row justify-between text-xl pr-8">
+						<p>VAT 15%:  </p>
+						<p>12000 </p>  
+					</div>
+					<div className="mt-2.5 flex flex-row justify-between text-2xl font-medium pr-8">
+						<p>Total price:  </p>
+						<p>12000 </p>  
+					</div>
+					<div className="flex justify-center items-center w-full m-auto mt-4 mb-6 pt-3 pb-4 bg-black text-white rounded-md">
+						<button className="justify-center text-2xl">Place Order</button>
+					</div>
+                    <div className="flex flex-col justify-center items-start mb-8">
+                        <MyComponent imageSrc={CheckOut1} title={"Satisfaction Guaranteed."} subtitle={"An art gallery that satisfies, service that delights."}  />
+                        <MyComponent imageSrc={CheckOut2} title={"Safe and Secure shopping."} subtitle={"All payments and transactions are secure and encrypted."}  />
+                        <MyComponent imageSrc={CheckOut3} title={"Support An Artist With Every Purchase."} subtitle={"We pay our artists more on every sale than other galleries."}  />
+                        <MyComponent imageSrc={CheckOut4} title={"High class customer service"} subtitle={"We deliver world-class customer service to all of our art buyers."}  />
+                    </div>    
+				</div>
+
+				{/* ------------------------------------------ */}
+
+				<div className="hidden lg:inline lg:px-8">
+					<img className="h-8 mb-14 mt-14 mx-8" src={Back} />
+					
+                    <div className="flex flex-row justify-between">
+                        <div className="w-1/2 h-min ml-12 p-12 bg-white">
+                            <div className="text-6xl font-medium pb-3.5 border-b-2 mb-7 border-[#EFEFEF]">CheckOut</div>
+							<p className="text-3xl mb-5">Shipping address</p>
+							<form className="w-full" onSubmit={this.handleSubmit}>
+								<div className="flex flex-row">
+									<div className="w-full mr-4"><TextFieldComponents placeholder="First Name*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+									<div className="w-full"><TextFieldComponents placeholder="Last name*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+								</div>
+								<div className="h-6"></div>
+								<TextFieldComponents placeholder="Address*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+								<div className="h-6"></div>
+								<TextFieldComponents placeholder="Address 2" field={this.state.form.address} syncer={this.viewModel.syncState}/>
+								<div className="h-6"></div>
+								<div className="flex flex-row ">
+									<div className="w-full mr-4"><TextFieldComponents placeholder="Country*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+									<div className="w-full"><TextFieldComponents placeholder="City*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+								</div>
+								<div className="h-6"></div>
+								<div className="flex flex-row">
+									<div className="w-full mr-4"><TextFieldComponents placeholder="State/Region*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+									<div className="w-full"><TextFieldComponents placeholder="Zip/PostalCode*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+								</div>
+								<div className="h-6"></div>
+								<div className="w-1/2 mr-4"><TextFieldComponents placeholder="Phone number*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+								<div className="h-4"></div>
+								<button className="flex justify-center items-center w-full max-w-lg m-auto mt-8 mb-6 h-20 bg-black text-white rounded-md  text-3xl" type="submit">Save shipping address</button>
+
+							</form>
+                        </div>
+                        <div className="bg-white w-2/6 h-min px-8 py-14 mr-12">
+                            <p className="text-4xl font-medium ">Estimated Total:</p>
+
+							<div className="mt-2 flex flex-row justify-between text-2xl pr-8">
+								<p>Art Price: </p>
+								<p>70000</p> 
+							</div>
+							<div className="flex flex-row justify-between text-2xl text-left pr-8">
+								<p>Shipping price:</p>
+								<p>8000</p> 
+							</div>
+							<div className="flex flex-row justify-between text-2xl pr-8">
+								<p>VAT 15%:  </p>
+								<p>12000 </p>  
+							</div>
+							<div className="mt-2.5 flex flex-row justify-between text-3xl font-medium pr-8">
+								<p>Total price:  </p>
+								<p>12000 </p>  
+							</div>
+                            <div className="flex justify-center items-center w-full mt-8 mb-6 h-20 bg-black text-white rounded-md">
+                                <button className="justify-center text-3xl">Place Order</button>
+                            </div>
+                            <div className="flex flex-col justify-center items-start mb-8">
+                                <MyComponent imageSrc={CheckOut1} title={"Satisfaction Guaranteed."} subtitle={"An art gallery that satisfies, service that delights."}  />
+                                <MyComponent imageSrc={CheckOut2} title={"Safe and Secure shopping."} subtitle={"All payments and transactions are secure and encrypted."}  />
+                                <MyComponent imageSrc={CheckOut3} title={"Support An Artist With Every Purchase."} subtitle={"We pay our artists more on every sale than other galleries."}  />
+                                <MyComponent imageSrc={CheckOut4} title={"High class customer service"} subtitle={"We deliver world-class customer service to all of our art buyers."}  />
+                            </div>  
+                        </div>
+                    </div>
+				</div>
+			</div>
 		)
 
 	}
 
 	
 }
+type MyComponentProps = {
+    imageSrc: string;
+    title: string;
+    subtitle: string;
+  };
+  
+  const MyComponent: React.FC<MyComponentProps> = ({ imageSrc, title, subtitle }) => {
+    return (
+      <div className="flex items-start space-x-4 mt-3">
+        <img className="w-16" src={imageSrc} alt="" />
+        <div>
+          <h2 className="text-2xl font-medium leading-6">{title}</h2>
+          <p className="text-base text-[#797979] leading-5">{subtitle}</p>
+        </div>
+      </div>
+    );
+  };
+
+interface TextFieldComponentProps extends FieldComponentProps<string> {
+  placeholder?: string;
+}
+
+class TextFieldComponents extends FieldComponent<string, TextFieldComponentProps>{
+  protected constructInputNode(value: string | null, callback: Function): ReactNode {
+    return (
+      <input className="w-full rounded-md h-14 text-black pl-3 border-[#787878] border-2 lg:h-16 placeholder-[#575757] text-xl" type="text" onChange={(event) => {callback(event.target.value)}} value={(value === null)?"":value} placeholder={this.props.placeholder} />
+    )
+  }
+}
+
+
