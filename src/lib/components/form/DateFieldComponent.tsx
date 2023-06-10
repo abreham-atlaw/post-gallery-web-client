@@ -7,6 +7,7 @@ export default class DateFieldComponent extends FieldComponent<Date, FieldCompon
 
     return (
       <input
+        className="w-full rounded h-14 px-3 text-black placeholder-[#575757] text-xl lg:h-16 border-[#D6D6D6] border-[3px]"
         type="date"
         value={dateString}
         onChange={(event) => {
