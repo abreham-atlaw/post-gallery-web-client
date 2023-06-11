@@ -2,7 +2,7 @@ import ArtworkDetailState from "@/apps/core/application/state/artworkDetailState
 import ArtworkDetailViewModel from "@/apps/core/application/viewmodels/artworkDetailViewModel";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Back from '@/assets/back.png'
 
 
@@ -68,9 +68,9 @@ export default class ArtworkDetailView extends React.Component<ArtworkDetailView
 					<div className="bg-white rounded-lg px-3 py-5">
 						<div className="flex flex-row items-center">
 							<div className="w-14 h-14 bg-[url('./assets/LoginRegisterBG.png')] bg-center bg-cover rounded-full"></div>
-							<p className="ml-2 text-2xl">Amanul Mehari</p>
+							<p className="ml-2 text-2xl">{this.state.artwork!.name}</p>
 						</div>
-						<p className="mt-3 text-lg leading-5">Amanuel Meharie is a talented Eritrean artist born in 1989. He grew up in Asmara, the capital city of Eritrea, where he developed a passion for art at a young age. Amanuel's artistic journey began when he started sketching cartoons and portraits of his family and friends. After completing his high school education, Amanuel pursued his passion for art by enrolling in the College of Arts and Social Sciences at the University of Asmara. During his time at the university, he honed his skills in painting, drawing, and sculpture. Amanuel's art is heavily influenced by his Eritrean heritage and culture. He often incorporates traditional Eritrean motifs and patterns into his paintings, which depict everyday life in Eritrea. His work has been exhibited in various galleries and exhibitions both locally and internationally. In addition to his artistic pursuits, Amanuel is also a dedicated teacher. He teaches art at a local school in Asmara, where he inspires the next generation of artists. Despite facing numerous challenges as an artist in Eritrea, Amanuel remains committed to his craft and continues to create beautiful works of art that capture the essence of his homeland.</p>
+						<p className="mt-3 text-lg leading-5">{this.state.artwork!.description}</p>
 					</div>
 				</div>
 
@@ -95,14 +95,15 @@ export default class ArtworkDetailView extends React.Component<ArtworkDetailView
 							<p className="text-2xl underline">Description</p>
 							<DescriptionComponent description={this.state.artwork!.description} />
 							<div className="flex justify-center items-center w-56 m-auto mt-8 pt-2 pb-2.5 bg-black text-white rounded-full">
-								<button className="justify-center text-2xl">Purchase</button>
+								<Link to={`/checkout`} className="justify-center text-2xl">Purchase</Link>
 							</div>
 						</div>
 					</div>
 					<p className="ml-10 text-2xl mt-18 mb-4">About the creator</p>
 					<div className="bg-white  rounded-xl px-10 py-10 mx-10 mb-10">
 						<div className="flex flex-row items-center">
-							<div className="w-14 h-14 mb-3 bg-[url('./assets/LoginRegisterBG.png')] bg-center bg-cover rounded-full"></div>
+							<div className={`w-14 h-14 mb-3 bg-center bg-cover rounded-full`} style={{backgroundImage: `url(${this.state.artwork?.artist!.avatar})`}}>
+							</div>
 							<p className="ml-2 text-2xl">{this.state.artwork!.artist?.fullName} </p>
 						</div>
 						<p className="text-base leading-5">{this.state.artwork!.artist?.biography}</p>

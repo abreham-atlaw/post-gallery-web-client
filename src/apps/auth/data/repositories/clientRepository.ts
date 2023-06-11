@@ -71,4 +71,8 @@ export default class ClientRepository extends FireStoreRepository<string, Client
 		}
 	}
 
+	public async logout(): Promise<void>{
+		this.authenticator.logout();
+	}
+
 }

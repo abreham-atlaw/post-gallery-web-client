@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, User, applyActionCode, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, User, applyActionCode, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import AuthProviders from "../../di/authProviders";
 
 
@@ -54,6 +54,10 @@ export default class Authenticator{
 
 	public async getCurrentUser(): Promise<User|null>{
 		return (await AuthProviders.provideAuth()).currentUser
+	}
+
+	public async logout(): Promise<void>{
+		await signOut((await AuthProviders.provideAuth()))	
 	}
 
 

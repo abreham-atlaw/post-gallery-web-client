@@ -3,6 +3,7 @@ import SearchViewModel from "@/apps/core/application/viewmodels/searchViewModel"
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import React from "react";
+import { Navigate } from "react-router-dom";
 
 
 
@@ -23,7 +24,7 @@ export default class SearchView extends React.Component<any, SearchState>{
 
 	render(): React.ReactNode {
 		if(this.state.result != undefined){
-			return <h1>Item found {new String(this.state.result!.name)}</h1>
+			return <Navigate to={`/artwork/${this.state.result.id}`}/>
 		}
 		return (
 			<div className=" text-black">
