@@ -2,7 +2,7 @@ import CheckoutState from "@/apps/core/application/state/checkOutState";
 import CheckoutViewModel from "@/apps/core/application/viewmodels/checkoutViewModel";
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
 import React, { ChangeEvent, FC, FormEvent, ReactNode, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import Back from '@/assets/back.png'
 import CheckOut1 from '@/assets/CheckOut1.png'
 import CheckOut2 from '@/assets/CheckOut2.png'
@@ -10,26 +10,51 @@ import CheckOut3 from '@/assets/CheckOut3.png'
 import CheckOut4 from '@/assets/CheckOut4.png'
 import Upload from '@/assets/Upload.png'
 import { FieldComponent, FieldComponentProps } from "@/lib/components/form/FieldComponent";
+import ViewModelView from "@/lib/components/views/ViewModelView";
+import { AsyncStatus } from "@/lib/state/asyncState";
 
-export default class CheckOutView extends React.Component<any, CheckoutState>{
+
+interface CheckoutViewProps{
+	artworkId: string
+}
 
 
-	private viewModel: CheckoutViewModel;
-
-	constructor(props: any){
+export default class CheckOutView extends ViewModelView<CheckoutViewModel, CheckoutViewProps, CheckoutState>{
+	
+	constructor(props: CheckoutViewProps){
 		super(props);
-		this.state = new CheckoutState();
-		this.viewModel = new CheckoutViewModel(this.state, this.setState.bind(this));
 	}
 
 	handleSubmit = async (event: FormEvent) => {
 		event.preventDefault();
-		this.viewModel.checkout();
+		this.getViewModel().saveShippingInfo();
 	}
-	
 
-	render(): React.ReactNode {
-		
+	handleCheckout = async () => {
+		this.getViewModel().checkout()
+	}
+
+	onCreateViewModel(state: CheckoutState): CheckoutViewModel {
+		state.form.firstName.setValue("Abreham")
+		state.form.lastName.setValue("Atlaw")
+		state.form.address.setValue("Address 1")
+		state.form.address2.setValue("Address 2")
+		state.form.city.setValue("Addis Ababa")
+		state.form.country.setValue("Ethiopia")
+		state.form.phoneNumber.setValue("+251962156364")
+		state.form.region.setValue("some Region")
+		state.form.zipCode.setValue("Zip Code")
+		return new CheckoutViewModel(state, this.setState.bind(this))
+	}
+
+	onCreateState(): CheckoutState {
+		return new CheckoutState(this.props.artworkId)
+	}
+
+	onCreateMain(): React.ReactNode {
+		if(this.state.status === AsyncStatus.done){
+			return <Navigate to={`/complete-payment/${this.state.order!.id}`}/>
+		}
 		return (
 			<div className="bg-[#F6F6F6] min-h-screen" >
 				<div className="bg-white px-6 pt-12 pb-12 lg:hidden">
@@ -38,23 +63,23 @@ export default class CheckOutView extends React.Component<any, CheckoutState>{
 
 					<p className="text-2xl my-4">Shipping address</p>
 
-					<TextFieldComponents placeholder="First Name*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<TextFieldComponents placeholder="First Name*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/>
 					<div className="h-4"></div>
-					<TextFieldComponents placeholder="Last name*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<TextFieldComponents placeholder="Last name*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/>
 					<div className="h-4"></div>
-					<TextFieldComponents placeholder="Address*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<TextFieldComponents placeholder="Address*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/>
 					<div className="h-4"></div>
-					<TextFieldComponents placeholder="Address 2" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<TextFieldComponents placeholder="Address 2" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/>
 					<div className="h-4"></div>
-					<TextFieldComponents placeholder="Country*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<TextFieldComponents placeholder="Country*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/>
 					<div className="h-4"></div>
-					<TextFieldComponents placeholder="City*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<TextFieldComponents placeholder="City*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/>
 					<div className="h-4"></div>
-					<TextFieldComponents placeholder="State/Region*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<TextFieldComponents placeholder="State/Region*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/>
 					<div className="h-4"></div>
-					<TextFieldComponents placeholder="Zip/PostalCode*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<TextFieldComponents placeholder="Zip/PostalCode*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/>
 					<div className="h-4"></div>
-					<TextFieldComponents placeholder="Phone number*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+					<TextFieldComponents placeholder="Phone number*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/>
                     
                     <div className="flex justify-center items-center w-full m-auto my-6 pt-3 pb-4 bg-black text-white rounded-md">
                         <button className="justify-center text-2xl">Save shipping address</button>
@@ -63,21 +88,21 @@ export default class CheckOutView extends React.Component<any, CheckoutState>{
 
 					<div className="mt-2 flex flex-row justify-between text-xl pr-8">
 						<p>Art Price: </p>
-						<p>70000</p> 
+						<p>{this.state.pricing!.artPrice}</p> 
 					</div>
 					<div className="flex flex-row justify-between text-xl text-left pr-8">
 						<p>Shipping price:</p>
-						<p>8000</p> 
+						<p>{this.state.pricing!.shippingPrice}</p> 
 					</div>
 					<div className="flex flex-row justify-between text-xl pr-8">
 						<p>VAT 15%:  </p>
-						<p>12000 </p>  
+						<p>{this.state.pricing!.vat}</p>  
 					</div>
 					<div className="mt-2.5 flex flex-row justify-between text-2xl font-medium pr-8">
 						<p>Total price:  </p>
-						<p>12000 </p>  
+						<p>{this.state.pricing?.getTotal()}</p>  
 					</div>
-					<div className="flex justify-center items-center w-full m-auto mt-4 mb-6 pt-3 pb-4 bg-black text-white rounded-md">
+					<div className="flex justify-center items-center w-full m-auto mt-4 mb-6 pt-3 pb-4 bg-black text-white rounded-md" onClick={this.handleCheckout}>
 						<button className="justify-center text-2xl">Place Order</button>
 					</div>
                     <div className="flex flex-col justify-center items-start mb-8">
@@ -98,26 +123,27 @@ export default class CheckOutView extends React.Component<any, CheckoutState>{
                             <div className="text-6xl font-medium pb-3.5 border-b-2 mb-7 border-[#EFEFEF]">CheckOut</div>
 							<p className="text-3xl mb-5">Shipping address</p>
 							<form className="w-full" onSubmit={this.handleSubmit}>
+								{AsyncStatus[this.state.status]}
 								<div className="flex flex-row">
-									<div className="w-full mr-4"><TextFieldComponents placeholder="First Name*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
-									<div className="w-full"><TextFieldComponents placeholder="Last name*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+								<div className="w-full mr-4"><TextFieldComponents placeholder="First Name*" field={this.state.form.firstName} syncer={this.getViewModel().syncState}/></div>
+								<div className="w-full"><TextFieldComponents placeholder="Last name*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/></div>
 								</div>
 								<div className="h-6"></div>
-								<TextFieldComponents placeholder="Address*" field={this.state.form.lastName} syncer={this.viewModel.syncState}/>
+								<TextFieldComponents placeholder="Address*" field={this.state.form.address} syncer={this.getViewModel().syncState}/>
 								<div className="h-6"></div>
-								<TextFieldComponents placeholder="Address 2" field={this.state.form.address} syncer={this.viewModel.syncState}/>
+								<TextFieldComponents placeholder="Address 2" field={this.state.form.address2} syncer={this.getViewModel().syncState}/>
 								<div className="h-6"></div>
 								<div className="flex flex-row ">
-									<div className="w-full mr-4"><TextFieldComponents placeholder="Country*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
-									<div className="w-full"><TextFieldComponents placeholder="City*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+									<div className="w-full mr-4"><TextFieldComponents placeholder="Country*" field={this.state.form.country} syncer={this.getViewModel().syncState}/></div>
+									<div className="w-full"><TextFieldComponents placeholder="City*" field={this.state.form.city} syncer={this.getViewModel().syncState}/></div>
 								</div>
 								<div className="h-6"></div>
 								<div className="flex flex-row">
-									<div className="w-full mr-4"><TextFieldComponents placeholder="State/Region*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
-									<div className="w-full"><TextFieldComponents placeholder="Zip/PostalCode*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+									<div className="w-full mr-4"><TextFieldComponents placeholder="State/Region*" field={this.state.form.region} syncer={this.getViewModel().syncState}/></div>
+									<div className="w-full"><TextFieldComponents placeholder="Zip/PostalCode*" field={this.state.form.zipCode} syncer={this.getViewModel().syncState}/></div>
 								</div>
 								<div className="h-6"></div>
-								<div className="w-1/2 mr-4"><TextFieldComponents placeholder="Phone number*" field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+								<div className="w-1/2 mr-4"><TextFieldComponents placeholder="Phone number*" field={this.state.form.phoneNumber} syncer={this.getViewModel().syncState}/></div>
 								<div className="h-4"></div>
 								<button className="flex justify-center items-center w-full max-w-lg m-auto mt-8 mb-6 h-20 bg-black text-white rounded-md  text-3xl" type="submit">Save shipping address</button>
 
@@ -128,21 +154,21 @@ export default class CheckOutView extends React.Component<any, CheckoutState>{
 
 							<div className="mt-2 flex flex-row justify-between text-2xl pr-8">
 								<p>Art Price: </p>
-								<p>70000</p> 
+								<p>{this.state.pricing?.artPrice}</p> 
 							</div>
 							<div className="flex flex-row justify-between text-2xl text-left pr-8">
 								<p>Shipping price:</p>
-								<p>8000</p> 
+								<p>{this.state.pricing?.shippingPrice}</p> 
 							</div>
 							<div className="flex flex-row justify-between text-2xl pr-8">
 								<p>VAT 15%:  </p>
-								<p>12000 </p>  
+								<p>{this.state.pricing?.vat}</p> 
 							</div>
 							<div className="mt-2.5 flex flex-row justify-between text-3xl font-medium pr-8">
 								<p>Total price:  </p>
-								<p>12000 </p>  
+								<p>{this.state.pricing?.getTotal()}</p> 
 							</div>
-                            <div className="flex justify-center items-center w-full mt-8 mb-6 h-20 bg-black text-white rounded-md">
+                            <div className="flex justify-center items-center w-full mt-8 mb-6 h-20 bg-black text-white rounded-md" onClick={this.handleCheckout}>
                                 <button className="justify-center text-3xl">Place Order</button>
                             </div>
                             <div className="flex flex-col justify-center items-start mb-8">
@@ -156,8 +182,7 @@ export default class CheckOutView extends React.Component<any, CheckoutState>{
 				</div>
 			</div>
 		)
-
-	}
+	}	
 
 	
 }
@@ -192,3 +217,8 @@ class TextFieldComponents extends FieldComponent<string, TextFieldComponentProps
 }
 
 
+export function RoutedCheckoutView(){
+
+	let params = useParams()
+	return <CheckOutView artworkId={params.artworkId!}/>
+}

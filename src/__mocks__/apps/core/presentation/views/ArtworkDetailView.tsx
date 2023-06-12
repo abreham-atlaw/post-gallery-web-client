@@ -95,7 +95,7 @@ export default class ArtworkDetailView extends React.Component<ArtworkDetailView
 							<p className="text-2xl underline">Description</p>
 							<DescriptionComponent description={this.state.artwork!.description} />
 							<div className="flex justify-center items-center w-56 m-auto mt-8 pt-2 pb-2.5 bg-black text-white rounded-full">
-								<Link to={`/checkout`} className="justify-center text-2xl">Purchase</Link>
+								<Link to={`/checkout/${this.state.artwork?.id}`} className="justify-center text-2xl">Purchase</Link>
 							</div>
 						</div>
 					</div>

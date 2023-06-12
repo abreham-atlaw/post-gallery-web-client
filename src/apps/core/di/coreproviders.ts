@@ -9,6 +9,9 @@ import { getStorage } from "firebase/storage";
 import ContextInjector from "@/lib/viewmodel/contextInjector";
 import ClientInjector from "@/apps/auth/application/injectors/clientInjector";
 import ExhibitionRepository from "../data/repositories/exhibitionRepository";
+import OrderRepository from "../data/repositories/orderRepository";
+import ShippingInfoRepository from "../data/repositories/shippingInfoRepository";
+import Order from "../data/models/order";
 
 
 
@@ -18,6 +21,8 @@ export default class CoreProviders{
 	private static artistRepository?: ArtistRepository;
 	private static artWorkRepository?: ArtworkRepository;
 	private static exhibitionRepository?: ExhibitionRepository;
+	private static orderRepository?: OrderRepository;
+	private static shippingInfoRepository?: ShippingInfoRepository;
 
 	public static provideFirebaseApp(): FirebaseApp{
 		if(CoreProviders.app === undefined){
@@ -49,6 +54,20 @@ export default class CoreProviders{
 			this.exhibitionRepository = new ExhibitionRepository();
 		}
 		return this.exhibitionRepository;
+	}
+
+	public static provideOrderRepository(): OrderRepository{
+		if(this.orderRepository === undefined){
+			this.orderRepository = new OrderRepository();
+		}
+		return this.orderRepository;
+	}
+
+	public static provideShippingRepository(): ShippingInfoRepository{
+		if(this.shippingInfoRepository === undefined){
+			this.shippingInfoRepository = new ShippingInfoRepository();
+		}
+		return this.shippingInfoRepository;
 	}
 
 	public static provideDefaultFileStorage(): FileStorage{

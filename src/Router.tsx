@@ -15,7 +15,8 @@ import ExhibitionListView from "./__mocks__/apps/core/presentation/views/Exhibit
 import ExhibitionDetailView, { RoutedExhibitionDetailView } from "./__mocks__/apps/core/presentation/views/ExhibitionDetailView";
 import HomeView from "./__mocks__/apps/core/presentation/views/HomeView";
 import LogoutView from "./__mocks__/apps/auth/presentation/views/logoutView";
-import CheckOutView from "./__mocks__/apps/core/presentation/views/CheckoutVIew";
+import CheckOutView, { RoutedCheckoutView } from "./__mocks__/apps/core/presentation/views/CheckoutView";
+import { RoutedPaymentView } from "./__mocks__/apps/core/presentation/views/PaymentView";
 
 
 export default class PGRouter extends React.Component{
@@ -48,12 +49,22 @@ export default class PGRouter extends React.Component{
 				
 
 				<Route path="/search" element={
-					<AuthenticatedComponent validStatus={[AuthenticationStatus.authenticated]} redirectTo="/auth/email-verify">
+					<AuthenticatedComponent>
 						<SearchView/>
 					</AuthenticatedComponent>
 				}/>
 
-				<Route path="/checkout" element={<CheckOutView/>}/>
+				<Route path="/checkout/:artworkId" element={
+					<AuthenticatedComponent>
+						<RoutedCheckoutView />
+					</AuthenticatedComponent>
+				}/>
+
+				<Route path="/complete-payment/:orderId" element={
+					<AuthenticatedComponent>
+						<RoutedPaymentView/>
+					</AuthenticatedComponent>
+				}/>
 
 				<Route path="/admin/artist/add" element={<AddArtistView/>} />
 				<Route path="/admin/artwork/add" element={<AddArtworkView/>} />

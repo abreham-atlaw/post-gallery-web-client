@@ -33,6 +33,9 @@ export default class AuthenticatedComponent extends React.Component<Authenticate
 		this.validStatus = props.validStatus??[AuthenticationStatus.authenticated]
 		this.redirectionMap = props.redirectionMap??(new Map());
 		this.redirectTo = props.redirectTo;
+		if(this.redirectTo === undefined){
+			this.redirectTo = "/auth/email-verify"
+		}
 	}
 
 
