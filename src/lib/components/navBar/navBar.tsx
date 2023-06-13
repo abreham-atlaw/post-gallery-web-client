@@ -37,16 +37,8 @@ export default class NavBar extends ViewModelView<NavBarViewModel,any, NavBarSta
 		return new NavBarViewModel(state, this.setState.bind(this));
 	}
 
-	onCreateState(): NavBarState {
-		return new NavBarState()
-	}
 
-	onCreateLoading(): React.ReactNode {
-		return (<></>)
-	}
-
-	onCreateMain(): React.ReactNode {
-
+	private onCreateBar(clientSection: React.ReactNode): React.ReactNode{
 		return (
 			<div className="relative">
 			  <div className='hidden lg:flex flex-row items-center justify-between pr-10 pt-10'>
@@ -57,23 +49,7 @@ export default class NavBar extends ViewModelView<NavBarViewModel,any, NavBarSta
 				  </div>
 
 				  {
-					(this.state.context.client === null)?
-					(
-						<div className="flex flex-row justify-center items-center w-44 h-14 border-[3px] border-black text-black rounded-full">
-							<Link to="/auth/login" className="text-2xl">Join Us</Link>
-						</div>
-					):
-					(
-						<div className='relative'>
-							<div className="flex flex-row justify-center items-center w-16 h-16 border-[3px] border-black text-black rounded-full">
-								<button onClick={() => this.getViewModel().toggleAccoutOpen()} className="text-2xl"><img className="col-12" src={Account}/></button>
-							</div>
-							<div className={`${this.state.accountOpen ? 'absolute' : 'hidden'} flex flex-col px-6 py-1 bg-white mt-4  w-44 right-0 rounded-[12px] shadow-[0px_0px_50px_rgba(0,0,0,0.3)]`}>
-								<Link to="/auth/logout/" className=" font-bold text-paragraph-color text-center">LogOut</Link>  
-							</div>
-						</div>
-					)
-					
+					clientSection					
 				  }
 				  
 			  </div>
@@ -90,6 +66,42 @@ export default class NavBar extends ViewModelView<NavBarViewModel,any, NavBarSta
 			</div>
 	  
 		)
+	}
+
+	onCreateState(): NavBarState {
+		return new NavBarState()
+	}
+
+	onCreateLoading(): React.ReactNode {
+		return this.onCreateBar(<div className="h-14"></div>)
+	}
+
+	onCreateMain(): React.ReactNode {
+
+		return this.onCreateBar(
+		<>
+		{
+					(this.state.context.client === null)?
+					(
+						<div className="flex flex-row justify-center items-center w-44 h-14 border-[3px] border-black text-black rounded-full">
+							<Link to="/auth/login" className="text-2xl">Join Us</Link>
+						</div>
+					):
+					(
+						<div className='relative'>
+							<div className="flex flex-row justify-center items-center w-14 h-14 border-[3px] border-black text-black rounded-full">
+								<button onClick={() => this.getViewModel().toggleAccoutOpen()} className="text-2xl"><img className="col-12" src={Account}/></button>
+							</div>
+							<div className={`${this.state.accountOpen ? 'absolute' : 'hidden'} flex flex-col px-6 py-1 bg-white mt-4  w-44 right-0 rounded-[12px] shadow-[0px_0px_50px_rgba(0,0,0,0.3)]`}>
+								<Link to="/auth/logout/" className=" font-bold text-paragraph-color text-center">LogOut</Link>  
+							</div>
+						</div>
+					)
+					
+				  }
+		</>
+		)
+
 	}
 
 }

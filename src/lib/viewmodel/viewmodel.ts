@@ -4,7 +4,7 @@ import ContextInjector from "./contextInjector";
 import { FunctionalAsyncHandler } from "./asyncViewModel";
 
 
-export default abstract class ViewModel<S extends BaseState>{
+export default class ViewModel<S extends BaseState>{
 
 	private stateSetter: Function;
 	public state: S;

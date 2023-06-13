@@ -4,12 +4,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import homeText from '@/assets/homeText.png'
 import artwork from '@/assets/artwork.png'
+import ViewModel from "@/lib/viewmodel/viewmodel";
+import BaseState from "@/lib/state/baseState";
 
 
-export default class HomeView extends React.Component{
+export default class HomeView extends ViewModelView<ViewModel<BaseState>>{
+	
+	onCreateViewModel(state: BaseState): ViewModel<BaseState> {
+		return new ViewModel(state, this.setState.bind(this))
+	}
+	
+	onCreateState(): BaseState {
+		return new BaseState()
+	}
 
-
-	render(): React.ReactNode {
+	onCreateMain(): React.ReactNode {
 		return(
 			<div className="flex flex-row ">
 				<div className="w-6 lg:w-8 bg-[url('./assets/homeBG.png')] bg-contain bg-repeat min-h-screen"></div>
