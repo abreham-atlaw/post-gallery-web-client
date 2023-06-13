@@ -107,12 +107,12 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 				{/* ------------------------------------------ */}
 
 				<div className="hidden lg:inline lg:px-8">
-					<img className="h-8 mb-14 mt-14 mx-8" src={Back} />
+					<img className="h-8 mx-6" src={Back} />
 					
                     <div className="flex flex-row justify-between">
-                        <div className="w-1/2 h-min ml-12 p-12 bg-white">
-                            <div className="text-6xl font-medium pb-3.5 border-b-2 mb-7 border-[#EFEFEF]">CheckOut</div>
-							<p className="text-3xl mb-5">Shipping address</p>
+                        <div className="w-5/12 h-min ml-28 px-7 py-9 bg-white">
+                            <div className="text-5xl font-medium pb-3 border-b-2 mb-4 border-[#EFEFEF]">CheckOut</div>
+							<p className="text-2xl mb-4">Shipping address</p>
 							<form className="w-full" onSubmit={this.handleSubmit}>
 								{AsyncStatus[this.state.status]}
 								<div className="flex flex-row">
@@ -128,41 +128,41 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 									<div className="w-full mr-4"><TextFieldComponents placeholder="Country*" field={this.state.form.country} syncer={this.getViewModel().syncState}/></div>
 									<div className="w-full"><TextFieldComponents placeholder="City*" field={this.state.form.city} syncer={this.getViewModel().syncState}/></div>
 								</div>
-								<div className="h-6"></div>
+								<div className="h-2"></div>
 								<div className="flex flex-row">
 									<div className="w-full mr-4"><TextFieldComponents placeholder="State/Region*" field={this.state.form.region} syncer={this.getViewModel().syncState}/></div>
 									<div className="w-full"><TextFieldComponents placeholder="Zip/PostalCode*" field={this.state.form.zipCode} syncer={this.getViewModel().syncState}/></div>
 								</div>
-								<div className="h-6"></div>
-								<div className="w-1/2 mr-4"><TextFieldComponents placeholder="Phone number*" field={this.state.form.phoneNumber} syncer={this.getViewModel().syncState}/></div>
+								<div className="h-2"></div>
+								<div className="w-full mr-4"><TextFieldComponents placeholder="Phone number*" field={this.state.form.phoneNumber} syncer={this.getViewModel().syncState}/></div>
 								<div className="h-4"></div>
-								<button className="flex justify-center items-center w-full max-w-lg m-auto mt-8 mb-6 h-20 bg-black text-white rounded-md  text-3xl" type="submit">Save shipping address</button>
+								<button className="flex justify-center items-center w-full max-w-lg m-auto mt-3 mb-3 h-16 bg-black text-white rounded-md  text-2xl" type="submit">Save shipping address</button>
 
 							</form>
                         </div>
-                        <div className="bg-white w-2/6 h-min px-8 py-14 mr-12">
-                            <p className="text-4xl font-medium ">Estimated Total:</p>
+                        <div className="bg-white w-2/6 h-min px-8 pb-12 pt-10 mr-12">
+                            <p className="text-3xl font-medium ">Estimated Total:</p>
 
-							<div className="mt-2 flex flex-row justify-between text-2xl pr-8">
+							<div className="mt-2 flex flex-row justify-between text-xl pr-8">
 								<p>Art Price: </p>
 								<p>{this.state.pricing?.artPrice}</p> 
 							</div>
-							<div className="flex flex-row justify-between text-2xl text-left pr-8">
+							<div className="flex flex-row justify-between text-xl text-left pr-8">
 								<p>Shipping price:</p>
 								<p>{this.state.pricing?.shippingPrice}</p> 
 							</div>
-							<div className="flex flex-row justify-between text-2xl pr-8">
+							<div className="flex flex-row justify-between text-xl pr-8">
 								<p>VAT 15%:  </p>
 								<p>{this.state.pricing?.vat}</p> 
 							</div>
-							<div className="mt-2.5 flex flex-row justify-between text-3xl font-medium pr-8">
+							<div className="mt-2 flex flex-row justify-between text-3xl font-medium pr-8">
 								<p>Total price:  </p>
 								<p>{this.state.pricing?.getTotal()}</p> 
 							</div>
                             <div className="flex justify-center items-center w-full mt-8 mb-6 h-20 bg-black text-white rounded-md" onClick={this.handleCheckout}>
                                 <button className="justify-center text-3xl">Place Order</button>
                             </div>
-                            <div className="flex flex-col justify-center items-start mb-8">
+                            <div className="flex flex-col justify-center items-start">
                                 <MyComponent imageSrc={CheckOut1} title={"Satisfaction Guaranteed."} subtitle={"An art gallery that satisfies, service that delights."}  />
                                 <MyComponent imageSrc={CheckOut2} title={"Safe and Secure shopping."} subtitle={"All payments and transactions are secure and encrypted."}  />
                                 <MyComponent imageSrc={CheckOut3} title={"Support An Artist With Every Purchase."} subtitle={"We pay our artists more on every sale than other galleries."}  />
@@ -186,7 +186,7 @@ type MyComponentProps = {
   const MyComponent: React.FC<MyComponentProps> = ({ imageSrc, title, subtitle }) => {
     return (
       <div className="flex items-start space-x-4 mt-3">
-        <img className="w-16" src={imageSrc} alt="" />
+        <img className="w-16 h-16" src={imageSrc} alt="" />
         <div>
           <h2 className="text-2xl font-medium leading-6">{title}</h2>
           <p className="text-base text-[#797979] leading-5">{subtitle}</p>
@@ -202,7 +202,7 @@ interface TextFieldComponentProps extends FieldComponentProps<string> {
 class TextFieldComponents extends FieldComponent<string, TextFieldComponentProps>{
   protected constructInputNode(value: string | null, callback: Function): ReactNode {
     return (
-      <input className="w-full rounded-md h-14 text-black pl-3 border-[#787878] border-2 lg:h-16 placeholder-[#575757] text-xl" type="text" onChange={(event) => {callback(event.target.value)}} value={(value === null)?"":value} placeholder={this.props.placeholder} />
+      <input className="w-full rounded-md h-14 text-black pl-3 border-[#787878] border-2 lg:h-12 placeholder-[#575757] text-lg" type="text" onChange={(event) => {callback(event.target.value)}} value={(value === null)?"":value} placeholder={this.props.placeholder} />
     )
   }
 }

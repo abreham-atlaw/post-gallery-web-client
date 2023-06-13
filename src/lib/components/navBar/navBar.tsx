@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PGwhite from '@/assets/PGwhite.png'
 import PG from '@/assets/PG.png'
 import Menu from '@/assets/menu.png'
 import Close from '@/assets/close.png'
@@ -40,18 +41,21 @@ export default class NavBar extends ViewModelView<NavBarViewModel,any, NavBarSta
 
 	private onCreateBar(clientSection: React.ReactNode): React.ReactNode{
 		return (
-			<div className="relative">
-			  <div className='hidden lg:flex flex-row items-center justify-between pr-10 pt-10'>
-				  <div className='flex flex-row items-center space-x-10 text-3xl font-medium leading-none'>
-					<img className='h-8 mr-6' src={PG} />
-					<a href="/exhibitions">Exhibition</a>
-					<a href="/search">Shop</a>
-				  </div>
-
+			<div className="relative ">
+			  <div className='hidden lg:flex flex-row items-center justify-between pr-10 pt-10 '>
+					<div className='flex flex-row items-center space-x-10 text-3xl font-medium leading-none'>
+						<img className='h-8' src={PGwhite} />
+					</div>
+					<div className='flex flex-row items-center space-x-10  text-3xl font-medium leading-none text-white'>
+						<a href="/exhibitions">Exhibition</a>
+						<a href="/search">Shop</a>
+						<a href="/search">Contact</a>
+						<a href="/search">About</a>
 				  {
 					clientSection					
 				  }
-				  
+				  </div>
+
 			  </div>
 			  <div className='lg:hidden pt-10 px-3 flex flex-row items-center justify-between'>
 				<img className='h-8' src={PG} />
@@ -89,7 +93,7 @@ export default class NavBar extends ViewModelView<NavBarViewModel,any, NavBarSta
 					):
 					(
 						<div className='relative'>
-							<div className="flex flex-row justify-center items-center w-14 h-14 border-[3px] border-black text-black rounded-full">
+							<div className="flex flex-row justify-center items-center w-12 h-12 border-[3px] border-black text-black rounded-full">
 								<button onClick={() => this.getViewModel().toggleAccoutOpen()} className="text-2xl"><img className="col-12" src={Account}/></button>
 							</div>
 							<div className={`${this.state.accountOpen ? 'absolute' : 'hidden'} flex flex-col px-6 py-1 bg-white mt-4  w-44 right-0 rounded-[12px] shadow-[0px_0px_50px_rgba(0,0,0,0.3)]`}>

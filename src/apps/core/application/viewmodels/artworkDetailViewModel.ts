@@ -4,7 +4,6 @@ import ArtworkRepository from "../../data/repositories/artworkRepository";
 import CoreProviders from "../../di/coreproviders";
 
 
-
 export default class ArtworkDetailViewModel extends AsyncViewModel<ArtworkDetailState>{
 
 	private artworkRepository: ArtworkRepository = CoreProviders.provideArtworkRepository()
@@ -13,5 +12,4 @@ export default class ArtworkDetailViewModel extends AsyncViewModel<ArtworkDetail
 		await super.onInit();
 		this.state.artwork = await this.artworkRepository.getByPrimaryKey(this.state.artworkId)
 	}
-
 }
