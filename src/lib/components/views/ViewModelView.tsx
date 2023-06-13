@@ -2,6 +2,8 @@ import { AsyncStatus } from "@/lib/state/asyncState";
 import BaseState from "@/lib/state/baseState";
 import ViewModel from "@/lib/viewmodel/viewmodel";
 import React from "react";
+import LoadingView from "./LoadingView";
+import ErrorView from "./FailedView";
 
 
 
@@ -33,11 +35,11 @@ export default abstract class ViewModelView<V extends ViewModel<S>, P = {}, S ex
 	}
 
 	onCreateLoading(): React.ReactNode{
-		return (<h1>Loading...</h1>)
+		return <LoadingView/>
 	}
 
 	onCreateError(error: Error | null): React.ReactNode{
-		return (<h1>Sorry an error has occurred: {error?.message}</h1>)
+		return <ErrorView error={error} />
 	}
 
 	render(): React.ReactNode {

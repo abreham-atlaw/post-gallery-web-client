@@ -4,6 +4,8 @@ import { Navigate } from "react-router-dom";
 import AuthenticatedComponentState from "../../application/states/authenticatedComponentState";
 import AuthenticatedComponentViewModel from "../../application/viewmodels/authenticatedComponentViewModel";
 import { AsyncStatus } from "@/lib/state/asyncState";
+import LoadingView from "@/lib/components/views/LoadingView";
+import ErrorView from "@/lib/components/views/FailedView";
 
 
 interface AuthenticatedComponentProps{
@@ -59,12 +61,12 @@ export default class AuthenticatedComponent extends React.Component<Authenticate
 
 		if(this.state.status === AsyncStatus.loading || this.state.status === AsyncStatus.none){
 			return (
-				<h1>Loading...</h1>
+				<LoadingView/>
 			)//TODO: ....
 		}
 		if(this.state.status === AsyncStatus.failed){
 			return (
-				<h1>Error Occurred</h1>
+				<ErrorView error={this.state.error}/>
 			)// TODO....
 		}
 

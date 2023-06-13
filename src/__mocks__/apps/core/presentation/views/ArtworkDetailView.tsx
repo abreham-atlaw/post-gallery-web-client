@@ -4,6 +4,7 @@ import { AsyncStatus } from "@/lib/state/asyncState";
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Back from '@/assets/back.png'
+import ViewModelView from "@/lib/components/views/ViewModelView";
 
 
 interface ArtworkDetailViewProps{
@@ -11,38 +12,16 @@ interface ArtworkDetailViewProps{
 	artworkID: string;
 
 }
-
-
-export default class ArtworkDetailView extends React.Component<ArtworkDetailViewProps, ArtworkDetailState>{
-
-
-	private viewModel: ArtworkDetailViewModel;
-
-
-	constructor(props: ArtworkDetailViewProps){
-		super(props);
-		this.state = new ArtworkDetailState();
-		this.viewModel = new ArtworkDetailViewModel(this.state, this.setState.bind(this));
+export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewModel, ArtworkDetailViewProps, ArtworkDetailState>{
+	
+	onCreateViewModel(state: ArtworkDetailState): ArtworkDetailViewModel {
+		return new ArtworkDetailViewModel(state, this.setState.bind(this))
+	}
+	onCreateState(): ArtworkDetailState {
+		return new ArtworkDetailState(this.props.artworkID);
 	}
 
-	componentDidMount(): void {
-		this.viewModel.initialize(this.props.artworkID)
-	}
-
-	render(): React.ReactNode {
-		if(this.state.status === AsyncStatus.loading || this.state.status === AsyncStatus.none){
-
-			return (
-				<h1>Loading...</h1>
-			)
-
-
-		}
-		if(this.state.status === AsyncStatus.failed){
-			return (
-				<h1>Failed...</h1>
-			)
-		}
+	onCreateMain(): React.ReactNode {
 		return (
 			<div className="bg-[#F6F6F6] min-h-screen" >
 				<div className="px-6 pt-12 pb-12 lg:hidden">

@@ -35,15 +35,6 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 	}
 
 	onCreateViewModel(state: CheckoutState): CheckoutViewModel {
-		state.form.firstName.setValue("Abreham")
-		state.form.lastName.setValue("Atlaw")
-		state.form.address.setValue("Address 1")
-		state.form.address2.setValue("Address 2")
-		state.form.city.setValue("Addis Ababa")
-		state.form.country.setValue("Ethiopia")
-		state.form.phoneNumber.setValue("+251962156364")
-		state.form.region.setValue("some Region")
-		state.form.zipCode.setValue("Zip Code")
 		return new CheckoutViewModel(state, this.setState.bind(this))
 	}
 

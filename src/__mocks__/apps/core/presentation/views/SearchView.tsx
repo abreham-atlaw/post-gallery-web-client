@@ -3,7 +3,7 @@ import SearchViewModel from "@/apps/core/application/viewmodels/searchViewModel"
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 
 
@@ -23,9 +23,9 @@ export default class SearchView extends React.Component<any, SearchState>{
 	}
 
 	render(): React.ReactNode {
-		if(this.state.result != undefined){
-			return <Navigate to={`/artwork/${this.state.result.id}`}/>
-		}
+		// if(this.state.result != undefined){
+		// 	return <Navigate to={`/artwork/${this.state.result.id}`}/>
+		// }
 		return (
 			<div className=" text-black">
 				<div className="lg:hidden px-6 pt-20 pb-6">
@@ -46,6 +46,11 @@ export default class SearchView extends React.Component<any, SearchState>{
 							(<p className="mt-2 text-lg text-green-500">Searching....</p>):
 							(this.state.status === AsyncStatus.failed)?
 							(<p className="mt-2 text-lg text-[#D20000]">{this.state.idField.getValue()} Not Found</p>):
+							(this.state.status === AsyncStatus.done)?
+							(<div>
+								<p className="mt-2 text-lg text-green-500">Artwork Found</p>"
+								<button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded"><Link to={`/artwork/${this.state.result!.id}`}>View</Link></button>
+							</div>):
 							<></>
 						}
 
@@ -88,6 +93,11 @@ export default class SearchView extends React.Component<any, SearchState>{
 									(<p className="mt-2 text-xl text-green-500">Searching....</p>):
 									(this.state.status === AsyncStatus.failed)?
 									(<p className="mt-2 text-xl text-[#D20000]">{this.state.idField.getValue()} Not Found</p>):
+									(this.state.status === AsyncStatus.done)?
+									(<div>
+										<p className="mt-2 text-lg text-blue-500">Artwork Found</p>
+										<button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-6 rounded"><Link to={`/artwork/${this.state.result!.id}`}>View</Link></button>
+									</div>):
 									<></>
 								}
 
