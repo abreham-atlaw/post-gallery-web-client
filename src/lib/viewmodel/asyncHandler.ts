@@ -1,9 +1,10 @@
 import { AsyncState, AsyncStatus } from "../state/asyncState";
+import BaseState from "../state/baseState";
 import ViewModel from "./viewmodel";
 
 
 
-export default abstract class AsyncHandler<E, S>{
+export default abstract class AsyncHandler<E, S extends BaseState>{
 
 
 	private viewModel: ViewModel<S>;
@@ -27,7 +28,7 @@ export default abstract class AsyncHandler<E, S>{
 	}
 
 	protected getAsyncState(state: S): AsyncState{
-		return state as AsyncState;
+		return state as unknown as AsyncState;
 	}
 
 
