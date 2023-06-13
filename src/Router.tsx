@@ -17,6 +17,7 @@ import HomeView from "./__mocks__/apps/core/presentation/views/HomeView";
 import LogoutView from "./__mocks__/apps/auth/presentation/views/logoutView";
 import CheckOutView, { RoutedCheckoutView } from "./__mocks__/apps/core/presentation/views/CheckoutView";
 import { RoutedPaymentView } from "./__mocks__/apps/core/presentation/views/PaymentView";
+import OrderListView from "./__mocks__/apps/admin/presentation/views/OrdersListView";
 
 
 export default class PGRouter extends React.Component{
@@ -69,6 +70,7 @@ export default class PGRouter extends React.Component{
 				<Route path="/admin/artist/add" element={<AddArtistView/>} />
 				<Route path="/admin/artwork/add" element={<AddArtworkView/>} />
 				<Route path="/admin/exhibition/add" element={<AddExhibitionView/>} />
+				<Route path="/admin/orders/" element={<OrderListView/>} />
 
 			</Routes>
 		)
