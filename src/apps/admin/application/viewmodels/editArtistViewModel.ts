@@ -11,7 +11,8 @@ export default class EditArtistViewModel extends AsyncViewModel<WriteArtistState
 	private repository: ArtistRepository = CoreProviders.provideArtistRepository()
 
 	private syncArtistToForm(form: ArtistForm, artist: Artist){
-		form.fullName.setValue(artist.fullName)
+		form.firstName.setValue(artist.fullName.split(" ")[0])
+		form.lastName.setValue(artist.fullName.split(" ")[1])
 		form.email.setValue(artist.email)
 		form.biography.setValue(artist.biography)
 		form.dateOfBirth.setValue(artist.dateOfBirth)
@@ -23,7 +24,7 @@ export default class EditArtistViewModel extends AsyncViewModel<WriteArtistState
 
 	protected syncFormToArtist(form: ArtistForm){
 		let artist = this.state.artist!;
-		artist.fullName = form.fullName.getValue()!
+		artist.fullName = `${form.firstName.getValue()!} ${form.lastName.getValue()!}`
 		artist.email = form.email.getValue()!
 		artist.biography = form.biography.getValue()!
 		artist.dateOfBirth = form.dateOfBirth.getValue()!

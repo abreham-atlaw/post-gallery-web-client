@@ -44,9 +44,9 @@ export default class LoginView extends React.Component<any, LoginState>{
 						
 						
 						{(this.state.error?.message)}
-						<p className="text-xl">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState}/>
+						<p className="text-xl">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState} height={20}/>
 						<div className="h-4"></div>
-						<p className="text-xl">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.viewModel.syncState}/>
+						<p className="text-xl">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.viewModel.syncState} height={20}/>
 						<p className="text-lg font-normal pt-2.5">Show password</p>
 						<div className="flex flex-row justify-center text-center pt-2.5">
 							<p className="text-lg font-normal text-[#E1E1E1]">Doesn’t have an account? </p>
@@ -98,8 +98,8 @@ export default class LoginView extends React.Component<any, LoginState>{
 							{this.state.error?.message}<br/>
 							{AsyncStatus[this.state.status]}
 
-							<p className="text-xl mt-2.5">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState}/>
-							<p className="text-xl mt-2.5">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.viewModel.syncState}/>
+							<p className="text-xl mt-2.5">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState} height={16}/>
+							<p className="text-xl mt-2.5">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.viewModel.syncState} height={16}/>
 							<div className="flex flex-row justify-center text-center pt-6">
 								<p className="text-2xl font-normal text-[#9b9b9b]">I dont have an account? </p>
 								<p className="text-2xl font-medium"><a href="/auth/signup">Create account</a></p>

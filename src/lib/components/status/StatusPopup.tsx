@@ -22,9 +22,9 @@ export default class StatusPopup extends React.Component<StatusPopupProps>{
 		return <SuccessPopup/>
 	}
 
-	private getFailedPopup(): React.ReactNode{
+	private getFailedPopup(error: Error): React.ReactNode{
 		return (
-			<h1>Loading</h1>
+			<h1>Failed: {error?.message??""}</h1>
 		)
 	}
 
@@ -41,7 +41,7 @@ export default class StatusPopup extends React.Component<StatusPopupProps>{
 				return this.getDonePopup()
 			
 			case AsyncStatus.failed:
-				return this.getFailedPopup()
+				return this.getFailedPopup(state.error)
 		}
 	}
 

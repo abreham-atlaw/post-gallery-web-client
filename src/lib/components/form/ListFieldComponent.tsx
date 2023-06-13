@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react";
 import { FieldComponent, FieldComponentProps } from "./FieldComponent";
 import Field, { ListField } from "@/lib/forms/fields";
-
+import Upload from "@/assets/Upload.png"
 
 
 interface ListFieldComponentProps<T> extends FieldComponentProps<(T|null)[]>{
 
-	generator: (field: Field<T>) => React.ReactNode
+	generator: (field: Field<T>, removeCallback: () => void) => React.ReactNode
 
 }
 
@@ -17,8 +17,8 @@ export default class ListFieldComponent<T> extends FieldComponent<(T|null)[], Li
 		(this.getField() as ListField<T>).pop(index);
 	}
 	
-	private add(){
-		(this.getField() as ListField<T>).add();
+	protected add(): Field<T> {
+		return (this.getField() as ListField<T>).add();
 	}
 
 	componentDidMount(): void {
@@ -29,30 +29,38 @@ export default class ListFieldComponent<T> extends FieldComponent<(T|null)[], Li
 		this.setState(this.state)
 	}
 
-	protected constructInputNode(_values: (T|null)[] | null, _callback: Function): ReactNode {
-
+	protected generateContainer(child: React.ReactNode, addCallback: () => Field<T>): React.ReactNode{
 		return (
 			<div>
 				<ul>
 					{
-					(this.getField() as ListField<T>).getFields().map(
-						(field: Field<T>, index: number) => {
-							return (
-								<li>
-									<div>
-										{this.props.generator(field)}
-										<button onClick={() => {this.remove(index)}}>Remove</button>
-									</div>
-								</li>
-							);
-						})
+						child
 					}
 				</ul>
-				<button onClick={() => {this.add()}}>Add</button>
+				<button className="flex justify-center items-center px-12  h-11 bg-white text-black rounded-full border-2 border-[#D6D6D6] cursor-pointer" onClick={() => {this.add()}}>
+					<p className="justify-center text-xl">Add</p>
+				</button>
+
 			</div>
 		)
 	}
 
+	protected constructInputNode(_values: (T|null)[] | null, _callback: Function): ReactNode {
+
+		return this.generateContainer(
+				<>
+				{
+					(this.getField() as ListField<T>).getFields().map(
+						(field: Field<T>, index: number) => {
+							return (
+								this.props.generator(field, () => {this.remove(index)})
+							);
+						})
+					}
+				</>,
+				this.add
+			)
+	}
+}
 
 
-} 

@@ -19,7 +19,7 @@ export default class EnumFieldComponent<T> extends FieldComponent<any, EnumField
 	const values =  Object.values(this.enumClass).filter((v) => !isNaN(Number(v)));
 
 	for(let i=0; i< keys.length; i++){
-		radioButtons.push(<div>
+		radioButtons.push(<div className="flex items-center space-x-2 mr-4">
 			<input
 			  type="radio"
 			  id={keys[i].toString()}
@@ -27,11 +27,12 @@ export default class EnumFieldComponent<T> extends FieldComponent<any, EnumField
 			  value={i}
 			  checked={i === value}
 			  onChange={() => callback(values[i])}
+			  className="form-radio text-blue-500 h-5 w-5"
 			/>
 			<label htmlFor={keys[i]}>{keys[i]}</label>
 		  </div>)
 	}
 
-    return <div>{radioButtons}</div>;
+    return <div className="flex flex-col lg:flex-row lg:items-end mt-2 lg:mt-5 text-xl lg:pb-3.5">{radioButtons}</div>;
   }
 }

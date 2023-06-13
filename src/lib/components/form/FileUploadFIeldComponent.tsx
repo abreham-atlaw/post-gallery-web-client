@@ -1,9 +1,11 @@
-import { ReactNode } from "react";
+import { FormEvent, ReactNode } from "react";
 import { FieldComponent, FieldComponentProps, FieldComponentState } from "./FieldComponent";
 import FileStorage from "@/lib/filestorage/fileStorage";
 import AsyncViewModel from "@/lib/viewmodel/asyncViewModel";
 import { AsyncState, AsyncStatus } from "@/lib/state/asyncState";
 import Field from "@/lib/forms/fields";
+
+import Upload from "@/assets/Upload.png"
 
 
 
@@ -24,7 +26,7 @@ class FileUploadState extends AsyncState implements FieldComponentState<string>{
 
 }
 
-class FileUploadViewModel extends AsyncViewModel<FileUploadState>{
+export class FileUploadViewModel extends AsyncViewModel<FileUploadState>{
 
 	private fileStorage: FileStorage
 
@@ -62,19 +64,65 @@ export default class FileUploadFieldComponent extends FieldComponent<string, Fil
 		await this.viewModel.upload(value, callback)
 	}
 
+	protected getPreview(url: string | null): React.ReactNode{
+		if(url === null){
+			return (<>No Input</>)
+		}
+		return (<div>
+			{url}
+		</div>)
+	}
+
 	protected constructInputNode(value: string | null, callback: Function): ReactNode {
+
+		let id = this.generateID("image-upload")
 
 		if((this.state as FileUploadState).status === AsyncStatus.loading){
 			return (<div>uploading...</div>)
 		}
 
 		return (
-			<div>
-				<input type="file" onChange={(event) => {this.onFileChanged(event.target.files?.item(0), callback)}}/>
-				<div>{ value }</div>
+			<div className="flex flex-col p-6 justify-center items-center border-dashed border-2 rounded-lg border-[#D6D6D6]">
+			<div className="flex flex-col lg:flex-row justify-between items-center w-full">
+				<img className="h-16 bg-contain" src={Upload}  />
+				<div className="mb-2 lg:mb-0 text-center lg:text-start">
+					<p className="text-xl  font-medium">Upload your files here</p>
+					<p className="text-xl  text-[#D6D6D6]">Supported formats: any</p>
+				</div>
+				<label htmlFor={id} className="flex justify-center items-center px-12  h-11 bg-white text-black rounded-full border-2 border-[#D6D6D6] cursor-pointer">
+				<p className="justify-center text-xl">Browse</p>
+				</label>
+				<input 
+					id={id}
+					type="file"
+					accept=""
+					onChange={(event) => {this.onFileChanged(event.target.files?.item(0), callback)}}
+					className="hidden"
+				/>
 			</div>
+            <div className="flex flex-wrap px-8">
+				{
+					this.getPreview(this.state.field.getValue())
+				}
+            </div>
+        </div>
 		)
 	}
 
+}
+
+
+
+export class ImageUploadFieldComponent extends FileUploadFieldComponent{
+
+
+	protected getPreview(url: string | null): ReactNode {
+		if(url === null){
+			return (<></>)
+		}
+		return (<div>
+			<img src={url}/>
+		</div>)
+	}
 
 }

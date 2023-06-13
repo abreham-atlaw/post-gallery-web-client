@@ -53,6 +53,11 @@ export abstract class FieldComponent<T, P extends FieldComponentProps<T>> extend
 			<p className="text-red-500 ">{String(value)} is not a valid value. Error: {error}</p>
 		)
 	}
+
+	protected generateID(prefix: string = "ID"): string{
+		return `${prefix}-${Math.random()}`
+	}
+
 	render(): React.ReactNode {
 		return(
 			<div>
