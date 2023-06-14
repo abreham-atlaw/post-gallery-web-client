@@ -56,7 +56,7 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 				{/* ------------------------------------------ */}
 
 				<div className="hidden lg:inline lg:px-8 ">
-					<img className="h-8 mb-24 mt-14 mx-8" src={Back} />
+					<img className="h-8 mb-8 mt-4 mx-8" src={Back} />
 					<div className="flex flex-row justify-between items-start px-12">
 						<Slideshow images={this.state.artwork!.images} />
 						<div className="bg-white w-4/12 rounded-xl px-10 py-10">
