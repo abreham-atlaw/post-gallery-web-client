@@ -34,6 +34,9 @@ export abstract class FieldComponent<T, P extends FieldComponentProps<T>> extend
 	}
 
 	private onChange = async (value: T) => {
+		this.setState({
+			field: this.getField()
+		})
 		await this.getField().setValue(value);
 		this.setState({
 			field: this.getField()

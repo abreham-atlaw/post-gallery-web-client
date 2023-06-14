@@ -1,11 +1,12 @@
-import Field, { ListField, TextField } from "@/lib/forms/fields"
+import CoreProviders from "@/apps/core/di/coreproviders"
+import Field, { ListField, PrimaryKeyField, TextField } from "@/lib/forms/fields"
 import Form from "@/lib/forms/form"
 
 
 
 export default class ExhibitionForm extends Form{
 	
-	public artistId = new TextField()
+	public artistId = new PrimaryKeyField(CoreProviders.provideArtistRepository())
 
 	public name = new TextField()
 	public description = new TextField()

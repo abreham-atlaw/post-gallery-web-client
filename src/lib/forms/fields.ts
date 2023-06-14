@@ -1,3 +1,7 @@
+import Model from "../models/model";
+import { InstanceNotFoundException, Repository } from "../repositories/repository";
+import { sleep } from "../utils/time";
+
 export default class Field<T>{
 
 	public value :T | null = null;
@@ -6,7 +10,7 @@ export default class Field<T>{
 	public validator: Function | null;
 	private liveValidate: boolean;
 
-	constructor(required: boolean = true, validator: Function|null = null, liveValidate: boolean = true){
+	constructor(required: boolean = true, validator: Function|null = null, liveValidate: boolean = true, validationGap: number = 2000){
 		this.required = required;
 		this.validator = validator;
 		this.liveValidate = liveValidate;
@@ -127,6 +131,39 @@ export class ListField<T> extends Field<(T | null)[]>{
 		}
 		return validationError;
 
+	}
+
+}
+
+
+export class PrimaryKeyField<T> extends Field<T>{
+
+	private repository: Repository<T, Model<T>>;
+
+	constructor(repository: Repository<T, Model<T>>, required?:boolean, validator?: Function, liveValidate?: boolean){
+		super(required, validator, liveValidate)
+		this.repository = repository
+	}
+
+	protected async validate(): Promise<string | null> {
+		let error = await super.validate()
+		if(error != null){
+			return error
+		}
+		if(this.getValue() === null && !this.required){
+			return null
+		}
+		try{
+			await this.repository.getByPrimaryKey(this.getValue()!)
+			return null
+		}
+		catch(ex: any){
+			if(ex instanceof InstanceNotFoundException){
+				return "Not Found"
+			}
+			throw ex;
+		}
+		
 	}
 
 }

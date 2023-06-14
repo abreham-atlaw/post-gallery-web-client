@@ -1,5 +1,6 @@
 import { Status } from "@/Models/Core/artwork";
-import Field, { ListField, TextField } from "@/lib/forms/fields";
+import CoreProviders from "@/apps/core/di/coreproviders";
+import Field, { ListField, PrimaryKeyField, TextField } from "@/lib/forms/fields";
 import Form from "@/lib/forms/form";
 
 
@@ -7,7 +8,7 @@ import Form from "@/lib/forms/form";
 export default class ArtworkForm extends Form{
 
 
-	artistID: TextField = new TextField()
+	artistID: PrimaryKeyField<string> = new PrimaryKeyField<string>(CoreProviders.provideArtistRepository())
 	name: TextField = new TextField()
 	description: TextField = new TextField()
 	price: Field<number> = new Field<number>();
