@@ -6,11 +6,13 @@ import AuthenticatedComponentViewModel from "../../application/viewmodels/authen
 import { AsyncStatus } from "@/lib/state/asyncState";
 import LoadingView from "@/lib/components/views/LoadingView";
 import ErrorView from "@/lib/components/views/FailedView";
+import { Role } from "../../data/models/accounts";
 
 
 interface AuthenticatedComponentProps{
 
 	validStatus?: AuthenticationStatus[];
+	allowedRoles?: Role[];
 	redirectionMap?: Map<AuthenticationStatus, string>;
 	redirectTo?: string;
 	children: React.ReactNode[] | React.ReactNode
@@ -22,6 +24,7 @@ export default class AuthenticatedComponent extends React.Component<Authenticate
 
 
 	private validStatus: AuthenticationStatus[]
+	private allowedRoles: (Role | null)[];
 	private redirectionMap: Map<AuthenticationStatus, string>
 	private redirectTo?: string
 	private viewModel: AuthenticatedComponentViewModel;
@@ -35,6 +38,7 @@ export default class AuthenticatedComponent extends React.Component<Authenticate
 		this.validStatus = props.validStatus??[AuthenticationStatus.authenticated]
 		this.redirectionMap = props.redirectionMap??(new Map());
 		this.redirectTo = props.redirectTo;
+		this.allowedRoles = props.allowedRoles??[null, Role.client, Role.admin]
 		if(this.redirectTo === undefined){
 			this.redirectTo = "/auth/email-verify"
 		}
@@ -56,6 +60,8 @@ export default class AuthenticatedComponent extends React.Component<Authenticate
 		this.viewModel.init()
 	}
 
+	
+
 	render(): React.ReactNode {
 		let currentLocation = window.location;
 
@@ -70,7 +76,7 @@ export default class AuthenticatedComponent extends React.Component<Authenticate
 			)// TODO....
 		}
 
-		if(this.validStatus.includes(this.state.authenticationStatus)){
+		if(this.validStatus.includes(this.state.authenticationStatus) && this.allowedRoles.includes(this.state.userRole)){
 			return this.props.children;
 		}
 		let targetLocation = this.getRedirectLocation(this.state.authenticationStatus);

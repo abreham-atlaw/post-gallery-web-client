@@ -3,6 +3,7 @@ import { Client } from "../data/models/accounts";
 import Authenticator, { AuthenticationStatus } from "../data/repositories/authenticator";
 import ClientRepository from "../data/repositories/clientRepository";
 import CoreProviders from "@/apps/core/di/coreproviders";
+import AdminRepository from "../data/repositories/adminRepository";
 
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -10,6 +11,7 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 export default class AuthProviders{
 
 	private static clientRepository: ClientRepository | null = null;
+	private static adminRepository: AdminRepository | null = null;
 	private static authenticator: Authenticator | null = null;
 
 	public static provideClientRepository(): ClientRepository{
@@ -17,6 +19,13 @@ export default class AuthProviders{
 			AuthProviders.clientRepository = new ClientRepository();	
 		}
 		return AuthProviders.clientRepository!;
+	}
+
+	public static provideAdminRepository(): AdminRepository{
+		if(this.adminRepository === null){
+			this.adminRepository = new AdminRepository();
+		}
+		return this.adminRepository;
 	}
 
 	public static async provideAuth(): Promise<Auth>{
