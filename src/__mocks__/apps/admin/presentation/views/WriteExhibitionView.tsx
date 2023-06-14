@@ -1,10 +1,13 @@
 import WriteExhibitionState from "@/apps/admin/application/states/writeExhibitionState";
 import EditExhibitionViewModel from "@/apps/admin/application/viewmodels/editExhibitionViewModel";
+import { DefaultImageUploadComponent } from "@/apps/core/presentation/components/DefaultFileUploadComponent";
 import DateFieldComponent from "@/lib/components/form/DateFieldComponent";
+import ListFieldComponent from "@/lib/components/form/ListFieldComponent";
 import NumberFieldComponent from "@/lib/components/form/NumberFieldComponent";
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
 import StatusToast from "@/lib/components/status/StatusToast";
 import ViewModelView from "@/lib/components/views/ViewModelView";
+import Field from "@/lib/forms/fields";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import { FormEvent, ReactNode } from "react";
 
@@ -73,6 +76,16 @@ export default abstract class WriteExhibitionView<P> extends ViewModelView<EditE
 						<label htmlFor="endTime">End Time:</label>
 						<NumberFieldComponent field={this.state.form.endTime} syncer={this.getViewModel().syncState} />
 					</div>
+					<div>
+						<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Cover Image <span className="text-red-500 required-dot"> *</span></p>
+						<DefaultImageUploadComponent field={this.state.form.coverImage}/>
+					</div>
+					<div className="h-4"></div>
+					<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Images  <span className="text-red-500 required-dot"> *</span></p>
+					<ListFieldComponent field={this.state.form.images} generator={
+						(field: Field<string>) => <DefaultImageUploadComponent field={field} />
+					}/>
+					
 					<button type="submit">Submit</button>
 				</form>
 			</div>

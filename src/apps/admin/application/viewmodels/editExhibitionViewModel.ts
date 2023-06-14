@@ -3,6 +3,7 @@ import WriteExhibitionState from "../states/writeExhibitionState";
 import CoreProviders from "@/apps/core/di/coreproviders";
 import Exhibition from "@/apps/core/data/models/exhibition";
 import ExhibitionForm from "../forms/exhibitionForm";
+import { existsSync } from "fs";
 
 
 export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibitionState>{
@@ -19,6 +20,8 @@ export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibit
 		form.endDate.setValue(exhibition.dateRange.endDate)
 		form.startTime.setValue(exhibition.timeFrame.startTime)
 		form.endTime.setValue(exhibition.timeFrame.endTime)
+		form.coverImage.setValue(exhibition.coverImage)
+		form.images.setValue(exhibition.images)
 	}
 	
 	protected syncFormToExhibition(form: ExhibitionForm) {
@@ -36,6 +39,8 @@ export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibit
 		  startTime: form.startTime.getValue()!,
 		  endTime: form.endTime.getValue()!,
 		};
+		exhibition.coverImage = form.coverImage.getValue()!
+		exhibition.images = form.images.getValue()! as string[]
 	}
 
 	// async init(artworkID: string){

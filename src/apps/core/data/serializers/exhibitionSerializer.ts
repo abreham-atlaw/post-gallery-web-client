@@ -19,7 +19,9 @@ export default class ExhibitionSerializer extends Serializer<Exhibition, Documen
 	  start_time: instance.timeFrame.startTime,
 	  end_time: instance.timeFrame.endTime,
       venue: instance.venue,
-	  curator: instance.curator
+	  curator: instance.curator,
+	  cover_image: instance.coverImage,
+	  images: instance.images
     };
   }
 
@@ -38,7 +40,9 @@ export default class ExhibitionSerializer extends Serializer<Exhibition, Documen
 		endTime: data.end_time
 	  },
       data.venue,
-	  data.curator
+	  data.curator,
+	  data.cover_image,
+	  data.images
     );
   }
 }

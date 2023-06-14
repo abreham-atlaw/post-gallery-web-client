@@ -31,9 +31,10 @@ export default class Exhibition implements Model<string>{
 	public venue: string;
 	public curator: string;
 
+	public coverImage: string;
+	public images: string[];
+
 	public artist?: Artist;
-
-
 
 	constructor(
 		id: string | null,
@@ -43,7 +44,9 @@ export default class Exhibition implements Model<string>{
 		dateRange: DateRange,
 		timeFrame: TimeRange,
 		venue: string,
-		curator: string
+		curator: string,
+		coverImage: string,
+		images: string[]
 	){
 		this.id = id;
 		this.artistId = artistId;
@@ -53,6 +56,8 @@ export default class Exhibition implements Model<string>{
 		this.venue = venue;
 		this.curator = curator;
 		this.timeFrame = timeFrame
+		this.coverImage = coverImage
+		this.images = images
 	}
 
 	getPK(): string | null {
@@ -61,6 +66,11 @@ export default class Exhibition implements Model<string>{
 
 	setPK(pk: string): void {
 		this.id = pk;
+	}
+
+	isActive(): boolean{
+		let now = new Date(Date.now())
+		return (this.dateRange.startDate < now ) && (now < this.dateRange.endDate)
 	}
 
 }

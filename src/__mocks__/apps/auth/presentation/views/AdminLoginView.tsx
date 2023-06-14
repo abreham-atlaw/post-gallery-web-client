@@ -9,6 +9,7 @@ import PGLogin from '@/assets/PGLogin.png'
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import BaseState from "@/lib/state/baseState";
 import AdminLoginViewModel from "@/apps/auth/application/viewmodels/adminloginViewModel";
+import StatusToast from "@/lib/components/status/StatusToast";
 
 
 
@@ -67,8 +68,7 @@ export default class AdminLoginView extends ViewModelView<AdminLoginViewModel, a
 						<p className="text-5xl font-medium ">TO POST GALLERY ADMIN</p>
 						<p className="text-6xl mt-2 mb-4">SignIn</p>
 						<form className="w-full" onSubmit={this.handleSubmit}>
-							{this.state.error?.message}<br/>
-							{AsyncStatus[this.state.status]}
+							<StatusToast asyncState={this.state} errorText="Incorrect Username or Password"/>
 
 							<p className="text-xl mt-2.5">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.getViewModel().syncState}/>
 							<p className="text-xl mt-2.5">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.getViewModel().syncState}/>

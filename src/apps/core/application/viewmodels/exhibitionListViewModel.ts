@@ -1,6 +1,7 @@
 import ViewModel from "@/lib/viewmodel/viewmodel";
 import ExhibitionListState from "../state/exhibitionListState";
 import CoreProviders from "../../di/coreproviders";
+import Exhibition from "../../data/models/exhibition";
 
 
 export default class ExhibitionListViewModel extends ViewModel<ExhibitionListState>{
@@ -10,7 +11,12 @@ export default class ExhibitionListViewModel extends ViewModel<ExhibitionListSta
 
 	public async onInit(): Promise<void> {
 		await super.onInit();
-		this.state.exhibitions = await this.repository.getAll()
+		this.state.allExhibitions = await this.repository.getAll()
+		this.updateExhibitions()
+	}
+
+	private updateExhibitions(){
+		this.state.currentExhibitions = this.state.allExhibitions?.filter((exhibition: Exhibition) => exhibition.isActive())
 	}
 
 

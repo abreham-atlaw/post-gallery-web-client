@@ -36,22 +36,15 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 			  	</div>
 				<div className="my-8 px-10">
 					<div className="w-full flex flex-row items-center justify-center"><p className=" pr-4 text-2xl text-[#8E8E8E]">CURRENT</p> <LineWithWidth10 /></div>
-					<ExhibitionItem />
-				</div>
-				{
-					this.state.exhibitions!.map(
+					{
+					this.state.currentExhibitions!.map(
 						(exhibition: Exhibition) => {
-							return (
-								<div>
-									<h2>{exhibition.name}</h2>
-									<p>{exhibition.description}</p>
-									<p>{exhibition.artistId}</p>
-									<hr/>
-								</div>
-							)
+							return <ExhibitionItem exhibition={exhibition}/>
 						}
 					)
 				}
+				</div>
+				
 			</div>
 		)
 	}
@@ -64,16 +57,20 @@ const LineWithWidth10 = () => {
 	);
   };
 
-  const ExhibitionItem = () => {
+interface ExhibitionProps{
+	exhibition: Exhibition
+}
+
+  const ExhibitionItem = (props: ExhibitionProps) => {
 	return (
 	  <div className="w-full flex flex-row justify-between">
-		<img className="w-5/12" src={art} /> 
+		<img className="w-5/12" src={props.exhibition.coverImage} /> 
 		<div className="w-1/2">
-			<p className="text-5xl">SPIRIT OF AN ART</p>
-			<p className="text-xl text-[#787878]">ALEMAYEHU ZEWDIE</p>
+			<p className="text-5xl uppercase">{props.exhibition.name}</p>
+			<p className="text-xl text-[#787878] uppercase">{props.exhibition.artist?.fullName}</p>
 			<LineWithWidth10 />
-			<p className="text-xl text-[#787878]">ALEMAYEHU ZEWDIE</p>
-			<p className="text-2xl text-[#787878]">Feminine art is a form of art that is created by women or focuses on women's experiences, perspectives, and issues. It is a diverse and multifaceted genre that encompasses a wide range of styles, techniques, and subject matter. Feminine art often explores themes such as gender identity, sexuality, motherhood, domesticity, body image, and social and political inequalities. Feminine art can be expressed through various mediums such as painting, sculpture, photography, performance art, and installation art. </p>
+			<p className="text-xl text-[#787878] uppercase">{props.exhibition.dateRange.startDate.toDateString()} - {props.exhibition.dateRange.endDate.toDateString()}</p>
+			<p className="text-2xl text-[#787878]">{props.exhibition.description }</p>
 		</div>
 	  </div>
 	);

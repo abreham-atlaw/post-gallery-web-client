@@ -29,7 +29,7 @@ export default class StatusToast extends StatusView<StatusToastProps, StatusToas
 	}
 
 	protected getLoadingView(state: AsyncState): ReactNode {
-		return <Toast message={this.props.loadingText??"Loading..."} color="sky-500"/>
+		return <Toast message={this.props.loadingText??"Loading..."} color="blue-500"/>
 	}
 	protected getDoneView(state: AsyncState): ReactNode {
 		return <Toast message={this.props.doneText??"Operation Completed Successfully."} color="lime-500"/>

@@ -1,4 +1,4 @@
-import Field, { TextField } from "@/lib/forms/fields"
+import Field, { ListField, TextField } from "@/lib/forms/fields"
 import Form from "@/lib/forms/form"
 
 
@@ -18,6 +18,9 @@ export default class ExhibitionForm extends Form{
 
 	public startTime = new Field<number>()
 	public endTime = new Field<number>()
+
+	public coverImage = new TextField()
+	public images = new ListField<string>()
 
 	getFields(): Field<any>[] {
 		return [
