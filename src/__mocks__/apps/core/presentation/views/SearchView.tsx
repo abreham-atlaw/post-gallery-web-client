@@ -96,7 +96,11 @@ export default class SearchView extends React.Component<any, SearchState>{
 									(this.state.status === AsyncStatus.done)?
 									(<div>
 										<p className="mt-2 text-lg text-blue-500">Artwork Found</p>
-										<button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-6 rounded"><Link to={`/artwork/${this.state.result!.id}`}>View</Link></button>
+										<Link to={`/artwork/${this.state.result!.id}`}>
+											<div className="flex justify-center items-center w-64 mt-16 h-16 bg-black text-white rounded-full">
+												<button className="justify-center text-3xl">Continue</button>
+											</div>
+										</Link>
 									</div>):
 									<></>
 								}
@@ -104,9 +108,6 @@ export default class SearchView extends React.Component<any, SearchState>{
 							</div>
 							<div className="h-4"></div>
 							<p className="text-2xl text-[#787878] font-normal pt-2.5">Put in the art id of the art your interested in </p>
-							<div className="flex justify-center items-center w-64 mt-16 h-16 bg-black text-white rounded-full">
-								<button className="justify-center text-3xl">Continue</button>
-							</div>
 						</div>
 					</div>
 				</div>

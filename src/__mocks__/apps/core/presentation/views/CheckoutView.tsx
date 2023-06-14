@@ -120,11 +120,11 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 								<div className="w-full mr-4"><TextFieldComponents placeholder="First Name*" field={this.state.form.firstName} syncer={this.getViewModel().syncState}/></div>
 								<div className="w-full"><TextFieldComponents placeholder="Last name*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/></div>
 								</div>
-								<div className="h-6"></div>
+								<div className="h-2"></div>
 								<TextFieldComponents placeholder="Address*" field={this.state.form.address} syncer={this.getViewModel().syncState}/>
-								<div className="h-6"></div>
+								<div className="h-2"></div>
 								<TextFieldComponents placeholder="Address 2" field={this.state.form.address2} syncer={this.getViewModel().syncState}/>
-								<div className="h-6"></div>
+								<div className="h-2"></div>
 								<div className="flex flex-row ">
 									<div className="w-full mr-4"><TextFieldComponents placeholder="Country*" field={this.state.form.country} syncer={this.getViewModel().syncState}/></div>
 									<div className="w-full"><TextFieldComponents placeholder="City*" field={this.state.form.city} syncer={this.getViewModel().syncState}/></div>
@@ -147,21 +147,21 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 
 							<div className="mt-2 flex flex-row justify-between text-xl pr-8">
 								<p>Art Price: </p>
-								<p>{this.state.pricing?.artPrice}</p> 
+								<p>{this.state.pricing?.artPrice} ETB</p> 
 							</div>
 							<div className="flex flex-row justify-between text-xl text-left pr-8">
 								<p>Shipping price:</p>
-								<p>{this.state.pricing?.shippingPrice}</p> 
+								<p>{this.state.pricing?.shippingPrice} ETB</p> 
 							</div>
 							<div className="flex flex-row justify-between text-xl pr-8">
 								<p>VAT 15%:  </p>
-								<p>{this.state.pricing?.vat}</p> 
+								<p>{this.state.pricing?.vat} ETB</p> 
 							</div>
 							<div className="mt-2 flex flex-row justify-between text-3xl font-medium pr-8">
 								<p>Total price:  </p>
-								<p>{this.state.pricing?.getTotal()}</p> 
+								<p>{this.state.pricing?.getTotal()} ETB</p> 
 							</div>
-                            <div className="flex justify-center items-center w-full mt-8 mb-6 h-20 bg-black text-white rounded-md" onClick={this.handleCheckout}>
+                            <div className="flex justify-center items-center w-full mt-8 mb-6 h-16 bg-black text-white rounded-md" onClick={this.handleCheckout}>
                                 <button className="justify-center text-3xl">Place Order</button>
                             </div>
                             <div className="flex flex-col justify-center items-start">

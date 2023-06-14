@@ -20,7 +20,9 @@ export default class AddExhibitionViewModel extends EditExhibitionViewModel{
 				endTime: 0
 			},
 			"",
-			""
+			"",
+			"",
+			[]
 		)
 		super.syncFormToExhibition(form);
 	}
