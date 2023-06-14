@@ -12,6 +12,7 @@ import Upload from '@/assets/Upload.png'
 import { FieldComponent, FieldComponentProps } from "@/lib/components/form/FieldComponent";
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import { AsyncStatus } from "@/lib/state/asyncState";
+import StatusToast from "@/lib/components/status/StatusToast";
 
 
 interface CheckoutViewProps{
@@ -114,7 +115,7 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
                             <div className="text-5xl font-medium pb-3 border-b-2 mb-4 border-[#EFEFEF]">CheckOut</div>
 							<p className="text-2xl mb-4">Shipping address</p>
 							<form className="w-full" onSubmit={this.handleSubmit}>
-								{AsyncStatus[this.state.status]}
+								<StatusToast asyncState={this.state.shippingInfoState} loadingText="Saving Shipping Address..." errorText={this.state.error?.message}/>
 								<div className="flex flex-row">
 								<div className="w-full mr-4"><TextFieldComponents placeholder="First Name*" field={this.state.form.firstName} syncer={this.getViewModel().syncState}/></div>
 								<div className="w-full"><TextFieldComponents placeholder="Last name*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/></div>
@@ -141,6 +142,7 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 							</form>
                         </div>
                         <div className="bg-white w-2/6 h-min px-8 pb-12 pt-10 mr-12">
+							<StatusToast asyncState={this.state} errorText={this.state.error?.message} loadingText="Checking out..."/>
                             <p className="text-3xl font-medium ">Estimated Total:</p>
 
 							<div className="mt-2 flex flex-row justify-between text-xl pr-8">

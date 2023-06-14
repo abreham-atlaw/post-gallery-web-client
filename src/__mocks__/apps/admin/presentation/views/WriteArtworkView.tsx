@@ -10,6 +10,7 @@ import Field from "@/lib/forms/fields";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import React, { FormEvent } from "react";
 import { UnitFieldComponent } from "@/lib/components/form/PrefixInputFieldComponent";
+import StatusToast from "@/lib/components/status/StatusToast";
 
 
 export default abstract class WriteArtworkView<P> extends React.Component<P, WriteArtworkState>{
@@ -49,6 +50,7 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 					<div className="lg:pl-8">
 						<p className="mt-8 mb-4">⚫<span className="text-2xl font-medium">   Art details</span></p>
 						<div className="w-full lg:w-4/6 ">
+							<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Art name  <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.name} syncer={this.viewModel.syncState}/>
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Artist ID  <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.artistID} syncer={this.viewModel.syncState}/>
 							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Creation Date<span className="text-red-500 required-dot"> *</span></p> <DateFieldComponent field={this.state.form.creationDate} syncer={this.viewModel.syncState} /></div>

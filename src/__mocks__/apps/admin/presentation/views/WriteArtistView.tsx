@@ -10,7 +10,7 @@ import React, { FormEvent, ReactNode, useEffect, useState } from "react";
 import Upload from '@/assets/Upload.png'
 import { FieldComponent, FieldComponentProps } from "@/lib/components/form/FieldComponent";
 import PrefixInputField from "@/lib/components/form/PrefixInputFieldComponent";
-import StatusPopup from "@/lib/components/status/StatusPopup";
+import StatusToast from "@/lib/components/status/StatusToast";
 
 
 export default abstract class WriteArtistView<P> extends React.Component<P, WriteArtistState>{
@@ -50,7 +50,8 @@ export default abstract class WriteArtistView<P> extends React.Component<P, Writ
 				<div className="lg:pl-8">
 					<p className="mt-8 mb-4">⚫<span className="text-2xl font-medium">   Art details</span></p>
 					<div className="w-full lg:w-4/6 ">
-						<StatusPopup asyncState={this.state} />
+						<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
+						
 						<div className="flex flex-row justify-between">
 							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">First name <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
 							<div className="w-16"></div>

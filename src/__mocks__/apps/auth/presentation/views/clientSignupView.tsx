@@ -7,6 +7,7 @@ import { Navigate } from "react-router-dom";
 import Google from '@/assets/Google.png'
 import Apple from '@/assets/Apple.png'
 import PGLogin from '@/assets/PGLogin.png'
+import StatusToast from "@/lib/components/status/StatusToast";
 
 
 export default class ClientSignupView extends React.Component<any, SignupState>{
@@ -72,9 +73,7 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 					</div>
 					<form className="hidden" onSubmit={this.handleSignUpPG}>
 							
-							Async Status: {this.state.status}
-							<br/>
-							{this.state.error?.message}
+							<StatusToast asyncState={this.state} errorText={`Error: ${this.state.error?.message??""}`}/>
 							<br/>
 							<br/>
 							<TextFieldComponent field={this.state.form.fullName} syncer={this.viewModel.syncState}/>
@@ -130,7 +129,7 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 						<p className="text-3xl">Create your post gallery account</p>
 
 						<form className="w-full" onSubmit={this.handleSignUpPG}>
-							{this.state.error?.message}
+							<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
 							<p className="text-xl mt-1.5">Full name:</p> <TextFieldComponent field={this.state.form.fullName} syncer={this.viewModel.syncState}/>
 							<p className="text-xl mt-1.5">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState}/>
 							<p className="text-xl mt-1.5">Phone Number:</p> <TextFieldComponent field={this.state.form.phoneNumber} syncer={this.viewModel.syncState}/>

@@ -6,6 +6,7 @@ import React, { FormEvent } from "react";
 import { Navigate } from "react-router-dom";
 import Google from '@/assets/Google.png'
 import PGLogin from '@/assets/PGLogin.png'
+import StatusToast from "@/lib/components/status/StatusToast";
 
 
 
@@ -94,8 +95,8 @@ export default class LoginView extends React.Component<any, LoginState>{
 						<p className="text-5xl font-medium ">TO POST GALLERY</p>
 						<p className="text-3xl">Create your post gallery account</p>
 						<p className="text-4xl mt-2 ">SignIn</p>
+						<StatusToast asyncState={this.state} errorText={"Incorrect email or password."} />
 						<form className="w-full" onSubmit={this.handleSubmit}>
-							{AsyncStatus[this.state.status]}
 
 							<p className="text-xl mt-2.5">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState}/>
 							<p className="text-xl mt-2.5">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.viewModel.syncState}/>

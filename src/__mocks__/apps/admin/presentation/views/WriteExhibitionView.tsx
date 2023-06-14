@@ -3,6 +3,7 @@ import EditExhibitionViewModel from "@/apps/admin/application/viewmodels/editExh
 import DateFieldComponent from "@/lib/components/form/DateFieldComponent";
 import NumberFieldComponent from "@/lib/components/form/NumberFieldComponent";
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
+import StatusToast from "@/lib/components/status/StatusToast";
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import { FormEvent, ReactNode } from "react";
@@ -34,7 +35,7 @@ export default abstract class WriteExhibitionView<P> extends ViewModelView<EditE
 		}
 		return (
 			<div>
-				Status: {this.state.status}
+				<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
 				<form onSubmit={this.handleSubmit}>
 					<div>
 						<label htmlFor="artistId">Artist ID:</label>
