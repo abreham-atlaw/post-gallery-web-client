@@ -1,5 +1,7 @@
 import { GoogleAuthProvider, User, applyActionCode, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import AuthProviders from "../../di/authProviders";
+import AdminRepository from "./adminRepository";
+import { Role } from "../models/accounts";
 
 
 
@@ -60,5 +62,22 @@ export default class Authenticator{
 		await signOut((await AuthProviders.provideAuth()))	
 	}
 
+	public async getUserRole(user: User): Promise<Role>{
+		if(await this.isAdmin(user)){
+			return Role.admin
+		}
+		return Role.client;
+	}
+
+	public async isAdmin(user: User): Promise<boolean>{
+		let repository = AuthProviders.provideAdminRepository()
+		try{
+			await repository.getByPrimaryKey(user.uid)
+			return true
+		}
+		catch{
+			return false
+		}
+	}
 
 }

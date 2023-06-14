@@ -46,6 +46,14 @@ export class Client extends Account{
 }
 
 
+export class Admin extends Account{
+
+	constructor(id: string, fullName: string, phoneNumber: string){
+		super(id, fullName, phoneNumber, Role.admin)
+	}
+
+}
+
 // export class Artist extends Account{
 
 // 	constructor(id: string, fullName: string, phoneNumber: string){

@@ -18,6 +18,9 @@ import LogoutView from "./__mocks__/apps/auth/presentation/views/logoutView";
 import CheckOutView, { RoutedCheckoutView } from "./__mocks__/apps/core/presentation/views/CheckoutView";
 import { RoutedPaymentView } from "./__mocks__/apps/core/presentation/views/PaymentView";
 import OrderListView from "./__mocks__/apps/admin/presentation/views/OrdersListView";
+import AdminLoginViewModel from "./apps/auth/application/viewmodels/adminloginViewModel";
+import AdminLoginView from "./__mocks__/apps/auth/presentation/views/AdminLoginView";
+import { Role } from "./apps/auth/data/models/accounts";
 
 
 export default class PGRouter extends React.Component{
@@ -30,24 +33,25 @@ export default class PGRouter extends React.Component{
 				<Route path="/auth/signup/" element={<ClientSignupView />}/>
 				<Route path="/auth/login/" element={<LoginView />}/>
 				<Route path="/auth/logout/" element={<LogoutView />}/>
+				<Route path="/admin/login/" element={<AdminLoginView/>}/>
 				<Route path="/auth/email-verify/" element={
 					<AuthenticatedComponent validStatus={[AuthenticationStatus.verification]} redirectionMap={new Map<AuthenticationStatus, string>([
 						[AuthenticationStatus.none, "/auth/login"],
 						[AuthenticationStatus.authenticated, "/"]
 					])}>
-
-
 						<EmailVerificationView />
-					
-					
 					</AuthenticatedComponent>
 				}/>
 
+
+
+
 				<Route path="/artwork/:id" element={<RoutedArtworkDetailView/>}/>
-				<Route path="/cart" element={<CartView />}/>
 				<Route path="/exhibitions" element={<ExhibitionListView />}/>
 				<Route path="/exhibition/:id" element={<RoutedExhibitionDetailView />}/>
 				
+
+
 
 				<Route path="/search" element={
 					<AuthenticatedComponent>
@@ -67,10 +71,33 @@ export default class PGRouter extends React.Component{
 					</AuthenticatedComponent>
 				}/>
 
-				<Route path="/admin/artist/add" element={<AddArtistView/>} />
-				<Route path="/admin/artwork/add" element={<AddArtworkView/>} />
-				<Route path="/admin/exhibition/add" element={<AddExhibitionView/>} />
-				<Route path="/admin/orders/" element={<OrderListView/>} />
+
+
+
+
+				<Route path="/admin/artist/add" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<AddArtistView/>
+					</AuthenticatedComponent>
+				} />
+				
+				<Route path="/admin/artwork/add" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<AddArtworkView/>
+					</AuthenticatedComponent>
+				} />
+				
+				<Route path="/admin/exhibition/add" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<AddExhibitionView/>
+					</AuthenticatedComponent>
+				} />
+				
+				<Route path="/admin/orders/" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<OrderListView/>
+					</AuthenticatedComponent>
+				} />
 
 			</Routes>
 		)
