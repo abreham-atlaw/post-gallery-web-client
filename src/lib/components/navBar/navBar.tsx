@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import ViewModelView from '../views/ViewModelView';
 import ViewModel from '@/lib/viewmodel/viewmodel';
 import BaseState from '@/lib/state/baseState';
-import Account from '@/assets/account.webp';
+import Account from '@/assets/account.png';
 
 
 class NavBarState extends BaseState{
@@ -44,13 +44,13 @@ export default class NavBar extends ViewModelView<NavBarViewModel,any, NavBarSta
 			<div className="relative ">
 			  <div className='hidden lg:flex flex-row items-center justify-between pr-10 pt-10 '>
 					<div className='flex flex-row items-center space-x-10 text-3xl font-medium leading-none'>
-						<img className='h-8' src={PGwhite} />
+						<img className='w-16' src={PGwhite} />
 					</div>
-					<div className='flex flex-row items-center space-x-10  text-3xl font-medium leading-none text-white'>
+					<div className='flex flex-row items-center space-x-8  text-3xl font-medium leading-none text-white'>
 						<a href="/exhibitions">Exhibition</a>
 						<a href="/search">Shop</a>
 						<a href="/search">Contact</a>
-						<a href="/search">About</a>
+						
 				  {
 					clientSection					
 				  }
@@ -62,10 +62,10 @@ export default class NavBar extends ViewModelView<NavBarViewModel,any, NavBarSta
 				<img  className='h-8 lg:hidden' onClick={() => {this.getViewModel().toggleOpen()}} src={this.state.open ? Menu : Close} />
 			  </div>
 			  <div className={` ${this.state.open ? 'hidden' : 'absolute'} flex flex-col p-6 bg-white mt-4 mx-10 w-min right-0 rounded-[12px] shadow-[0px_0px_50px_rgba(0,0,0,0.3)] lg:hidden`}>
-					  <a className=" font-bold text-paragraph-color text-end px-6 pb-2 ">Home</a>
-					  <a className=" font-bold text-paragraph-color text-end px-6 pb-2 ">Features</a>
+					  <a className=" font-bold text-paragraph-color text-end px-6 pb-2 ">Exhibition</a>
+					  <a className=" font-bold text-paragraph-color text-end px-6 pb-2 ">Shop</a>
 					  <a className=" font-bold text-paragraph-color text-end px-6 pb-2 ">Contact</a>
-					  <a className=" font-bold text-paragraph-color text-end px-6 pb-2 ">Contact</a>   
+					  <a className=" font-bold text-paragraph-color text-end px-6 pb-2 ">About</a>
 				  </div>
 			</div>
 	  
@@ -87,17 +87,17 @@ export default class NavBar extends ViewModelView<NavBarViewModel,any, NavBarSta
 		{
 					(this.state.context.client === null)?
 					(
-						<div className="flex flex-row justify-center items-center w-44 h-14 border-[3px] border-black text-black rounded-full">
+						<div className="flex flex-row justify-center items-center w-40 h-12 border-[3px] border-white text-white rounded-full">
 							<Link to="/auth/login" className="text-2xl">Join Us</Link>
 						</div>
 					):
 					(
 						<div className='relative'>
-							<div className="flex flex-row justify-center items-center w-12 h-12 border-[3px] border-black text-black rounded-full">
+							<div className="flex flex-row justify-center items-center w-10 h-10 border-[3px] border-white text-black rounded-full">
 								<button onClick={() => this.getViewModel().toggleAccoutOpen()} className="text-2xl"><img className="col-12" src={Account}/></button>
 							</div>
-							<div className={`${this.state.accountOpen ? 'absolute' : 'hidden'} flex flex-col px-6 py-1 bg-white mt-4  w-44 right-0 rounded-[12px] shadow-[0px_0px_50px_rgba(0,0,0,0.3)]`}>
-								<Link to="/auth/logout/" className=" font-bold text-paragraph-color text-center">LogOut</Link>  
+							<div className={`${this.state.accountOpen ? 'absolute' : 'hidden'} flex flex-col px-4 py-1 bg-white mt-4  w-44 right-0 rounded-[12px] shadow-[0px_0px_50px_rgba(0,0,0,0.3)]`}>
+								<Link to="/auth/logout/" className=" font-semibold text-lg text-black text-center">LogOut</Link>  
 							</div>
 						</div>
 					)

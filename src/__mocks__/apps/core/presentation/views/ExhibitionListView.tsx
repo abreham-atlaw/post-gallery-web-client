@@ -5,6 +5,7 @@ import ViewModelView from "@/lib/components/views/ViewModelView";
 import { ReactNode, useState } from "react";
 import PG from '@/assets/PG.png'
 import art from '@/assets/exhibition.png'
+import Thefooter from "@/lib/components/footer/footer";
 
 
 
@@ -21,20 +22,18 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 	onCreateMain(): ReactNode {
 		return (
 			<div>
-				<div className='hidden lg:flex flex-row items-center justify-between px-10 pt-10 '>
+				<div className='hidden lg:flex flex-row items-center justify-between pr-10 pl-20 pt-14 '>
 					<div className='flex flex-row items-center space-x-10 text-3xl font-medium leading-none'>
-						<img className='h-8' src={PG} />
+						<img className='h-10' src={PG} />
 					</div>
 					<div className='flex flex-row items-center space-x-10  text-3xl font-medium leading-none text-black'>
 						<a href="/exhibitions">Exhibition</a>
 						<a href="/search">Shop</a>
 						<a href="/search">Contact</a>
-						<a href="/search">About</a>
-
 				  </div>
 
 			  	</div>
-				<div className="my-8 px-10">
+				<div className="mt-8 mb-12 px-10">
 					<div className="w-full flex flex-row items-center justify-center mt-14 mb-8"><p className="pl-8 pr-4 text-2xl text-[#8E8E8E]">CURRENT</p> <LineWithWidth10 /></div>
 					{
 						this.state.currentExhibitions!.map(
@@ -61,7 +60,7 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 
 const LineWithWidth10 = () => {
 	return (
-	  <div className="w-full border-b border-[#8E8E8E]"></div>
+	  <div className="w-full border-b-2 border-[#EDEDED]"></div>
 	);
   };
 
