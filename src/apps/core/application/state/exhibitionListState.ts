@@ -7,5 +7,6 @@ export default class ExhibitionListState extends BaseState{
 
 	allExhibitions?: Exhibition[];
 	currentExhibitions?: Exhibition[];
+	upcomingExhibitions?: Exhibition[];
 
 }

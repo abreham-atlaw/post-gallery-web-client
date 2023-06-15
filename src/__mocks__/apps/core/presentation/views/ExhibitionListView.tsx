@@ -36,20 +36,24 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 			  	</div>
 				<div className="my-8 px-10">
 					<div className="w-full flex flex-row items-center justify-center mt-14 mb-8"><p className="pl-8 pr-4 text-2xl text-[#8E8E8E]">CURRENT</p> <LineWithWidth10 /></div>
-					<ExhibitionItem />
+					{
+						this.state.currentExhibitions!.map(
+							(exhibition: Exhibition) => {
+								return <ExhibitionItem exhibition={exhibition}/>
+							}
+						)
+					}
 					<div className="w-full flex flex-row items-center justify-center mt-24 mb-8"><p className="pl-8 pr-4 text-2xl text-[#8E8E8E]">UPCOMING</p> <LineWithWidth10 /></div>
-					<ExhibitionItem />
+					{
+						this.state.upcomingExhibitions!.map(
+							(exhibition: Exhibition) => {
+								return <ExhibitionItem exhibition={exhibition}/>
+							}
+						)
+					}
 				</div>
-				{
-					this.state.exhibitions!.map(
-						(exhibition: Exhibition) => {
-							return <ExhibitionItem exhibition={exhibition}/>
-						}
-					)
-				}
-				</div>
-				
 			</div>
+				
 		)
 	}
 
@@ -68,13 +72,13 @@ interface ExhibitionProps{
   const ExhibitionItem = (props: ExhibitionProps) => {
 	return (
 	  <div className="w-full flex flex-row justify-between px-20">
-		<img className="w-5/12 h-min " src={art} /> 
+		<img className="w-5/12 h-min " src={props.exhibition.coverImage} /> 
 		<div className="w-5/12">
-			<p className="text-5xl">SPIRIT OF AN ART</p>
-			<p className="text-xl text-[#787878] pt-6">ALEMAYEHU ZEWDIE</p>
+			<p className="text-5xl">{props.exhibition.name}</p>
+			<p className="text-xl text-[#787878] pt-6">{props.exhibition.artist!.fullName}</p>
 			<div className="py-2"><LineWithWidth10 /></div>
-			<p className="text-xl text-[#787878] mb-4">25 MAY - 7 JUN 2023</p>
-			<DescriptionComponent description={"Feminine art is a form of art that is created by women or focuses on women's experiences, perspectives, and issues. It is a diverse and multifaceted genre that encompasses a wide range of styles, techniques, and subject matter. Feminine art often explores themes such as gender identity, sexuality, motherhood, domesticity, body image, and social and political inequalities. Feminine art can be expressed through various mediums such as painting, sculpture, photography, performance art, and installation art. "} />
+			<p className="text-xl text-[#787878] mb-4">{props.exhibition.dateRange.startDate.toDateString()} - {props.exhibition.dateRange.startDate.toDateString()}</p>
+			<DescriptionComponent description={props.exhibition.description} />
 		</div>
 	  </div>
 	);

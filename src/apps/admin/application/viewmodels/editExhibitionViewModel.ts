@@ -21,7 +21,7 @@ export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibit
 		form.startTime.setValue(exhibition.timeFrame.startTime)
 		form.endTime.setValue(exhibition.timeFrame.endTime)
 		form.coverImage.setValue(exhibition.coverImage)
-		form.images.setValue(exhibition.images)
+		form.artworkIds.setValue(exhibition.artworkIds)
 	}
 	
 	protected syncFormToExhibition(form: ExhibitionForm) {
@@ -40,7 +40,7 @@ export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibit
 		  endTime: form.endTime.getValue()!,
 		};
 		exhibition.coverImage = form.coverImage.getValue()!
-		exhibition.images = form.images.getValue()! as string[]
+		exhibition.artworkIds = form.artworkIds.getValue()! as string[]
 	}
 
 	// async init(artworkID: string){

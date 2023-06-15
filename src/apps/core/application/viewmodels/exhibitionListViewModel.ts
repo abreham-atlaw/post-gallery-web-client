@@ -17,6 +17,7 @@ export default class ExhibitionListViewModel extends ViewModel<ExhibitionListSta
 
 	private updateExhibitions(){
 		this.state.currentExhibitions = this.state.allExhibitions?.filter((exhibition: Exhibition) => exhibition.isActive())
+		this.state.upcomingExhibitions = this.state.allExhibitions?.filter((exhibition: Exhibition) => exhibition.isUpcoming())
 	}
 
 

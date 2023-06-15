@@ -7,6 +7,7 @@ import PG from '@/assets/PG.png'
 import back from '@/assets/back.png'
 import next from '@/assets/forward.png'
 import Thefooter from "@/lib/components/footer/footer";
+import Artwork from "@/apps/core/data/models/artwork";
 
 const data = [
 	{
@@ -74,22 +75,21 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 				  </div>
 			  	</div>
 				<div className="h-16"></div>
-				<SlideShow images={['https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/3.jpg?alt=media&token=e389affd-1260-415d-bbc5-5d23ff3bd0d5','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQMOwR-_45OiadN8CymKhw08QALAidVKLYJPA8Zgn9qS0mn2c_wbbi4c2npgeVcdD3hTs&usqp=CAU']} />
+				<SlideShow images={this.state.exhibiton!.artworkIds} />
 				<div className="w-full mt-28 px-16">
-					<p className="text-5xl">SPIRIT OF AN ART</p>
+					<p className="text-5xl">{this.state.exhibiton!.name}</p>
 					<div className="flex flex-row items-center mt-10 mb-4">
-						<p className="text-2xl text-black mr-8">ALEMAYEHU ZEWDIE</p>
-						<p className="text-2xl text-[#787878]">25 MAY - 7 JUN 2023</p>
+						<p className="text-2xl text-black mr-8 uppercase">{this.state.exhibiton!.artist!.fullName}</p>
+						<p className="text-2xl text-[#787878]">{this.state.exhibiton!.dateRange.startDate.toDateString()} - {this.state.exhibiton!.dateRange.endDate.toDateString()}</p>
 					</div>
 					<p className="text-2xl text-[#616161] leading[28px]">
-						Feminine art is a form of art that is created by women or focuses on women's experiences, perspectives, and issues. It is a diverse and multifaceted genre that encompasses a wide range of styles, techniques, and subject matter. Feminine art often explores themes such as gender identity, sexuality, motherhood, domesticity, body image, and social and political inequalities. Feminine art can be expressed through various mediums such as painting, sculpture, photography, performance art, and installation art. <br/><br/>
-						Feminine art is a form of art that is created by women or focuses on women's experiences, perspectives, and issues. It is a diverse and multifaceted genre that encompasses a wide range of styles, techniques, and subject matter. Feminine art often explores themes such as gender identity, sexuality, motherhood, domesticity, body image, and social and political inequalities. Feminine art can be expressed through various mediums such as painting, sculpture, photography, performance art, and installation art. 
+					{this.state.exhibiton!.description}
 					</p>
 				</div>
 				<div className="w-full flex flex-row items-center justify-center mt-14 mb-8"><p className="pl-20 pr-4 text-2xl text-[#8E8E8E]">ARTWORKS</p> <LineWithWidth10 /></div>
 				<div className="w-full flex justify-center items-center px-16">
 					<Grid 
-						data={data}						  // .  
+						data={this.state.exhibiton!.artworks!}						  // .  
 					/>
 				</div>
 				<div className="w-full border-b border-[#8E8E8E] mt-10"></div>
@@ -187,13 +187,13 @@ const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle }) => (
 );
 
 interface GridProps {
-    data: Array<{ imageUrl: string, title: string, subtitle: string }>;
+    data: Artwork[];
 }
 
 const Grid: React.FC<GridProps> = ({ data }) => (
     <div className="grid grid-flow-row-dense grid-cols-4 gap-4">
         {data.map((item, index) => (
-            <GridItem key={index} imageUrl={item.imageUrl} title={item.title} subtitle={item.subtitle} />
+            <GridItem key={index} imageUrl={item.images[0]} title={item.artist!.fullName} subtitle={item.name} />
         ))}
     </div>
 );

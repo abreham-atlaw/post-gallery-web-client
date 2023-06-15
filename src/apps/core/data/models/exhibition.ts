@@ -1,5 +1,6 @@
 import Model from "@/lib/models/model";
 import Artist from "./artist";
+import Artwork from "./artwork";
 
 
 interface DateRange{
@@ -32,9 +33,10 @@ export default class Exhibition implements Model<string>{
 	public curator: string;
 
 	public coverImage: string;
-	public images: string[];
+	public artworkIds: string[];
 
 	public artist?: Artist;
+	public artworks?: Artwork[];
 
 	constructor(
 		id: string | null,
@@ -46,7 +48,7 @@ export default class Exhibition implements Model<string>{
 		venue: string,
 		curator: string,
 		coverImage: string,
-		images: string[]
+		artworkIds: string[]
 	){
 		this.id = id;
 		this.artistId = artistId;
@@ -57,7 +59,7 @@ export default class Exhibition implements Model<string>{
 		this.curator = curator;
 		this.timeFrame = timeFrame
 		this.coverImage = coverImage
-		this.images = images
+		this.artworkIds = artworkIds
 	}
 
 	getPK(): string | null {
@@ -71,6 +73,10 @@ export default class Exhibition implements Model<string>{
 	isActive(): boolean{
 		let now = new Date(Date.now())
 		return (this.dateRange.startDate < now ) && (now < this.dateRange.endDate)
+	}
+
+	isUpcoming(): boolean{
+		return (this.dateRange.startDate > new Date(Date.now())) 
 	}
 
 }

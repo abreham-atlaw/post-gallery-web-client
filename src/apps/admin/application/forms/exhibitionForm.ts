@@ -21,7 +21,7 @@ export default class ExhibitionForm extends Form{
 	public endTime = new Field<number>()
 
 	public coverImage = new TextField()
-	public images = new ListField<string>()
+	public artworkIds = new ListField<string>()
 
 	getFields(): Field<any>[] {
 		return [
@@ -33,7 +33,9 @@ export default class ExhibitionForm extends Form{
 			this.startDate,
 			this.endDate,
 			this.startTime,
-			this.endTime
+			this.endTime,
+			this.coverImage,
+			this.artworkIds
 		]
 	}
 
