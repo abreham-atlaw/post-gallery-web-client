@@ -6,6 +6,7 @@ import { ReactNode, useState } from "react";
 import PG from '@/assets/PG.png'
 import art from '@/assets/exhibition.png'
 import Thefooter from "@/lib/components/footer/footer";
+import { Link } from "react-router-dom";
 
 
 
@@ -70,7 +71,7 @@ interface ExhibitionProps{
 
   const ExhibitionItem = (props: ExhibitionProps) => {
 	return (
-	  <div className="w-full flex flex-row justify-between px-20">
+	  <Link to={`/exhibition/${props.exhibition.getPK()}`} className="w-full flex flex-row justify-between px-20">
 		<img className="w-5/12 h-min " src={props.exhibition.coverImage} /> 
 		<div className="w-5/12">
 			<p className="text-5xl">{props.exhibition.name}</p>
@@ -79,7 +80,7 @@ interface ExhibitionProps{
 			<p className="text-xl text-[#787878] mb-4">{props.exhibition.dateRange.startDate.toDateString()} - {props.exhibition.dateRange.startDate.toDateString()}</p>
 			<DescriptionComponent description={props.exhibition.description} />
 		</div>
-	  </div>
+	  </Link>
 	);
   };
 
