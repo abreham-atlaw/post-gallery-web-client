@@ -61,9 +61,9 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 	onCreateMain(): ReactNode {
 		return (
 			<div>
-				<div className='hidden lg:flex flex-row items-center justify-between px-16 pt-10 '>
+				<div className='hidden lg:flex flex-row items-center justify-between pr-10 pl-20 pt-14 '>
 					<div className='flex flex-row items-center space-x-10 text-3xl font-medium leading-none'>
-						<img className='h-8' src={PG} />
+						<img className='w-16' src={PG} />
 					</div>
 					<div className='flex flex-row items-center space-x-10  text-3xl font-medium leading-none text-black'>
 						<a href="/exhibitions">Exhibition</a>
@@ -73,26 +73,26 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 
 				  </div>
 			  	</div>
-				<div className="h-16"></div>
+				<div className="lg:h-16"></div>
 				<SlideShow images={['https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/3.jpg?alt=media&token=e389affd-1260-415d-bbc5-5d23ff3bd0d5','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQMOwR-_45OiadN8CymKhw08QALAidVKLYJPA8Zgn9qS0mn2c_wbbi4c2npgeVcdD3hTs&usqp=CAU']} />
-				<div className="w-full mt-28 px-16">
+				<div className="w-full lg:mt-24 p-4 lg:px-16">
 					<p className="text-5xl">SPIRIT OF AN ART</p>
 					<div className="flex flex-row items-center mt-10 mb-4">
 						<p className="text-2xl text-black mr-8">ALEMAYEHU ZEWDIE</p>
 						<p className="text-2xl text-[#787878]">25 MAY - 7 JUN 2023</p>
 					</div>
 					<p className="text-2xl text-[#616161] leading[28px]">
-						Feminine art is a form of art that is created by women or focuses on women's experiences, perspectives, and issues. It is a diverse and multifaceted genre that encompasses a wide range of styles, techniques, and subject matter. Feminine art often explores themes such as gender identity, sexuality, motherhood, domesticity, body image, and social and political inequalities. Feminine art can be expressed through various mediums such as painting, sculpture, photography, performance art, and installation art. <br/><br/>
+						Feminine art is a form of art that is created by women or focuses on women'wide range of styles, techniques, and subject matter. Feminine art often explores themes such as gender identity, sexuality, motherhood, domelitical inequalities. Feminine art can be expressed through various mediums such as painting, sculpture, photography, performance art, and installation art. <br/><br/>
 						Feminine art is a form of art that is created by women or focuses on women's experiences, perspectives, and issues. It is a diverse and multifaceted genre that encompasses a wide range of styles, techniques, and subject matter. Feminine art often explores themes such as gender identity, sexuality, motherhood, domesticity, body image, and social and political inequalities. Feminine art can be expressed through various mediums such as painting, sculpture, photography, performance art, and installation art. 
 					</p>
 				</div>
-				<div className="w-full flex flex-row items-center justify-center mt-14 mb-8"><p className="pl-20 pr-4 text-2xl text-[#8E8E8E]">ARTWORKS</p> <LineWithWidth10 /></div>
-				<div className="w-full flex justify-center items-center px-16">
+				<div className="w-full flex flex-row items-center justify-center mt-14 mb-8"><p className="pl-16 pr-4 text-2xl text-[#8E8E8E]">ARTWORKS</p> <LineWithWidth10 /></div>
+				<div className="w-full flex justify-center items-center p-4 py-8 lg:px-16">
 					<Grid 
 						data={data}						  // .  
 					/>
 				</div>
-				<div className="w-full border-b border-[#8E8E8E] mt-10"></div>
+				<div className="w-full border-b border-[#D9DBE9] mt-10"></div>
 				<Thefooter />
 				{this.state.exhibiton!.name}<br/>
 				{this.state.exhibiton!.venue}
@@ -136,24 +136,33 @@ interface SlideShowProps {
 	};
   
 	return (
-	  <div className="w-full m-auto flex flex-row items-center justify-between px-24">
+	  <div className="w-full p-4 m-auto flex flex-row items-center justify-between lg:px-28">
 		<button
 		  className="p-2 bg-white opacity-50"
 		  onClick={handlePrev}
 		>
-		  <img className="w-10 h-10" src={back} />
+		  <img className="w-10 h-12" src={back} />
 		</button>
 		<div
-		  className="w-5/12 h-[500px] bg-no-repeat bg-cover object-cover"
+		  className="flex flex-col items-center justify-end text-white text-center w-5/12 h-72 lg:h-[530px] bg-no-repeat bg-cover object-cover"
 		  style={{ backgroundImage: `url(${images[activeIndex]})` }}
 		  
-		/>
+		>
+			<div className="hidden lg:inline w-full pb-6 pt-6" style={{ 
+				background: "linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 1.9%, rgba(0, 0, 0, 0) 100%)" 
+			}}>
+			
+				<p className="text-3xl font-bold">THE VIVID JOURNEY, 2013</p>
+				<p className="text-2xl font-bold">ALEMAYEHU ZEWDIE </p>
+				<p className="text-2xl font-bold">1991</p>
+			</div>
+		</div>
   
 		<button
 		  className="p-2 bg-white opacity-50"
 		  onClick={handleNext}
 		>
-		  <img className="w-10 h-10" src={next} />
+		  <img className="w-10 h-12" src={next} />
 		</button>
 	  </div>
 	);
@@ -161,7 +170,7 @@ interface SlideShowProps {
 
   const LineWithWidth10 = () => {
 	return (
-	  <div className="w-full border-b border-[#8E8E8E]"></div>
+	  <div className="w-full border-b-2 border-[#DCDCDC]"></div>
 	);
   };
 
@@ -174,10 +183,10 @@ interface SlideShowProps {
 
 const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle }) => (
     <div 
-        className="w-56 h-72  bg-cover bg-center"
+        className="w-full h-72  bg-cover bg-center"
         style={{ backgroundImage: `url(${imageUrl})` }}
     >
-		<div className="w-full h-full flex items-end justify-center" style={{ backgroundImage: 'linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0) 100%)'}}>
+		<div className="w-full h-full flex items-end justify-center pb-4" style={{ backgroundImage: 'linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0) 100%)'}}>
 			<div className="text-white text-center">
 				<h2 className="font-bold">{title}</h2>
 				<p>{subtitle}</p>
@@ -191,7 +200,7 @@ interface GridProps {
 }
 
 const Grid: React.FC<GridProps> = ({ data }) => (
-    <div className="grid grid-flow-row-dense grid-cols-4 gap-4">
+    <div className="w-full grid grid-flow-row-dense grid-cols-2 lg:grid-cols-4 gap-6 gap-y-14">
         {data.map((item, index) => (
             <GridItem key={index} imageUrl={item.imageUrl} title={item.title} subtitle={item.subtitle} />
         ))}

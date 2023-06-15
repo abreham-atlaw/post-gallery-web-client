@@ -46,12 +46,14 @@ export default class HomeView extends ViewModelView<ViewModel<BaseState>>{
 					
 				</div>
 				<div>
-					<div className="hidden lg:flex w-full min-h-screen flex-col justify-between bg-[url('./assets/homeBG.png')] bg-no-repeat bg-cover pl-2 lg:pl-12 2xl:pr-12">
-						<NavBar /> 
-						<div className="text-white mb-6">
-							<p className="text-8xl ">SPIRIT OF AN ART</p>
-							<p className="text-4xl mt-3">ALEMAYEHU ZEWDIE</p>
-							<p className="text-4xl">25 MAY - 7 JUN 2023</p>
+					<div className="hidden lg:flex w-full min-h-screen bg-[url('./assets/homeBG.png')] bg-no-repeat bg-cover">
+						<div className="w-full min-h-screen flex flex-col justify-between pl-2 lg:pl-12 2xl:pr-12" style={{ background: 'linear-gradient(1.6deg, rgba(0, 0, 0, 0.5) 1.45%, rgba(0, 0, 0, 0) 69%), linear-gradient(182deg, rgba(0, 0, 0, 0.5) 2%, rgba(0, 0, 0, 0) 70%)' }}>
+							<NavBar /> 
+							<div className="text-white mb-6">
+								<p className="text-7xl ">SPIRIT OF AN ART</p>
+								<p className="text-3xl mt-3">ALEMAYEHU ZEWDIE</p>
+								<p className="text-3xl">25 MAY - 7 JUN 2023</p>
+							</div>
 						</div>
 						
 					</div>

@@ -10,6 +10,7 @@ export default function Thefooter() {
     <div>
         <div className='hidden lg:inline pb-4'>
             <div className='flex flex-row items-center justify-between'>
+            <div className='px-10 my-4'><LineWithWidth10 /></div>
                 <div className='w-1/2 max-w-xl p-12'>
                     <div className="w-full flex justify-end">
                         <img className='w-24' src={bgT} />
@@ -43,20 +44,20 @@ export default function Thefooter() {
                         <p className='text-lg text-[#6F6C90]'>Updates</p>
                     </div>
                     <div className='w-1/2 flex flex-col space-y-3'>
-                        <p className='text-xl font-bold text-[#170F49] mb-6'>Products</p>
-                        <p className='text-lg text-[#6F6C90]'>Features</p>
-                        <p className='text-lg text-[#6F6C90]'>Pricing</p>
-                        <p className='text-lg text-[#6F6C90]'>Case studies</p>
-                        <p className='text-lg text-[#6F6C90]'>Reviews</p>
-                        <p className='text-lg text-[#6F6C90]'>Updates</p>
+                        <p className='text-xl font-bold text-[#170F49] mb-6'>Company</p>
+                        <p className='text-lg text-[#6F6C90]'>About</p>
+                        <p className='text-lg text-[#6F6C90]'>Contact us</p>
+                        <p className='text-lg text-[#6F6C90]'>Careers</p>
+                        <p className='text-lg text-[#6F6C90]'>Culture</p>
+                        <p className='text-lg text-[#6F6C90]'>Blog</p>
                     </div>
                     <div className='w-1/2 flex flex-col space-y-3'>
-                        <p className='text-xl font-bold text-[#170F49] mb-6'>Products</p>
-                        <p className='text-lg text-[#6F6C90]'>Features</p>
-                        <p className='text-lg text-[#6F6C90]'>Pricing</p>
-                        <p className='text-lg text-[#6F6C90]'>Case studies</p>
-                        <p className='text-lg text-[#6F6C90]'>Reviews</p>
-                        <p className='text-lg text-[#6F6C90]'>Updates</p>
+                        <p className='text-xl font-bold text-[#170F49] mb-6'>Support</p>
+                        <p className='text-lg text-[#6F6C90]'>Getting started</p>
+                        <p className='text-lg text-[#6F6C90]'>Help center</p>
+                        <p className='text-lg text-[#6F6C90]'>Server status</p>
+                        <p className='text-lg text-[#6F6C90]'>Report a bug</p>
+                        <p className='text-lg text-[#6F6C90]'>Chat support</p>
                     </div>
                 </div>
                 
