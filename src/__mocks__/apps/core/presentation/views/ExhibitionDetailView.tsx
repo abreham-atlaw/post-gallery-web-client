@@ -75,7 +75,7 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 				  </div>
 			  	</div>
 				<div className="lg:h-16"></div>
-				<SlideShow images={this.state.exhibiton!.artworkIds} />
+				<SlideShow artworks={this.state.exhibiton!.artworks!} />
 				<div className="w-full lg:mt-24 p-4 lg:px-16">
 					<p className="text-5xl">{this.state.exhibiton!.name}</p>
 					<div className="flex flex-row items-center mt-10 mb-4">
@@ -113,22 +113,22 @@ export function RoutedExhibitionDetailView(){
 
 
 interface SlideShowProps {
-	images: string[];
+	artworks: Artwork[]
   }
   
-  const SlideShow: FC<SlideShowProps> = ({ images }) => {
+  const SlideShow: FC<SlideShowProps> = ({ artworks }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
   
 	const handlePrev = () => {
 	  if (activeIndex > 0) {
 		setActiveIndex(activeIndex - 1);
 	  } else {
-		setActiveIndex(images.length - 1);
+		setActiveIndex(artworks.length - 1);
 	  }
 	};
   
 	const handleNext = () => {
-	  if (activeIndex < images.length - 1) {
+	  if (activeIndex < artworks.length - 1) {
 		setActiveIndex(activeIndex + 1);
 	  } else {
 		setActiveIndex(0);
@@ -145,16 +145,16 @@ interface SlideShowProps {
 		</button>
 		<div
 		  className="flex flex-col items-center justify-end text-white text-center w-5/12 h-72 lg:h-[530px] bg-no-repeat bg-cover object-cover"
-		  style={{ backgroundImage: `url(${images[activeIndex]})` }}
+		  style={{ backgroundImage: `url(${artworks[activeIndex].images[0]})` }}
 		  
 		>
 			<div className="hidden lg:inline w-full pb-6 pt-6" style={{ 
 				background: "linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 1.9%, rgba(0, 0, 0, 0) 100%)" 
 			}}>
 			
-				<p className="text-3xl font-bold">THE VIVID JOURNEY, 2013</p>
-				<p className="text-2xl font-bold">ALEMAYEHU ZEWDIE </p>
-				<p className="text-2xl font-bold">1991</p>
+				<p className="text-3xl font-bold">{artworks[activeIndex].name}, 2013</p>
+				<p className="text-2xl font-bold">{artworks[activeIndex].artist!.fullName}</p>
+				<p className="text-2xl font-bold">{artworks[activeIndex].creationDate.getFullYear()}</p>
 			</div>
 		</div>
   
