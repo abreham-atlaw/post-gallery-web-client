@@ -133,11 +133,11 @@ const App: React.FC = () => {
           <div className='w-full flex flex-row space-x-2 mt-5'>
             <div className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid1} />
-              <p>Add artist</p>
+              <a href="/admin/artist/add">Add artist</a>
             </div>
             <div className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid2} />
-              <p>Add art</p>
+              <a href="/admin/artwork/add">Add art</a>
             </div>
             <div className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid3} />

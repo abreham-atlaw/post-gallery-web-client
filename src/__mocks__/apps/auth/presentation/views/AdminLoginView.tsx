@@ -60,20 +60,46 @@ export default class AdminLoginView extends ViewModelView<AdminLoginViewModel, a
 				{/* --------------------------- */}
 
 				<div className="hidden lg:flex lg:flex-row ">
+
+					{/* Left */}
+					<div className="w-6/12 min-h-screen flex items-center justify-center bg-[url('./assets/LGBG.png')] bg-center bg-cover ">
+						<div className="w-4/6 max-w-lg px-9 py-6 bg-[url('./assets/LGRegisterBG.png')] bg-cover bg-no-repeat bg-center rounded-2xl ">	
+							<p className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</p>	
+							<p className="mt-4 text-2xl font-medium leading-[28px]">Step into a world of imagination and inspiration, where every stroke of the brush and every splash of color tells a story - come and experience the breathtaking beauty of creativity at our art gallery</p>
+							
+							<div className="mx-auto flex flex-row justify-center items-center h-16 w-full  mt-8 bg-black rounded-full">
+								<img className="h-8 pr-3.5 bg-contain" src={Google} />		
+								<button className="font-medium text-2xl text-center" >Continue with Google</button>
+							</div>
+
+							<div className="flex flex-row items-center justify-center my-3 " >
+								<LineWithWidth10 />
+								<p className="font-medium text-xl px-3">Or</p>
+								<LineWithWidth10 />
+							</div>
+		
+							<div className="mx-auto flex flex-row justify-center items-center h-16 w-full mt-5 bg-white rounded-full">
+								<img className="h-8 pr-3.5 bg-contain" src={PGLogin} />		
+								<button className="font-medium text-2xl text-center text-black" >PostGallary Account</button>
+							</div>
+
+						</div>
+					</div>
+
 					
 					{/* Right */}
 
 					<div className="w-6/12 min-h-screen py-9 px-16 flex flex-col items-start justify-center bg-white text-black">
-						<p className="text-8xl font-semibold ">WELCOME</p>
-						<p className="text-5xl font-medium ">TO POST GALLERY ADMIN</p>
-						<p className="text-6xl mt-2 mb-4">SignIn</p>
+						<p className="text-6xl font-semibold ">WELCOME</p>
+						<p className="text-5xl font-medium ">TO ADMIN DASHBOARD</p>
+						<p className="text-4xl mt-2 ">SignIn</p>
 						<form className="w-full" onSubmit={this.handleSubmit}>
 							<StatusToast asyncState={this.state} errorText="Incorrect Username or Password"/>
 
 							<p className="text-xl mt-2.5">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.getViewModel().syncState}/>
 							<p className="text-xl mt-2.5">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.getViewModel().syncState}/>
-							<div className="flex justify-center items-center w-56 m-auto mt-9 h-20 pt-2 pb-2.5 bg-black text-white rounded-full">
-								<button className="justify-center text-3xl">Continue</button>
+							<div className="flex justify-center items-center w-56 m-auto mt-9 h-14 pt-2 pb-2.5 bg-black text-white rounded-full">
+								<button className="justify-center text-2xl">Continue</button>
 							</div>
 					</form>
 					</div>

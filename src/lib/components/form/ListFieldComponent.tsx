@@ -37,7 +37,7 @@ export default class ListFieldComponent<T> extends FieldComponent<(T|null)[], Li
 						child
 					}
 				</ul>
-				<button className="flex justify-center items-center px-12  h-11 bg-white text-black rounded-full border-2 border-[#D6D6D6] cursor-pointer" onClick={() => {this.add()}}>
+				<button className="flex justify-center items-center px-12 mt-4 h-11 bg-white text-black rounded-full border-2 border-[#D6D6D6] cursor-pointer" onClick={() => {this.add()}}>
 					<p className="justify-center text-xl">Add</p>
 				</button>
 

@@ -93,7 +93,6 @@ export default class LoginView extends React.Component<any, LoginState>{
 					<div className="w-6/12 min-h-screen py-3.5 px-16 flex flex-col items-start justify-center bg-white text-black">
 						<p className="text-6xl font-semibold ">WELCOME</p>
 						<p className="text-5xl font-medium ">TO POST GALLERY</p>
-						<p className="text-3xl">Create your post gallery account</p>
 						<p className="text-4xl mt-2 ">SignIn</p>
 						<StatusToast asyncState={this.state} errorText={"Incorrect email or password."} />
 						<form className="w-full" onSubmit={this.handleSubmit}>
@@ -105,7 +104,7 @@ export default class LoginView extends React.Component<any, LoginState>{
 								<p className="text-2xl font-medium"><a href="/auth/signup">Create account</a></p>
 							</div>
 							<div className="flex justify-center items-center w-56 m-auto mt-4 h-16 bg-black text-white rounded-full">
-								<button className="justify-center text-3xl">Continue</button>
+								<button className="justify-center text-2xl">Continue</button>
 							</div>
 					</form>
 					</div>

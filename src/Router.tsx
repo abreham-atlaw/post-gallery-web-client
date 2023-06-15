@@ -9,7 +9,6 @@ import SearchView from "./__mocks__/apps/core/presentation/views/SearchView";
 import { RoutedArtworkDetailView } from "./__mocks__/apps/core/presentation/views/ArtworkDetailView";
 import AddArtistView from "./__mocks__/apps/admin/presentation/views/AddArtistView";
 import AddArtworkView from "./__mocks__/apps/admin/presentation/views/AddArtworkView";
-import CartView from "./__mocks__/apps/core/presentation/views/CartViewNew";
 import AddExhibitionView from "./__mocks__/apps/admin/presentation/views/AddExhibitionView";
 import ExhibitionListView from "./__mocks__/apps/core/presentation/views/ExhibitionListView";
 import ExhibitionDetailView, { RoutedExhibitionDetailView } from "./__mocks__/apps/core/presentation/views/ExhibitionDetailView";
@@ -21,6 +20,7 @@ import OrderListView from "./__mocks__/apps/admin/presentation/views/OrdersListV
 import AdminLoginViewModel from "./apps/auth/application/viewmodels/adminloginViewModel";
 import AdminLoginView from "./__mocks__/apps/auth/presentation/views/AdminLoginView";
 import { Role } from "./apps/auth/data/models/accounts";
+import DashBoardView from "./__mocks__/apps/admin/presentation/views/DashboardView";
 
 
 export default class PGRouter extends React.Component{
@@ -71,7 +71,13 @@ export default class PGRouter extends React.Component{
 
 
 
+				
 
+				<Route path="/admin/dashboard" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<DashBoardView/>
+					</AuthenticatedComponent>
+				} />
 
 				<Route path="/admin/artist/add" element={
 					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
