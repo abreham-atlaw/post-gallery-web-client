@@ -8,10 +8,10 @@ import { FieldComponent, FieldComponentProps } from '../form/FieldComponent';
 export default function Thefooter() {
   return (
     <div>
-        <div className='hidden lg:inline pb-4'>
-            <div className='flex flex-row items-center justify-between'>
-            <div className='px-10 my-4'><LineWithWidth10 /></div>
-                <div className='w-1/2 max-w-xl p-12'>
+        <div className='hidden lg:inline'>
+            <div className='w-full flex flex-row items-center justify-between m-auto max-w-7xl pl-12 pr-10 pt-10 pb-6'>
+            
+                <div className='w-1/2 max-w-xl pl-3 mr-16'>
                     <div className="w-full flex justify-end">
                         <img className='w-24' src={bgT} />
                     </div>
@@ -35,7 +35,7 @@ export default function Thefooter() {
                     </div>
                 </div>
                 <div className='w-1/2 flex flex-row justify-between'>
-                    <div className='w-1/2 flex flex-col space-y-3'>
+                    <div className='w-1/2 flex flex-col space-y-2.5'>
                         <p className='text-xl font-bold text-[#170F49] mb-6'>Products</p>
                         <p className='text-lg text-[#6F6C90]'>Features</p>
                         <p className='text-lg text-[#6F6C90]'>Pricing</p>
@@ -43,7 +43,7 @@ export default function Thefooter() {
                         <p className='text-lg text-[#6F6C90]'>Reviews</p>
                         <p className='text-lg text-[#6F6C90]'>Updates</p>
                     </div>
-                    <div className='w-1/2 flex flex-col space-y-3'>
+                    <div className='w-1/2 flex flex-col space-y-2.5'>
                         <p className='text-xl font-bold text-[#170F49] mb-6'>Company</p>
                         <p className='text-lg text-[#6F6C90]'>About</p>
                         <p className='text-lg text-[#6F6C90]'>Contact us</p>
@@ -51,7 +51,7 @@ export default function Thefooter() {
                         <p className='text-lg text-[#6F6C90]'>Culture</p>
                         <p className='text-lg text-[#6F6C90]'>Blog</p>
                     </div>
-                    <div className='w-1/2 flex flex-col space-y-3'>
+                    <div className='w-1/2 flex flex-col space-y-2.5'>
                         <p className='text-xl font-bold text-[#170F49] mb-6'>Support</p>
                         <p className='text-lg text-[#6F6C90]'>Getting started</p>
                         <p className='text-lg text-[#6F6C90]'>Help center</p>
@@ -62,8 +62,8 @@ export default function Thefooter() {
                 </div>
                 
             </div>       
-            <div className='px-10 my-4'><LineWithWidth10 /></div>
-            <div className='flex flex-row justify-between px-14'>
+            <div className='px-20 my-4'><LineWithWidth10 /></div>
+            <div className='flex flex-row justify-between px-20 pb-4'>
                 <div className='flex flex-row'>
                     <p className='text-lg text-[#6F6C90] mr-16'>COPYRIGHT © 2023 POST GALLERY</p>
                     <p className='text-lg text-[#6F6C90] underline'>SITE BY <span className='text-black text-md'> zenon-X</span></p>

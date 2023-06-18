@@ -69,7 +69,9 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, isOpen, se
   return (
     <div className="bg-[#F2F2F2] w-52 pt-16 p-4 px-8 absolute z-50 h-full">
       <button className='lg:hidden absolute right-6' onClick={() => setIsOpen(false)}><img className='w-4 h-4' src={close} /></button>
-      <img src={pg} alt="logo" className="w-14 mb-20 mx-auto" />
+      <a href='/'>
+        <img src={pg} alt="logo" className="w-14 mb-20 mx-auto" />
+      </a>
       <SidebarItem 
         title="Dashboard" 
         active={activeItem === 'Page1'}
@@ -106,7 +108,7 @@ const App: React.FC = () => {
       <div className="flex-grow bg-white">
         <button className="p-4" onClick={() => setIsSidebarOpen(true)}><img className='w-4' src={menu} /></button>
         {/* Your content here */}
-        <div className='ml-64 w-1/2'>
+        <div className='m-2 px-2 lg:ml-64 w-full lg:w-1/2'>
           <SearchBar />
           <p className='text-lg mt-4 mb-10 font-semibold'>In the last 30 days,</p>
           <div className='w-full flex flex-row space-x-2'>

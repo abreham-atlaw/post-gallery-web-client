@@ -36,7 +36,7 @@ export default class LoginView extends React.Component<any, LoginState>{
 		return (
 			<div className="bg-[url('./assets/LoginRegisterBG.png')] bg-center bg-cover min-h-screen w-screen text-white">
 				<div className="lg:hidden p-6">
-					<p className="text-6xl font-semibold">PG</p>
+					<a href="/" className="text-6xl font-semibold">PG</a>
 					<p className="text-6xl font-medium mt-8">WELCOME</p>
 					<p className="text-3xl font-normal leading-6 ">TO POST GALLERY</p>
 					<p className="text-xl font-light">Login to your post gallery account</p>
@@ -66,7 +66,7 @@ export default class LoginView extends React.Component<any, LoginState>{
 					{/* Left */}
 					<div className="w-6/12 min-h-screen flex items-center justify-center bg-[url('./assets/LGBG.png')] bg-center bg-cover ">
 						<div className="w-4/6 max-w-lg px-9 py-6 bg-[url('./assets/LGRegisterBG.png')] bg-cover bg-no-repeat bg-center rounded-2xl ">	
-							<p className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</p>	
+							<a href="/" className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</a>	
 							<p className="mt-4 text-2xl font-medium leading-[28px]">Step into a world of imagination and inspiration, where every stroke of the brush and every splash of color tells a story - come and experience the breathtaking beauty of creativity at our art gallery</p>
 							
 							<div className="mx-auto flex flex-row justify-center items-center h-16 w-full  mt-8 bg-black rounded-full" onClick={this.handleLoginWithGoogle}>

@@ -53,7 +53,7 @@ export class UnitFieldComponent extends FieldComponent<number, UnitFieldComponen
 	protected constructInputNode(value: number | null, callback: Function): ReactNode {
 		let id = this.generateID("phone-select")
 		return (
-			<div className="flex rounded-md h-14 text-black pl-3 border-[#D6D6D6] border-[3px]  lg:h-16 overflow-hidden">
+			<div className="flex rounded-md h-14 text-black pl-3 pr-2 border-[#D6D6D6] border-[3px]  lg:h-16 overflow-hidden">
             <select 
 				id={id}
                 className="bg-white pr-2">

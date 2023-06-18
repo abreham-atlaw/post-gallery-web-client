@@ -84,7 +84,7 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 					</div>
 					<div className="flex flex-row justify-between text-xl text-left pr-8">
 						<p>Shipping price:</p>
-						<p>{this.state.pricing!.shippingPrice}</p> 
+						<p>{this.state.pricing!.artPrice}</p> 
 					</div>
 					<div className="flex flex-row justify-between text-xl pr-8">
 						<p>VAT 15%:  </p>
@@ -92,7 +92,7 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 					</div>
 					<div className="mt-2.5 flex flex-row justify-between text-2xl font-medium pr-8">
 						<p>Total price:  </p>
-						<p>{this.state.pricing?.getTotal()}</p>  
+						<p>{this.state.pricing!.artPrice + this.state.pricing!.artPrice + this.state.pricing!.vat}</p>  
 					</div>
 					<div className="flex justify-center items-center w-full m-auto mt-4 mb-6 pt-3 pb-4 bg-black text-white rounded-md" onClick={this.handleCheckout}>
 						<button className="justify-center text-2xl">Place Order</button>

@@ -26,8 +26,8 @@ export default class HomeView extends ViewModelView<ViewModel<BaseState>>{
 					<div className="w-full">
 						<div className="bg-[#F9F9F9] pl-2 lg:pl-12 2xl:pr-12  h-min">
 							<div className="flex flex-col ">
-								<NavBar /> 
-								<div className="flex flex-col px-3">
+								<NavBar isDark={true} /> 
+								<div className="flex flex-col px-2">
 									<div className="flex flex-row w-9/12 max-w-screen-2xl md:justify-start lg:justify-between items-end mt-8 lg:mt-14">
 										<div className="lg:w-20 w-16 lg:h-60 h-44 mb-4 lg:mb-6 lg:mr-3 mr-1 bg-[url('./assets/homeText.png')] bg-contain bg-bottom bg-no-repeat"></div>
 										<p className="text-5xl sm:text-7xl md:max-w-lg lg:max-w-none lg:text-8xl xl:text-9xl font-semibold leading-[60px] lg:leading-[100px] xl:leading-[130px]">Experience the Artistic Beat of Post Gallery</p>
@@ -48,7 +48,7 @@ export default class HomeView extends ViewModelView<ViewModel<BaseState>>{
 				<div>
 					<div className="hidden lg:flex w-full min-h-screen bg-[url('./assets/homeBG.png')] bg-no-repeat bg-cover">
 						<div className="w-full min-h-screen flex flex-col justify-between pl-2 lg:pl-12 2xl:pr-12" style={{ background: 'linear-gradient(1.6deg, rgba(0, 0, 0, 0.5) 1.45%, rgba(0, 0, 0, 0) 69%), linear-gradient(182deg, rgba(0, 0, 0, 0.5) 2%, rgba(0, 0, 0, 0) 70%)' }}>
-							<NavBar /> 
+							<NavBar isDark={false} /> 
 							<div className="text-white mb-6">
 								<p className="text-7xl ">SPIRIT OF AN ART</p>
 								<p className="text-3xl mt-3">ALEMAYEHU ZEWDIE</p>

@@ -8,6 +8,7 @@ import back from '@/assets/back.png'
 import next from '@/assets/forward.png'
 import Thefooter from "@/lib/components/footer/footer";
 import Artwork from "@/apps/core/data/models/artwork";
+import NavBar from "@/lib/components/navBar/navBar";
 
 const data = [
 	{
@@ -62,21 +63,12 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 	onCreateMain(): ReactNode {
 		return (
 			<div>
-				<div className='hidden lg:flex flex-row items-center justify-between pr-10 pl-20 pt-14 '>
-					<div className='flex flex-row items-center space-x-10 text-3xl font-medium leading-none'>
-						<img className='w-16' src={PG} />
-					</div>
-					<div className='flex flex-row items-center space-x-10  text-3xl font-medium leading-none text-black'>
-						<a href="/exhibitions">Exhibition</a>
-						<a href="/search">Shop</a>
-						<a href="/search">Contact</a>
-						<a href="/search">About</a>
-
-				  </div>
+				<div className='lg:pr-10 lg:pl-20 '>
+					<NavBar isDark={true} />
 			  	</div>
-				<div className="lg:h-16"></div>
+				<div className="lg:h-12"></div>
 				<SlideShow artworks={this.state.exhibiton!.artworks!} />
-				<div className="w-full lg:mt-24 p-4 lg:px-16">
+				<div className="w-full lg:mt-20 p-4 lg:px-16">
 					<p className="text-5xl">{this.state.exhibiton!.name}</p>
 					<div className="flex flex-row items-center mt-10 mb-4">
 						<p className="text-2xl text-black mr-8 uppercase">{this.state.exhibiton!.artist!.fullName}</p>
@@ -94,9 +86,6 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 				</div>
 				<div className="w-full border-b border-[#D9DBE9] mt-10"></div>
 				<Thefooter />
-				{this.state.exhibiton!.name}<br/>
-				{this.state.exhibiton!.venue}
-				
 			</div>
 		)
 	}

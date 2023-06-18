@@ -8,9 +8,10 @@ import ListFieldComponent from "@/lib/components/form/ListFieldComponent";
 import TextFieldComponent, { TextBoxComponent } from "@/lib/components/form/TextFieldComponent";
 import Field from "@/lib/forms/fields";
 import { AsyncStatus } from "@/lib/state/asyncState";
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { UnitFieldComponent } from "@/lib/components/form/PrefixInputFieldComponent";
 import StatusToast from "@/lib/components/status/StatusToast";
+import Upload from '@/assets/Upload.png'
 
 
 export default abstract class WriteArtworkView<P> extends React.Component<P, WriteArtworkState>{
@@ -40,7 +41,7 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 
 			<div>
 				<form onSubmit={this.handleSubmit} className="px-14 py-12 ">
-					<p className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Art</span></p>
+					<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Art</span></a>
 					<div className="w-full pt-10 pb-6 mb-3 border-b-2 border-[#C1C1C1] flex flex-row justify-between">
 						<p className="text-3xl lg:text-4xl font-bold">Upload Art</p>
 						<div className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
@@ -59,9 +60,7 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 							<TextBoxComponent field={this.state.form.description} />
 							<div className="h-4"></div>
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Picture  <span className="text-red-500 required-dot"> *</span></p>
-							<ListFieldComponent field={this.state.form.images} generator={
-								(field: Field<string>) => <DefaultImageUploadComponent field={field} />
-							}/>
+							<ImageUploader />
 							<div className="h-4"></div>
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Dimension  <span className="text-red-500 required-dot"> *</span></p>
 							<div className="flex flex-row justify-between">
@@ -76,12 +75,8 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 							{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Full name:</p> <TextFieldComponent field={this.state.form} syncer={this.viewModel.syncState}/> */}
 							
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Price  <span className="text-red-500 required-dot"> *</span></p>
-							<UnitFieldComponent field={this.state.form.price} syncer={this.viewModel.syncState} options={["USD"]}/>
+							<UnitFieldComponent field={this.state.form.price} syncer={this.viewModel.syncState} options={["USD","ETB"]}/>
 
-							<div className="w-full mt-2.5 ">
-								<p className="text-xl text-[#5E5E64] font-medium lg:mb-2">Status <span className="text-red-500 required-dot"> *</span></p>
-								<EnumFieldComponent field={this.state.form.status} enumClass={Status} />
-							</div>
 						</div>
 					</div>
 				</form>
@@ -92,3 +87,64 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 
 	
 }
+
+
+
+type ImageUploaderProps = {};
+
+const ImageUploader: React.FC<ImageUploaderProps> = () => {
+    const [selectedImages, setSelectedImages] = useState<string[]>([]);
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            const fileArray = Array.from(e.target.files).map((file) =>
+                URL.createObjectURL(file)
+            );
+
+            setSelectedImages((prevImages) => prevImages.concat(fileArray));
+        }
+    };
+
+	const removeImage = (removeIndex: number) => {
+        setSelectedImages(selectedImages.filter((_, index) => index !== removeIndex));
+    };
+
+    useEffect(() => {
+        return () => {
+            // Make sure to revoke the data uris to avoid memory leaks
+            selectedImages.forEach((url) => URL.revokeObjectURL(url));
+        };
+    }, [selectedImages]);
+
+    return (
+        <div className="flex flex-col p-6 justify-center items-center border-dashed border-2 rounded-lg border-[#D6D6D6]">
+			<div className="flex flex-col lg:flex-row justify-between items-center w-full">
+				<img className="h-16 bg-contain" src={Upload}  />
+				<div className="mb-2 lg:mb-0 text-center lg:text-start">
+					<p className="text-xl  font-medium">Upload your images here</p>
+					<p className="text-xl  text-[#D6D6D6]">Supported formates: JPEG, JPG</p>
+					<p className="text-md  text-black">Upload 3-5 photos</p>
+				</div>
+				<label htmlFor="image-upload" className="flex justify-center items-center px-12  h-11 bg-white text-black rounded-full border-2 border-[#D6D6D6] cursor-pointer">
+				<p className="justify-center text-xl">Browse</p>
+				</label>
+				<input 
+					id="image-upload"
+					type="file"
+					accept="image/*"
+					multiple
+					onChange={handleImageChange}
+					className="hidden"
+				/>
+			</div>
+            <div className="flex flex-wrap px-8">
+                {selectedImages.map((image, idx) => (
+                    <div key={idx} className="w-32 h-48 mr-3 relative">
+                        <img src={image} className="object-cover w-full h-full mt-4" alt=""/>
+						<button className="absolute top-2 right-2 bg-red-500 text-white font-bold px-2 rounded-full" onClick={() => removeImage(idx)}>X</button>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}; 

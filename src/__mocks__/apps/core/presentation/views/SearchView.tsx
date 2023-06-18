@@ -66,7 +66,7 @@ export default class SearchView extends React.Component<any, SearchState>{
 					{/* Left */}
 					<div className="w-6/12 min-h-screen flex items-center justify-center bg-[url('./assets/LGBG.png')] bg-center bg-cover text-white">
 						<div className="w-4/6 xl:max-w-lg px-4 py-6 bg-[url('./assets/LGRegisterBG.png')] bg-cover bg-no-repeat bg-center rounded-2xl ">	
-							<p className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</p>	
+							<a href="/" className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</a>	
 							<p className="mt-4 text-2xl font-medium leading-[28px] ">Discover the magic of art and add a touch of elegance to your home or office. Our art gallery offers a stunning collection of original paintings, sculptures, and prints that are sure to captivate your senses and leave you in awe. Whether you're a seasoned art collector or a first-time buyer, our knowledgeable staff will guide you through the selection process and help you find the perfect piece to suit your taste and budget. Don't miss out on this opportunity to own a piece of art that will inspire you for years to come. Put the art id of the art your interested in and acquire it in a few days.</p>
 
 						</div>

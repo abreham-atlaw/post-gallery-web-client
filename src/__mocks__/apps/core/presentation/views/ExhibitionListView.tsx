@@ -7,6 +7,7 @@ import PG from '@/assets/PG.png'
 import art from '@/assets/exhibition.png'
 import Thefooter from "@/lib/components/footer/footer";
 import { Link } from "react-router-dom";
+import NavBar from "@/lib/components/navBar/navBar";
 
 
 
@@ -23,19 +24,11 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 	onCreateMain(): ReactNode {
 		return (
 			<div>
-				<div className='hidden lg:flex flex-row items-center justify-between pr-10 pl-20 pt-14 '>
-					<div className='flex flex-row items-center space-x-10 text-3xl font-medium leading-none'>
-						<img className='h-10' src={PG} />
-					</div>
-					<div className='flex flex-row items-center space-x-10  text-3xl font-medium leading-none text-black'>
-						<a href="/exhibitions">Exhibition</a>
-						<a href="/search">Shop</a>
-						<a href="/search">Contact</a>
-				  </div>
-
+				<div className='lg:pr-10 lg:pl-20'>
+					<NavBar isDark={true} />
 			  	</div>
-				<div className="mt-8 mb-12 px-10">
-					<div className="w-full flex flex-row items-center justify-center mt-14 mb-8"><p className="pl-8 pr-4 text-2xl text-[#8E8E8E]">CURRENT</p> <LineWithWidth10 /></div>
+				<div className="mt-8 mb-12 pl-20 pr-10">
+					<div className="w-full flex flex-row items-center justify-center mt-8 mb-8"><p className=" text-2xl text-[#8E8E8E]">CURRENT</p> <LineWithWidth10 /></div>
 					{
 						this.state.currentExhibitions!.map(
 							(exhibition: Exhibition) => {
@@ -43,7 +36,7 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 							}
 						)
 					}
-					<div className="w-full flex flex-row items-center justify-center mt-24 mb-8"><p className="pl-8 pr-4 text-2xl text-[#8E8E8E]">UPCOMING</p> <LineWithWidth10 /></div>
+					<div className="w-full flex flex-row items-center justify-center mt-24 mb-8"><p className="text-2xl text-[#8E8E8E]">UPCOMING</p> <LineWithWidth10 /></div>
 					{
 						this.state.upcomingExhibitions!.map(
 							(exhibition: Exhibition) => {
@@ -52,6 +45,8 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 						)
 					}
 				</div>
+				<div className="w-full border-b border-[#D9DBE9] mt-20"></div>
+				<Thefooter />
 			</div>
 				
 		)
