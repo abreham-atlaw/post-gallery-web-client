@@ -66,20 +66,20 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 				<div className='lg:pr-10 lg:pl-20 '>
 					<NavBar isDark={true} />
 			  	</div>
-				<div className="lg:h-12"></div>
+				<div className="h-10 lg:h-12"></div>
 				<SlideShow artworks={this.state.exhibiton!.artworks!} />
-				<div className="w-full lg:mt-20 p-4 lg:px-16">
-					<p className="text-5xl">{this.state.exhibiton!.name}</p>
-					<div className="flex flex-row items-center mt-10 mb-4">
-						<p className="text-2xl text-black mr-8 uppercase">{this.state.exhibiton!.artist!.fullName}</p>
-						<p className="text-2xl text-[#787878]">{this.state.exhibiton!.dateRange.startDate.toDateString()} - {this.state.exhibiton!.dateRange.endDate.toDateString()}</p>
+				<div className="w-full px-6 mt-8 lg:mt-20 lg:p-4 lg:px-16">
+					<p className="text-4xl lg:text-5xl">{this.state.exhibiton!.name}</p>
+					<div className="flex flex-row items-center my-2 lg:mt-10 lg:mb-4 truncate">
+						<p className="text-base lg:text-2xl text-black mr-2 lg:mr-8 uppercase">{this.state.exhibiton!.artist!.fullName}</p>
+						<p className="text-base lg:text-2xl text-[#787878]">{this.state.exhibiton!.dateRange.startDate.toDateString()} - {this.state.exhibiton!.dateRange.endDate.toDateString()}</p>
 					</div>
-					<p className="text-2xl text-[#616161] leading[28px]">
+					<p className="text-lg lg:text-2xl text-[#787878] leading-[18px] lg:leading-[28px]">
 					{this.state.exhibiton!.description}
 					</p>
 				</div>
-				<div className="w-full flex flex-row items-center justify-center mt-14 mb-8"><p className="pl-16 pr-4 text-2xl text-[#8E8E8E]">ARTWORKS</p> <LineWithWidth10 /></div>
-				<div className="w-full flex justify-center items-center p-4 py-8 lg:px-16">
+				<div className="w-full flex flex-row items-center justify-center mt-6 mb-3 lg:mt-14 lg:mb-8"><p className="pl-6 lg:pl-16 text-base lg:text-2xl text-[#8E8E8E]">ARTWORKS</p> <LineWithWidth10 /></div>
+				<div className="w-full flex justify-center items-center p-4 lg:py-8 lg:px-16">
 					<Grid 
 						data={this.state.exhibiton!.artworks!}						  // .  
 					/>
@@ -125,33 +125,33 @@ interface SlideShowProps {
 	};
   
 	return (
-	  <div className="w-full p-4 m-auto flex flex-row items-center justify-between lg:px-28">
+	  <div className="w-full px-3 lg:p-4 m-auto flex flex-row items-center justify-between lg:px-28">
 		<button
-		  className="p-2 bg-white opacity-50"
+		  className=" lg:p-2"
 		  onClick={handlePrev}
 		>
-		  <img className="w-10 h-12" src={back} />
+		  <img className="w-4 h-5 lg:w-10 lg:h-12" src={back} />
 		</button>
 		<div
-		  className="flex flex-col items-center justify-end text-white text-center w-5/12 h-72 lg:h-[530px] bg-no-repeat bg-cover object-cover"
+		  className="flex flex-col items-center justify-end text-white text-center w-9/12 lg:w-5/12 h-80 lg:h-[530px] bg-no-repeat bg-cover object-cover"
 		  style={{ backgroundImage: `url(${artworks[activeIndex].images[0]})` }}
 		  
 		>
-			<div className="hidden lg:inline w-full pb-6 pt-6" style={{ 
+			<div className="hidden lg:inline w-full pb-2 lg:pb-6 pt-6" style={{ 
 				background: "linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 1.9%, rgba(0, 0, 0, 0) 100%)" 
 			}}>
 			
-				<p className="text-3xl font-bold">{artworks[activeIndex].name}, 2013</p>
-				<p className="text-2xl font-bold">{artworks[activeIndex].artist!.fullName}</p>
-				<p className="text-2xl font-bold">{artworks[activeIndex].creationDate.getFullYear()}</p>
+				<p className="text-3xl font-medium lg:font-bold">{artworks[activeIndex].name}, 2013</p>
+				<p className="text-2xl lg:font-bold">{artworks[activeIndex].artist!.fullName}</p>
+				<p className="text-2xl lg:font-bold">{artworks[activeIndex].creationDate.getFullYear()}</p>
 			</div>
 		</div>
   
 		<button
-		  className="p-2 bg-white opacity-50"
+		  className="lg:p-2 "
 		  onClick={handleNext}
 		>
-		  <img className="w-10 h-12" src={next} />
+		  <img className="w-4 h-5 lg:w-10 lg:h-12" src={next} />
 		</button>
 	  </div>
 	);
@@ -172,7 +172,7 @@ interface SlideShowProps {
 
 const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle }) => (
     <div 
-        className="w-full h-72  bg-cover bg-center"
+        className="w-full h-44 lg:h-72  bg-cover bg-center"
         style={{ backgroundImage: `url(${imageUrl})` }}
     >
 		<div className="w-full h-full flex items-end justify-center pb-4" style={{ backgroundImage: 'linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0) 100%)'}}>
@@ -189,7 +189,7 @@ interface GridProps {
 }
 
 const Grid: React.FC<GridProps> = ({ data }) => (
-    <div className="w-full grid grid-flow-row-dense grid-cols-2 lg:grid-cols-4 gap-6 gap-y-14">
+    <div className="w-full px-2 lg:px-0 grid grid-flow-row-dense grid-cols-2 lg:grid-cols-4 lg:gap-6 gap-4 gap-y-6 lg:gap-y-14">
         {data.map((item, index) => (
             <GridItem key={index} imageUrl={item.images[0]} title={item.artist!.fullName} subtitle={item.name} />
         ))}

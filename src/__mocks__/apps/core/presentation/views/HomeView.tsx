@@ -7,61 +7,101 @@ import homeText from '@/assets/homeText.png'
 import artwork from '@/assets/artwork.png'
 import ViewModel from "@/lib/viewmodel/viewmodel";
 import BaseState from "@/lib/state/baseState";
+import back from '@/assets/backWhite.png'
+import next from '@/assets/nextWhite.png'
 
 
-export default class HomeView extends ViewModelView<ViewModel<BaseState>>{
-	
-	onCreateViewModel(state: BaseState): ViewModel<BaseState> {
-		return new ViewModel(state, this.setState.bind(this))
-	}
-	
-	onCreateState(): BaseState {
-		return new BaseState()
-	}
+const images = [
+    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/homeBG.png?alt=media&token=7aba3738-b41b-46aa-90e4-9392badbd9af',
+    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/3.jpg?alt=media&token=7bf8fc20-5916-42af-978b-650192bef25c',
+    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/01.webp?alt=media&token=c2c910d6-fa0f-4e5e-a60c-99f7f97ff204'
+];
 
-	onCreateMain(): React.ReactNode {
-		return(
-			<div>
-				<div className="flex flex-row lg:hidden">
-					<div className="w-full">
-						<div className="bg-[#F9F9F9] pl-2 lg:pl-12 2xl:pr-12  h-min">
-							<div className="flex flex-col ">
-								<NavBar isDark={true} /> 
-								<div className="flex flex-col px-2">
-									<div className="flex flex-row w-9/12 max-w-screen-2xl md:justify-start lg:justify-between items-end mt-8 lg:mt-14">
-										<div className="lg:w-20 w-16 lg:h-60 h-44 mb-4 lg:mb-6 lg:mr-3 mr-1 bg-[url('./assets/homeText.png')] bg-contain bg-bottom bg-no-repeat"></div>
-										<p className="text-5xl sm:text-7xl md:max-w-lg lg:max-w-none lg:text-8xl xl:text-9xl font-semibold leading-[60px] lg:leading-[100px] xl:leading-[130px]">Experience the Artistic Beat of Post Gallery</p>
-									</div>
-									<div className="h-8 lg:h-10 bg-[url('./assets/homeSocials.png')] bg-contain bg-no-repeat"></div>
-								</div>
-								<div className="m-auto xl:mt-16 flex flex-row justify-center items-center w-44 lg:w-72 mt-8 lg:mt-16 h-14 lg:h-20 border-[3px] lg:border-2 bg-black border-black text-white rounded-full">
-									<button className="lg:text-2xl text-xl">View Gallary</button>
-								</div>
-								<div className="h-10 lg:h-16"></div>
-							</div>
-						</div>
-						<div className="h-3" ></div>
+class SlideState {
+    slideIndex: number;
+    bgImage: string;
 
-					</div>
-					
-				</div>
-				<div>
-					<div className="hidden lg:flex w-full min-h-screen bg-[url('./assets/homeBG.png')] bg-no-repeat bg-cover">
-						<div className="w-full min-h-screen flex flex-col justify-between pl-2 lg:pl-12 2xl:pr-12" style={{ background: 'linear-gradient(1.6deg, rgba(0, 0, 0, 0.5) 1.45%, rgba(0, 0, 0, 0) 69%), linear-gradient(182deg, rgba(0, 0, 0, 0.5) 2%, rgba(0, 0, 0, 0) 70%)' }}>
-							<NavBar isDark={false} /> 
-							<div className="text-white mb-6">
-								<p className="text-7xl ">SPIRIT OF AN ART</p>
-								<p className="text-3xl mt-3">ALEMAYEHU ZEWDIE</p>
-								<p className="text-3xl">25 MAY - 7 JUN 2023</p>
-							</div>
-						</div>
-						
-					</div>
-					<Thefooter />
-				</div>
-			</div>
-			
-		)
-	}
-
+    constructor() {
+        this.slideIndex = 0;
+        this.bgImage = '';
+    }
 }
+
+class HomeViewState extends BaseState {
+    slideState: SlideState;
+
+    constructor() {
+        super();  // initialize BaseState
+        this.slideState = new SlideState();  // initialize SlideState
+    }
+}
+
+export default class HomeView extends ViewModelView<ViewModel<HomeViewState>> {
+    onCreateViewModel(state: HomeViewState): ViewModel<HomeViewState> {
+        return new ViewModel(state, this.setState.bind(this))
+    }
+
+    onCreateState(): HomeViewState {
+        const state = new HomeViewState();
+        state.slideState.slideIndex = 0;
+        state.slideState.bgImage = images[0];
+        return state;
+    }
+
+	nextSlide = () => {
+		const newIndex = (this.state.slideState.slideIndex + 1) % images.length;
+		this.setState({
+			...this.state,
+			slideState: {
+				...this.state.slideState,
+				slideIndex: newIndex,
+				bgImage: images[newIndex]
+			}
+		});
+		console.log(this.state);
+	}
+
+	prevSlide = () => {
+		const newIndex = this.state.slideState.slideIndex > 0 ? this.state.slideState.slideIndex - 1 : images.length - 1;
+		this.setState({
+			...this.state,
+			slideState: {
+				...this.state.slideState,
+				slideIndex: newIndex,
+				bgImage: images[newIndex]
+			}
+		});
+	}
+
+    onCreateMain(): React.ReactNode {
+		console.log('Rendering with bgImage:', this.state.slideState.bgImage);
+        return(
+            <div>
+                <div>
+                    <div className="flex w-full min-h-screen bg-no-repeat bg-cover" style={{ backgroundImage: `url(${this.state.slideState.bgImage})` }}>
+                        <div className="w-full min-h-screen flex flex-col justify-between  lg:pl-12 2xl:pr-12" style={{ background: 'linear-gradient(1.6deg, rgba(0, 0, 0, 0.5) 1.45%, rgba(0, 0, 0, 0) 69%), linear-gradient(182deg, rgba(0, 0, 0, 0.5) 2%, rgba(0, 0, 0, 0) 70%)'}}>
+                            <NavBar isDark={false} /> 
+							<div className="flex flex-row justify-between items-center">
+								<div className="text-white mb-6 pl-4">
+									<p className="text-3xl lg:text-7xl ">SPIRIT OF AN ART</p>
+									<p className="text-xl lg:text-3xl mt-3">ALEMAYEHU ZEWDIE</p>
+									<p className="text-xl lg:text-3xl">25 MAY - 7 JUN 2023</p>
+								</div>
+								<div className=" flex flex-row justify-between items-center pr-14">
+									<button onClick={this.nextSlide}>
+										<img className="mr-12 w-4 h-5 lg:w-5 lg:h-8" src={back} />
+									</button>
+									<button onClick={this.prevSlide}>
+										<img className="w-4 h-5 lg:w-5 lg:h-8" src={next} />
+									</button>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                    <Thefooter />
+                </div>
+            </div>
+        )
+    }
+}
+
