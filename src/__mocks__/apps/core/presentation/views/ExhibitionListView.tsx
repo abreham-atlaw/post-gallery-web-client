@@ -5,7 +5,7 @@ import ViewModelView from "@/lib/components/views/ViewModelView";
 import { ReactNode, useState } from "react";
 import PG from '@/assets/PG.png'
 import art from '@/assets/exhibition.png'
-import Thefooter from "@/lib/components/footer/footer";
+import TheFooter from "@/lib/components/footer/footer";
 
 
 

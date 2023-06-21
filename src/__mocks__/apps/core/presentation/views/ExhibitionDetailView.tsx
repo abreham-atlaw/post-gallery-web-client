@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import PG from '@/assets/PG.png'
 import back from '@/assets/back.png'
 import next from '@/assets/forward.png'
-import Thefooter from "@/lib/components/footer/footer";
+import TheFooter from "@/lib/components/footer/footer";
 import Artwork from "@/apps/core/data/models/artwork";
 
 const data = [
@@ -93,7 +93,7 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 					/>
 				</div>
 				<div className="w-full border-b border-[#D9DBE9] mt-10"></div>
-				<Thefooter />
+				<TheFooter />
 				{this.state.exhibiton!.name}<br/>
 				{this.state.exhibiton!.venue}
 				

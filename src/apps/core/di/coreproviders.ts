@@ -12,6 +12,7 @@ import ExhibitionRepository from "../data/repositories/exhibitionRepository";
 import OrderRepository from "../data/repositories/orderRepository";
 import ShippingInfoRepository from "../data/repositories/shippingInfoRepository";
 import Order from "../data/models/order";
+import NewsLetterSubscriptionRepository from "../data/repositories/newsLetterSubscriptionRepository";
 
 
 
@@ -23,6 +24,7 @@ export default class CoreProviders{
 	private static exhibitionRepository?: ExhibitionRepository;
 	private static orderRepository?: OrderRepository;
 	private static shippingInfoRepository?: ShippingInfoRepository;
+	private static newsLetterSubscriptionRepository?: NewsLetterSubscriptionRepository;
 
 	public static provideFirebaseApp(): FirebaseApp{
 		if(CoreProviders.app === undefined){
@@ -68,6 +70,13 @@ export default class CoreProviders{
 			this.shippingInfoRepository = new ShippingInfoRepository();
 		}
 		return this.shippingInfoRepository;
+	}
+
+	public static provideNewsLetterSubscriptoinRepository(): NewsLetterSubscriptionRepository{
+		if(this.newsLetterSubscriptionRepository === undefined){
+			this.newsLetterSubscriptionRepository = new NewsLetterSubscriptionRepository();
+		}
+		return this.newsLetterSubscriptionRepository;
 	}
 
 	public static provideDefaultFileStorage(): FileStorage{

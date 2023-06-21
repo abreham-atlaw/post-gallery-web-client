@@ -1,6 +1,6 @@
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import NavBar from "@/lib/components/navBar/navBar";
-import Thefooter from "@/lib/components/footer/footer";
+import TheFooter from "@/lib/components/footer/footer";
 import React from "react";
 import { Link } from "react-router-dom";
 import homeText from '@/assets/homeText.png'
@@ -57,7 +57,7 @@ export default class HomeView extends ViewModelView<ViewModel<BaseState>>{
 						</div>
 						
 					</div>
-					<Thefooter />
+					<TheFooter />
 				</div>
 			</div>
 			
