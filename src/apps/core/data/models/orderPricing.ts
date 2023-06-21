@@ -3,12 +3,14 @@ export default class OrderPricing{
 
 	artPrice: number;
 	shippingPrice: number;
-	vat: number;
 	
-	constructor(artPrice: number, shippingPrice: number, vat: number){
+	constructor(artPrice: number, shippingPrice: number){
 		this.artPrice = artPrice;
 		this.shippingPrice = shippingPrice;
-		this.vat = vat;
+	}
+
+	get vat(): number {
+		return (this.artPrice + this.shippingPrice) * 0.15;
 	}
 
 	public getTotal(){

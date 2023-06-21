@@ -29,7 +29,7 @@ export default class ArtworkSerializer extends Serializer<Artwork, DocumentData>
 		data.artist_id,
 		data.name,
 		data.description,
-		data.price,
+		Number.parseFloat(data.price),
 		data.dimension,
 		data.status,
 		this.dateSerializer.deserialize(data.creation_date),

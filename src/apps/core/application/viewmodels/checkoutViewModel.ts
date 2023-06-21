@@ -59,7 +59,6 @@ export default class CheckoutViewModel extends AsyncViewModel<CheckoutState>{
 		this.state.pricing = new OrderPricing(
 			this.state.item.price,
 			2000, // TODO,
-			100000
 		)
 	}
 
