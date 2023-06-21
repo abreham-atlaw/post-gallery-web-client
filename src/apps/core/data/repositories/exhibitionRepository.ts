@@ -4,6 +4,7 @@ import SerialPkGenerator from "@/lib/repositories/serialPkGenerator";
 import CoreProviders from "../../di/coreproviders";
 import ExhibitionSerializer from "../serializers/exhibitionSerializer";
 import Artwork from "../models/artwork";
+import { DBConfigs } from "@/configs/data_configs";
 
 
 
@@ -20,7 +21,7 @@ export default class ExhibitionRepository extends FireStoreRepository<string, Ex
 			"id",
 			new ExhibitionSerializer()
 		);
-		this.primaryKeyGenerator = new SerialPkGenerator(this, "Ex", 5);
+		this.primaryKeyGenerator = new SerialPkGenerator(this, DBConfigs.PRIMARY_KEY_PREFIX, DBConfigs.PRIMARY_KEY_SERIAL_DIGITS, " - EX");
 	}
 	
 	public generateNewPK(_instance: Exhibition): Promise<string> {

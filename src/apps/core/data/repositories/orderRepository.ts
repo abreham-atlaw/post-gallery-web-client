@@ -3,6 +3,7 @@ import Order from "../models/order";
 import CoreProviders from "../../di/coreproviders";
 import OrderSerializer from "../serializers/orderSerializer";
 import SerialPkGenerator from "@/lib/repositories/serialPkGenerator";
+import { DBConfigs } from "@/configs/data_configs";
 
 
 export default class OrderRepository extends FireStoreRepository<string, Order>{
@@ -17,7 +18,7 @@ export default class OrderRepository extends FireStoreRepository<string, Order>{
 			"id",
 			new OrderSerializer()
 		)
-		this.primaryKeyGenerator = new SerialPkGenerator(this, "Or", 5)
+		this.primaryKeyGenerator = new SerialPkGenerator(this, DBConfigs.PRIMARY_KEY_PREFIX, DBConfigs.PRIMARY_KEY_SERIAL_DIGITS, " - OR")
 	}
 
 

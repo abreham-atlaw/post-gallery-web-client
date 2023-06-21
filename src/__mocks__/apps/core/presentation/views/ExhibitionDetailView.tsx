@@ -85,14 +85,7 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 					/>
 				</div>
 				<div className="w-full border-b border-[#D9DBE9] mt-10"></div>
-<<<<<<< HEAD
 				<TheFooter />
-				{this.state.exhibiton!.name}<br/>
-				{this.state.exhibiton!.venue}
-				
-=======
-				<Thefooter />
->>>>>>> origin/production
 			</div>
 		)
 	}

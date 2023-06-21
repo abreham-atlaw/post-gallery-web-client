@@ -5,13 +5,9 @@ import ViewModelView from "@/lib/components/views/ViewModelView";
 import { ReactNode, useState } from "react";
 import PG from '@/assets/PG.png'
 import art from '@/assets/exhibition.png'
-<<<<<<< HEAD
-import TheFooter from "@/lib/components/footer/footer";
-=======
 import Thefooter from "@/lib/components/footer/footer";
 import { Link } from "react-router-dom";
 import NavBar from "@/lib/components/navBar/navBar";
->>>>>>> origin/production
 
 
 

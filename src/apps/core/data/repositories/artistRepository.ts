@@ -5,14 +5,12 @@ import ArtistSerializer from "../serializers/artistSerializer";
 import SerialPkGenerator from "@/lib/repositories/serialPkGenerator";
 import ArtworkRepository from "./artworkRepository";
 import Artwork from "../models/artwork";
+import { DBConfigs } from "@/configs/data_configs";
 
 
 
 export default class ArtistRepository extends FireStoreRepository<string, Artist>{
 	
-	private static ID_PREFIX = "Ar"
-	private static ID_SERIAL_DIGITS = 5;
-
 	private pkGenerator: SerialPkGenerator<Artist>;
 
 	private artworkRepository: ArtworkRepository = CoreProviders.provideArtworkRepository();
@@ -24,7 +22,7 @@ export default class ArtistRepository extends FireStoreRepository<string, Artist
 			"id",
 			new ArtistSerializer(),
 		)
-		this.pkGenerator = new SerialPkGenerator(this, ArtistRepository.ID_PREFIX, ArtistRepository.ID_SERIAL_DIGITS)
+		this.pkGenerator = new SerialPkGenerator(this, DBConfigs.PRIMARY_KEY_PREFIX, DBConfigs.PRIMARY_KEY_SERIAL_DIGITS, " - AT")
 	}
 
 	public generateNewPK(_instance: Artist): Promise<string> {

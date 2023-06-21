@@ -81,9 +81,9 @@ export default abstract class WriteExhibitionView<P> extends ViewModelView<EditE
 						<DefaultImageUploadComponent field={this.state.form.coverImage}/>
 					</div>
 					<div className="h-4"></div>
-					<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Images  <span className="text-red-500 required-dot"> *</span></p>
+					<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Artworks  <span className="text-red-500 required-dot"> *</span></p>
 					<ListFieldComponent field={this.state.form.artworkIds} generator={
-						(field: Field<string>) => <DefaultImageUploadComponent field={field} />
+						(field: Field<string>) => <TextFieldComponent field={field} syncer={this.getViewModel().syncState}/>
 					}/>
 					
 					<button type="submit">Submit</button>

@@ -21,7 +21,7 @@ export default class ArtworkForm extends Form{
 	creationDate: Field<Date> = new Field<Date>();
 	mediaUsed: TextField = new TextField();
 
-	images: ListField<string> = new ListField<string>();
+	images: Field<string[]> = new Field<string[]>();
 
 	
 	getFields(): Field<any>[] {

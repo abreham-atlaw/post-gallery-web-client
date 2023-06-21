@@ -5,6 +5,7 @@ import Artist from "../models/artist";
 import CoreProviders from "../../di/coreproviders";
 import ArtworkSerializer from "../serializers/artworkSerializer";
 import ArtistRepository from "./artistRepository";
+import { DBConfigs } from "@/configs/data_configs";
 
 
 
@@ -25,7 +26,7 @@ export default class ArtworkRepository extends FireStoreRepository<string, Artwo
 			"id",
 			new ArtworkSerializer(),
 		)
-		this.pkGenerator = new SerialPkGenerator(this, ArtworkRepository.ID_PREFIX, ArtworkRepository.ID_SERIAL_DIGITS)
+		this.pkGenerator = new SerialPkGenerator(this, DBConfigs.PRIMARY_KEY_PREFIX, DBConfigs.PRIMARY_KEY_SERIAL_DIGITS, " - AR")
 	}
 	
 	private getArtistRepository(): ArtistRepository{

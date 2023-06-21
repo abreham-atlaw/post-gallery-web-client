@@ -1,7 +1,7 @@
 import WriteArtworkState from "@/apps/admin/application/states/writeArtworkState";
 import EditArtworkViewModel from "@/apps/admin/application/viewmodels/editArtworkViewModel";
 import { Status } from "@/apps/core/data/models/artwork";
-import { DefaultImageUploadComponent } from "@/apps/core/presentation/components/DefaultFileUploadComponent";
+import { DefaultImageUploadComponent, DefaultMultiFileUPloadComponent } from "@/apps/core/presentation/components/DefaultFileUploadComponent";
 import DateFieldComponent from "@/lib/components/form/DateFieldComponent";
 import EnumFieldComponent from "@/lib/components/form/EnumFieldComponent";
 import ListFieldComponent from "@/lib/components/form/ListFieldComponent";
@@ -12,6 +12,7 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { UnitFieldComponent } from "@/lib/components/form/PrefixInputFieldComponent";
 import StatusToast from "@/lib/components/status/StatusToast";
 import Upload from '@/assets/Upload.png'
+import MultiFileUploadFieldComponent from "@/lib/components/form/MultipleFileUploadFieldComponent";
 
 
 export default abstract class WriteArtworkView<P> extends React.Component<P, WriteArtworkState>{
@@ -35,7 +36,7 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 	render(): React.ReactNode {
 
 		if(this.state.status === AsyncStatus.done){
-			return <h1>Artist Created Successfully!</h1>
+			return <h1>Arwork Created Successfully!</h1>
 		}
 		return (
 
@@ -60,7 +61,7 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 							<TextBoxComponent field={this.state.form.description} />
 							<div className="h-4"></div>
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Picture  <span className="text-red-500 required-dot"> *</span></p>
-							<ImageUploader />
+							<DefaultMultiFileUPloadComponent field={this.state.form.images} />
 							<div className="h-4"></div>
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Dimension  <span className="text-red-500 required-dot"> *</span></p>
 							<div className="flex flex-row justify-between">
@@ -76,6 +77,8 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 							
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Price  <span className="text-red-500 required-dot"> *</span></p>
 							<UnitFieldComponent field={this.state.form.price} syncer={this.viewModel.syncState} options={["USD","ETB"]}/>
+							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Status  <span className="text-red-500 required-dot"> *</span></p>
+							<EnumFieldComponent enumClass={Status} field={this.state.form.status} syncer={this.viewModel.syncState}/>
 
 						</div>
 					</div>
