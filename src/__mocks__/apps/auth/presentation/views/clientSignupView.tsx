@@ -48,7 +48,7 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 		return (
 			<div className="bg-[url('./assets/LoginBG.png')] bg-center bg-cover min-h-screen w-screen text-white">
 				<div className="lg:hidden">
-					<p className="text-6xl font-semibold p-6">PG</p>
+					<a href="/" className="text-6xl font-semibold p-6">PG</a>
 					<div className="bg-[url('./assets/WelcomePG.png')] bg-center bg-contain bg-no-repeat h-28 w-56 "></div>
 					<div className="pl-6 pr-6">
 						<p className="pt-2 font-medium text-2xl leading-7">
@@ -94,7 +94,7 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 					{/* Left */}
 					<div className="w-6/12 min-h-screen flex items-center justify-center bg-[url('./assets/LGBG.png')] bg-center bg-cover ">
 						<div className="w-4/6 xl:max-w-lg px-9 py-6 bg-[url('./assets/LGRegisterBG.png')] bg-cover bg-no-repeat bg-center rounded-2xl ">	
-							<p className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</p>	
+							<a href="/" className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</a>	
 							<p className="mt-4 text-2xl font-medium leading-[28px]">Step into a world of imagination and inspiration, where every stroke of the brush and every splash of color tells a story - come and experience the breathtaking beauty of creativity at our art gallery</p>
 							
 							<div className="mx-auto flex flex-row justify-center items-center h-16 w-full mt-8 bg-black rounded-full">

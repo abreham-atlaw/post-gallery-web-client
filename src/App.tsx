@@ -8,7 +8,6 @@ import ClientSignupView from './__mocks__/apps/auth/presentation/views/clientSig
 import LoginView from './__mocks__/apps/auth/presentation/views/loginView'
 import MobileSignUpView from './__mocks__/apps/auth/presentation/views/mobileClientSignUpView'
 import ArtworkDetailView from './__mocks__/apps/core/presentation/views/ArtworkDetailView'
-import CartView from './__mocks__/apps/core/presentation/views/CartView'
 import CheckOutView from './__mocks__/apps/core/presentation/views/CheckoutView'
 import HomeView from './__mocks__/apps/core/presentation/views/HomeView'
 import SearchView from './__mocks__/apps/core/presentation/views/SearchView'

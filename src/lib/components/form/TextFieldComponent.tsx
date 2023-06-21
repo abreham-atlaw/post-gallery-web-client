@@ -11,7 +11,7 @@ export default class TextFieldComponent extends FieldComponent<string, TextField
 	
 	protected constructInputNode(value: string | null, callback: Function): ReactNode {
 		return (
-			<input className={`w-full rounded-md h-14 text-black pl-3 lg:border-[#787878] lg:border lg:h-${this.props.height??14}`} type="text" onChange={(event) => {callback(event.target.value)}} value={(value === null)?"":value} />
+			<input className={`w-full rounded h-14 px-3 text-black placeholder-[#575757] text-xl lg:h-16 border-[#D6D6D6] border-[3px] lg:h-${this.props.height??14}`} type="text" onChange={(event) => {callback(event.target.value)}} value={(value === null)?"":value} />
 		)
 	}
 

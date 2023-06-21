@@ -25,7 +25,9 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 		return (
 			<div className="bg-[#F6F6F6] min-h-screen" >
 				<div className="px-6 pt-12 pb-12 lg:hidden">
-					<img className="h-8" src={Back} />
+					<a href="/search">
+						<img className="h-8" src={Back} />
+					</a>
 					<div className="text-4xl">{this.state.artwork!.name}</div>
 					<div className="text-lg text-[#3A476A] mb-3" ><span className="text-lg text-[#3A476A]">by </span>{this.state.artwork!.artist!.fullName}</div>
 					<Slideshow images={this.state.artwork!.images} />
@@ -56,7 +58,9 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 				{/* ------------------------------------------ */}
 
 				<div className="hidden lg:inline lg:px-8 ">
-					<img className="h-8 mb-8 mt-4 mx-8" src={Back} />
+					<a className="w-10" href="/search">
+						<img className="h-8 mb-8 mt-4 mx-8" src={Back} />
+					</a>
 					<div className="flex flex-row justify-between items-start px-12">
 						<Slideshow images={this.state.artwork!.images} />
 						<div className="bg-white w-4/12 rounded-xl px-10 py-10">

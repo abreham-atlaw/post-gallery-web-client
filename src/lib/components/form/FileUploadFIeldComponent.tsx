@@ -100,10 +100,12 @@ export default class FileUploadFieldComponent extends FieldComponent<string, Fil
 					className="hidden"
 				/>
 			</div>
-            <div className="flex flex-wrap px-8">
-				{
-					this.getPreview(this.state.field.getValue())
-				}
+            <div className="flex flex-wrap px-8 ">
+				<div className="w-72 h-min ">
+					{
+						this.getPreview(this.state.field.getValue())
+					}
+				</div>
             </div>
         </div>
 		)

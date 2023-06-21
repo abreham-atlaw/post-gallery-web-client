@@ -13,6 +13,7 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	private primaryKeyColumn: string;
 	private serializer: Serializer<M, DocumentData>;
 	private attachMode: boolean = true;
+	private cache: Map<P, QueryDocumentSnapshot<DocumentData>> = new Map();
 
  	constructor(
 		firestore: Firestore,
@@ -26,7 +27,19 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 		this.serializer = serializer;
 	}
 	
+	protected async getFromCache(pk: P): Promise<QueryDocumentSnapshot<DocumentData> | null>{
+		return this.cache.get(pk) ?? null
+	} 
+
+	protected async storeToCache(pk: P, instance: QueryDocumentSnapshot<DocumentData>){
+		this.cache.set(pk, instance) 
+	}
+
 	protected async getDocument(pk: P): Promise<QueryDocumentSnapshot<DocumentData>>{
+		let cached = await this.getFromCache(pk)
+		if(cached != null){
+			return cached
+		}
 		let pkQuery = query(this.collection, where(this.primaryKeyColumn, "==", pk));
 		let docs = (await getDocs(pkQuery)).docs;
 		if(docs.length == 0){
@@ -35,6 +48,7 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 		if(docs.length > 1){
 			throw new MultipleInstancesFoundException(this.collectionName, pk);
 		}
+		this.storeToCache(pk, docs[0])
 		return docs[0];
 	}
 

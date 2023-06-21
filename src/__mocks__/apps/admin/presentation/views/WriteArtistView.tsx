@@ -38,8 +38,8 @@ export default abstract class WriteArtistView<P> extends React.Component<P, Writ
 		}
 		return (
 			<div>
-			<form onSubmit={this.handleSubmit} className="px-14 py-12 ">
-				<p className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Artist</span></p>
+			<form onSubmit={this.handleSubmit} className="px-6 lg:px-14 py-12 ">
+				<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Artist</span></a>
 				<div className="w-full pt-10 pb-6 mb-3 border-b-2 border-[#C1C1C1] flex flex-row justify-between">
 					<p className="text-3xl lg:text-4xl font-bold">Upload Artist</p>
 					<div className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
