@@ -13,7 +13,7 @@ import next from '@/assets/nextWhite.png'
 
 const images = [
     'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/homeBG.png?alt=media&token=7aba3738-b41b-46aa-90e4-9392badbd9af',
-    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/3.jpg?alt=media&token=7bf8fc20-5916-42af-978b-650192bef25c',
+    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/art.png?alt=media&token=21da7a2e-5a54-45b4-b3b8-940ab5eef3e7',
     'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/01.webp?alt=media&token=c2c910d6-fa0f-4e5e-a60c-99f7f97ff204'
 ];
 

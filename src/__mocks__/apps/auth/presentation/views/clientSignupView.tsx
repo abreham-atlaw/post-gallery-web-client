@@ -55,20 +55,20 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 						Step into a world of imagination and inspiration, where every stroke of the brush and every splash of color tells a story - come and experience the breathtaking beauty of creativity at our art gallery
 						</p>
 
-						<div className="flex flex-row justify-center items-center w-full mt-12 pt-2 pb-2.5 bg-black rounded-full">
+						<button onClick={this.handleSignupGoogle} className="flex flex-row justify-center items-center w-full mt-12 pt-2 pb-2.5 bg-black rounded-full">
 							<img className="h-10 pr-3.5 bg-contain" src={Google} />		
-							<button className="font-medium text-2xl text-center" onClick={this.handleSignupGoogle}>Continue with Google</button>
-						</div>
+							<div className="font-medium text-2xl text-center">Continue with Google</div>
+						</button>
 
-						<div className="flex flex-row justify-center items-center w-full mt-5 pt-2 pb-2.5 bg-white rounded-full">
+						<button className="flex flex-row justify-center items-center w-full mt-5 pt-2 pb-2.5 bg-white rounded-full">
 							<img className="h-10 pr-3.5 bg-contain" src={Apple} />		
-							<button className="font-medium text-2xl text-center text-black" onClick={this.handleSignupGoogle}>Continue with Apple</button>
-						</div>
+							<div onClick={this.handleSignupGoogle} className="font-medium text-2xl text-center text-black">Continue with Apple</div>
+						</button>
 
-						<div className="flex flex-row justify-center items-center w-full mt-5 pt-2 pb-2.5 bg-white rounded-full">
+						<button onClick={this.handleSignupGoogle} className="flex flex-row justify-center items-center w-full mt-5 pt-2 pb-2.5 bg-white rounded-full">
 							<img className="h-10 pr-3.5 bg-contain" src={PGLogin} />		
-							<button className="font-medium text-2xl text-center text-black" onClick={this.handleSignupGoogle}>Post Gallary Account</button>
-						</div>
+							<div className="font-medium text-2xl text-center text-black">Post Gallary Account</div>
+						</button>
 
 					</div>
 					<form className="hidden" onSubmit={this.handleSignUpPG}>
@@ -97,15 +97,15 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 							<a href="/" className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</a>	
 							<p className="mt-4 text-2xl font-medium leading-[28px]">Step into a world of imagination and inspiration, where every stroke of the brush and every splash of color tells a story - come and experience the breathtaking beauty of creativity at our art gallery</p>
 							
-							<div className="mx-auto flex flex-row justify-center items-center h-16 w-full mt-8 bg-black rounded-full">
+							<button onClick={this.handleSignupGoogle} className="mx-auto flex flex-row justify-center items-center h-16 w-full mt-8 bg-black rounded-full">
 								<img className="h-6 pr-3.5 bg-contain" src={Google} />		
-								<button className="font-medium text-2xl text-center" onClick={this.handleSignupGoogle}>Continue with Google</button>
-							</div>
+								<div className="font-medium text-2xl text-center" >Continue with Google</div>
+							</button>
 
-							<div className="mx-auto flex flex-row justify-center items-center h-16 w-full mt-3.5 bg-white rounded-full">
+							<button onClick={this.handleSignupGoogle} className="mx-auto flex flex-row justify-center items-center h-16 w-full mt-3.5 bg-white rounded-full">
 								<img className="h-6 pr-3.5 bg-contain" src={Apple} />		
-								<button className="font-medium text-2xl text-center text-black" onClick={this.handleSignupGoogle}>Continue with Apple</button>
-							</div>
+								<div className="font-medium text-2xl text-center text-black">Continue with Apple</div>
+							</button>
 
 							<div className="flex flex-row items-center justify-center my-3 " >
 								<LineWithWidth10 />
@@ -113,10 +113,10 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 								<LineWithWidth10 />
 							</div>
 		
-							<div className="mx-auto flex flex-row justify-center items-center h-16 w-full mt-2 bg-white rounded-full">
+							<button onClick={this.handleSignupGoogle} className="mx-auto flex flex-row justify-center items-center h-16 w-full mt-2 bg-white rounded-full">
 								<img className="h-6 pr-3.5 bg-contain" src={PGLogin} />		
-								<button className="font-medium text-2xl text-center text-black" onClick={this.handleSignupGoogle}>PostGallary Account</button>
-							</div>
+								<div className="font-medium text-2xl text-center text-black">PostGallary Account</div>
+							</button>
 
 						</div>
 					</div>
@@ -134,9 +134,9 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 							<p className="text-xl mt-1.5">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState}/>
 							<p className="text-xl mt-1.5">Phone Number:</p> <TextFieldComponent field={this.state.form.phoneNumber} syncer={this.viewModel.syncState}/>
 							<p className="text-xl mt-1.5">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.viewModel.syncState}/>
-							<div className="flex justify-center items-center w-64 m-auto mt-5 h-14 bg-black text-white rounded-full">
-								<button className="justify-center text-2xl">Continue</button>
-							</div>
+							<button className="flex justify-center items-center w-64 m-auto mt-5 h-14 bg-black text-white rounded-full">
+								<div className="justify-center text-2xl">Continue</div>
+							</button>
 					</form>
 					</div>
 				</div>

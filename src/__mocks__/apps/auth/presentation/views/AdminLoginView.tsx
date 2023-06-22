@@ -51,9 +51,9 @@ export default class AdminLoginView extends ViewModelView<AdminLoginViewModel, a
 							<p className="text-lg font-normal text-[#E1E1E1]">Doesn’t have an account? </p>
 							<p className="text-lg font-medium">Create Account</p>
 						</div>
-						<div className="flex flex-row justify-center items-center w-56 m-auto mb-6 mt-36 pt-2 pb-2.5 bg-white text-black rounded-full">
-							<button className="justify-center text-2xl">Continue</button>
-						</div>
+						<button className="flex flex-row justify-center items-center w-56 m-auto mb-6 mt-36 pt-2 pb-2.5 bg-white text-black rounded-full">
+							<div className="justify-center text-2xl">Continue</div>
+						</button>
 					</form>
 				</div>
 
@@ -67,10 +67,10 @@ export default class AdminLoginView extends ViewModelView<AdminLoginViewModel, a
 							<a href="/" className="text-6xl pb-2 font-semibold w-5/12 border-b-2 border-white">PG</a>	
 							<p className="mt-4 text-2xl font-medium leading-[28px]">Step into a world of imagination and inspiration, where every stroke of the brush and every splash of color tells a story - come and experience the breathtaking beauty of creativity at our art gallery</p>
 							
-							<div className="mx-auto flex flex-row justify-center items-center h-16 w-full  mt-8 bg-black rounded-full">
+							<button className="mx-auto flex flex-row justify-center items-center h-16 w-full  mt-8 bg-black rounded-full">
 								<img className="h-8 pr-3.5 bg-contain" src={Google} />		
-								<button className="font-medium text-2xl text-center" >Continue with Google</button>
-							</div>
+								<div className="font-medium text-2xl text-center" >Continue with Google</div>
+							</button>
 
 							<div className="flex flex-row items-center justify-center my-3 " >
 								<LineWithWidth10 />
@@ -78,10 +78,10 @@ export default class AdminLoginView extends ViewModelView<AdminLoginViewModel, a
 								<LineWithWidth10 />
 							</div>
 		
-							<div className="mx-auto flex flex-row justify-center items-center h-16 w-full mt-5 bg-white rounded-full">
+							<button className="mx-auto flex flex-row justify-center items-center h-16 w-full mt-5 bg-white rounded-full">
 								<img className="h-8 pr-3.5 bg-contain" src={PGLogin} />		
-								<button className="font-medium text-2xl text-center text-black" >PostGallary Account</button>
-							</div>
+								<div className="font-medium text-2xl text-center text-black" >PostGallary Account</div>
+							</button>
 
 						</div>
 					</div>
@@ -98,9 +98,9 @@ export default class AdminLoginView extends ViewModelView<AdminLoginViewModel, a
 
 							<p className="text-xl mt-2.5">Email:</p> <TextFieldComponent field={this.state.form.email} syncer={this.getViewModel().syncState}/>
 							<p className="text-xl mt-2.5">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.getViewModel().syncState}/>
-							<div className="flex justify-center items-center w-56 m-auto mt-9 h-14 pt-2 pb-2.5 bg-black text-white rounded-full">
-								<button className="justify-center text-2xl">Continue</button>
-							</div>
+							<button className="flex justify-center items-center w-56 m-auto mt-9 h-14 pt-2 pb-2.5 bg-black text-white rounded-full">
+								<div className="justify-center text-2xl">Continue</div>
+							</button>
 					</form>
 					</div>
 				</div>

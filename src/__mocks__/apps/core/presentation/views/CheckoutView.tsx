@@ -73,9 +73,9 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 					<div className="h-4"></div>
 					<TextFieldComponents placeholder="Phone number*" field={this.state.form.lastName} syncer={this.getViewModel().syncState}/>
                     
-                    <div className="flex justify-center items-center w-full m-auto my-6 pt-3 pb-4 bg-black text-white rounded-md">
-                        <button className="justify-center text-2xl">Save shipping address</button>
-                    </div>
+                    <button className="flex justify-center items-center w-full m-auto my-6 pt-3 pb-4 bg-black text-white rounded-md">
+                        <div className="justify-center text-2xl">Save shipping address</div>
+                    </button>
 					<p className="text-2xl font-medium ">Estimated Total:</p>
 
 					<div className="mt-2 flex flex-row justify-between text-xl pr-8">
@@ -94,9 +94,9 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 						<p>Total price:  </p>
 						<p>{this.state.pricing!.artPrice + this.state.pricing!.artPrice + this.state.pricing!.vat}</p>  
 					</div>
-					<div className="flex justify-center items-center w-full m-auto mt-4 mb-6 pt-3 pb-4 bg-black text-white rounded-md" onClick={this.handleCheckout}>
-						<button className="justify-center text-2xl">Place Order</button>
-					</div>
+					<button className="flex justify-center items-center w-full m-auto mt-4 mb-6 pt-3 pb-4 bg-black text-white rounded-md" onClick={this.handleCheckout}>
+						<div className="justify-center text-2xl">Place Order</div>
+					</button>
                     <div className="flex flex-col justify-center items-start mb-8">
                         <MyComponent imageSrc={CheckOut1} title={"Satisfaction Guaranteed."} subtitle={"An art gallery that satisfies, service that delights."}  />
                         <MyComponent imageSrc={CheckOut2} title={"Safe and Secure shopping."} subtitle={"All payments and transactions are secure and encrypted."}  />
@@ -161,9 +161,9 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 								<p>Total price:  </p>
 								<p>{this.state.pricing?.getTotal()} ETB</p> 
 							</div>
-                            <div className="flex justify-center items-center w-full mt-8 mb-6 h-16 bg-black text-white rounded-md" onClick={this.handleCheckout}>
-                                <button className="justify-center text-3xl">Place Order</button>
-                            </div>
+                            <button className="flex justify-center items-center w-full mt-8 mb-6 h-16 bg-black text-white rounded-md" onClick={this.handleCheckout}>
+                                <div className="justify-center text-3xl">Place Order</div>
+                            </button>
                             <div className="flex flex-col justify-center items-start">
                                 <MyComponent imageSrc={CheckOut1} title={"Satisfaction Guaranteed."} subtitle={"An art gallery that satisfies, service that delights."}  />
                                 <MyComponent imageSrc={CheckOut2} title={"Safe and Secure shopping."} subtitle={"All payments and transactions are secure and encrypted."}  />

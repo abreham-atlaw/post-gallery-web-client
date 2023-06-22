@@ -67,7 +67,7 @@ interface ExhibitionProps{
   const ExhibitionItem = (props: ExhibitionProps) => {
 	return (
 	  <Link to={`/exhibition/${props.exhibition.getPK()}`} className="w-full flex flex-col lg:flex-row justify-between px-3 lg:px-20">
-		<img className="w-full lg:w-5/12 h-min " src={props.exhibition.coverImage} /> 
+		<img className="w-full lg:w-5/12 h-[420px] object-cover" src={props.exhibition.coverImage} /> 
 		<div className="w-full mt-3 lg:mt-0 lg:w-5/12">
 			<p className="text-3xl lg:text-5xl">{props.exhibition.name}</p>
 			<p className="text-base lg:text-xl text-[#787878] lg:pt-6">{props.exhibition.artist!.fullName}</p>
@@ -86,7 +86,7 @@ interface ExhibitionProps{
 	  setShowMore(!showMore);
 	}
   
-	if (description.length <= 370) {
+	if (description.length <= 340) {
 	  return <p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description}</p>;
 	}
   
@@ -101,7 +101,7 @@ interface ExhibitionProps{
   
 	return (
 	  <div>
-		<p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description.substring(0, 370)}...</p>
+		<p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description.substring(0, 300)}...</p>
 		<button className="btn btn-primary text-2xl font-semibold" onClick={toggleShowMore}>Read More</button>
 	  </div>
 	);
