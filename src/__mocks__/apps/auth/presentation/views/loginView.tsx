@@ -48,7 +48,7 @@ export default class LoginView extends React.Component<any, HomeViewState>{
 	}
 
 	componentDidMount() {
-		this.slideInterval = setInterval(this.nextSlide, 3000);
+		this.slideInterval = setInterval(this.nextSlide, 5000);
 	}
 
 	componentWillUnmount() {
