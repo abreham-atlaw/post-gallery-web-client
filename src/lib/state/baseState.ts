@@ -1,19 +1,30 @@
 import { AsyncStatus } from "./asyncState";
 
 
-export default class BaseState{
+class SlideState {
+    slideIndex: number;
+    bgImage: string;
 
-	public context: Record<string, any>;
-	public initState = {
-		status: AsyncStatus.loading,
-		error: null,
-	};
+    constructor() {
+        this.slideIndex = 0;
+        this.bgImage = '';
+    }
+}
 
-	constructor(context?: object){
-		if(context === undefined){
-			context = {}
-		}
-		this.context = context;
-	}
+export default class BaseState {
+    public context: Record<string, any>;
+    public initState = {
+        status: AsyncStatus.loading,
+        error: null,
+    };
 
-} 
+    public slideState: SlideState;  // New SlideState property
+
+    constructor(context?: object) {
+        if(context === undefined){
+            context = {}
+        }
+        this.context = context;
+        this.slideState = new SlideState();  // Initialize the SlideState
+    }
+}

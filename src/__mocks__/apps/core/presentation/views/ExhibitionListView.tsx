@@ -24,11 +24,11 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 	onCreateMain(): ReactNode {
 		return (
 			<div>
-				<div className='lg:pr-10 lg:pl-20'>
+				<div className=' lg:pr-10 lg:pl-20'>
 					<NavBar isDark={true} />
 			  	</div>
-				<div className="mt-8 mb-12 pl-20 pr-10">
-					<div className="w-full flex flex-row items-center justify-center mt-8 mb-8"><p className=" text-2xl text-[#8E8E8E]">CURRENT</p> <LineWithWidth10 /></div>
+				<div className="mt-8 px-3 mb-6 lg:mb-12 lg:pl-20 lg:pr-10">
+					<div className="w-full flex flex-row items-center justify-center mt-8 mb-5 px-2.5 lg:mb-8"><p className="text-xl lg:text-2xl text-[#8E8E8E]">CURRENT</p> <LineWithWidth10 /></div>
 					{
 						this.state.currentExhibitions!.map(
 							(exhibition: Exhibition) => {
@@ -36,7 +36,7 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 							}
 						)
 					}
-					<div className="w-full flex flex-row items-center justify-center mt-24 mb-8"><p className="text-2xl text-[#8E8E8E]">UPCOMING</p> <LineWithWidth10 /></div>
+					<div className="w-full flex flex-row items-center justify-center mt-8 mb-5 px-2.5 lg:mt-24 lg:mb-8"><p className="text-xl lg:text-2xl text-[#8E8E8E]">UPCOMING</p> <LineWithWidth10 /></div>
 					{
 						this.state.upcomingExhibitions!.map(
 							(exhibition: Exhibition) => {
@@ -66,13 +66,13 @@ interface ExhibitionProps{
 
   const ExhibitionItem = (props: ExhibitionProps) => {
 	return (
-	  <Link to={`/exhibition/${props.exhibition.getPK()}`} className="w-full flex flex-row justify-between px-20">
-		<img className="w-5/12 h-min " src={props.exhibition.coverImage} /> 
-		<div className="w-5/12">
-			<p className="text-5xl">{props.exhibition.name}</p>
-			<p className="text-xl text-[#787878] pt-6">{props.exhibition.artist!.fullName}</p>
-			<div className="py-2"><LineWithWidth10 /></div>
-			<p className="text-xl text-[#787878] mb-4">{props.exhibition.dateRange.startDate.toDateString()} - {props.exhibition.dateRange.startDate.toDateString()}</p>
+	  <Link to={`/exhibition/${props.exhibition.getPK()}`} className="w-full flex flex-col lg:flex-row justify-between px-3 lg:px-20">
+		<img className="w-full lg:w-5/12 h-min " src={props.exhibition.coverImage} /> 
+		<div className="w-full mt-3 lg:mt-0 lg:w-5/12">
+			<p className="text-3xl lg:text-5xl">{props.exhibition.name}</p>
+			<p className="text-base lg:text-xl text-[#787878] lg:pt-6">{props.exhibition.artist!.fullName}</p>
+			<div className="lg:py-2"><LineWithWidth10 /></div>
+			<p className="text-base lg:text-xl text-[#787878] mb-2 lg:mb-4">{props.exhibition.dateRange.startDate.toDateString()} - {props.exhibition.dateRange.startDate.toDateString()}</p>
 			<DescriptionComponent description={props.exhibition.description} />
 		</div>
 	  </Link>
@@ -87,13 +87,13 @@ interface ExhibitionProps{
 	}
   
 	if (description.length <= 370) {
-	  return <p className="text-2xl text-[#787878] leading-[28px]">{description}</p>;
+	  return <p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description}</p>;
 	}
   
 	if (showMore) {
 	  return (
 		<div>
-		  <p className="text-2xl text-[#787878] leading-[28px]">{description}</p>
+		  <p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description}</p>
 		  <button className="btn btn-primary text-2xl font-semibold" onClick={toggleShowMore}>Show Less</button>
 		</div>
 	  );
@@ -101,7 +101,7 @@ interface ExhibitionProps{
   
 	return (
 	  <div>
-		<p className="text-2xl text-[#787878] leading-[28px]">{description.substring(0, 370)}...</p>
+		<p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description.substring(0, 370)}...</p>
 		<button className="btn btn-primary text-2xl font-semibold" onClick={toggleShowMore}>Read More</button>
 	  </div>
 	);

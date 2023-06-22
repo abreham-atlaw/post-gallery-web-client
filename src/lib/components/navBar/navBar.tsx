@@ -3,6 +3,7 @@ import PGwhite from '@/assets/PGwhite.png'
 import PG from '@/assets/PG.png'
 import Menu from '@/assets/menu.png'
 import MenuWhite from '@/assets/MenuWhite.png'
+import MenuWhit from '@/assets/menu_white.png'
 import Close from '@/assets/close.png'
 import { Link } from 'react-router-dom';
 import ViewModelView from '../views/ViewModelView';
@@ -51,7 +52,7 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 					<a href="/" className='flex flex-row items-center space-x-10 text-3xl font-medium leading-none'>
 						<img className='w-16' src={this.props.isDark ? PG : PGwhite} />
 					</a>
-					<div className={` ${this.props.isDark ? "text-black" : "text-white"} flex flex-row items-center space-x-8  text-3xl font-medium leading-none`}>
+					<div className={` ${this.props.isDark ? "text-black" : "text-white"} flex flex-row items-center space-x-6  text-2xl leading-none`}>
 						<a href="/exhibitions">Exhibition</a>
 						<a href="/search">Shop</a>
 						<a href="/">Contact</a>
@@ -62,18 +63,18 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 				  </div>
 
 			  </div>
-			  <div className='lg:hidden pt-10 px-3 flex flex-row items-center justify-between'>
+			  <div className='lg:hidden pt-10 px-6 flex flex-row items-center justify-between'>
 				<a href="/">
 					<img className='h-8' src={this.props.isDark ? PG : PGwhite} />
 				</a>
-				<img  className='h-8 lg:hidden' onClick={() => {this.getViewModel().toggleOpen()}} src={this.state.open ? Menu : Close} />
+				<img  className='h-7 lg:hidden' onClick={() => {this.getViewModel().toggleOpen()}} src={this.state.open && this.props.isDark ? Menu : this.state.open && this.props.isDark ? MenuWhit :  MenuWhit } />
 			  </div>
 			  <div className={` ${this.state.open ? 'hidden' : 'absolute'} flex flex-col justify-center items-center top-0 text-white text-3xl bg-black w-full h-screen lg:hidden`}>
 					<img className='absolute h-7 top-5 right-5' onClick={() => {this.getViewModel().toggleOpen()}} src={MenuWhite} />
-					<a href="/exhibitions" className=" font-bold text-end pb-2 ">Exhibition</a>
-					<a href="/search" className=" font-bold text-end pb-2 ">Shop</a>
-					<a href="/" className=" font-bold text-end pb-2 ">Contact</a>
-					<a href="/" className=" font-bold text-end pb-2 ">About</a>
+					<a href="/exhibitions" className=" font-semibold text-end pb-2 ">Exhibition</a>
+					<a href="/search" className=" font-semibold text-end pb-2 ">Shop</a>
+					<a href="/" className=" font-semibold text-end pb-2 ">Contact</a>
+					<a href="/" className=" font-semibold text-end pb-2 ">About</a>
 				</div>
 			</div>
 	  
