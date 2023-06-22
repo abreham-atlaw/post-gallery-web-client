@@ -28,7 +28,7 @@ export default class SearchView extends React.Component<any, SearchState>{
 		// }
 		return (
 			<div className=" text-black">
-				<div className="lg:hidden px-6 pt-20 pb-6">
+				<div className="lg:hidden px-6 pt-20 pb-6 ">
 					<p className="text-6xl ">Search</p>                  
 					<p> 
 						<span className="text-2xl text-[#4B4B4B]" >Transform your space with the power of art - </span>
