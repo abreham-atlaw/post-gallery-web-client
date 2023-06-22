@@ -14,7 +14,7 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	private serializer: Serializer<M, DocumentData>;
 	private attachMode: boolean = true;
 	private cache: Map<P, QueryDocumentSnapshot<DocumentData>> = new Map();
-	private caching: boolean = true;
+	private caching: boolean = false;
 
  	constructor(
 		firestore: Firestore,
