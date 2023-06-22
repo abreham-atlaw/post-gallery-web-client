@@ -7,6 +7,6 @@ import { TextField } from "@/lib/forms/fields";
 export default class SearchState extends AsyncState{
 
 	result?: Artwork;
-	idField: TextField = new  TextField();
+	idField: TextField = new  TextField(true);
 
 }

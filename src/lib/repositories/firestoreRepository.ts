@@ -14,6 +14,7 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	private serializer: Serializer<M, DocumentData>;
 	private attachMode: boolean = true;
 	private cache: Map<P, QueryDocumentSnapshot<DocumentData>> = new Map();
+	private caching: boolean = true;
 
  	constructor(
 		firestore: Firestore,
@@ -28,10 +29,16 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	}
 	
 	protected async getFromCache(pk: P): Promise<QueryDocumentSnapshot<DocumentData> | null>{
+		if(!this.caching){
+			return null;
+		}
 		return this.cache.get(pk) ?? null
 	} 
 
 	protected async storeToCache(pk: P, instance: QueryDocumentSnapshot<DocumentData>){
+		if(!this.caching){
+			return;
+		}
 		this.cache.set(pk, instance) 
 	}
 
@@ -124,6 +131,11 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 
 	public setAttachMode(mode: boolean){
 		this.attachMode = mode;
+		this.caching = mode;
+	}
+
+	public setCaching(caching: boolean){
+		this.caching = caching;
 	}
 
 	public abstract attachForeignKeys(instance: M): Promise<void>
