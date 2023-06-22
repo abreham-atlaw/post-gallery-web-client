@@ -45,9 +45,9 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 					<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Art</span></a>
 					<div className="w-full pt-10 pb-6 mb-3 border-b-2 border-[#C1C1C1] flex flex-row justify-between">
 						<p className="text-3xl lg:text-4xl font-bold">Upload Art</p>
-						<div className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
-							<button type="submit" className="justify-center text-sm lg:text-xl">Publish</button>
-						</div>
+						<button type="submit" className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
+							<div className="justify-center text-sm lg:text-xl">Publish</div>
+						</button>
 					</div>
 					<div className="lg:pl-8">
 						<p className="mt-8 mb-4">⚫<span className="text-2xl font-medium">   Art details</span></p>

@@ -49,9 +49,9 @@ export default class MobileSignUpView extends React.Component<any, SignupState>{
                             <p className="text-lg font-normal text-[#E1E1E1]">I do have an account? </p>
                             <p className="text-lg font-medium">Sign In.</p>
                         </div>
-                        <div className="flex justify-center items-center w-56 m-auto mt-3 pt-2 pb-2.5 bg-white text-black rounded-full">
-                            <button className="justify-center text-2xl">Continue</button>
-                        </div>
+                        <button className="flex justify-center items-center w-56 m-auto mt-3 pt-2 pb-2.5 bg-white text-black rounded-full">
+                            <div className="justify-center text-2xl">Continue</div>
+                        </button>
 				</form>
                 <div className="h-16"></div>
 

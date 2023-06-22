@@ -137,13 +137,13 @@ interface SlideShowProps {
 		  style={{ backgroundImage: `url(${artworks[activeIndex].images[0]})` }}
 		  
 		>
-			<div className="hidden lg:inline w-full pb-2 lg:pb-6 pt-6" style={{ 
+			<div className=" w-full pb-2 lg:pb-6 pt-6" style={{ 
 				background: "linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 1.9%, rgba(0, 0, 0, 0) 100%)" 
 			}}>
 			
-				<p className="text-3xl font-medium lg:font-bold">{artworks[activeIndex].name}, 2013</p>
-				<p className="text-2xl lg:font-bold">{artworks[activeIndex].artist!.fullName}</p>
-				<p className="text-2xl lg:font-bold">{artworks[activeIndex].creationDate.getFullYear()}</p>
+				<p className="text-xl font-semibold lg:text-3xl lg:font-semibold">{artworks[activeIndex].name}</p>
+				<p className="text-lg font-medium lg:text-2xl lg:font-medium leading-4">{artworks[activeIndex].artist!.fullName}</p>
+				<p className="text-lg font-medium lg:text-2xl lg:font-medium">{artworks[activeIndex].creationDate.getFullYear()}</p>
 			</div>
 		</div>
   
