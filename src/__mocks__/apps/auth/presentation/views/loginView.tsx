@@ -11,9 +11,9 @@ import StatusToast from "@/lib/components/status/StatusToast";
 
 
 const images = [
-    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/homeBG.png?alt=media&token=7aba3738-b41b-46aa-90e4-9392badbd9af',
-    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/art.png?alt=media&token=21da7a2e-5a54-45b4-b3b8-940ab5eef3e7',
-    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/01.webp?alt=media&token=c2c910d6-fa0f-4e5e-a60c-99f7f97ff204'
+	'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/homeBG.png?alt=media&token=7aba3738-b41b-46aa-90e4-9392badbd9af',
+	'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/photo_2023-06-24_15-12-34.jpg?alt=media&token=1b577789-b3bf-44c3-b5c2-f066506883ab',
+	'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/photo_2023-06-24_15-12-37.jpg?alt=media&token=6d676d6d-38ec-4eb6-8f2a-f91e97349751'
 ];
 
 class SlideState {
