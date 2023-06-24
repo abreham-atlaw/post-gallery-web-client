@@ -4,9 +4,12 @@ import ArtworkRepository from "@/apps/core/data/repositories/artworkRepository";
 import CoreProviders from "@/apps/core/di/coreproviders";
 import Artwork from "@/apps/core/data/models/artwork";
 import ArtworkForm from "../forms/artworkForm";
+import ArtistRepository from "@/apps/core/data/repositories/artistRepository";
 
 export default class EditArtworkViewModel extends AsyncViewModel<WriteArtworkState>{
 	private repository: ArtworkRepository = CoreProviders.provideArtworkRepository()
+	private artistRepository: ArtistRepository = CoreProviders.provideArtistRepository();
+
 
 	private syncArtworkToForm(form: ArtworkForm, artwork: Artwork){
 		form.artistID.setValue(artwork.artistId)
@@ -45,6 +48,11 @@ export default class EditArtworkViewModel extends AsyncViewModel<WriteArtworkSta
 			this.syncArtworkToForm(this.state.form, this.state.artwork)
 			this.syncState()
 		})
+	}
+
+	public async onInit(): Promise<void> {
+		await super.onInit();
+		this.state.allArtists = await this.artistRepository.getAll();
 	}
 
 	async save(){

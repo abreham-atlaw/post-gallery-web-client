@@ -13,33 +13,23 @@ import { UnitFieldComponent } from "@/lib/components/form/PrefixInputFieldCompon
 import StatusToast from "@/lib/components/status/StatusToast";
 import Upload from '@/assets/Upload.png'
 import MultiFileUploadFieldComponent from "@/lib/components/form/MultipleFileUploadFieldComponent";
+import ArtistPrimaryKeyFieldComponent from "@/apps/admin/presentation/components/form/ArtistPrimaryKeyFieldComponent";
+import ViewModelView from "@/lib/components/views/ViewModelView";
 
 
-export default abstract class WriteArtworkView<P> extends React.Component<P, WriteArtworkState>{
+export default abstract class WriteArtworkView<P> extends ViewModelView<EditArtworkViewModel, P, WriteArtworkState>{
 
-	private viewModel: EditArtworkViewModel;
-
-	constructor(props: any){
-		super(props)
-		this.state = new WriteArtworkState()
-		this.viewModel = this.createViewModel()
+	onCreateState(): WriteArtworkState {
+		return new WriteArtworkState();
 	}
-
-	protected abstract createViewModel(): EditArtworkViewModel
-
 
 	handleSubmit = async (event: FormEvent) => {
 		event.preventDefault()
-		await this.viewModel.save()
+		await this.getViewModel().save()
 	}
 
-	render(): React.ReactNode {
-
-		if(this.state.status === AsyncStatus.done){
-			return <h1>Arwork Created Successfully!</h1>
-		}
+	onCreateMain(): React.ReactNode {
 		return (
-
 			<div>
 				<form onSubmit={this.handleSubmit} className="px-14 py-12 ">
 					<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Art</span></a>
@@ -53,9 +43,9 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 						<p className="mt-8 mb-4">⚫<span className="text-2xl font-medium">   Art details</span></p>
 						<div className="w-full lg:w-4/6 ">
 							<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
-							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Art name  <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.name} syncer={this.viewModel.syncState}/>
-							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Artist ID  <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.artistID} syncer={this.viewModel.syncState}/>
-							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Creation Date<span className="text-red-500 required-dot"> *</span></p> <DateFieldComponent field={this.state.form.creationDate} syncer={this.viewModel.syncState} /></div>
+							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Art name  <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.name} syncer={this.getViewModel().syncState}/>
+							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Artist ID  <span className="text-red-500 required-dot"> *</span></p> <ArtistPrimaryKeyFieldComponent field={this.state.form.artistID} choices={this.state.allArtists!} />
+							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Creation Date<span className="text-red-500 required-dot"> *</span></p> <DateFieldComponent field={this.state.form.creationDate} syncer={this.getViewModel().syncState} /></div>
 
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Description <span className="text-red-500 required-dot"> *</span></p> 
 							<TextBoxComponent field={this.state.form.description} />
@@ -65,20 +55,20 @@ export default abstract class WriteArtworkView<P> extends React.Component<P, Wri
 							<div className="h-4"></div>
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Dimension  <span className="text-red-500 required-dot"> *</span></p>
 							<div className="flex flex-row justify-between">
-								<div className="w-full"><p className="text-l text-[#5E5E64] font-medium mt-2 mb-2">Width<span className="text-red-500 required-dot"> *</span></p> <UnitFieldComponent field={this.state.form.dimensionWidth} options={["In"]} syncer={this.viewModel.syncState}/></div>
+								<div className="w-full"><p className="text-l text-[#5E5E64] font-medium mt-2 mb-2">Width<span className="text-red-500 required-dot"> *</span></p> <UnitFieldComponent field={this.state.form.dimensionWidth} options={["In"]} syncer={this.getViewModel().syncState}/></div>
 								<div className="w-16"></div>
-								<div className="w-full"><p className="text-l text-[#5E5E64] font-medium mt-2 mb-2">Height<span className="text-red-500 required-dot"> *</span></p> <UnitFieldComponent field={this.state.form.dimensionHeight} options={["In"]} syncer={this.viewModel.syncState}/></div>
+								<div className="w-full"><p className="text-l text-[#5E5E64] font-medium mt-2 mb-2">Height<span className="text-red-500 required-dot"> *</span></p> <UnitFieldComponent field={this.state.form.dimensionHeight} options={["In"]} syncer={this.getViewModel().syncState}/></div>
 								<div className="w-16"></div>
-								<div className="w-full"><p className="text-l text-[#5E5E64] font-medium mt-2 mb-2">Depth<span className="text-red-500 required-dot"> *</span></p> <UnitFieldComponent field={this.state.form.dimensionDepth} options={["In"]} syncer={this.viewModel.syncState}/></div>
+								<div className="w-full"><p className="text-l text-[#5E5E64] font-medium mt-2 mb-2">Depth<span className="text-red-500 required-dot"> *</span></p> <UnitFieldComponent field={this.state.form.dimensionDepth} options={["In"]} syncer={this.getViewModel().syncState}/></div>
 							</div>
 							
-							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Material</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.viewModel.syncState}/>
-							{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Full name:</p> <TextFieldComponent field={this.state.form} syncer={this.viewModel.syncState}/> */}
+							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Material</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.getViewModel().syncState}/>
+							{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Full name:</p> <TextFieldComponent field={this.state.form} syncer={this.getViewModel().syncState}/> */}
 							
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Price  <span className="text-red-500 required-dot"> *</span></p>
-							<UnitFieldComponent field={this.state.form.price} syncer={this.viewModel.syncState} options={["USD","ETB"]}/>
+							<UnitFieldComponent field={this.state.form.price} syncer={this.getViewModel().syncState} options={["USD","ETB"]}/>
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Status  <span className="text-red-500 required-dot"> *</span></p>
-							<EnumFieldComponent enumClass={Status} field={this.state.form.status} syncer={this.viewModel.syncState}/>
+							<EnumFieldComponent enumClass={Status} field={this.state.form.status} syncer={this.getViewModel().syncState}/>
 
 						</div>
 					</div>

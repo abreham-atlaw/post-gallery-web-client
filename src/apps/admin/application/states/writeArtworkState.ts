@@ -17,10 +17,13 @@ export default class WriteArtistState extends AsyncState{
 import { AsyncState } from "@/lib/state/asyncState";
 import ArtworkForm from "../forms/artworkForm";
 import Artwork from "@/apps/core/data/models/artwork";
+import Artist from "@/apps/core/data/models/artist";
 
 export default class WriteArtworkState extends AsyncState{
 
 	form: ArtworkForm = new ArtworkForm();
 	artwork?: Artwork;
+
+	allArtists?: Artist[];
 
 }
