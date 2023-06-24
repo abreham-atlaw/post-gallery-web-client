@@ -2,7 +2,7 @@ import ExhibitionDetailState from "@/apps/core/application/state/exhibitionDetai
 import ExhibitionDetailViewModel from "@/apps/core/application/viewmodels/exhibitionDetailViewModel";
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import { FC, ReactNode, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PG from '@/assets/PG.png'
 import back from '@/assets/back.png'
 import next from '@/assets/forward.png'
@@ -132,7 +132,8 @@ interface SlideShowProps {
 		>
 		  <img className="w-4 h-5 lg:w-10 lg:h-12" src={back} />
 		</button>
-		<div
+		<Link
+			to={`/artwork/${artworks[activeIndex].getPK()}`}
 		  className="flex flex-col items-center justify-end text-white text-center w-9/12 lg:w-5/12 h-80 lg:h-[530px] bg-no-repeat bg-cover object-cover"
 		  style={{ backgroundImage: `url(${artworks[activeIndex].images[0]})` }}
 		  
@@ -145,7 +146,7 @@ interface SlideShowProps {
 				<p className="text-lg font-medium lg:text-2xl lg:font-medium leading-4">{artworks[activeIndex].artist!.fullName}</p>
 				<p className="text-lg font-medium lg:text-2xl lg:font-medium">{artworks[activeIndex].creationDate.getFullYear()}</p>
 			</div>
-		</div>
+		</Link>
   
 		<button
 		  className="lg:p-2 "
@@ -168,10 +169,12 @@ interface SlideShowProps {
     imageUrl: string;
     title: string;
     subtitle: string;
+	link: string;
 }
 
-const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle }) => (
-    <div 
+const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) => (
+    <Link 
+		to={link}
         className="w-full h-44 lg:h-72  bg-cover bg-center"
         style={{ backgroundImage: `url(${imageUrl})` }}
     >
@@ -181,7 +184,7 @@ const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle }) => (
 				<p>{subtitle}</p>
 			</div>
 		</div>
-    </div>
+    </Link>
 );
 
 interface GridProps {
@@ -191,7 +194,7 @@ interface GridProps {
 const Grid: React.FC<GridProps> = ({ data }) => (
     <div className="w-full px-2 lg:px-0 grid grid-flow-row-dense grid-cols-2 lg:grid-cols-4 lg:gap-6 gap-4 gap-y-6 lg:gap-y-14">
         {data.map((item, index) => (
-            <GridItem key={index} imageUrl={item.images[0]} title={item.artist!.fullName} subtitle={item.name} />
+            <GridItem key={index} imageUrl={item.images[0]} title={item.artist!.fullName} subtitle={item.name} link={`/artwork/${item.getPK()}`}/>
         ))}
     </div>
 );
