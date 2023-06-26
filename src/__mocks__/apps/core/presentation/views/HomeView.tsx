@@ -87,12 +87,12 @@ export default class HomeView extends ViewModelView<ViewModel<HomeViewState>> {
 									<p className="text-xl lg:text-3xl mt-3">ALEMAYEHU ZEWDIE</p>
 									<p className="text-xl lg:text-3xl">25 MAY - 7 JUN 2023</p>
 								</div>
-								<div className=" flex flex-row justify-between items-center pr-14">
+								<div className=" flex flex-row justify-between items-center pr-8 lg:pr-14">
 									<button onClick={this.nextSlide}>
-										<img className="mr-12 w-4 h-5 lg:w-5 lg:h-8" src={back} />
+										<img className="mr-8 lg:mr-12 w-3 h-6 lg:w-5 lg:h-8" src={back} />
 									</button>
 									<button onClick={this.prevSlide}>
-										<img className="w-4 h-5 lg:w-5 lg:h-8" src={next} />
+										<img className="w-3 h-6 lg:w-5 lg:h-8" src={next} />
 									</button>
 								</div>
 							</div>

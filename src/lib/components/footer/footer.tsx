@@ -49,8 +49,9 @@ export default class TheFooter extends React.Component<any, FooterState>{
         return (
             <div>
                 <div className='hidden lg:inline pb-4'>
+                
                     <div className='flex flex-row items-center justify-between'>
-                    <div className='px-10 my-4'><LineWithWidth10 /></div>
+                    
                         <div className='w-1/2 max-w-xl p-12'>
                             <div className="w-full flex justify-end">
                                 <img className='w-24' src={bgT} />
@@ -128,7 +129,7 @@ export default class TheFooter extends React.Component<any, FooterState>{
                     </div>
                 </div>
                 <div className='lg:hidden'>
-                    <div className='w-full max-w-xl p-4'>
+                    <div className='w-full max-w-xl mt-5 p-4'>
                         <div className="w-full flex justify-end">
                             <img className='w-24' src={bgT} />
                         </div>

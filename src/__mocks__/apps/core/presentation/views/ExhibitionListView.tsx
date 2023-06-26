@@ -67,7 +67,7 @@ interface ExhibitionProps{
   const ExhibitionItem = (props: ExhibitionProps) => {
 	return (
 	  <Link to={`/exhibition/${props.exhibition.getPK()}`} className="w-full flex flex-col lg:flex-row justify-between px-3 lg:px-20">
-		<img className="w-full lg:w-5/12 h-[420px] object-cover" src={props.exhibition.coverImage} /> 
+		<img className="w-full lg:w-5/12 h-96 lg:h-[420px] object-cover" src={props.exhibition.coverImage} /> 
 		<div className="w-full mt-3 lg:mt-0 lg:w-5/12">
 			<p className="text-3xl lg:text-5xl">{props.exhibition.name}</p>
 			<p className="text-base lg:text-xl text-[#787878] lg:pt-6">{props.exhibition.artist!.fullName}</p>
