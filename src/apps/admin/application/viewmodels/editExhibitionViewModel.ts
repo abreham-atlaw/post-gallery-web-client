@@ -9,6 +9,8 @@ import { existsSync } from "fs";
 export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibitionState>{
 
 	private repository = CoreProviders.provideExhibitionRepository();
+	private artistRepository = CoreProviders.provideArtistRepository();
+	private artworkRepository = CoreProviders.provideArtworkRepository();
 
 	private syncExhibitionToForm(form: ExhibitionForm, exhibition: Exhibition) {
 		form.artistId.setValue(exhibition.artistId)
@@ -67,6 +69,12 @@ export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibit
 			this.syncExhibitionToForm(this.state.form, this.state.exhibition)
 			this.syncState()
 		})
+	}
+
+	public async onInit(): Promise<void> {
+		await super.onInit();
+		this.state.allArtists = await this.artistRepository.getAll();
+		this.state.allArtworks = await this.artworkRepository.getAll();
 	}
 
 	async save(){

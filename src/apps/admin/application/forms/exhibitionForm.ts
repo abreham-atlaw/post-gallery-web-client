@@ -21,7 +21,7 @@ export default class ExhibitionForm extends Form{
 	public endTime = new Field<number>()
 
 	public coverImage = new TextField()
-	public artworkIds = new ListField<string>()
+	public artworkIds = new Field<string[]>()
 
 	getFields(): Field<any>[] {
 		return [

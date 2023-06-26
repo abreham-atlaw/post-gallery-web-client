@@ -1,5 +1,8 @@
 import WriteExhibitionState from "@/apps/admin/application/states/writeExhibitionState";
 import EditExhibitionViewModel from "@/apps/admin/application/viewmodels/editExhibitionViewModel";
+import ArtistPrimaryKeyFieldComponent from "@/apps/admin/presentation/components/form/ArtistPrimaryKeyFieldComponent";
+import ArtworkListPrimaryKeyFieldComponent from "@/apps/admin/presentation/components/form/ArtworkListPrimaryKeyFieldComponent";
+import CoreProviders from "@/apps/core/di/coreproviders";
 import { DefaultImageUploadComponent } from "@/apps/core/presentation/components/DefaultFileUploadComponent";
 import DateFieldComponent from "@/lib/components/form/DateFieldComponent";
 import ListFieldComponent from "@/lib/components/form/ListFieldComponent";
@@ -42,7 +45,7 @@ export default abstract class WriteExhibitionView<P> extends ViewModelView<EditE
 				<form onSubmit={this.handleSubmit}>
 					<div>
 						<label htmlFor="artistId">Artist ID:</label>
-						<TextFieldComponent field={this.state.form.artistId} syncer={this.getViewModel().syncState} />
+						<ArtistPrimaryKeyFieldComponent choices={this.state.allArtists!} field={this.state.form.artistId} syncer={this.getViewModel().syncState} />
 					</div>
 					<div>
 						<label htmlFor="name">Name:</label>
@@ -82,10 +85,12 @@ export default abstract class WriteExhibitionView<P> extends ViewModelView<EditE
 					</div>
 					<div className="h-4"></div>
 					<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Artworks  <span className="text-red-500 required-dot"> *</span></p>
-					<ListFieldComponent field={this.state.form.artworkIds} generator={
+					{/* <ListFieldComponent field={this.state.form.artworkIds} generator={
 						(field: Field<string>) => <TextFieldComponent field={field} syncer={this.getViewModel().syncState}/>
-					}/>
-					
+					}/> */}
+					<ArtworkListPrimaryKeyFieldComponent allArtworks={this.state.allArtworks!} field={this.state.form.artworkIds} syncer={this.getViewModel().syncState} />
+
+
 					<button type="submit">Submit</button>
 				</form>
 			</div>
