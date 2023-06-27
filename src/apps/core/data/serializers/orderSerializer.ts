@@ -37,7 +37,7 @@ export default class OrderSerializer extends Serializer<Order, DocumentData>{
 			new OrderPricing(
 				data.pricing.item,
 				data.pricing.shipping,
-				data.pricing.vat
+				
 			),
 			this.dateSerializer.deserialize(data.time),
 			data.is_payment_complete,

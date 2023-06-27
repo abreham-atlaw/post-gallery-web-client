@@ -176,11 +176,12 @@ export class ArtworkSelectionComponent extends React.Component<ArtworkSelectionI
         return (
             <div>
                 <div onClick={() => {this.state.visible = true; this.setState(this.state)}}>
-                    <div className="flex justify-center items-center px-12 col-2 h-11 bg-white text-black rounded-full border-2 border-[#D6D6D6] cursor-pointer">
-                        <p className="justify-center text-xl">Select</p>
+                    <div className="flex justify-center w-60 m-auto items-center px-12 col-2 h-11 bg-white text-black rounded-full border-2 border-[#D6D6D6] cursor-pointer">
+                        <p className="justify-center font-medium text-xl">Select</p>
                     </div>
-                    <div>
+                    <div className="text-black text-center m-auto placeholder-[#575757] text-xl py-3">
                         {this.props.selectedValues.length} Artworks Selected
+                       
                     </div>
                 </div>
                 
