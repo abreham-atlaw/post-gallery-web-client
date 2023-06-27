@@ -36,8 +36,11 @@ export default class EditArtistViewModel extends AsyncViewModel<WriteArtistState
 
 	public async onInit(): Promise<void> {
 		await super.onInit();
-		this.state.artist = await this.repository.getByPrimaryKey(this.state.artistId!)
-		this.syncArtistToForm(this.state.form, this.state.artist)
+		if(this.state.artistId != undefined){
+			this.state.artist = await this.repository.getByPrimaryKey(this.state.artistId!)
+			this.syncArtistToForm(this.state.form, this.state.artist)
+		}
+		
 	}
 
 	async save(){
