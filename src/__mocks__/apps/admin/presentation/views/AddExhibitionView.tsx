@@ -6,6 +6,9 @@ import AddExhibitionViewModel from "@/apps/admin/application/viewmodels/addExhib
 
 
 export default class AddExhibitionView extends WriteExhibitionView<any>{
+	onCreateState(): WriteExhibitionState {
+		return new WriteExhibitionState();
+	}
 
 	onCreateViewModel(state: WriteExhibitionState): EditExhibitionViewModel {
 		state.form.artistId.setValue("Ar00001")

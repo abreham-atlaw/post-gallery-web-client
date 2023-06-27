@@ -20,14 +20,6 @@ import { FormEvent, ReactNode } from "react";
 
 export default abstract class WriteExhibitionView<P> extends ViewModelView<EditExhibitionViewModel, P,  WriteExhibitionState>{
 	
-	onCreateViewModel(state: WriteExhibitionState): EditExhibitionViewModel {
-		return new EditExhibitionViewModel(state, this.setState.bind(this));
-	}
-
-	onCreateState(): WriteExhibitionState {
-		return new WriteExhibitionState();
-	}
-
 	private handleSubmit = async (event: FormEvent) => {
 		event.preventDefault()
 		await this.getViewModel().save();

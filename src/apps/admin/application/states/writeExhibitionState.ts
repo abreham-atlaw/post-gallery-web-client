@@ -10,6 +10,8 @@ export default class WriteExhibitionState extends AsyncState{
 	public form = new ExhibitionForm();
 	public exhibition?: Exhibition
 
+	public exhibtionId?: string;
+
 	public allArtworks?: Artwork[];
 	public allArtists?: Artist[];
 
