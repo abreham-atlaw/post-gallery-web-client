@@ -8,4 +8,6 @@ export default class WriteArtistState extends AsyncState{
 	form: ArtistForm = new ArtistForm()
 	artist?: Artist;
 
+	artistId?: string;
+
 } 

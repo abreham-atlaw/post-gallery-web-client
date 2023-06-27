@@ -24,6 +24,8 @@ export default class WriteArtworkState extends AsyncState{
 	form: ArtworkForm = new ArtworkForm();
 	artwork?: Artwork;
 
+	artworkId?: string;
+
 	allArtists?: Artist[];
 
 }

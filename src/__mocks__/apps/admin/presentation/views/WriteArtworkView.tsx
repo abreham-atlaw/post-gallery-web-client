@@ -19,10 +19,6 @@ import ViewModelView from "@/lib/components/views/ViewModelView";
 
 export default abstract class WriteArtworkView<P> extends ViewModelView<EditArtworkViewModel, P, WriteArtworkState>{
 
-	onCreateState(): WriteArtworkState {
-		return new WriteArtworkState();
-	}
-
 	handleSubmit = async (event: FormEvent) => {
 		event.preventDefault()
 		await this.getViewModel().save()

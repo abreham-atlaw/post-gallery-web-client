@@ -21,6 +21,8 @@ import AdminLoginViewModel from "./apps/auth/application/viewmodels/adminloginVi
 import AdminLoginView from "./__mocks__/apps/auth/presentation/views/AdminLoginView";
 import { Role } from "./apps/auth/data/models/accounts";
 import DashBoardView from "./__mocks__/apps/admin/presentation/views/DashboardView";
+import { RoutedArtistEditView } from "./__mocks__/apps/admin/presentation/views/EditArtistView";
+import { RoutedEditArtworkView } from "./__mocks__/apps/admin/presentation/views/EditArtworkView";
 
 
 export default class PGRouter extends React.Component{
@@ -84,10 +86,22 @@ export default class PGRouter extends React.Component{
 						<AddArtistView/>
 					</AuthenticatedComponent>
 				} />
+
+				<Route path="/admin/artist/edit/:id" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<RoutedArtistEditView />
+					</AuthenticatedComponent>
+				} />
 				
 				<Route path="/admin/artwork/add" element={
 					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
 						<AddArtworkView/>
+					</AuthenticatedComponent>
+				} />
+
+				<Route path="/admin/artwork/edit/:id" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<RoutedEditArtworkView />
 					</AuthenticatedComponent>
 				} />
 				

@@ -192,7 +192,7 @@ interface GridProps {
 }
 
 const Grid: React.FC<GridProps> = ({ data }) => (
-    <div className="w-full px-2 lg:px-0 grid grid-flow-row-dense grid-cols-2 lg:grid-cols-4 lg:gap-6 gap-4 gap-y-6 lg:gap-y-14">
+    <div className="w-full px-2 lg:px-0 grid grid-flow-row-dense grid-cols-1 lg:grid-cols-4 lg:gap-6 gap-4 gap-y-6 lg:gap-y-14">
         {data.map((item, index) => (
             <GridItem key={index} imageUrl={item.images[0]} title={item.artist!.fullName} subtitle={item.name} link={`/artwork/${item.getPK()}`}/>
         ))}

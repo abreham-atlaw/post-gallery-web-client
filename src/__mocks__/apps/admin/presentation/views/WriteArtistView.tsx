@@ -11,30 +11,24 @@ import Upload from '@/assets/Upload.png'
 import { FieldComponent, FieldComponentProps } from "@/lib/components/form/FieldComponent";
 import PrefixInputField from "@/lib/components/form/PrefixInputFieldComponent";
 import StatusToast from "@/lib/components/status/StatusToast";
+import ViewModelView from "@/lib/components/views/ViewModelView";
 
 
-export default abstract class WriteArtistView<P> extends React.Component<P, WriteArtistState>{
+export default abstract class WriteArtistView<P> extends ViewModelView<EditArtistViewModel, P, WriteArtistState>{
 	
-	private viewModel: EditArtistViewModel;
-
 	constructor(props: any){
 		super(props)
-		this.state = new WriteArtistState()
-		this.viewModel = this.createViewModel()
 	}
-
-	protected abstract createViewModel(): EditArtistViewModel
-
 
 	handleSubmit = async (event: FormEvent) => {
 		event.preventDefault()
-		await this.viewModel.save()
+		await this.getViewModel().save()
 	}
 
-	render(): React.ReactNode {
+	onCreateMain(): React.ReactNode {
 
 		if(this.state.status === AsyncStatus.done){
-			return <h1>Artist Created Successfully!</h1>
+			return <h1 className="text-center">Artist Created Successfully!</h1>
 		}
 		return (
 			<div>
@@ -53,12 +47,12 @@ export default abstract class WriteArtistView<P> extends React.Component<P, Writ
 						<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
 						
 						<div className="flex flex-row justify-between">
-							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">First name <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.firstName} syncer={this.viewModel.syncState}/></div>
+							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">First name <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.firstName} syncer={this.getViewModel().syncState}/></div>
 							<div className="w-16"></div>
-							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Last name <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.lastName} syncer={this.viewModel.syncState}/></div>
+							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Last name <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.lastName} syncer={this.getViewModel().syncState}/></div>
 						</div>
 						<div className="flex flex-row justify-between">
-							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Birthdate <span className="text-red-500 required-dot"> *</span></p> <DateFieldComponent field={this.state.form.dateOfBirth} syncer={this.viewModel.syncState} /></div>
+							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Birthdate <span className="text-red-500 required-dot"> *</span></p> <DateFieldComponent field={this.state.form.dateOfBirth} syncer={this.getViewModel().syncState} /></div>
 							<div className="w-16"></div>
 							<div className="w-full mt-2.5 ">
 								<p className="text-xl text-[#5E5E64] font-medium lg:mb-2">Gender <span className="text-red-500 required-dot"> *</span></p>
@@ -67,24 +61,24 @@ export default abstract class WriteArtistView<P> extends React.Component<P, Writ
 						</div>
 
 						<div className="flex flex-row justify-between">
-							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Email <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.email} syncer={this.viewModel.syncState}/></div>
+							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Email <span className="text-red-500 required-dot"> *</span></p> <TextFieldComponent field={this.state.form.email} syncer={this.getViewModel().syncState}/></div>
 							<div className="w-12"></div>
-							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Phone number <span className="text-red-500 required-dot"> *</span></p> <PrefixInputField options={['+251']} field={this.state.form.phoneNumber} syncer={this.viewModel.syncState} /></div>
+							<div className="w-full"><p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Phone number <span className="text-red-500 required-dot"> *</span></p> <PrefixInputField options={['+251']} field={this.state.form.phoneNumber} syncer={this.getViewModel().syncState} /></div>
 						</div>
 						<div className="h-4"></div>
 						<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Picture <span className="text-red-500 required-dot"> *</span></p>
 						<DefaultImageUploadComponent field={this.state.form.avatar}/>
-						{/* <ListFieldComponent field={this.state.form.a} syncer={this.viewModel.syncState} generator={
-						(field: Field<string>, removeCallback: () => void) => (<DefaultImageUploadComponent field={field} syncer={this.viewModel.syncState}/>)
+						{/* <ListFieldComponent field={this.state.form.a} syncer={this.getViewModel().syncState} generator={
+						(field: Field<string>, removeCallback: () => void) => (<DefaultImageUploadComponent field={field} syncer={this.getViewModel().syncState}/>)
 						}/> */}
 						<div className="h-4"></div>
 						<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Biography</p> 
 						<TextBoxComponent field={this.state.form.biography}/>
 						
-						<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Nationality</p> <TextFieldComponent field={this.state.form.nationality} syncer={this.viewModel.syncState}/>
-						{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Achievement</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.viewModel.syncState}/> */}
-						{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Special quote</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.viewModel.syncState}/> */}
-						{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Previous Collection</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.viewModel.syncState}/> */}
+						<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Nationality</p> <TextFieldComponent field={this.state.form.nationality} syncer={this.getViewModel().syncState}/>
+						{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Achievement</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.getViewModel().syncState}/> */}
+						{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Special quote</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.getViewModel().syncState}/> */}
+						{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Previous Collection</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.getViewModel().syncState}/> */}
 						
 					</div>
 				</div>

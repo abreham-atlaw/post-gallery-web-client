@@ -1,30 +1,30 @@
 import WriteArtistState from "@/apps/admin/application/states/writeArtistState";
 import EditArtistViewModel from "@/apps/admin/application/viewmodels/editArtistViewModel";
 import React from "react";
+import { useParams } from "react-router-dom";
+import WriteArtistView from "./WriteArtistView";
 
 
+interface EditArtistViewProps{
+	artistId: string;
+}
 
-export default class EditArtistView extends React.Component<any, WriteArtistState>{
+export default class EditArtistView extends WriteArtistView<EditArtistViewProps>{
 	
-	private viewModel: EditArtistViewModel;
 
-	constructor(props: any){
-		super(props)
-		this.state = new WriteArtistState()
-		this.viewModel = this.createViewModel()
+	onCreateViewModel(state: WriteArtistState): EditArtistViewModel {
+		return new EditArtistViewModel(state, this.setState.bind(this));
+	}
+	onCreateState(): WriteArtistState {
+		let state = new WriteArtistState()
+		state.artistId = this.props.artistId;
+		return state;
 	}
 
-	protected createViewModel(): EditArtistViewModel{
-		return new EditArtistViewModel(this.state, this.setState.bind(this));
-	}
-
-	protected async initialize(){
-		await this.viewModel.init("TODO");
-	}
-
-	componentDidMount(): void {
-		
-	}
+}
 
 
+export function RoutedArtistEditView(){
+	let params = useParams();
+	return <EditArtistView artistId={params.id!}/>
 }
