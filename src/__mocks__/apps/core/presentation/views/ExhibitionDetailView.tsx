@@ -175,7 +175,7 @@ interface SlideShowProps {
 const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) => (
     <Link 
 		to={link}
-        className="w-full h-44 lg:h-72  bg-cover bg-center"
+        className="w-full h-72 lg:h-72  bg-cover bg-center"
         style={{ backgroundImage: `url(${imageUrl})` }}
     >
 		<div className="w-full h-full flex items-end justify-center pb-4" style={{ backgroundImage: 'linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0) 100%)'}}>

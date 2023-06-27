@@ -103,7 +103,7 @@ export default class HomeView extends ViewModelView<ViewModel<HomeViewState>> {
                     <div className="hidden lg:inline">
 						<TheFooter />
 					</div>
-					<div className='w-full max-w-xl mt-5 p-4'>
+					<div className='lg:hidden w-full max-w-xl mt-5 p-4'>
                         <div className="w-full flex justify-end">
                             <img className='w-24' src={bgT} />
                         </div>
