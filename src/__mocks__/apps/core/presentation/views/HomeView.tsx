@@ -9,6 +9,8 @@ import ViewModel from "@/lib/viewmodel/viewmodel";
 import BaseState from "@/lib/state/baseState";
 import back from '@/assets/backWhite.png'
 import next from '@/assets/nextWhite.png'
+import bgT from '@/assets/NewsBGT.png'
+import bgB from '@/assets/NewsBGB.png'
 
 
 const images = [
@@ -98,7 +100,32 @@ export default class HomeView extends ViewModelView<ViewModel<HomeViewState>> {
 							</div>
                         </div>
                     </div>
-                    <TheFooter />
+                    <div className="hidden lg:inline">
+						<TheFooter />
+					</div>
+					<div className='w-full max-w-xl mt-5 p-4'>
+                        <div className="w-full flex justify-end">
+                            <img className='w-24' src={bgT} />
+                        </div>
+                        <div className="w-full flex flex-col items-center justify-center my-2">
+                            <div className='w-full pl-12'>
+                                <p className='font-bold text-xs'>GET OUR WEEKLY</p>
+                                <p className='font-bold text-3xl'>NEWSLETTER</p>
+                                <p className='text-2xl text-[#B7B7B7]'>Get weekly updates </p>
+                                <p className='text-2xl font-semibold'>Subscribe Now!</p>
+                                <div className="w-full max-w-md mt-5 flex flex-row">
+                                    <input className="w-full rounded-l-md h-9 text-black pl-3 border-r-0 border-[#B7B7B7] border-2 lg:h-9 placeholder-[#B7B7B7] " type="text" placeholder='Email'/>
+                                    <div className='flex justify-center items-center bg-black text-white rounded-r-md px-3'>
+                                        <button className="font-bold">SUBSCRIBE</button>
+                                    </div>
+                                </div>
+                                <p className='mt-2 italic text-center text-[#B7B7B7] font-bold text-xs'>Your email is safe with us, we dont spam.</p>
+                            </div>
+                        </div>
+                        <div className="w-full flex justify-start">
+                            <img className='w-12' src={bgB} />
+                        </div>
+                    </div>
                 </div>
             </div>
         )

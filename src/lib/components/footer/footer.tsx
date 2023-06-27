@@ -10,6 +10,18 @@ import { TextField } from '@/lib/forms/fields'
 import CoreProviders from '@/apps/core/di/coreproviders'
 import AsyncViewModel from '@/lib/viewmodel/asyncViewModel'
 import NewsLetterSubscription from '@/apps/core/data/models/newsLetterSubscription'
+import email from "@/assets/Email.png"
+import phone from "@/assets/Phone.png"
+import mark from "@/assets/Mark.png"
+import face from "@/assets/Facebook.png"
+import link from "@/assets/LinkedIn.png"
+import youtube from "@/assets/YouTube.png"
+import mface from "@/assets/FacebookM.png"
+import mtwit from "@/assets/TwitterM.png"
+import mlink from "@/assets/LinkedInM.png"
+import minsta from "@/assets/InstagramM.png"
+import myout from "@/assets/YouTubeM.png"
+
 
 class FooterState extends AsyncState{
 
@@ -121,36 +133,59 @@ export default class TheFooter extends React.Component<any, FooterState>{
                             <p className='text-lg text-[#6F6C90] mr-16'>COPYRIGHT © 2023 POST GALLERY</p>
                             <p className='text-lg text-[#6F6C90] underline'>SITE BY <span className='text-black text-md'> zenon-X</span></p>
                         </div>
-                        <div className='flex flex-row  space-x-6'>
-                            <img className='w-5 h-5' src={insta} />
-                            <img className='w-5 h-5' src={twitter} />
-                            <img className='w-5 h-5' src={insta} />
+                        <div className='flex flex-row items-center space-x-3 '>
+                            <img className='w-5 h-5 object-contain' src={face} />
+                            <img className='w-5 h-5 object-contain' src={twitter} />
+                            <img className='w-5 h-5 object-contain' src={insta} />
+                            <img className='w-6 h-6 object-contain' src={youtube} />
+                            <img className='w-5 h-5 object-contain' src={link} />
                         </div>
                     </div>
                 </div>
                 <div className='lg:hidden'>
-                    <div className='w-full max-w-xl mt-5 p-4'>
-                        <div className="w-full flex justify-end">
-                            <img className='w-24' src={bgT} />
+
+                    <div className='flex flex-col py-10 px-6'>
+                        <p className='text-xl font-semibold text-[#170F49] mb-8'>Contacts us</p>
+                        <div className='flex flex-row mb-3'>
+                            <img className='w-5 object-contain mr-3' src={email} />
+                            <p className='text-lg text-[#6F6C90] '>contact@post-gallery.com</p>
                         </div>
-                        <div className="w-full flex flex-col items-center justify-center my-2">
-                            <div className='w-full pl-12'>
-                                <p className='font-bold text-xs'>GET OUR WEEKLY</p>
-                                <p className='font-bold text-3xl'>NEWSLETTER</p>
-                                <p className='text-2xl text-[#B7B7B7]'>Get weekly updates </p>
-                                <p className='text-2xl font-semibold'>Subscribe Now!</p>
-                                <div className="w-full max-w-md mt-5 flex flex-row">
-                                    <input className="w-full rounded-l-md h-9 text-black pl-3 border-r-0 border-[#B7B7B7] border-2 lg:h-9 placeholder-[#B7B7B7] " type="text" placeholder='Email'/>
-                                    <div className='flex justify-center items-center bg-black text-white rounded-r-md px-3'>
-                                        <button className="font-bold">SUBSCRIBE</button>
-                                    </div>
-                                </div>
-                                <p className='mt-2 italic text-center text-[#B7B7B7] font-bold text-xs'>Your email is safe with us, we dont spam.</p>
+                        <div className='flex flex-row mb-3'>
+                            <img className='w-5 object-contain mr-3' src={phone} />
+                            <p className='text-lg text-[#6F6C90] '>(251) 9687 - 5892</p>
+                        </div>
+                        <div className='flex flex-row mb-3'>
+                            <img className='w-5 object-contain mr-3' src={mark} />
+                            <p className='text-lg text-[#6F6C90] '>Bole, Addis Ababa, Ethiopia</p>
+                        </div>
+                        <div className='mt-6 flex flex-row justify-between items-start'>
+                            <div className='flex flex-col'>
+                                <p className='text-xl font-semibold text-[#170F49] mb-7'>Product</p>
+                                <p className='text-lg text-[#6F6C90] mb-2'>Pricing</p>
+                                <p className='text-lg text-[#6F6C90] mb-2'>Updates</p>
                             </div>
+                            <div className='flex flex-col'>
+                                <p className='text-xl font-semibold text-[#170F49] mb-7'>Company</p>
+                                <p className='text-lg text-[#6F6C90] mb-2'>Contact us</p>
+                                <p className='text-lg text-[#6F6C90] mb-2'>About</p>
+                                <p className='text-lg text-[#6F6C90] mb-2'>Blog</p>
+                            </div>
+                            <div className='flex flex-col'>
+                                <p className='text-xl font-semibold text-[#170F49] mb-7'>Support</p>
+                                <p className='text-lg text-[#6F6C90] mb-2'>Report a bug</p>
+                                <p className='text-lg text-[#6F6C90] mb-2'>Chat support</p>
+                            </div>        
                         </div>
-                        <div className="w-full flex justify-start">
-                            <img className='w-12' src={bgB} />
+                        <p className='text-lg text-[#6F6C90] my-4'>Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam</p>
+                        <div className='flex flex-row items-center space-x-3 '>
+                            <img className='w-5 h-5 object-contain' src={mface} />
+                            <img className='w-5 h-5 object-contain' src={mtwit} />
+                            <img className='w-5 h-5 object-contain' src={minsta} />
+                            <img className='w-5 h-5 object-contain' src={mlink} />
+                            <img className='w-5 h-5 object-contain' src={myout} />
                         </div>
+                        <div className="w-full border-b border-[#D9DBE9] my-3"></div>
+                        <p className='text-sm text-[#6F6C90]'>All Rights Reserved | <a className='text-[#4A3AFF] underline' href=''>Terms and Conditions</a> | <a className='text-[#4A3AFF] underline'>Privacy Policy</a></p>
                     </div>
                 </div>
             </div>

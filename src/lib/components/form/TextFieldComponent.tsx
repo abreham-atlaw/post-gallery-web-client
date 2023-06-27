@@ -9,7 +9,7 @@ interface TextFieldComponentProps extends FieldComponentProps<string>{
 
 export default class TextFieldComponent extends FieldComponent<string, TextFieldComponentProps>{
 	
-	protected constructInputNode(value: string | null, callback: Function): ReactNode {
+	protected constructInputNode(value: string | null, callback: Function): ReactNode { 
 		return (
 			<input className={`w-full rounded h-14 px-3 text-black placeholder-[#575757] text-xl lg:h-16 border-[#D6D6D6] border-[3px] lg:h-${this.props.height??14}`} type="text" onChange={(event) => {callback(event.target.value)}} value={(value === null)?"":value} />
 		)

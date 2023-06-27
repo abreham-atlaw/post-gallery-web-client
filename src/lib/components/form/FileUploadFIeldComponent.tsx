@@ -83,31 +83,31 @@ export default class FileUploadFieldComponent extends FieldComponent<string, Fil
 
 		return (
 			<div className="flex flex-col p-6 justify-center items-center border-dashed border-2 rounded-lg border-[#D6D6D6]">
-			<div className="flex flex-col lg:flex-row justify-between items-center w-full">
-				<img className="h-16 bg-contain" src={Upload}  />
-				<div className="mb-2 lg:mb-0 text-center lg:text-start">
-					<p className="text-xl  font-medium">Upload your files here</p>
-					<p className="text-xl  text-[#D6D6D6]">Supported formats: any</p>
+				<div className="flex flex-col lg:flex-row justify-between items-center w-full">
+					<img className="h-16 bg-contain" src={Upload}  />
+					<div className="mb-2 lg:mb-0 text-center lg:text-start">
+						<p className="text-xl  font-medium">Upload your files here</p>
+						<p className="text-xl  text-[#D6D6D6]">Supported formats: any</p>
+					</div>
+					<label htmlFor={id} className="flex justify-center items-center px-12  h-11 bg-white text-black rounded-full border-2 border-[#D6D6D6] cursor-pointer">
+					<p className="justify-center text-xl">Browse</p>
+					</label>
+					<input 
+						id={id}
+						type="file"
+						accept=""
+						onChange={(event) => {this.onFileChanged(event.target.files?.item(0), callback)}}
+						className="hidden"
+					/>
 				</div>
-				<label htmlFor={id} className="flex justify-center items-center px-12  h-11 bg-white text-black rounded-full border-2 border-[#D6D6D6] cursor-pointer">
-				<p className="justify-center text-xl">Browse</p>
-				</label>
-				<input 
-					id={id}
-					type="file"
-					accept=""
-					onChange={(event) => {this.onFileChanged(event.target.files?.item(0), callback)}}
-					className="hidden"
-				/>
+				<div className="flex flex-wrap px-8 ">
+					<div className="w-72 h-min ">
+						{
+							this.getPreview(this.state.field.getValue())
+						}
+					</div>
+				</div>
 			</div>
-            <div className="flex flex-wrap px-8 ">
-				<div className="w-72 h-min ">
-					{
-						this.getPreview(this.state.field.getValue())
-					}
-				</div>
-            </div>
-        </div>
 		)
 	}
 
