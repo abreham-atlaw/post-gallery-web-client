@@ -133,18 +133,18 @@ const App: React.FC = () => {
           </div>
 
           <div className='w-full flex flex-row space-x-2 mt-5'>
-            <div className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+            <Link to="/admin/artist/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid1} />
-              <a href="/admin/artist/add">Add artist</a>
-            </div>
-            <div className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <p>Add artist</p>
+            </Link>
+            <Link to="/admin/artwork/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid2} />
-              <a href="/admin/artwork/add">Add art</a>
-            </div>
-            <div className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <p>Add art</p>
+            </Link>
+            <Link to="/admin/exhibition/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid3} />
               <p>Add exhibition</p>
-            </div>
+            </Link>
           </div>
 
         </div>

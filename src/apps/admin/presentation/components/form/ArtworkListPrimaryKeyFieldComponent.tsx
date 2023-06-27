@@ -171,11 +171,17 @@ export class ArtworkSelectionComponent extends React.Component<ArtworkSelectionI
         this.state = new ArtworkSelectionInputComponentState();
     }
 
+    setVisibility = (state: any, value: boolean) => {
+      state.visible = value;
+    }
 
     render(): React.ReactNode {
         return (
             <div>
-                <div onClick={() => {this.state.visible = true; this.setState(this.state)}}>
+                <div onClick={() => {
+                  this.setVisibility(this.state, true)
+                  this.setState(this.state)}
+                  }>
                     <div className="flex justify-center w-60 m-auto items-center px-12 col-2 h-11 bg-white text-black rounded-full border-2 border-[#D6D6D6] cursor-pointer">
                         <p className="justify-center font-medium text-xl">Select</p>
                     </div>
@@ -191,7 +197,7 @@ export class ArtworkSelectionComponent extends React.Component<ArtworkSelectionI
                     allArtworks={this.props.allArtworks}
                     onChanged={(values) => {this.props.onChanged(values)}}
                     onClose={() => {this.setState((state)=>{
-                        state.visible = false;
+                        this.setVisibility(state, false);
                         return state;
                     })}}
                     />
