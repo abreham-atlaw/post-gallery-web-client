@@ -49,8 +49,12 @@ export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibit
 		await super.onInit();
 		this.state.allArtists = await this.artistRepository.getAll();
 		this.state.allArtworks = await this.artworkRepository.getAll();
-		this.state.exhibition = await this.repository.getByPrimaryKey(this.state.exhibtionId!)
-		this.syncExhibitionToForm(this.state.form, this.state.exhibition)
+		if(this.state.exhibtionId != undefined){
+			this.state.exhibition = await this.repository.getByPrimaryKey(this.state.exhibtionId!)
+			this.syncExhibitionToForm(this.state.form, this.state.exhibition)
+			this.syncState()
+		}
+		
 	}
 
 	async save(){

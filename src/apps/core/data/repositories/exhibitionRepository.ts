@@ -5,6 +5,7 @@ import CoreProviders from "../../di/coreproviders";
 import ExhibitionSerializer from "../serializers/exhibitionSerializer";
 import Artwork from "../models/artwork";
 import { DBConfigs } from "@/configs/data_configs";
+import { sleep } from "@/lib/utils/time";
 
 
 
@@ -29,11 +30,17 @@ export default class ExhibitionRepository extends FireStoreRepository<string, Ex
 	}
 	
 	public async attachForeignKeys(instance: Exhibition): Promise<void> {
-		instance.artist = await this.artistRepository.getByPrimaryKey(instance.artistId);
 		instance.artworks = []
 		for(let artworkId of instance.artworkIds){
-			instance.artworks.push(await this.artworkRepository.getByPrimaryKey(artworkId))
+			let value = await this.artworkRepository.getByPrimaryKey(artworkId);
+			instance.artworks.push(value);
 		}
+		
+		this.artistRepository.setAttachMode(false);
+		instance.artist = await this.artistRepository.getByPrimaryKey(instance.artistId);
+		this.artistRepository.setAttachMode(true);
+		
+
 	}
 
 }

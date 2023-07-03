@@ -50,7 +50,7 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 			<div className="relative ">
 			  <div className='hidden lg:flex flex-row items-center justify-between pr-10 pt-10 '>
 					<a href="/" className='flex flex-row items-center space-x-10 text-3xl font-medium leading-none'>
-						<img className='w-16' src={this.props.isDark ? PG : PGwhite} />
+						<img className='w-20' src={this.props.isDark ? PG : PGwhite} />
 					</a>
 					<div className={` ${this.props.isDark ? "text-black" : "text-white"} flex flex-row items-center space-x-6  text-2xl leading-none`}>
 						<a href="/exhibitions">Exhibition</a>

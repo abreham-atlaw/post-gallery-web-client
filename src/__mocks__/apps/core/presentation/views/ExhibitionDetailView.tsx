@@ -7,42 +7,9 @@ import PG from '@/assets/PG.png'
 import back from '@/assets/back.png'
 import next from '@/assets/forward.png'
 import TheFooter from "@/lib/components/footer/footer";
-import Artwork from "@/apps/core/data/models/artwork";
+import Artwork, { Dimension } from "@/apps/core/data/models/artwork";
 import NavBar from "@/lib/components/navBar/navBar";
 
-const data = [
-	{
-	  imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQMOwR-_45OiadN8CymKhw08QALAidVKLYJPA8Zgn9qS0mn2c_wbbi4c2npgeVcdD3hTs&usqp=CAU',
-	  title: 'Title 1',
-	  subtitle: 'Subtitle 1'
-	},
-	{
-	  imageUrl: 'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/3.jpg?alt=media&token=e389affd-1260-415d-bbc5-5d23ff3bd0d5',
-	  title: 'Title 2',
-	  subtitle: 'Subtitle 2'
-	},
-	{
-		imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQMOwR-_45OiadN8CymKhw08QALAidVKLYJPA8Zgn9qS0mn2c_wbbi4c2npgeVcdD3hTs&usqp=CAU',
-		title: 'Title 1',
-		subtitle: 'Subtitle 1'
-	  },
-	  {
-		imageUrl: 'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/3.jpg?alt=media&token=e389affd-1260-415d-bbc5-5d23ff3bd0d5',
-		title: 'Title 2',
-		subtitle: 'Subtitle 2'
-	  },
-	  {
-		imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQMOwR-_45OiadN8CymKhw08QALAidVKLYJPA8Zgn9qS0mn2c_wbbi4c2npgeVcdD3hTs&usqp=CAU',
-		title: 'Title 1',
-		subtitle: 'Subtitle 1'
-	  },
-	  {
-		imageUrl: 'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/3.jpg?alt=media&token=e389affd-1260-415d-bbc5-5d23ff3bd0d5',
-		title: 'Title 2',
-		subtitle: 'Subtitle 2'
-	  },
-	// Add more items as necessary
-  ];
 
 interface ExhibitionDetailViewProps{
 	exhibitionID: string
@@ -122,7 +89,12 @@ interface SlideShowProps {
 	  } else {
 		setActiveIndex(0);
 	  }
+
 	};
+
+	const calcHeight = (dim: Dimension) => {
+		return dim.height/dim.width;
+	}
   
 	return (
 	  <div className="w-full px-3 lg:p-4 m-auto flex flex-row items-center justify-between lg:px-28">
@@ -134,11 +106,16 @@ interface SlideShowProps {
 		</button>
 		<Link
 			to={`/artwork/${artworks[activeIndex].getPK()}`}
-		  className="flex flex-col items-center justify-end text-white text-center w-9/12 lg:w-5/12 h-80 lg:h-[530px] bg-no-repeat bg-cover object-cover"
-		  style={{ backgroundImage: `url(${artworks[activeIndex].images[0]})` }}
+		  className={`relative flex flex-col items-center justify-end text-white text-center  bg-no-repeat bg-contain object-cover`}
+		//   style={{ backgroundImage: `url(${artworks[activeIndex].images[0]})`, height: `${calcHeight(artworks[activeIndex].dimension)*(window.innerWidth * 0.75)}px`}}
 		  
 		>
-			<div className=" w-full pb-2 lg:pb-6 pt-6" style={{ 
+			<div className="h-[20rem] lg:h-[45rem] max-h-[500px] relative">
+				<img src={artworks[activeIndex].images[0]} className="h-full"/>
+			</div>
+
+
+			<div className="absolute w-full pb-2 lg:pb-6 pt-6" style={{ 
 				background: "linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 1.9%, rgba(0, 0, 0, 0) 100%)" 
 			}}>
 			
@@ -176,9 +153,9 @@ const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) 
     <Link 
 		to={link}
         className="w-full h-72 lg:h-72  bg-cover bg-center"
-        style={{ backgroundImage: `url(${imageUrl})` }}
+		style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat" }}
     >
-		<div className="w-full h-full flex items-end justify-center pb-4" style={{ backgroundImage: 'linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0) 100%)'}}>
+		<div className="w-full h-full flex items-end justify-center pb-4 shadow-md" >
 			<div className="text-white text-center">
 				<h2 className="font-bold">{title}</h2>
 				<p>{subtitle}</p>

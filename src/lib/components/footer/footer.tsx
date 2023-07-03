@@ -99,7 +99,7 @@ export default class TheFooter extends React.Component<any, FooterState>{
                                 <img className='w-12' src={bgB} />
                             </div>
                         </div>
-                        <div className='w-1/2 flex flex-row justify-between'>
+                        <div className='w-1/2 flex-row justify-between hidden lg:flex'>
                             <div className='w-1/2 flex flex-col space-y-3'>
                                 <p className='text-xl font-bold text-[#170F49] mb-6'>Products</p>
                                 <p className='text-lg text-[#6F6C90]'>Features</p>
@@ -127,11 +127,11 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         </div>
                         
                     </div>       
-                    <div className='px-10 my-4'><LineWithWidth10 /></div>
-                    <div className='flex flex-row justify-between px-14'>
+                    <div className='px-10 mb-2'><LineWithWidth10 /></div>
+                    <div className='flex flex-row mb-3 justify-between px-14'>
                         <div className='flex flex-row'>
                             <p className='text-lg text-[#6F6C90] mr-16'>COPYRIGHT © 2023 POST GALLERY</p>
-                            <p className='text-lg text-[#6F6C90] underline'>SITE BY <span className='text-black text-md'> zenon-X</span></p>
+                            <p className='text-lg text-[#6F6C90] underline'>SITE BY <span className='text-black text-md' style={{fontFamily: "playlist"}}> zenon-X</span></p>
                         </div>
                         <div className='flex flex-row items-center space-x-3 '>
                             <img className='w-5 h-5 object-contain' src={face} />
@@ -158,26 +158,8 @@ export default class TheFooter extends React.Component<any, FooterState>{
                             <img className='w-5 object-contain mr-3' src={mark} />
                             <p className='text-lg text-[#6F6C90] '>Bole, Addis Ababa, Ethiopia</p>
                         </div>
-                        <div className='mt-6 flex flex-row justify-between items-start'>
-                            <div className='flex flex-col'>
-                                <p className='text-xl font-semibold text-[#170F49] mb-7'>Product</p>
-                                <p className='text-lg text-[#6F6C90] mb-2'>Pricing</p>
-                                <p className='text-lg text-[#6F6C90] mb-2'>Updates</p>
-                            </div>
-                            <div className='flex flex-col'>
-                                <p className='text-xl font-semibold text-[#170F49] mb-7'>Company</p>
-                                <p className='text-lg text-[#6F6C90] mb-2'>Contact us</p>
-                                <p className='text-lg text-[#6F6C90] mb-2'>About</p>
-                                <p className='text-lg text-[#6F6C90] mb-2'>Blog</p>
-                            </div>
-                            <div className='flex flex-col'>
-                                <p className='text-xl font-semibold text-[#170F49] mb-7'>Support</p>
-                                <p className='text-lg text-[#6F6C90] mb-2'>Report a bug</p>
-                                <p className='text-lg text-[#6F6C90] mb-2'>Chat support</p>
-                            </div>        
-                        </div>
-                        <p className='text-lg text-[#6F6C90] my-4'>Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam</p>
-                        <div className='flex flex-row items-center space-x-3 '>
+                        
+                        <div className='flex flex-row items-center space-x-3 mt-3'>
                             <img className='w-5 h-5 object-contain' src={mface} />
                             <img className='w-5 h-5 object-contain' src={mtwit} />
                             <img className='w-5 h-5 object-contain' src={minsta} />
@@ -185,7 +167,11 @@ export default class TheFooter extends React.Component<any, FooterState>{
                             <img className='w-5 h-5 object-contain' src={myout} />
                         </div>
                         <div className="w-full border-b border-[#D9DBE9] my-3"></div>
-                        <p className='text-sm text-[#6F6C90]'>All Rights Reserved | <a className='text-[#4A3AFF] underline' href=''>Terms and Conditions</a> | <a className='text-[#4A3AFF] underline'>Privacy Policy</a></p>
+                        
+                        <div className="flex">
+                            <p className='text-sm text-[#6F6C90] mr-auto'>COPYRIGHT © 2023 POST GALLERY</p>
+                            <span className='text-[#6F6C90] underline'>SITE BY <span className="text-black" style={{"fontFamily": "playlist"}}>zenon-X</span></span>
+                        </div>
                     </div>
                 </div>
             </div>

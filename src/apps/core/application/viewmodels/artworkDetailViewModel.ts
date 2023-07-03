@@ -9,7 +9,12 @@ export default class ArtworkDetailViewModel extends AsyncViewModel<ArtworkDetail
 	private artworkRepository: ArtworkRepository = CoreProviders.provideArtworkRepository()
 
 	public async onInit(): Promise<void> {
-		await super.onInit();
 		this.state.artwork = await this.artworkRepository.getByPrimaryKey(this.state.artworkId)
+		await super.onInit();
+	}
+
+	protected isReady(): boolean {
+		return (this.state.artwork != undefined && 
+			this.state.artwork!.artist != undefined);
 	}
 }
