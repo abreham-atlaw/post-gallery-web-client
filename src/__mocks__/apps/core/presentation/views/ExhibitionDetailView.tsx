@@ -97,7 +97,8 @@ interface SlideShowProps {
 	}
   
 	return (
-	  <div className="w-full px-3 lg:p-4 m-auto flex flex-row items-center justify-between lg:px-28">
+		<div className="flex">
+			 <div className="mx-auto px-3 lg:p-4 m-auto flex flex-row items-center justify-between lg:px-28">
 		<button
 		  className=" lg:p-2"
 		  onClick={handlePrev}
@@ -108,9 +109,9 @@ interface SlideShowProps {
 			to={`/artwork/${artworks[activeIndex].getPK()}`}
 		  className={`relative flex flex-col items-center justify-end text-white text-center  bg-no-repeat bg-contain object-cover`}
 		//   style={{ backgroundImage: `url(${artworks[activeIndex].images[0]})`, height: `${calcHeight(artworks[activeIndex].dimension)*(window.innerWidth * 0.75)}px`}}
-		  
+
 		>
-			<div className="h-[20rem] lg:h-[45rem] relative">
+			<div className="h-[20rem] lg:h-[45rem] max-h-[500px] relative">
 				<img src={artworks[activeIndex].images[0]} className="h-full"/>
 			</div>
 
@@ -124,6 +125,7 @@ interface SlideShowProps {
 				<p className="text-lg font-medium lg:text-2xl lg:font-medium">{artworks[activeIndex].creationDate.getFullYear()}</p>
 			</div>
 		</Link>
+		
   
 		<button
 		  className="lg:p-2 "
@@ -132,6 +134,8 @@ interface SlideShowProps {
 		  <img className="w-4 h-5 lg:w-10 lg:h-12" src={next} />
 		</button>
 	  </div>
+		</div>
+	 
 	);
   };
 
@@ -150,18 +154,24 @@ interface SlideShowProps {
 }
 
 const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) => (
-    <Link 
+    <div className="w-full flex">
+		<Link 
 		to={link}
-        className="w-full h-72 lg:h-72  bg-cover bg-center"
-        style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat" }}
+        className="mx-auto h-72 lg:h-72  bg-cover bg-center relative"
+        // style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat" }}
     >
-		<div className="w-full h-full flex items-end justify-center pb-4" style={{ backgroundImage: 'linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0) 100%)'}}>
+		<div className="relative h-full">
+			<img className="h-full" src={imageUrl}/>
+		</div>
+		<div className="w-full h-full flex items-end justify-center pb-4 absolute top-0 px-4" style={{ backgroundImage: 'linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0) 100%)'}}>
 			<div className="text-white text-center">
 				<h2 className="font-bold">{title}</h2>
 				<p>{subtitle}</p>
 			</div>
 		</div>
     </Link>
+	</div>
+	
 );
 
 interface GridProps {
