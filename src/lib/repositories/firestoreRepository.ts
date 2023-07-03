@@ -4,6 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 import Model from "@/lib/models/model";
 import { InstanceNotFoundException, MultipleInstancesFoundException, Repository } from "./repository";
 import Serializer from "../serializers/serializer";
+import { sleep } from "../utils/time";
 
 
 export abstract class FireStoreRepository<P, M extends Model<P>> implements Repository<P, M>{
@@ -14,7 +15,7 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	private serializer: Serializer<M, DocumentData>;
 	private attachMode: boolean = true;
 	private cache: Map<P, QueryDocumentSnapshot<DocumentData>> = new Map();
-	private caching: boolean = false;
+	private caching: boolean = true;
 
  	constructor(
 		firestore: Firestore,
@@ -44,9 +45,11 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 
 	protected async getDocument(pk: P): Promise<QueryDocumentSnapshot<DocumentData>>{
 		let cached = await this.getFromCache(pk)
+		
 		if(cached != null){
 			return cached
 		}
+
 		let pkQuery = query(this.collection, where(this.primaryKeyColumn, "==", pk));
 		let docs = (await getDocs(pkQuery)).docs;
 		if(docs.length == 0){
@@ -55,17 +58,27 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 		if(docs.length > 1){
 			throw new MultipleInstancesFoundException(this.collectionName, pk);
 		}
-		this.storeToCache(pk, docs[0])
+		
+		await this.storeToCache(pk, docs[0])
 		return docs[0];
 	}
 
 	public async getByPrimaryKey(pk: P): Promise<M>{
-		return await this.firebaseFetch(
-			async () => {
-				return (await this.getDocument(pk)).data()
+		let value = await this.firebaseFetch(
+			() => {
+				return new Promise((resolve, reject) => {
+					this.getDocument(pk).then(
+						(document) => {
+							resolve(document.data())
+						}
+					).catch((reason) => {
+						reject(reason);
+					})
+				})
 			},
 			false
 		) as M;
+		return value
 	}
 
 	private async processDocumentData(data: DocumentData): Promise<M>{
@@ -82,11 +95,13 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 		if(many){
 			let instances: M[] = []
 			for(let instanceData of (data as DocumentData[])){
-				instances.push(await this.processDocumentData(instanceData))
+				let value = await this.processDocumentData(instanceData);
+				instances.push(value);
 			}
 			return instances;
 		}
-		return await this.processDocumentData(data);
+		let value = await this.processDocumentData(data);
+		return value;
 
 	}
 
@@ -121,17 +136,26 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	}
 
 	public async getAll(): Promise<M[]> {
-		return await this.firebaseFetch(
-			async () => {
-				return (await getDocs(this.collection)).docs.map((snapshot: QueryDocumentSnapshot<DocumentData>) => { return snapshot.data() });
+		let value = await this.firebaseFetch(
+			() => {
+				return new Promise((resolve, reject) => {
+					getDocs(this.collection).then(
+						(docs) => {
+							let data = docs.docs.map((snapshot: QueryDocumentSnapshot<DocumentData>) => { return snapshot.data() });
+							resolve(data);
+						}
+					).catch((reason) => {
+						reject(reason);
+					})
+				})
 			},
 			true
-		) as M[]
+		) as M[];
+		return value
 	}
 
 	public setAttachMode(mode: boolean){
 		this.attachMode = mode;
-		this.caching = mode;
 	}
 
 	public setCaching(caching: boolean){

@@ -40,11 +40,13 @@ export default class LoginView extends React.Component<any, HomeViewState>{
 
 	private viewModel: LoginViewModel;
 	private slideInterval: NodeJS.Timeout | undefined;
+	private redirectTo: string;
 
 	constructor(props: any){
 		super(props);
 		this.state = new LoginState();
 		this.viewModel = new LoginViewModel(this.state, this.setState.bind(this))
+		this.redirectTo = (new URLSearchParams(document.location.search)).get("redirect") ?? "/search"
 	}
 
 	componentDidMount() {
@@ -100,7 +102,7 @@ export default class LoginView extends React.Component<any, HomeViewState>{
 
 	render(): React.ReactNode {
 		if(this.state.status === AsyncStatus.done){
-			return (<Navigate to="/search" />)
+			return (<Navigate to={this.redirectTo} />)
 		}
 		return (
 			<div className="bg-[url('./assets/LoginRegisterBG.png')] bg-center bg-cover min-h-screen w-screen text-white">

@@ -2,7 +2,7 @@ import CheckoutState from "@/apps/core/application/state/checkOutState";
 import CheckoutViewModel from "@/apps/core/application/viewmodels/checkoutViewModel";
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
 import React, { ChangeEvent, FC, FormEvent, ReactNode, useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import Back from '@/assets/back.png'
 import CheckOut1 from '@/assets/CheckOut1.png'
 import CheckOut2 from '@/assets/CheckOut2.png'
@@ -50,7 +50,7 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 		return (
 			<div className="bg-[#F6F6F6] min-h-screen" >
 				<div className="bg-white px-6 pt-12 pb-12 lg:hidden">
-					<img className="h-8 mb-4" src={Back} />
+					<Link to={`/artwork/${this.state.item?.id}`}><img className="h-8 mb-4" src={Back} /></Link>
 					<div className="text-4xl font-medium pb-3.5 border-b-2 border-[#CBCACA]">CheckOut</div>
 
 					<p className="text-2xl my-4">Shipping address</p>
@@ -108,7 +108,7 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 				{/* ------------------------------------------ */}
 
 				<div className="hidden lg:inline lg:px-8">
-					<img className="h-8 mx-6" src={Back} />
+					<button className="my-8" onClick={() => {history.back()}}><img className="h-8 mx-6" src={Back} /></button>
 					
                     <div className="flex flex-row justify-between">
                         <div className="w-5/12 h-min ml-28 px-7 py-9 bg-white">

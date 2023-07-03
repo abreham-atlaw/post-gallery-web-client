@@ -6,6 +6,7 @@ import CoreProviders from "../../di/coreproviders";
 import ArtworkSerializer from "../serializers/artworkSerializer";
 import ArtistRepository from "./artistRepository";
 import { DBConfigs } from "@/configs/data_configs";
+import { sleep } from "@/lib/utils/time";
 
 
 
@@ -41,11 +42,12 @@ export default class ArtworkRepository extends FireStoreRepository<string, Artwo
 	}
 
 	public async attachForeignKeys(instance: Artwork): Promise<void> {
-		instance.artist = await this.getArtistRepository().getByPrimaryKey(instance.artistId);
+		let artistRepository = this.getArtistRepository();
+		instance.artist = await artistRepository.getByPrimaryKey(instance.artistId);
 	}
 
 	public async getByArtist(artist: Artist): Promise<Artwork[]>{
-		return this.getByArtistId(artist.getPK()!);
+		return await this.getByArtistId(artist.getPK()!);
 	}
 
 	public async getByArtistId(id: string): Promise<Artwork[]>{

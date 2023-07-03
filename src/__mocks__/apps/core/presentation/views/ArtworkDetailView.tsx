@@ -25,7 +25,7 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 		return (
 			<div className="bg-[#F6F6F6] min-h-screen" >
 				<div className="px-6 pt-12 pb-12 lg:hidden">
-					<a href="/search">
+					<a onClick={() => {history.back()}}>
 						<img className="h-8" src={Back} />
 					</a>
 					<div className="text-4xl">{this.state.artwork!.name}</div>
@@ -42,9 +42,9 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 					<div className="text-3xl font-medium">Price: {new String(this.state.artwork!.price)} ETB</div>
 					<p className="text-2xl underline">Description</p>
 					<DescriptionComponent description={this.state.artwork!.description} />
-					<button className="flex justify-center items-center w-56 m-auto my-8 pt-2 pb-2.5 bg-black text-white rounded-full">
+					<Link to={`/checkout/${this.state.artwork?.id}`} className="flex justify-center items-center w-56 m-auto my-8 pt-2 pb-2.5 bg-black text-white rounded-full">
 						<div className="justify-center text-2xl">Purchase</div>
-					</button>
+					</Link>
 					<p className="text-2xl mt-12">About the creator</p>
 					<div className="bg-white rounded-lg px-3 py-5">
 						<div className="flex flex-row items-center">
@@ -58,7 +58,7 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 				{/* ------------------------------------------ */}
 
 				<div className="hidden lg:inline lg:px-8 ">
-					<a className="w-10" href="/search">
+					<a className="w-10" onClick={() => {history.back()}}>
 						<img className="h-8 mb-8 mt-4 mx-8" src={Back} />
 					</a>
 					<div className="flex flex-row justify-between items-start px-12">
@@ -116,7 +116,7 @@ type SlideshowProps = {
 	return (
 	  <div className="flex flex-col lg:w-7/12">
 		<div className="flex flex-col lg:flex lg:flex-row">
-			<div className="lg:hidden w-full h-60 mb-2 bg-cover rounded-lg" style={{ backgroundImage: `url(${images[currentImageIndex]})` }} />
+			<div className="lg:hidden w-full h-96 mb-2  bg-contain bg-center bg-no-repeat  rounded-lg" style={{ backgroundImage: `url(${images[currentImageIndex]})` }} />
 			<div className=" m-auto grid grid-cols-5 gap-4 lg:grid-rows-5 lg:grid-cols-none lg:mr-4">
 				{images.slice(0, 5).map((imageUrl, index) => (
 					<div
@@ -127,7 +127,7 @@ type SlideshowProps = {
 					/>
 				))}
 			</div>
-			<div className="hidden lg:inline w-full h-4/12 mb-2 bg-cover rounded-lg" style={{ backgroundImage: `url(${images[currentImageIndex]})` }} />
+			<div className="hidden lg:inline w-full h-[30rem] mb-2 bg-contain bg-center bg-no-repeat rounded-lg" style={{ backgroundImage: `url(${images[currentImageIndex]})` }} />
 		</div>
 		<div className="m-auto grid grid-cols-5 gap-2 mt-3">
 			{images.slice(0, 5).map((imageUrl, index) => (

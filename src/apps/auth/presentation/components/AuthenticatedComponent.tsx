@@ -79,7 +79,9 @@ export default class AuthenticatedComponent extends React.Component<Authenticate
 		if(this.validStatus.includes(this.state.authenticationStatus) && this.allowedRoles.includes(this.state.userRole)){
 			return this.props.children;
 		}
-		let targetLocation = this.getRedirectLocation(this.state.authenticationStatus);
+
+		let futureRedirect = new URLSearchParams(currentLocation.search).get("redirect") ?? currentLocation.pathname
+		let targetLocation = `${this.getRedirectLocation(this.state.authenticationStatus)}?redirect=${futureRedirect}`;
 		return (
 			// <div>{this.state.status}</div>
 			<Navigate to={targetLocation} state={{ from : currentLocation}}/>
