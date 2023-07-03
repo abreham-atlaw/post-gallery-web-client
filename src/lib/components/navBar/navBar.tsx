@@ -69,7 +69,7 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 				</a>
 				<img  className='h-7 lg:hidden' onClick={() => {this.getViewModel().toggleOpen()}} src={this.state.open && this.props.isDark ? Menu : this.state.open && this.props.isDark ? MenuWhit :  MenuWhit } />
 			  </div>
-			  <div className={` ${this.state.open ? 'hidden' : 'absolute'} flex flex-col justify-center items-center top-0 text-white text-3xl bg-black w-full h-screen lg:hidden`}>
+			  <div className={` ${this.state.open ? 'hidden' : 'absolute'} flex flex-col justify-center items-center top-0 text-white text-3xl bg-black w-full h-screen lg:hidden z-10`}>
 					<img className='absolute h-7 top-5 right-5' onClick={() => {this.getViewModel().toggleOpen()}} src={MenuWhite} />
 					<a href="/exhibitions" className=" font-semibold text-end pb-2 ">Exhibition</a>
 					<a href="/search" className=" font-semibold text-end pb-2 ">Shop</a>
