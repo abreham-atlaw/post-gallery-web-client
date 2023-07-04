@@ -110,7 +110,7 @@ interface SlideShowProps {
 		//   style={{ backgroundImage: `url(${artworks[activeIndex].images[0]})`, height: `${calcHeight(artworks[activeIndex].dimension)*(window.innerWidth * 0.75)}px`}}
 		  
 		>
-			<div className="h-[20rem] lg:h-[45rem] max-h-[500px] relative">
+			<div className="h-[20rem] lg:h-[45rem] max-h-[500px]">
 				<img src={artworks[activeIndex].images[0]} className="h-full"/>
 			</div>
 
@@ -152,7 +152,7 @@ interface SlideShowProps {
 const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) => (
     <Link 
 		to={link}
-        className="w-full h-72 lg:h-72  bg-cover bg-center"
+        className="w-full h-96 lg:h-72  bg-cover bg-center"
 		style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat" }}
     >
 		<div className="w-full h-full flex items-end justify-center pb-4 shadow-md" >

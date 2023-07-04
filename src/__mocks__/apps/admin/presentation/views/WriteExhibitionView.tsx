@@ -46,6 +46,10 @@ export default abstract class WriteExhibitionView<P> extends ViewModelView<EditE
 					<div className="lg:pl-8 ">
 						<p className="mt-8 mb-6">⚫<span className="text-2xl font-medium">   Exhibition details</span></p>
 						<div className="w-full lg:w-4/6">
+							<div>
+								<label htmlFor="artistId">Artist ID:</label>
+								<ArtistPrimaryKeyFieldComponent choices={this.state.allArtists!} field={this.state.form.artistId} syncer={this.getViewModel().syncState} />
+							</div>
 							<div className="text-xl text-[#5E5E64] font-medium mt-4 mb-2">
 								<label htmlFor="name">Name: <span className="text-red-500 required-dot"> *</span></label>
 								<div className="h-2"></div>

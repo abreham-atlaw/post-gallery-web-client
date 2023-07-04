@@ -156,7 +156,7 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         </div>
                         <div className='flex flex-row mb-3'>
                             <img className='w-5 object-contain mr-3' src={mark} />
-                            <p className='text-lg text-[#6F6C90] '>Bole, Addis Ababa, Ethiopia</p>
+                            <p className='text-lg text-[#6F6C90] '>Ethiopian Skylight Mall, Bole, Addis Ababa, Ethiopia</p>
                         </div>
                         
                         <div className='flex flex-row items-center space-x-3 mt-3'>
