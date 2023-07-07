@@ -36,7 +36,7 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 							}
 						)
 					}
-					<div className="w-full flex flex-row items-center justify-center mt-8 mb-5 px-2.5 lg:mt-24 lg:mb-8"><p className="text-xl lg:text-2xl text-[#8E8E8E]">UPCOMING</p> <LineWithWidth10 /></div>
+					<div className="w-full flex flex-row items-center justify-center mt-8 mb-5 px-2.5 lg:mt-14 lg:mb-8"><p className="text-xl lg:text-2xl text-[#8E8E8E]">UPCOMING</p> <LineWithWidth10 /></div>
 					{
 						this.state.upcomingExhibitions!.map(
 							(exhibition: Exhibition) => {
@@ -66,7 +66,7 @@ interface ExhibitionProps{
 
   const ExhibitionItem = (props: ExhibitionProps) => {
 	return (
-	  <Link to={`/exhibition/${props.exhibition.getPK()}`} className="w-full flex flex-col lg:flex-row justify-between px-3 lg:px-20">
+	  <Link to={`/exhibition/${props.exhibition.getPK()}`} className="w-full flex flex-col lg:flex-row justify-between px-3 mb-10 lg:px-20">
 		<img className="w-full lg:w-5/12 h-96 lg:h-[420px] object-cover" src={props.exhibition.coverImage} /> 
 		<div className="w-full mt-3 lg:mt-0 lg:w-5/12">
 			<p className="text-3xl lg:text-5xl">{props.exhibition.name}</p>

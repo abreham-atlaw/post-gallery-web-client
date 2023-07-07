@@ -60,9 +60,9 @@ export default class TheFooter extends React.Component<any, FooterState>{
     render(): React.ReactNode {
         return (
             <div>
-                <div className='hidden lg:inline pb-4'>
+                <div className='hidden lg:inline pb-4 max-w-[1280px]'>
                 
-                    <div className='flex flex-row items-center justify-between'>
+                    <div className='flex flex-row items-center justify-between  max-w-[1280px] m-auto'>
                     
                         <div className='w-1/2 max-w-xl p-12'>
                             <div className="w-full flex justify-end">
@@ -99,7 +99,7 @@ export default class TheFooter extends React.Component<any, FooterState>{
                                 <img className='w-12' src={bgB} />
                             </div>
                         </div>
-                        <div className='w-1/2 flex flex-row justify-between hidden lg:flex'>
+                        <div className='w-1/2 flex-row justify-between hidden lg:flex'>
                             <div className='w-1/2 flex flex-col space-y-3'>
                                 <p className='text-xl font-bold text-[#170F49] mb-6'>Products</p>
                                 <p className='text-lg text-[#6F6C90]'>Features</p>
@@ -127,8 +127,8 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         </div>
                         
                     </div>       
-                    <div className='px-10 my-4'><LineWithWidth10 /></div>
-                    <div className='flex flex-row justify-between px-14'>
+                    <div className='px-10 mb-2 max-w-[1280px] m-auto'><LineWithWidth10 /></div>
+                    <div className='flex flex-row mb-3 justify-between px-14 max-w-[1280px] m-auto'>
                         <div className='flex flex-row'>
                             <p className='text-lg text-[#6F6C90] mr-16'>COPYRIGHT © 2023 POST GALLERY</p>
                             <p className='text-lg text-[#6F6C90] underline'>SITE BY <span className='text-black text-md' style={{fontFamily: "playlist"}}> zenon-X</span></p>
@@ -156,7 +156,7 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         </div>
                         <div className='flex flex-row mb-3'>
                             <img className='w-5 object-contain mr-3' src={mark} />
-                            <p className='text-lg text-[#6F6C90] '>Bole, Addis Ababa, Ethiopia</p>
+                            <p className='text-lg text-[#6F6C90] '>Ethiopian Skylight Mall, Bole, Addis Ababa, Ethiopia</p>
                         </div>
                         
                         <div className='flex flex-row items-center space-x-3 mt-3'>
