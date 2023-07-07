@@ -14,9 +14,9 @@ import bgB from '@/assets/NewsBGB.png'
 
 
 const images = [
-    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/homeBG.png?alt=media&token=7aba3738-b41b-46aa-90e4-9392badbd9af',
-    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/photo_2023-06-24_15-12-34.jpg?alt=media&token=1b577789-b3bf-44c3-b5c2-f066506883ab',
-    'https://firebasestorage.googleapis.com/v0/b/post-gallery-a8462.appspot.com/o/photo_2023-06-24_15-12-37.jpg?alt=media&token=6d676d6d-38ec-4eb6-8f2a-f91e97349751'
+    '/src/assets/background3.jpeg',
+    '/src/assets/background2.jpeg',
+    '/src/assets/background1.jpeg'
 ];
 
 class SlideState {
@@ -85,9 +85,9 @@ export default class HomeView extends ViewModelView<ViewModel<HomeViewState>> {
                             <NavBar isDark={false} /> 
 							<div className="flex flex-row justify-between items-center">
 								<div className="text-white mb-6 pl-4">
-									<p className="text-3xl lg:text-7xl ">SPIRIT OF AN ART</p>
-									<p className="text-xl lg:text-3xl mt-3">ALEMAYEHU ZEWDIE</p>
-									<p className="text-xl lg:text-3xl">25 MAY - 7 JUN 2023</p>
+									<p className="text-3xl lg:text-6xl ">Her Story</p>
+									<p className="text-xl lg:text-3xl mt-3">FREHIWOT DEMISSE</p>
+									<p className="text-xl lg:text-3xl">17 Mar - 21 Nov</p>
 								</div>
 								<div className=" flex flex-row justify-between items-center pr-8 lg:pr-14">
 									<button onClick={this.nextSlide}>
