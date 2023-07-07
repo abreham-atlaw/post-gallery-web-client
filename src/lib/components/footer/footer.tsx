@@ -60,9 +60,9 @@ export default class TheFooter extends React.Component<any, FooterState>{
     render(): React.ReactNode {
         return (
             <div>
-                <div className='hidden lg:inline pb-4'>
+                <div className='hidden lg:inline pb-4 max-w-[1280px]'>
                 
-                    <div className='flex flex-row items-center justify-between'>
+                    <div className='flex flex-row items-center justify-between  max-w-[1280px] m-auto'>
                     
                         <div className='w-1/2 max-w-xl p-12'>
                             <div className="w-full flex justify-end">
@@ -127,8 +127,8 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         </div>
                         
                     </div>       
-                    <div className='px-10 mb-2'><LineWithWidth10 /></div>
-                    <div className='flex flex-row mb-3 justify-between px-14'>
+                    <div className='px-10 mb-2 max-w-[1280px] m-auto'><LineWithWidth10 /></div>
+                    <div className='flex flex-row mb-3 justify-between px-14 max-w-[1280px] m-auto'>
                         <div className='flex flex-row'>
                             <p className='text-lg text-[#6F6C90] mr-16'>COPYRIGHT © 2023 POST GALLERY</p>
                             <p className='text-lg text-[#6F6C90] underline'>SITE BY <span className='text-black text-md' style={{fontFamily: "playlist"}}> zenon-X</span></p>

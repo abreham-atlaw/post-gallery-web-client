@@ -55,7 +55,7 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 					<div className={` ${this.props.isDark ? "text-black" : "text-white"} flex flex-row items-center space-x-6  text-2xl leading-none`}>
 						<a href="/exhibitions">Exhibition</a>
 						<a href="/search">Shop</a>
-						<a href="/">Contact</a>
+						<a href="/artistlist">Artist</a>
 						
 				  {
 					clientSection					
@@ -73,7 +73,7 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 					<img className='absolute h-7 top-5 right-5' onClick={() => {this.getViewModel().toggleOpen()}} src={MenuWhite} />
 					<a href="/exhibitions" className=" font-semibold text-end pb-2 ">Exhibition</a>
 					<a href="/search" className=" font-semibold text-end pb-2 ">Shop</a>
-					<a href="/" className=" font-semibold text-end pb-2 ">Contact</a>
+					<a href="/artistlist" className=" font-semibold text-end pb-2 ">Artist</a>
 					<a href="/" className=" font-semibold text-end pb-2 ">About</a>
 				</div>
 			</div>
