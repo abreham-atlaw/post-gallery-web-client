@@ -9,10 +9,12 @@ export default class Blog implements Model<string>{
     content: string;
 
     constructor(
+		id: string | null,
         title: string,
         cover: string,
         content: string
     ){
+		this.id = id;
         this.title = title;
         this.cover = cover;
         this.content = content;

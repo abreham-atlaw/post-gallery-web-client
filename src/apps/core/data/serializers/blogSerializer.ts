@@ -4,17 +4,22 @@ import { DocumentData } from "firebase/firestore";
 
 
 
-class BlogSerializer extends Serializer<Blog, DocumentData>{
+export default class BlogSerializer extends Serializer<Blog, DocumentData>{
     serialize(instance: Blog): DocumentData {
         return {
             id: instance.getPK(),
             title: instance.title,
-            
-
-        }
+			content: instance.content,
+			cover: instance.cover
+        };
     }
     deserialize(data: DocumentData): Blog {
-        throw new Error("Method not implemented.");
+		return new Blog(
+			data.id,
+			data.title,
+			data.cover,
+			data.content
+		);
     }
 
 }
