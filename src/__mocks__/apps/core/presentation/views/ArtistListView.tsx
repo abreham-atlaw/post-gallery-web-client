@@ -70,14 +70,5 @@ const thedata = [
         name: 'Ribka Wendmagegn',
         date: 'asdf'
     },
-    {
-        image: '/src/assets/mikiyas/art1.jpg',
-        name: 'Mikiyas Sintayehu',
-        date: 'asdf'
-    },
-    {
-        image: '/src/assets/mikiyas/art2.jpg',
-        name: 'Mikiyas Sintayehu',
-        date: 'asdf'
-    },
+
 ]

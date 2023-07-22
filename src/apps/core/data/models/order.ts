@@ -17,6 +17,8 @@ export default class Order implements Model<string>{
 
 	public pricing: OrderPricing;
 
+	public transactionId: string | null;
+
 	public item?: Artwork;
 
 
@@ -28,6 +30,7 @@ export default class Order implements Model<string>{
 		orderPricing: OrderPricing,
 		orderDateTime: Date | null = null ,
 		isPaymentComplete: boolean = false,
+		transactionId: string | null = null
 	){
 		this.id = id;
 		this.itemId = itemId;
@@ -39,6 +42,7 @@ export default class Order implements Model<string>{
 		this.shippingInfoId = shippingInfoId
 		this.clientId = clientId
 		this.pricing = orderPricing
+		this.transactionId = transactionId
 	}
 
 	getPK(): string | null {

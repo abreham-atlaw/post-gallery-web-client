@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        'Mulish': ['Mulish', 'sans-serif'],
+      }
     },
   },
   plugins: [],

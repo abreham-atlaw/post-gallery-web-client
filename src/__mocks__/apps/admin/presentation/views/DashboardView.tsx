@@ -11,6 +11,8 @@ import logout from '@/assets/logout.png'
 import dashGrid1 from '@/assets/dashGrid1.png'
 import dashGrid2 from '@/assets/dashGrid2.png'
 import dashGrid3 from '@/assets/dashGrid3.png'
+import edit from '@/assets/background1.jpeg'
+import { setInterval } from 'timers/promises';
 
 function DashBoardView() {
 
@@ -108,9 +110,9 @@ const App: React.FC = () => {
       <div className="flex-grow bg-white">
         <button className="p-4" onClick={() => setIsSidebarOpen(true)}><img className='w-4' src={menu} /></button>
         {/* Your content here */}
-        <div className='m-2 px-2 lg:ml-64 w-full lg:w-1/2'>
+        <div className={` ${activeItem === 'Page1' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-1/2`}>
           <SearchBar />
-          <p className='text-lg mt-4 mb-10 font-semibold'>In the last 30 days,</p>
+          <p className='text-lg mt-4 mb-3 font-semibold'>In the last 30 days,</p>
           <div className='w-full flex flex-row space-x-2'>
             <div className="w-full px-2.5 flex items-end rounded-[4px] h-16 text-white bg-[url('./assets/dashGridBg.png')] bg-no-repeat bg-cover">
               <div className='mb-1'>
@@ -132,7 +134,8 @@ const App: React.FC = () => {
             </div>       
           </div>
 
-          <div className='w-full flex flex-row space-x-2 mt-5'>
+          <p className='text-2xl font-Mulish mt-10'>Add</p>
+          <div className='w-full flex flex-row space-x-2 mt-2 mb-5'>
             <Link to="/admin/artist/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid1} />
               <p>Add artist</p>
@@ -146,7 +149,46 @@ const App: React.FC = () => {
               <p>Add exhibition</p>
             </Link>
           </div>
+          <p className='text-2xl font-Mulish mt-10'>Edit</p>
+          <div className='w-full flex flex-row space-x-2 mt-2 mb-5'>     
+            <div onClick={() => setActiveItem('edit')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-8 mr-3' src={dashGrid3} />
+              <p>Add exhibition</p>
+            </div>
+            <div onClick={() => setActiveItem('edit')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-8 mr-3' src={dashGrid3} />
+              <p>Add exhibition</p>
+            </div>
+            <div onClick={() => setActiveItem('edit')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-8 mr-3' src={dashGrid3} />
+              <p>Add exhibition</p>
+            </div>
+          </div>
 
+        </div>
+        <div className={` ${activeItem === 'edit' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+          <SearchBar />
+          <p className='text-2xl font-Mulish my-10'>Edit Exhibitions</p>  
+          <div className='flex flex-row'>
+            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-32 h-full mr-5 object-cover' src={edit} />
+              <div className='flex flex-col'>
+                <p className="text-2xl text-[#515151]">Her Story</p>
+                <div className="lg:py-2"><LineWithWidth10 /></div>
+                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
+                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
+              </div>
+            </Link>
+            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-32 h-full mr-5 object-cover' src={edit} />
+              <div className='flex flex-col'>
+                <p className="text-2xl text-[#515151]">Her Story</p>
+                <div className="lg:py-2"><LineWithWidth10 /></div>
+                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
+                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
@@ -169,7 +211,7 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSearchSubmit} className="relative">
+    <form onSubmit={handleSearchSubmit} className="relative max-w-3xl">
       <span className="absolute top-0 left-0 m-2 text-gray-400">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -185,3 +227,10 @@ const SearchBar: React.FC = () => {
     </form>
   );
 };
+
+
+const LineWithWidth10 = () => {
+	return (
+	  <div className="w-full border-b-2 border-[#EDEDED]"></div>
+	);
+  };

@@ -94,7 +94,7 @@ interface ExhibitionProps{
 	  return (
 		<div>
 		  <p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description}</p>
-		  <button className="btn btn-primary text-2xl font-semibold" onClick={toggleShowMore}>Show Less</button>
+		  <button className="btn btn-primary leading-[1.7 rem] text-[1.25 rem] lg:text-2xl font-extralight lg:font-semibold" onClick={toggleShowMore}>Show Less</button>
 		</div>
 	  );
 	}
@@ -102,7 +102,7 @@ interface ExhibitionProps{
 	return (
 	  <div>
 		<p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description.substring(0, 300)}...</p>
-		<button className="btn btn-primary text-2xl font-semibold" onClick={toggleShowMore}>Read More</button>
+		<button className="btn btn-primary text-[1.24 rem] font-medium lg:text-2xl lg:font-semibold" onClick={toggleShowMore}>Read More</button>
 	  </div>
 	);
   }

@@ -74,17 +74,17 @@ export default function ArtistDetailView() {
 
             </div>
 
-            <p className="text-4xl font-light lg:text-6xl mt-8 mb-4 lg:mt-16 lg:mb-10 ">Active arts</p>
+            <p className="text-4xl font-light lg:text-6xl mt-8 mb-4 lg:mt-16 lg:mb-10 ">Available arts</p>
             <Grid />
 
-            <p className="text-4xl font-light lg:text-6xl mt-8 mb-4 lg:mt-16 lg:mb-10 ">Biography</p>
-            <p className="text-2xl mb-8 lg:mb-4">I use acrylic paint combined with marker drawings. These series depicts the scenes from
+            <p className="text-4xl font-light lg:text-6xl mt-8 mb-4 lg:mt-16 lg:mb-10 font-Mulish">Biography</p>
+            <p className="text-[3.45 rem] font-extralight font-Mulish mb-8 lg:mb-4">I use acrylic paint combined with marker drawings. These series depicts the scenes from
 my studio in everyday life routine, which is a continuous of the series I used to do before, which
 shows everyday life in Addis Ababa, outdoor scenes of fleeting moments. My paintings drive from
 my quick sketches. I am interested in motion and stillness, I'm intrigued by the thoughts, feelings
 and emotions of the subjects. It is a means through which (portraits and figures) I question my own
 socio-cultural and political beliefs as well as reflect on humanity's existence at large.  </p>
-            <ul className="text-2xl pl-8 lg:pl-20 list-disc mb-8 lg:mb-16">
+            <ul className="text-[3.45 rem] font-extralight font-Mulish pl-8 lg:pl-20 list-disc mb-8 lg:mb-16">
                 <li>Mikiyas Sintayehu was born in 1998 in Addis Ababa, Ethiopia. He holds a Diploma
 in Fine Arts from Entoto Polytechnic College (2018) and degree from Ale School
 of Fine Arts and Design in Interdisciplinary Visual Arts (2023) .</li>
@@ -158,7 +158,7 @@ const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) 
 const Grid: React.FC = () => (
     <div className="w-full px-2 lg:px-0 grid grid-flow-row-dense grid-cols-1 lg:grid-cols-4 lg:gap-6 gap-4 gap-y-6 lg:gap-y-14">
         {thedata.map((item, index) => (
-            <GridItem key={index} imageUrl={item.image} title={item.name} subtitle={item.date} link={`/`}/>
+            <GridItem key={index} imageUrl={item.image} title={item.name} subtitle={item.date} link={item.link}/>
         ))}
     </div>
 );
@@ -167,26 +167,31 @@ const thedata = [
     {
         image: '/src/assets/mikiyas/art1.jpg',
         name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf'
+        date: 'asdf',
+        link: "/artwork/PG - 00031 - AR"
     },
     {
         image: '/src/assets/mikiyas/art2.jpg',
         name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf'
+        date: 'asdf',
+        link: "/artwork/PG - 00032 - AR"
     },
     {
         image: '/src/assets/mikiyas/art3.jpg',
         name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf'
+        date: 'asdf',
+        link: "/artwork/PG - 00033 - AR"
     },
     {
         image: '/src/assets/mikiyas/art4.webp',
         name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf'
+        date: 'asdf',
+        link: "/artwork/PG - 00034 - AR"
     },
     {
         image: '/src/assets/mikiyas/art5.jpg',
         name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf'
+        date: 'asdf',
+        link: "/artwork/PG - 00035 - AR"
     },
 ]

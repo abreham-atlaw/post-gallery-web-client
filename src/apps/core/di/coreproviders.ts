@@ -13,6 +13,11 @@ import OrderRepository from "../data/repositories/orderRepository";
 import ShippingInfoRepository from "../data/repositories/shippingInfoRepository";
 import Order from "../data/models/order";
 import NewsLetterSubscriptionRepository from "../data/repositories/newsLetterSubscriptionRepository";
+import NetworkApi from "@/lib/network/NetworkApi";
+import { ApiConfigs } from "@/configs/data_configs";
+import { PaymentRepository } from "../data/repositories/paymentRepository";
+import BlogRepository from "../data/repositories/blogRepository";
+import Blog from "../data/models/blog";
 
 
 
@@ -25,6 +30,7 @@ export default class CoreProviders{
 	private static orderRepository?: OrderRepository;
 	private static shippingInfoRepository?: ShippingInfoRepository;
 	private static newsLetterSubscriptionRepository?: NewsLetterSubscriptionRepository;
+	private static blogRepository?: BlogRepository;
 
 	public static provideFirebaseApp(): FirebaseApp{
 		if(CoreProviders.app === undefined){
@@ -35,6 +41,16 @@ export default class CoreProviders{
 
 	public static provideFirestoreDB(): Firestore{
 		return getFirestore();
+	}
+
+	public static provideApiClient(): NetworkApi{
+		return new NetworkApi(
+			ApiConfigs.API_URL
+		);
+	}
+
+	public static providePaymentRepository(): PaymentRepository{
+		return new PaymentRepository();
 	}
 
 	public static provideArtistRepository(): ArtistRepository{
@@ -77,6 +93,13 @@ export default class CoreProviders{
 			this.newsLetterSubscriptionRepository = new NewsLetterSubscriptionRepository();
 		}
 		return this.newsLetterSubscriptionRepository;
+	}
+
+	public static provideBlogRepository(): BlogRepository{
+		if(this.blogRepository === undefined){
+			this.blogRepository = new BlogRepository();
+		}
+		return this.blogRepository;
 	}
 
 	public static provideDefaultFileStorage(): FileStorage{
