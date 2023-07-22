@@ -93,7 +93,7 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 				<Grid artworks={this.state.artist!.artworks!}/>
 	
 				<p className="text-4xl font-light lg:text-6xl mt-8 mb-4 lg:mt-16 lg:mb-10 font-Mulish">Biography</p>
-				<p className="text-[3.45 rem] font-extralight font-Mulish mb-8 lg:mb-4">{this.state.artist!.biography}</p>
+				<p className="text-[3.45 rem] font-extralight font-Mulish mb-8 lg:mb-14">{this.state.artist!.biography}</p>
 				<Link to={`/`} >
 					<div className="relative w-full text-white mb-8 lg:mb-16">
 						<img className='w-full h-52 lg:h-min shadow-sm object-cover rounded-2xl lg:object-contain' src={collection} />

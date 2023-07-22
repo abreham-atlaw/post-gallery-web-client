@@ -31,6 +31,7 @@ import BlogDetailView, { RoutedBlogDetailView } from "./__mocks__/apps/core/pres
 import AboutView from "./__mocks__/apps/core/presentation/views/AboutView";
 import ContactView from "./__mocks__/apps/core/presentation/views/ContactView";
 import AddBlogView from "./__mocks__/apps/admin/presentation/views/AddBlogView";
+import ComingSoon from "./__mocks__/apps/core/presentation/views/ComingSoon";
 
 
 export default class PGRouter extends React.Component{
@@ -90,6 +91,9 @@ export default class PGRouter extends React.Component{
 				}/>
 				<Route path="/contact" element={
 					<ContactView />
+				}/>
+				<Route path="/comingsoon" element={
+					<ComingSoon />
 				}/>
 				
 
