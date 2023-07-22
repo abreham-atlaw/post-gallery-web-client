@@ -21,6 +21,7 @@ import mtwit from "@/assets/TwitterM.png"
 import mlink from "@/assets/LinkedInM.png"
 import minsta from "@/assets/InstagramM.png"
 import myout from "@/assets/YouTubeM.png"
+import { Link } from 'react-router-dom'
 
 
 class FooterState extends AsyncState{
@@ -60,8 +61,8 @@ export default class TheFooter extends React.Component<any, FooterState>{
     render(): React.ReactNode {
         return (
             <div>
-                <div className='hidden lg:inline pb-4 max-w-[1280px]'>
-                
+                <div className='hidden lg:inline pb-4 max-w-[1280px] '>
+                    <div className="w-full border-b-[1px] border-[#D9DBE9]"></div>
                     <div className='flex flex-row items-center justify-between  max-w-[1280px] m-auto'>
                     
                         <div className='w-1/2 max-w-xl p-12'>
@@ -92,36 +93,34 @@ export default class TheFooter extends React.Component<any, FooterState>{
                                             </button>
                                         </div>
                                     </div>
-                                    <p className='mt-2 italic text-center text-[#B7B7B7] font-bold text-xs'>Your email is safe with us, we dont spam.</p>
+                                    <p className='mt-2 italic text-center text-[#B7B7B7] font-bold text-xs'>Your email is safe with us, we don't spam.</p>
                                 </div>
                             </div>
                             <div className="w-full flex justify-start">
                                 <img className='w-12' src={bgB} />
                             </div>
                         </div>
-                        <div className='w-1/2 flex-row justify-between hidden lg:flex'>
+                        <div className='w-1/2 flex-row align-end justify-between hidden lg:flex font-Mulish'>
                             <div className='w-1/2 flex flex-col space-y-3'>
-                                <p className='text-xl font-bold text-[#170F49] mb-6'>Products</p>
-                                <p className='text-lg text-[#6F6C90]'>Features</p>
-                                <p className='text-lg text-[#6F6C90]'>Pricing</p>
-                                <p className='text-lg text-[#6F6C90]'>Case studies</p>
-                                <p className='text-lg text-[#6F6C90]'>Reviews</p>
-                                <p className='text-lg text-[#6F6C90]'>Updates</p>
+                                <p className='text-xl font-bold text-[#170F49] mb-6'>Services</p>
+                                <Link to="/ArtistList" className='text-lg text-[#6F6C90]'>Artworks</Link>
+                                <Link to="/search" className='text-lg text-[#6F6C90]'>Shop</Link>
+                                <Link to="/blog" className='text-lg text-[#6F6C90]'>Art Fair</Link>
+                                <Link to="/blog" className='text-lg text-[#6F6C90]'>Press</Link>
+                                
                             </div>
                             <div className='w-1/2 flex flex-col space-y-3'>
                                 <p className='text-xl font-bold text-[#170F49] mb-6'>Company</p>
-                                <p className='text-lg text-[#6F6C90]'>About</p>
-                                <p className='text-lg text-[#6F6C90]'>Contact us</p>
-                                <p className='text-lg text-[#6F6C90]'>Careers</p>
-                                <p className='text-lg text-[#6F6C90]'>Culture</p>
-                                <p className='text-lg text-[#6F6C90]'>Blog</p>
+                                <Link to="/about" className='text-lg text-[#6F6C90]'>About</Link>
+                                <Link to="/contact" className='text-lg text-[#6F6C90]'>Contact Us</Link>
+                                <Link to="/ArtistList" className='text-lg text-[#6F6C90]'>Artist</Link>
+                                <Link to="/blog" className='text-lg text-[#6F6C90]'>Press</Link>
+                                
                             </div>
                             <div className='w-1/2 flex flex-col space-y-3'>
                                 <p className='text-xl font-bold text-[#170F49] mb-6'>Support</p>
                                 <p className='text-lg text-[#6F6C90]'>Getting started</p>
                                 <p className='text-lg text-[#6F6C90]'>Help center</p>
-                                <p className='text-lg text-[#6F6C90]'>Server status</p>
-                                <p className='text-lg text-[#6F6C90]'>Report a bug</p>
                                 <p className='text-lg text-[#6F6C90]'>Chat support</p>
                             </div>
                         </div>
@@ -160,11 +159,11 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         </div>
                         
                         <div className='flex flex-row items-center space-x-3 mt-3'>
-                            <img className='w-5 h-5 object-contain' src={mface} />
-                            <img className='w-5 h-5 object-contain' src={mtwit} />
-                            <img className='w-5 h-5 object-contain' src={minsta} />
-                            <img className='w-5 h-5 object-contain' src={mlink} />
-                            <img className='w-5 h-5 object-contain' src={myout} />
+                            <img className='w-5 h-5 object-contain' src={face} />
+                            <img className='w-5 h-5 object-contain' src={twitter} />
+                            <img className='w-5 h-5 object-contain' src={insta} />
+                            <img className='w-5 h-5 object-contain' src={link} />
+                            <img className='w-5 h-5 object-contain' src={youtube} />
                         </div>
                         <div className="w-full border-b border-[#D9DBE9] my-3"></div>
                         

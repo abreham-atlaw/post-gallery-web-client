@@ -45,17 +45,26 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 					<Link to={`/checkout/${this.state.artwork?.id}`} className="flex justify-center items-center w-56 m-auto my-8 pt-2 pb-2.5 bg-black text-white rounded-full">
 						<div className="justify-center text-2xl">Purchase</div>
 					</Link>
-					<p className="text-2xl mt-12">About the creator</p>
+
+				</div>
+
+				{/* -------------------					<p className="text-2xl mt-12">About the creator</p>
 					<div className="bg-white rounded-lg px-3 py-5">
 						<div className="flex flex-row items-center">
 							<div className="w-14 h-14 bg-[url('./assets/LoginRegisterBG.png')] bg-center bg-cover rounded-full"></div>
 							<p className="ml-2 text-2xl">{this.state.artwork!.name}</p>
 						</div>
 						<p className="mt-3 text-lg leading-5">{this.state.artwork!.description}</p>
-					</div>
-				</div>
-
-				{/* ------------------------------------------ */}
+					</div>--------------------
+										<p className="ml-10 text-2xl mt-18 mb-4">About the creator</p>
+					<div className="bg-white  rounded-xl px-10 py-10 mx-10 mb-10">
+						<div className="flex flex-row items-center">
+							<div className={`w-14 h-14 mb-3 bg-center bg-cover rounded-full`} style={{backgroundImage: `url(${this.state.artwork?.artist!.avatar})`}}>
+							</div>
+							<p className="ml-2 text-2xl">{this.state.artwork!.artist?.fullName} </p>
+						</div>
+						<p className="text-base leading-5">{this.state.artwork!.artist?.biography}</p>
+					</div>--- */}
 
 				<div className="hidden lg:inline lg:px-8 ">
 					<a className="w-10" onClick={() => {history.back()}}>
@@ -81,15 +90,6 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 								<span className="justify-center text-2xl">Purchase</span>
 							</Link>
 						</div>
-					</div>
-					<p className="ml-10 text-2xl mt-18 mb-4">About the creator</p>
-					<div className="bg-white  rounded-xl px-10 py-10 mx-10 mb-10">
-						<div className="flex flex-row items-center">
-							<div className={`w-14 h-14 mb-3 bg-center bg-cover rounded-full`} style={{backgroundImage: `url(${this.state.artwork?.artist!.avatar})`}}>
-							</div>
-							<p className="ml-2 text-2xl">{this.state.artwork!.artist?.fullName} </p>
-						</div>
-						<p className="text-base leading-5">{this.state.artwork!.artist?.biography}</p>
 					</div>
 				</div>
 			</div>

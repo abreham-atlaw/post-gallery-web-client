@@ -86,7 +86,7 @@ export default class HomeView extends ViewModelView<ViewModel<HomeViewState>> {
 							<div className="flex flex-row justify-between items-center">
 								<div className="text-white mb-6 pl-4">
 									<p className="text-3xl lg:text-6xl ">Her Story</p>
-									<p className="text-xl lg:text-3xl mt-3">FREHIWOT DEMISSE</p>
+									
 									<p className="text-xl lg:text-3xl">17 Mar - 21 Nov</p>
 								</div>
 								<div className=" flex flex-row justify-between items-center pr-8 lg:pr-14">

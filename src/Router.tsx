@@ -26,6 +26,10 @@ import { RoutedEditArtworkView } from "./__mocks__/apps/admin/presentation/views
 import { RoutedEditExhibitionView } from "./__mocks__/apps/admin/presentation/views/EditExhibitionView";
 import ArtistDetailView from "./__mocks__/apps/core/presentation/views/ArtistDetailView";
 import ArtistListView from "./__mocks__/apps/core/presentation/views/ArtistListView";
+import BlogListView from "./__mocks__/apps/core/presentation/views/BlogListView";
+import BlogDetailView from "./__mocks__/apps/core/presentation/views/BlogDetailView";
+import AboutView from "./__mocks__/apps/core/presentation/views/AboutView";
+import ContactView from "./__mocks__/apps/core/presentation/views/ContactView";
 
 
 export default class PGRouter extends React.Component{
@@ -74,12 +78,24 @@ export default class PGRouter extends React.Component{
 					</AuthenticatedComponent>
 				}/>
 
+				<Route path="/blog" element={
+					<BlogListView />
+				}/>
+				<Route path="/blogDetail" element={
+					<BlogDetailView />
+				}/>
 
 				<Route path="/artist" element={
 					<ArtistDetailView />
 				}/>
 				<Route path="/artistlist" element={
 					<ArtistListView />
+				}/>
+				<Route path="/about" element={
+					<AboutView />
+				}/>
+				<Route path="/contact" element={
+					<ContactView />
 				}/>
 				
 
