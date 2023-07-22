@@ -19,6 +19,8 @@ export default class CheckoutState extends AsyncState{
 
 	shippingInfoState: AsyncState = new AsyncState()
 
+	paymentLink?: string;
+
 	constructor(itemId: string){
 		super();
 		this.itemId = itemId;

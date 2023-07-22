@@ -45,7 +45,12 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 
 	onCreateMain(): React.ReactNode {
 		if(this.state.status === AsyncStatus.done){
-			return <Navigate to={`/complete-payment/${this.state.order!.id}`}/>
+			window.open(this.state.paymentLink, "_self");
+
+			return (
+				<><p>You will be directed to the payment portal. If your browser does not automatically click the link below.</p>
+				<a href={this.state.paymentLink!}>To Payment Portal</a></>
+			)
 		}
 		return (
 			<div className="bg-[#F6F6F6] min-h-screen" >
@@ -136,6 +141,9 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 								</div>
 								<div className="h-2"></div>
 								<div className="w-full mr-4"><TextFieldComponents placeholder="Phone number*" field={this.state.form.phoneNumber} syncer={this.getViewModel().syncState}/></div>
+								<div className="h-4"></div>
+								<div className="h-2"></div>
+								<div className="w-full mr-4"><TextFieldComponents placeholder="Email*" field={this.state.form.email} syncer={this.getViewModel().syncState}/></div>
 								<div className="h-4"></div>
 								<button className="flex justify-center items-center w-full max-w-lg m-auto mt-3 mb-3 h-16 bg-black text-white rounded-md  text-2xl" type="submit">Save shipping address</button>
 

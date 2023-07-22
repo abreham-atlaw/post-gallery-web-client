@@ -24,7 +24,8 @@ export default class OrderSerializer extends Serializer<Order, DocumentData>{
 				shipping: instance.pricing.shippingPrice,
 				item: instance.pricing.artPrice,
 				total: instance.pricing.getTotal()
-			}
+			},
+			transaction_id: instance.transactionId
 		}
 	}
 	
@@ -41,6 +42,7 @@ export default class OrderSerializer extends Serializer<Order, DocumentData>{
 			),
 			this.dateSerializer.deserialize(data.time),
 			data.is_payment_complete,
+			data.transaction_id
 		)
 	}
 

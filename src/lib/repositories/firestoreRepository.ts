@@ -90,7 +90,7 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	}
 
 	protected async firebaseFetch(fetcher: Function, many: boolean = false): Promise<M|M[]>{
-
+		console.log("Fetching...")
 		let data: DocumentData | DocumentData[] = await fetcher()
 		if(many){
 			let instances: M[] = []

@@ -24,6 +24,8 @@ import DashBoardView from "./__mocks__/apps/admin/presentation/views/DashboardVi
 import { RoutedArtistEditView } from "./__mocks__/apps/admin/presentation/views/EditArtistView";
 import { RoutedEditArtworkView } from "./__mocks__/apps/admin/presentation/views/EditArtworkView";
 import { RoutedEditExhibitionView } from "./__mocks__/apps/admin/presentation/views/EditExhibitionView";
+import ArtistDetailView from "./__mocks__/apps/core/presentation/views/ArtistDetailView";
+import ArtistListView from "./__mocks__/apps/core/presentation/views/ArtistListView";
 
 
 export default class PGRouter extends React.Component{
@@ -73,7 +75,12 @@ export default class PGRouter extends React.Component{
 				}/>
 
 
-
+				<Route path="/artist" element={
+					<ArtistDetailView />
+				}/>
+				<Route path="/artistlist" element={
+					<ArtistListView />
+				}/>
 				
 
 				<Route path="/admin/dashboard" element={

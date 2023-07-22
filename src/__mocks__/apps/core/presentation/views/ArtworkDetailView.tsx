@@ -116,7 +116,7 @@ type SlideshowProps = {
 	return (
 	  <div className="flex flex-col lg:w-7/12">
 		<div className="flex flex-col lg:flex lg:flex-row">
-			<div className="lg:hidden w-full h-96 mb-2  bg-contain bg-center bg-no-repeat  rounded-lg" style={{ backgroundImage: `url(${images[currentImageIndex]})` }} />
+		<div className="lg:hidden w-full h-96 mb-2  bg-contain bg-center bg-no-repeat  rounded-lg" style={{ backgroundImage: `url(${images[currentImageIndex]})` }} />
 			<div className=" m-auto grid grid-cols-5 gap-4 lg:grid-rows-5 lg:grid-cols-none lg:mr-4">
 				{images.slice(0, 5).map((imageUrl, index) => (
 					<div
