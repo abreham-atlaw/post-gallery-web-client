@@ -26,6 +26,15 @@ export default class BlogDetailView extends ViewModelView<BlogDetailViewModel, B
 	onCreateMain(): ReactNode {
 		return (
 			<div>
+
+				<div>
+
+					{this.state.blog!.title}
+					<img src={this.state.blog!.cover} className='w-full'/>
+					<embed src={this.state.blog!.content} className='w-full h-screen'/>
+
+				</div>
+
 				<div className='lg:pr-10 lg:pl-16 '>
 					<NavBar isDark={true} />
 				</div>
@@ -34,7 +43,7 @@ export default class BlogDetailView extends ViewModelView<BlogDetailViewModel, B
 					<div className='hidden lg:inline'>
 						<div className='flex flex-row justify-between'>
 							<div className='w-1/2 mr-10'>
-								<p className='text-xl lg:text-4xl mt-2 lg:my-2'>New virtual gallery exhibition</p>
+								<p className='text-xl lg:text-4xl mt-2 lg:my-2'>{this.state.blog!.title}</p>
 								<p className='font-light text-sm lg:text-xl text-[#545454]'>Virtual gallery, July 14 2023</p>
 								<p className='text-xl mt-3 leading-[35px] font-light'>She was born in a small village in the middle of nowhere. She didn't have much, but she had a love for art. She would spend hours drawing and painting, using whatever materials she could find.
 									When she was old enough, she moved to the city to study art. She was one of the only women in her class, but she didn't let that stop her. She worked hard and eventually graduated at the top of her class.
