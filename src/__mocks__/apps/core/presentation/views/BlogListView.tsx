@@ -1,6 +1,6 @@
 import TheFooter from '@/lib/components/footer/footer'
 import NavBar from '@/lib/components/navBar/navBar'
-import collection from "@/assets/exhibition.png"
+import collection from "@/assets/about.png"
 import BlogListState from "@/apps/core/application/state/blogListState";
 import BlogListViewModel from "@/apps/core/application/viewmodels/blogListViewModel";
 import Blog from "@/apps/core/data/models/blog";
@@ -28,7 +28,7 @@ export default class BlogListView extends ViewModelView<BlogListViewModel, any, 
 					<NavBar isDark={true} />
 				</div>
 		
-				<div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Mulish">
+				<div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Mulish lg:mb-6">
 					<p className='mt-3 mb-5 lg:mb-10 text-2xl lg:text-4xl font-Mulish'>Blogs</p>
 					<div className='flex flex-col lg:flex-row justify-between'>
 						<div className='w-full lg:w-1/2 flex flex-col lg:mr-12'>
@@ -37,7 +37,7 @@ export default class BlogListView extends ViewModelView<BlogListViewModel, any, 
 							<p className='font-light text-sm lg:text-xl text-[#545454]'>Virtual gallery, July 14 2023</p>
 						</div>
 						
-						<div className='w-full lg:w-1/2 flex flex-col lg:mr-12 mt-10 lg:mt-0'>
+						<div className='w-full lg:w-1/2 flex flex-col mt-10 lg:mt-0'>
 							<img className='w-full h-52 lg:h-96 shadow-md object-cover lg:object-cover' src={collection} />
 							<p className='text-xl lg:text-4xl mt-2 lg:my-4'>New virtual gallery exhibition</p>
 							<p className='font-light text-sm lg:text-xl text-[#545454]'>Virtual gallery, July 14 2023</p>

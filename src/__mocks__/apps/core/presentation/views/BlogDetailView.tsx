@@ -27,13 +27,6 @@ export default class BlogDetailView extends ViewModelView<BlogDetailViewModel, B
 		return (
 			<div>
 
-				<div>
-
-					{this.state.blog!.title}
-					<img src={this.state.blog!.cover} className='w-full'/>
-					<embed src={this.state.blog!.content} className='w-full h-screen'/>
-
-				</div>
 
 				<div className='lg:pr-10 lg:pl-16 '>
 					<NavBar isDark={true} />
@@ -41,7 +34,7 @@ export default class BlogDetailView extends ViewModelView<BlogDetailViewModel, B
 		
 				<div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Mulish">
 					<div className='hidden lg:inline'>
-						<div className='flex flex-row justify-between'>
+						<div className='flex flex-row justify-between mt-4'>
 							<div className='w-1/2 mr-10'>
 								<p className='text-xl lg:text-4xl mt-2 lg:my-2'>{this.state.blog!.title}</p>
 								<p className='font-light text-sm lg:text-xl text-[#545454]'>Virtual gallery, July 14 2023</p>

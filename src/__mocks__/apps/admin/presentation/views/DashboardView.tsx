@@ -151,22 +151,82 @@ const App: React.FC = () => {
           </div>
           <p className='text-2xl font-Mulish mt-10'>Edit</p>
           <div className='w-full flex flex-row space-x-2 mt-2 mb-5'>     
-            <div onClick={() => setActiveItem('edit')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-8 mr-3' src={dashGrid3} />
-              <p>Add exhibition</p>
+            <div onClick={() => setActiveItem('editartist')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-8 mr-3' src={dashGrid1} />
+              <p>Edit artist</p>
             </div>
-            <div onClick={() => setActiveItem('edit')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-8 mr-3' src={dashGrid3} />
-              <p>Add exhibition</p>
+            <div onClick={() => setActiveItem('editart')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-8 mr-3' src={dashGrid2} />
+              <p>Add art</p>
             </div>
-            <div onClick={() => setActiveItem('edit')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+            <div onClick={() => setActiveItem('editexhibition')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid3} />
               <p>Add exhibition</p>
             </div>
           </div>
 
         </div>
-        <div className={` ${activeItem === 'edit' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+
+
+          {/*  here is edit art page in dashboard */}
+
+
+          <div className={` ${activeItem === 'editart' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+          <SearchBar />
+          <p className='text-2xl font-Mulish my-10'>Edit Art</p>  
+          <div className='flex flex-row'>
+            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-32 h-full mr-5 object-cover' src={edit} />
+              <div className='flex flex-col'>
+                <p className="text-2xl text-[#515151]">Her Story</p>
+                <div className="lg:py-2"><LineWithWidth10 /></div>
+                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
+                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
+              </div>
+            </Link>
+            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-32 h-full mr-5 object-cover' src={edit} />
+              <div className='flex flex-col'>
+                <p className="text-2xl text-[#515151]">Her Story</p>
+                <div className="lg:py-2"><LineWithWidth10 /></div>
+                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
+                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+
+                  {/*  here is edit artist page in dashboard */}
+
+
+          <div className={` ${activeItem === 'editartist' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+          <SearchBar />
+          <p className='text-2xl font-Mulish my-10'>Edit Artist</p>  
+          <div className='flex flex-row'>
+            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-32 h-full mr-5 object-cover' src={edit} />
+              <div className='flex flex-col'>
+                <p className="text-2xl text-[#515151]">Her Story</p>
+                <div className="lg:py-2"><LineWithWidth10 /></div>
+                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
+                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
+              </div>
+            </Link>
+            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+              <img className='w-32 h-full mr-5 object-cover' src={edit} />
+              <div className='flex flex-col'>
+                <p className="text-2xl text-[#515151]">Her Story</p>
+                <div className="lg:py-2"><LineWithWidth10 /></div>
+                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
+                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+
+        {/*  here is edit echibition page in dashboard */}
+
+        <div className={` ${activeItem === 'editexhibition' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
           <SearchBar />
           <p className='text-2xl font-Mulish my-10'>Edit Exhibitions</p>  
           <div className='flex flex-row'>
