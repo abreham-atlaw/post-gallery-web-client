@@ -13,8 +13,34 @@ import dashGrid2 from '@/assets/dashGrid2.png'
 import dashGrid3 from '@/assets/dashGrid3.png'
 import edit from '@/assets/background1.jpeg'
 import { setInterval } from 'timers/promises';
+import ViewModelView from '@/lib/components/views/ViewModelView';
+import DashboardViewModel from '@/apps/admin/application/viewmodels/dashboardViewModel';
+import DashboardState from '@/apps/admin/application/states/dashboardState';
+import Artwork from '@/apps/core/data/models/artwork';
+import Artist from '@/apps/core/data/models/artist';
+import Exhibition from '@/apps/core/data/models/exhibition';
 
-function DashBoardView() {
+
+export default class DashboardView extends ViewModelView<DashboardViewModel, any, DashboardState>{
+	onCreateViewModel(state: DashboardState): DashboardViewModel {
+		return new DashboardViewModel(state, this.setState.bind(this));
+	}
+	onCreateState() {
+		return new DashboardState();
+	}
+	onCreateMain(): React.ReactNode {
+		return <DashBoardViewInner artists={this.state.artists!} artworks={this.state.artworks!} exhibitions={this.state.exhibitions!}/>
+	}
+
+} 
+interface AppProps{
+	artworks: Artwork[];
+	artists: Artist[];
+	exhibitions: Exhibition[];
+}
+
+
+function DashBoardViewInner(props: AppProps) {
 
     const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -26,15 +52,11 @@ function DashBoardView() {
 
   return (
     <div className="relative min-h-screen bg-gray-100">
-      <App /> 
+      <App {...props}/> 
 
     </div>
   )
 }
-
-export default DashBoardView
-
-
 
 type SidebarItemProps = {
   title: string;
@@ -94,7 +116,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, isOpen, se
   );
 };
 
-const App: React.FC = () => {
+
+const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
   const [activeItem, setActiveItem] = useState<string>('Page1');
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
 
@@ -174,8 +197,24 @@ const App: React.FC = () => {
           <div className={` ${activeItem === 'editart' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
           <SearchBar />
           <p className='text-2xl font-Mulish my-10'>Edit Art</p>  
-          <div className='flex flex-row'>
-            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+          <div className='flex flex-row flex-wrap'>
+
+			{
+				artworks.map(
+					(artwork) => <Link to={`/admin/artwork/edit/${artwork.getPK()}`} className='font-Mulish  w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+					<img className='w-32 h-full mr-5 object-cover' src={artwork.images[0]} />
+					<div className='flex flex-col'>
+					  <p className="text-2xl text-[#515151]">{artwork.name}</p>
+					  <div className="lg:py-2"><LineWithWidth10 /></div>
+					  {/* <p className="text-base  text-[#787878] ">Frehiwot Demisse</p> */}
+					  <p className="text-base text-[#787878] ">{artwork.creationDate.toDateString()}</p>
+					</div>
+				  </Link>
+				)
+			}
+
+            
+            {/* <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-32 h-full mr-5 object-cover' src={edit} />
               <div className='flex flex-col'>
                 <p className="text-2xl text-[#515151]">Her Story</p>
@@ -183,16 +222,7 @@ const App: React.FC = () => {
                 <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
                 <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
               </div>
-            </Link>
-            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-32 h-full mr-5 object-cover' src={edit} />
-              <div className='flex flex-col'>
-                <p className="text-2xl text-[#515151]">Her Story</p>
-                <div className="lg:py-2"><LineWithWidth10 /></div>
-                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
-                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
-              </div>
-            </Link>
+            </Link> */}
           </div>
         </div>
 
@@ -202,8 +232,21 @@ const App: React.FC = () => {
           <div className={` ${activeItem === 'editartist' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
           <SearchBar />
           <p className='text-2xl font-Mulish my-10'>Edit Artist</p>  
-          <div className='flex flex-row'>
-            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+          <div className='flex flex-row flex-wrap'>
+			{
+				artists.map(
+					(artist: Artist) => <Link to={`/admin/artist/edit/${artist.getPK()}`} className='font-Mulish  w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+					<img className='w-32 h-full mr-5 object-cover' src={artist.avatar} />
+					<div className='flex flex-col'>
+					  <p className="text-2xl text-[#515151]">{artist.fullName}</p>
+					  <p className="text-base text-[#787878] ">{artist.email}</p>
+					</div>
+				  </Link>
+				)
+			}
+
+            
+            {/* <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-32 h-full mr-5 object-cover' src={edit} />
               <div className='flex flex-col'>
                 <p className="text-2xl text-[#515151]">Her Story</p>
@@ -211,16 +254,7 @@ const App: React.FC = () => {
                 <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
                 <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
               </div>
-            </Link>
-            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-32 h-full mr-5 object-cover' src={edit} />
-              <div className='flex flex-col'>
-                <p className="text-2xl text-[#515151]">Her Story</p>
-                <div className="lg:py-2"><LineWithWidth10 /></div>
-                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
-                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
-              </div>
-            </Link>
+            </Link> */}
           </div>
         </div>
 
@@ -229,8 +263,22 @@ const App: React.FC = () => {
         <div className={` ${activeItem === 'editexhibition' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
           <SearchBar />
           <p className='text-2xl font-Mulish my-10'>Edit Exhibitions</p>  
-          <div className='flex flex-row'>
-            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+          <div className='flex flex-row flex-wrap'>
+			{
+				exhibitions.map(
+					(exhibition: Exhibition) => <Link to={`/admin/exhibition/edit/${exhibition.getPK()}`} className='font-Mulish  w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+					<img className='w-32 h-full mr-5 object-cover' src={exhibition.coverImage} />
+					<div className='flex flex-col'>
+					  <p className="text-2xl text-[#515151]">{exhibition.name}</p>
+					  <div className="lg:py-2"><LineWithWidth10 /></div>
+					  <p className="text-base  text-[#787878] ">{exhibition.curator}</p>
+					  <p className="text-base text-[#787878] ">{exhibition.dateRange.startDate.toDateString()} - {exhibition.dateRange.endDate.toDateString()}</p>
+					</div>
+				  </Link>
+				)
+			}
+            
+            {/* <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-32 h-full mr-5 object-cover' src={edit} />
               <div className='flex flex-col'>
                 <p className="text-2xl text-[#515151]">Her Story</p>
@@ -238,16 +286,7 @@ const App: React.FC = () => {
                 <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
                 <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
               </div>
-            </Link>
-            <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-32 h-full mr-5 object-cover' src={edit} />
-              <div className='flex flex-col'>
-                <p className="text-2xl text-[#515151]">Her Story</p>
-                <div className="lg:py-2"><LineWithWidth10 /></div>
-                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
-                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
-              </div>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
