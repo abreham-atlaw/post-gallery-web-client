@@ -158,7 +158,7 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
           </div>
 
           <p className='text-2xl font-Mulish mt-10'>Add</p>
-          <div className='w-full flex flex-row space-x-2 mt-2 mb-5'>
+          <div className='w-full flex flex-row space-x-2 mt-2'>
             <Link to="/admin/artist/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid1} />
               <p>Add artist</p>
@@ -172,6 +172,8 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
               <p>Add exhibition</p>
             </Link>
           </div>
+
+
           <p className='text-2xl font-Mulish mt-10'>Edit</p>
           <div className='w-full flex flex-row space-x-2 mt-2 mb-5'>     
             <div onClick={() => setActiveItem('editartist')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
@@ -180,11 +182,11 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
             </div>
             <div onClick={() => setActiveItem('editart')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid2} />
-              <p>Add art</p>
+              <p>Edit art</p>
             </div>
             <div onClick={() => setActiveItem('editexhibition')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid3} />
-              <p>Add exhibition</p>
+              <p>Edit exhibition</p>
             </div>
           </div>
 
@@ -201,7 +203,7 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
 
 			{
 				artworks.map(
-					(artwork) => <Link to={`/admin/artwork/edit/${artwork.getPK()}`} className='font-Mulish  w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+					(artwork) => <Link to={`/admin/artwork/edit/${artwork.getPK()}`} className='font-Mulish w-full lg:w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 mb-6 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
 					<img className='w-32 h-full mr-5 object-cover' src={artwork.images[0]} />
 					<div className='flex flex-col'>
 					  <p className="text-2xl text-[#515151]">{artwork.name}</p>
@@ -235,7 +237,7 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
           <div className='flex flex-row flex-wrap'>
 			{
 				artists.map(
-					(artist: Artist) => <Link to={`/admin/artist/edit/${artist.getPK()}`} className='font-Mulish  w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+					(artist: Artist) => <Link to={`/admin/artist/edit/${artist.getPK()}`} className='font-Mulish w-full lg:w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 mb-6 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
 					<img className='w-32 h-full mr-5 object-cover' src={artist.avatar} />
 					<div className='flex flex-col'>
 					  <p className="text-2xl text-[#515151]">{artist.fullName}</p>
@@ -266,7 +268,7 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
           <div className='flex flex-row flex-wrap'>
 			{
 				exhibitions.map(
-					(exhibition: Exhibition) => <Link to={`/admin/exhibition/edit/${exhibition.getPK()}`} className='font-Mulish  w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+					(exhibition: Exhibition) => <Link to={`/admin/exhibition/edit/${exhibition.getPK()}`} className='font-Mulish w-full lg:w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 mb-6 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
 					<img className='w-32 h-full mr-5 object-cover' src={exhibition.coverImage} />
 					<div className='flex flex-col'>
 					  <p className="text-2xl text-[#515151]">{exhibition.name}</p>
