@@ -53,7 +53,7 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 						<img className='w-20' src={this.props.isDark ? PG : PGwhite} />
 					</a>
 					<div className={` ${this.props.isDark ? "text-black" : "text-white"} font-Mulish lg:font-medium flex flex-row items-center space-x-6 font-[300] text-xl leading-none`}>
-						<Link to="/artist">Artist</Link>
+						<Link to="/artists">Artist</Link>
 						<Link to="/exhibitions">Exhibition</Link>
 						<Link to="/blog">Press</Link>
 						<Link to="/blog">Art Fair</Link>

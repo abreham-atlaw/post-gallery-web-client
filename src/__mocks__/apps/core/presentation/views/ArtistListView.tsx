@@ -1,10 +1,20 @@
+import ArtistListState from '@/apps/core/application/state/artistListState';
+import ArtistListViewModel from '@/apps/core/application/viewmodels/artistListViewModel';
+import Artist from '@/apps/core/data/models/artist';
 import TheFooter from '@/lib/components/footer/footer';
 import NavBar from '@/lib/components/navBar/navBar';
+import ViewModelView from '@/lib/components/views/ViewModelView';
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
-export default class ArtistListView extends Component {
-  render() {
+export default class ArtistListView extends ViewModelView<ArtistListViewModel, any, ArtistListState> {
+  onCreateViewModel(state: ArtistListState): ArtistListViewModel {
+	return new ArtistListViewModel(state, this.setState.bind(this));
+  }
+  onCreateState(): ArtistListState {
+	return new ArtistListState();
+  }
+  onCreateMain() {
     return (
         <div>
             <div className='lg:pr-10 lg:pl-20 '>
@@ -12,7 +22,7 @@ export default class ArtistListView extends Component {
             </div>
             <div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16">
                 <p className='text-5xl my-10'>Artist</p>
-                <Grid />
+                <Grid artists={this.state.artists!} />
             </div>
             <TheFooter />
         </div>
@@ -25,11 +35,10 @@ export default class ArtistListView extends Component {
 interface GridItemProps {
     imageUrl: string;
     title: string;
-    subtitle: string;
 	link: string;
 }
 
-const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) => (
+const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, link }) => (
     <div className="flex flex-col ">
         <div className="w-full h-full flex items-start justify-center shadow-md">
             <Link 
@@ -50,25 +59,14 @@ const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) 
 );
 
 
+interface GridProps{
+	artists: Artist[]
+}
 
-const Grid: React.FC = () => (
+const Grid: React.FC<GridProps> = ({artists}) => (
     <div className="w-full px-2 lg:px-0 grid grid-flow-row-dense grid-cols-1 lg:grid-cols-4 lg:gap-6 gap-4 gap-y-6 lg:gap-y-14">
-        {thedata.map((item, index) => (
-            <GridItem key={index} imageUrl={item.image} title={item.name} subtitle={item.date} link={`/`}/>
+        {artists.map((item, index) => (
+            <GridItem key={index} imageUrl={item.avatar} title={item.fullName} link={`/artist/${item.getPK()}`}/>
         ))}
     </div>
 );
-
-const thedata = [
-    {
-        image: '/src/assets/mikiyas/Portrait.jpg',
-        name: 'Mikiyas Sintayehu',
-        date: 'asdf'
-    },
-    {
-        image: '/src/assets/ribka/Ribka.jpg',
-        name: 'Ribka Wendmagegn',
-        date: 'asdf'
-    },
-
-]

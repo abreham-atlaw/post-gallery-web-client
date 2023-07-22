@@ -24,7 +24,7 @@ import DashBoardView from "./__mocks__/apps/admin/presentation/views/DashboardVi
 import { RoutedArtistEditView } from "./__mocks__/apps/admin/presentation/views/EditArtistView";
 import { RoutedEditArtworkView } from "./__mocks__/apps/admin/presentation/views/EditArtworkView";
 import { RoutedEditExhibitionView } from "./__mocks__/apps/admin/presentation/views/EditExhibitionView";
-import ArtistDetailView from "./__mocks__/apps/core/presentation/views/ArtistDetailView";
+import ArtistDetailView, { RoutedArtistDetailView } from "./__mocks__/apps/core/presentation/views/ArtistDetailView";
 import ArtistListView from "./__mocks__/apps/core/presentation/views/ArtistListView";
 import BlogListView from "./__mocks__/apps/core/presentation/views/BlogListView";
 import BlogDetailView, { RoutedBlogDetailView } from "./__mocks__/apps/core/presentation/views/BlogDetailView";
@@ -79,10 +79,10 @@ export default class PGRouter extends React.Component{
 					</AuthenticatedComponent>
 				}/>
 
-				<Route path="/artist" element={
-					<ArtistDetailView />
+				<Route path="/artist/:id" element={
+					<RoutedArtistDetailView />
 				}/>
-				<Route path="/artistlist" element={
+				<Route path="/artists" element={
 					<ArtistListView />
 				}/>
 				<Route path="/about" element={
