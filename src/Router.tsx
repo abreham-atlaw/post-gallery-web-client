@@ -27,9 +27,10 @@ import { RoutedEditExhibitionView } from "./__mocks__/apps/admin/presentation/vi
 import ArtistDetailView from "./__mocks__/apps/core/presentation/views/ArtistDetailView";
 import ArtistListView from "./__mocks__/apps/core/presentation/views/ArtistListView";
 import BlogListView from "./__mocks__/apps/core/presentation/views/BlogListView";
-import BlogDetailView from "./__mocks__/apps/core/presentation/views/BlogDetailView";
+import BlogDetailView, { RoutedBlogDetailView } from "./__mocks__/apps/core/presentation/views/BlogDetailView";
 import AboutView from "./__mocks__/apps/core/presentation/views/AboutView";
 import ContactView from "./__mocks__/apps/core/presentation/views/ContactView";
+import AddBlogView from "./__mocks__/apps/admin/presentation/views/AddBlogView";
 
 
 export default class PGRouter extends React.Component{
@@ -56,9 +57,9 @@ export default class PGRouter extends React.Component{
 				<Route path="/artwork/:id" element={<RoutedArtworkDetailView/>}/>
 				<Route path="/exhibitions/" element={<ExhibitionListView />}/>
 				<Route path="/exhibition/:id" element={<RoutedExhibitionDetailView />}/>
+				<Route path="/blogs/" element={<BlogListView />}/>
+				<Route path="/blog/:id" element={<RoutedBlogDetailView />}/>
 				
-
-
 
 				<Route path="/search" element={
 					<AuthenticatedComponent>
@@ -76,13 +77,6 @@ export default class PGRouter extends React.Component{
 					<AuthenticatedComponent>
 						<RoutedPaymentView/>
 					</AuthenticatedComponent>
-				}/>
-
-				<Route path="/blog" element={
-					<BlogListView />
-				}/>
-				<Route path="/blogDetail" element={
-					<BlogDetailView />
 				}/>
 
 				<Route path="/artist" element={
@@ -144,6 +138,12 @@ export default class PGRouter extends React.Component{
 				<Route path="/admin/orders/" element={
 					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
 						<OrderListView/>
+					</AuthenticatedComponent>
+				} />
+
+				<Route path="/admin/blog/add" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<AddBlogView />
 					</AuthenticatedComponent>
 				} />
 
