@@ -10,8 +10,16 @@ export default class ExhibitionListViewModel extends ViewModel<ExhibitionListSta
 
 
 	public async onInit(): Promise<void> {
+		this.repository.setAttachMode(false);
 		this.state.allExhibitions = await this.repository.getAll()
-		this.updateExhibitions()
+		this.repository.setAttachMode(true);
+		this.updateExhibitions();
+		for(let exhibition of this.state.currentExhibitions!){
+			this.repository.attachForeignKeys(exhibition);
+		}
+		for(let exhibition of this.state.upcomingExhibitions!){
+			this.repository.attachForeignKeys(exhibition);
+		}
 		await super.onInit();
 	}
 
@@ -25,7 +33,20 @@ export default class ExhibitionListViewModel extends ViewModel<ExhibitionListSta
 		if(this.state.allExhibitions === undefined){
 			return false
 		}
-		for(let exhibition of this.state.allExhibitions){
+		for(let exhibition of this.state.currentExhibitions!){
+			if(exhibition.artist === undefined){
+				return false;
+			}
+			if(exhibition.artworks === undefined){
+				return false
+			}
+			for(let artwork of exhibition.artworks){
+				if(artwork.artist === undefined){
+					return false
+				}
+			}
+		}
+		for(let exhibition of this.state.upcomingExhibitions!){
 			if(exhibition.artist === undefined){
 				return false;
 			}

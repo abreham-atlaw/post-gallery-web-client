@@ -13,10 +13,6 @@ interface PaymentViewProps{
 
 export default class PaymentView extends ViewModelView<PaymentViewModel, PaymentViewProps, PaymentState>{
 	
-	private handleConfirmPayment = () => {
-		this.getViewModel().confirmPayment()
-	}
-
 	onCreateViewModel(state: PaymentState): PaymentViewModel {
 		return new PaymentViewModel(state, this.setState.bind(this));
 	}
@@ -30,12 +26,7 @@ export default class PaymentView extends ViewModelView<PaymentViewModel, Payment
 			return <h1>Payment Complete</h1>
 		}
 		return <div>
-			<h1>Payment Page</h1>
-			{AsyncStatus[this.state.status]}<br/>
-
-			<h2>Pay to the following telebirr account: kskasdjfksdf</h2>
-
-			<button onClick={this.handleConfirmPayment}>Confirm Payment</button>
+			<h1>Sorry, but payment was not complete</h1>
 		</div>
 	}
 

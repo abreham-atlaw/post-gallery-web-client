@@ -15,6 +15,7 @@ export default class CheckoutForm extends Form{
 	public region: TextField = new TextField(true);
 	public zipCode: TextField = new TextField(true);
 	public phoneNumber: TextField = new TextField(true);
+	public email: TextField = new TextField(true);
 
 	getFields(): Field<any>[] {
 		return [
@@ -26,7 +27,8 @@ export default class CheckoutForm extends Form{
 			this.city,
 			this.region,
 			this.zipCode,
-			this.phoneNumber
+			this.phoneNumber,
+			this.email
 		]
 	}
 

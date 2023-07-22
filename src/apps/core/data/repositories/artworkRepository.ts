@@ -32,7 +32,7 @@ export default class ArtworkRepository extends FireStoreRepository<string, Artwo
 	
 	private getArtistRepository(): ArtistRepository{
 		if(this.artistRepository === undefined){
-			this.artistRepository = CoreProviders.provideArtistRepository();
+			this.artistRepository = new ArtistRepository();
 		}
 		return this.artistRepository;
 	}
@@ -43,7 +43,10 @@ export default class ArtworkRepository extends FireStoreRepository<string, Artwo
 
 	public async attachForeignKeys(instance: Artwork): Promise<void> {
 		let artistRepository = this.getArtistRepository();
+		artistRepository.setAttachMode(false);
 		instance.artist = await artistRepository.getByPrimaryKey(instance.artistId);
+		artistRepository.setAttachMode(true);
+
 	}
 
 	public async getByArtist(artist: Artist): Promise<Artwork[]>{

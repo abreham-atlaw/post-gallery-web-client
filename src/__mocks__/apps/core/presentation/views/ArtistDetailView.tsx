@@ -158,7 +158,7 @@ const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) 
 const Grid: React.FC = () => (
     <div className="w-full px-2 lg:px-0 grid grid-flow-row-dense grid-cols-1 lg:grid-cols-4 lg:gap-6 gap-4 gap-y-6 lg:gap-y-14">
         {thedata.map((item, index) => (
-            <GridItem key={index} imageUrl={item.image} title={item.name} subtitle={item.date} link={`/`}/>
+            <GridItem key={index} imageUrl={item.image} title={item.name} subtitle={item.date} link={item.link}/>
         ))}
     </div>
 );
@@ -167,26 +167,31 @@ const thedata = [
     {
         image: '/src/assets/mikiyas/art1.jpg',
         name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf'
+        date: 'asdf',
+        link: "/artwork/PG - 00031 - AR"
     },
     {
         image: '/src/assets/mikiyas/art2.jpg',
         name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf'
+        date: 'asdf',
+        link: "/artwork/PG - 00032 - AR"
     },
     {
         image: '/src/assets/mikiyas/art3.jpg',
         name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf'
+        date: 'asdf',
+        link: "/artwork/PG - 00033 - AR"
     },
     {
         image: '/src/assets/mikiyas/art4.webp',
         name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf'
+        date: 'asdf',
+        link: "/artwork/PG - 00034 - AR"
     },
     {
         image: '/src/assets/mikiyas/art5.jpg',
         name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf'
+        date: 'asdf',
+        link: "/artwork/PG - 00035 - AR"
     },
 ]

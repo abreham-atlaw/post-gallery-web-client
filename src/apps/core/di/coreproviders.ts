@@ -13,6 +13,9 @@ import OrderRepository from "../data/repositories/orderRepository";
 import ShippingInfoRepository from "../data/repositories/shippingInfoRepository";
 import Order from "../data/models/order";
 import NewsLetterSubscriptionRepository from "../data/repositories/newsLetterSubscriptionRepository";
+import NetworkApi from "@/lib/network/NetworkApi";
+import { ApiConfigs } from "@/configs/data_configs";
+import { PaymentRepository } from "../data/repositories/paymentRepository";
 
 
 
@@ -35,6 +38,16 @@ export default class CoreProviders{
 
 	public static provideFirestoreDB(): Firestore{
 		return getFirestore();
+	}
+
+	public static provideApiClient(): NetworkApi{
+		return new NetworkApi(
+			ApiConfigs.API_URL
+		);
+	}
+
+	public static providePaymentRepository(): PaymentRepository{
+		return new PaymentRepository();
 	}
 
 	public static provideArtistRepository(): ArtistRepository{
