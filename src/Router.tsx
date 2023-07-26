@@ -33,8 +33,7 @@ import ContactView from "./__mocks__/apps/core/presentation/views/ContactView";
 import AddBlogView from "./__mocks__/apps/admin/presentation/views/AddBlogView";
 import ComingSoon from "./__mocks__/apps/core/presentation/views/ComingSoon";
 import { RoutedCartView } from "./__mocks__/apps/core/presentation/views/CartView";
-import { RoutedOrderDetailView } from "./__mocks__/apps/admin/presentation/views/OrderDetailView";
-
+import OrderDetailView, { RoutedOrderDetailView } from "./__mocks__/apps/admin/presentation/views/OrderDetailView";
 
 
 export default class PGRouter extends React.Component{
@@ -104,6 +103,9 @@ export default class PGRouter extends React.Component{
 				<Route path="/comingsoon" element={
 					<ComingSoon />
 				}/>
+				<Route path="/orderdetail" element={
+					<OrderDetailView orderId={"PG - 00004 - OR"} />
+				}/>
 				
 
 				<Route path="/admin/dashboard" element={
@@ -168,7 +170,6 @@ export default class PGRouter extends React.Component{
 
 				
 
-			
 
 			</Routes>
 		)

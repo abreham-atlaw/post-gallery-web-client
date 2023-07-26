@@ -25,6 +25,7 @@ import EditExhibitionListView from './EditExhibitionListView';
 import OrderListView from '../OrdersListView';
 import OrdersListViewNew from './OrdersListView';
 import DashBoardMainListView from './DashBoardMainListView';
+import OrderDetailView from '../OrderDetailView';
 
 
 export default class DashboardView extends ViewModelView<DashboardViewModel, any, DashboardState>{
@@ -166,7 +167,7 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
 
         <div className={` ${activeItem === 'Page3' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-8/12`}>
           <SearchBar />
-          <OrdersListViewNew />
+          <OrderDetailView orderId={"PG - 00004 - OR"} />
 
         </div>
 
