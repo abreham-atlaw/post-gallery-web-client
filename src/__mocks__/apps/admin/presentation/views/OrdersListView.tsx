@@ -34,7 +34,7 @@ export default class OrderListView extends ViewModelView<OrderListViewModel, any
 							(order: Order, _index: number) => {
 								return <tr>
 									<td>{order.item!.name}</td>
-									<td>{order.isPaymentComplete?"complete":"incomplete"}</td>
+									<td>{order.status}</td>
 									<td>{order.item!.artist?.fullName}</td>
 									<td>{order.orderDateTime.toDateString()}</td>
 									<td>{order.item!.price}</td>

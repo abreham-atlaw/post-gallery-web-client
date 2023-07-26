@@ -29,7 +29,7 @@ export default class ClientRepository extends FireStoreRepository<string, Client
 
 	public async signUpWithPG(request: PGSignupRequest): Promise<Client>{
 		let user = await this.authenticator.createWithEmail(request.email, request.password);
-		let client = new Client(user.uid, request.fullName, request.phoneNumber, Cart.createEmpty());
+		let client = new Client(user.uid, request.fullName, request.phoneNumber, Cart.createEmpty(), request.email);
 		await this.create(client);
 		return client;
 	}
@@ -41,7 +41,7 @@ export default class ClientRepository extends FireStoreRepository<string, Client
 
 	public async signInWithGoogle(): Promise<Client>{
 		let user = await this.authenticator.getWithGoogle();
-		let client = new Client(user.uid, user.displayName!, user.phoneNumber!, Cart.createEmpty());
+		let client = new Client(user.uid, user.displayName!, user.phoneNumber!, Cart.createEmpty(), user.email!);
 		await this.create(client);
 		return client;
 
@@ -49,7 +49,7 @@ export default class ClientRepository extends FireStoreRepository<string, Client
 
 	public async signInWithApple(): Promise<Client>{
 		let user = await this.authenticator.getWithApple();
-		let client = new Client(user.uid, user.displayName!, user.phoneNumber!, Cart.createEmpty());
+		let client = new Client(user.uid, user.displayName!, user.phoneNumber!, Cart.createEmpty(), user.email!);
 		await this.create(client);
 		return client;
 	}

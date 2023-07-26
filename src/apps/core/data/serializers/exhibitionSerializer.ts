@@ -21,7 +21,8 @@ export default class ExhibitionSerializer extends Serializer<Exhibition, Documen
       venue: instance.venue,
 	  curator: instance.curator,
 	  cover_image: instance.coverImage,
-	  artworks_ids: instance.artworkIds
+	  artworks_ids: instance.artworkIds,
+	  status: instance.status
     };
   }
 
@@ -42,7 +43,8 @@ export default class ExhibitionSerializer extends Serializer<Exhibition, Documen
       data.venue,
 	  data.curator,
 	  data.cover_image,
-	  data.artworks_ids
+	  data.artworks_ids,
+	  data.status
     );
   }
 }

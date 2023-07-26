@@ -3,6 +3,7 @@ import BaseState from "../state/baseState";
 import ContextInjector from "./contextInjector";
 import { FunctionalAsyncHandler } from "./asyncViewModel";
 import { sleep } from "../utils/time";
+import { AsyncStatus } from "../state/asyncState";
 
 
 export default class ViewModel<S extends BaseState>{
@@ -38,6 +39,9 @@ export default class ViewModel<S extends BaseState>{
 	}
 
 	public async initialize(){
+		if(this.state.initState.status != AsyncStatus.none){
+			return;
+		}
 		let initHandler = new FunctionalAsyncHandler<BaseState>(
 			this,
 			async () => {

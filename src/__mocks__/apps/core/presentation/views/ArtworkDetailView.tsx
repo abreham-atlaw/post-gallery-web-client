@@ -42,7 +42,7 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 					<div className="text-3xl font-medium">Price: {new String(this.state.artwork!.price)} ETB</div>
 					<p className="text-2xl underline">Description</p>
 					<DescriptionComponent description={this.state.artwork!.description} />
-					<Link to={`/checkout/${this.state.artwork?.id}`} className="flex justify-center items-center w-56 m-auto my-8 pt-2 pb-2.5 bg-black text-white rounded-full">
+					<Link to={`/cart/${this.state.artwork?.id}`} className="flex justify-center items-center w-56 m-auto my-8 pt-2 pb-2.5 bg-black text-white rounded-full">
 						<div className="justify-center text-2xl">Purchase</div>
 					</Link>
 
@@ -86,7 +86,7 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 							<div className="text-3xl font-medium">Price: {new String(this.state.artwork!.price)} ETB</div>
 							<p className="text-2xl underline">Description</p>
 							<DescriptionComponent description={this.state.artwork!.description} />
-							<Link to={`/checkout/${this.state.artwork?.id}`} className="flex justify-center items-center w-56 m-auto mt-8 pt-2 pb-2.5 bg-black text-white rounded-full">
+							<Link to={`/cart/${this.state.artwork?.id}`} className="flex justify-center items-center w-56 m-auto mt-8 pt-2 pb-2.5 bg-black text-white rounded-full">
 								<span className="justify-center text-2xl">Purchase</span>
 							</Link>
 						</div>

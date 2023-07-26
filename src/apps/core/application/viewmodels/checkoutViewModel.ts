@@ -8,6 +8,7 @@ import Order from "../../data/models/order";
 import Artwork from "../../data/models/artwork";
 import OrderPricing from "../../data/models/orderPricing";
 import { lstat } from "fs";
+import { AsyncStatus } from "@/lib/state/asyncState";
 
 
 export default class CheckoutViewModel extends AsyncViewModel<CheckoutState>{
@@ -15,7 +16,6 @@ export default class CheckoutViewModel extends AsyncViewModel<CheckoutState>{
 	private orderRepository = CoreProviders.provideOrderRepository()
 	private shippingInfoRepository = CoreProviders.provideShippingRepository()
 	private itemRepository = CoreProviders.provideArtworkRepository()
-	private paymentRepository = CoreProviders.providePaymentRepository()
 	
 	private async createShippingInfo(form: CheckoutForm): Promise<ShippingInfo>{
 		let shippingInfo = new ShippingInfo(
@@ -35,16 +35,18 @@ export default class CheckoutViewModel extends AsyncViewModel<CheckoutState>{
 		return shippingInfo;
 	}
 
-	private async createOrder(shippingInfo: ShippingInfo, item: Artwork, pricing: OrderPricing): Promise<Order>{
+	private async createOrder(shippingInfo: ShippingInfo | null, item: Artwork, pricing: OrderPricing): Promise<Order>{
 		let order = new Order(
 			null,
 			item.getPK()!,
-			shippingInfo.getPK()!,
+			shippingInfo?.getPK() ?? null,
 			(await AuthProviders.provideCurrentClient())!.getPK()!,
 			pricing,
 			
 		)
-		await this.orderRepository.create(order)
+		if(shippingInfo != null){
+			await this.orderRepository.create(order)
+		}
 		return order
 	}
 
@@ -62,7 +64,24 @@ export default class CheckoutViewModel extends AsyncViewModel<CheckoutState>{
 		this.state.pricing = new OrderPricing(
 			this.state.item.price,
 			2000, // TODO,
-		)
+		);
+		await this.autoFillForm();
+		if(!this.state.shippingIncluded){
+			await this.noShippimentCheckout();
+		}
+	}
+
+	public async autoFillForm(){
+		let client = await AuthProviders.provideCurrentClient();
+		this.state.form.firstName.setValue(client!.fullName.split(" ")[0]);
+		this.state.form.lastName.setValue(client!.fullName.split(" ")[1]);
+		this.state.form.email.setValue(client!.email);
+	}
+
+	public async noShippimentCheckout(){
+		this.state.shippingInfo = null;
+		await this.processCheckout();
+		this.state.status = AsyncStatus.done;
 	}
 
 	public async saveShippingInfo(){
@@ -75,27 +94,11 @@ export default class CheckoutViewModel extends AsyncViewModel<CheckoutState>{
 		)
 	}
 
-	private async initializePayment(form: CheckoutForm, pricing: OrderPricing){
-		let response = await this.paymentRepository.chapaPayment(
-			{
-				firstName: form.firstName.getValue()!,
-				lastName: form.lastName.getValue()!,
-				email: form.email.getValue()!,
-				amount: pricing.getTotal(),
-				returnUrl: `http://localhost:5173/complete-payment/${this.state.order!.getPK()}/`.replaceAll(" ", "%20")
-			}
-		);
-		this.state.paymentLink = response.checkoutUrl;
-		this.state.order!.transactionId = response.transactionId;
-		await this.orderRepository.save(this.state.order!);
-	}
-
 	public async checkout(){
 		this.asyncCall(
 			async () => {
 				await this.state.form.validate(true)
 				await this.processCheckout()
-				await this.initializePayment(this.state.form, this.state.pricing!);
 			}
 		)
 	}

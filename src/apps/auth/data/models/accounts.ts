@@ -37,10 +37,12 @@ export class Client extends Account{
 
 
 	public cart: Cart;
+	public email: string;
 
-	constructor(id: string, fullName: string, phoneNumber: string, cart: Cart){
+	constructor(id: string, fullName: string, phoneNumber: string, cart: Cart, email: string){
 		super(id, fullName, phoneNumber, Role.client);
 		this.cart = cart;
+		this.email = email;
 	}
 
 }

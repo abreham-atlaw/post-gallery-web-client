@@ -9,7 +9,7 @@ import { sleep } from "../utils/time";
 
 export abstract class FireStoreRepository<P, M extends Model<P>> implements Repository<P, M>{
 
-	private collection: CollectionReference;
+	protected collection: CollectionReference;
 	private collectionName: string;
 	private primaryKeyColumn: string;
 	private serializer: Serializer<M, DocumentData>;
@@ -90,8 +90,7 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 	}
 
 	protected async firebaseFetch(fetcher: Function, many: boolean = false): Promise<M|M[]>{
-		console.log("Fetching...")
-		let data: DocumentData | DocumentData[] = await fetcher()
+			let data: DocumentData | DocumentData[] = await fetcher()
 		if(many){
 			let instances: M[] = []
 			for(let instanceData of (data as DocumentData[])){

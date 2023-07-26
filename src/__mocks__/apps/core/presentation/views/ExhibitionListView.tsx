@@ -29,21 +29,10 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 			  	</div>
 				<div className="mt-8 px-3 mb-6 lg:mb-12 lg:pl-20 lg:pr-10">
 					<div className="w-full flex flex-row items-center justify-center mt-8 mb-5 px-2.5 lg:mb-8"><p className="text-xl lg:text-2xl text-[#8E8E8E]">CURRENT</p> <LineWithWidth10 /></div>
-					{
-						this.state.currentExhibitions!.map(
-							(exhibition: Exhibition) => {
-								return <ExhibitionItem exhibition={exhibition}/>
-							}
-						)
-					}
+					<ExhibitionItem exhibition={this.state.currentExhibition!}/>
+					
 					<div className="w-full flex flex-row items-center justify-center mt-8 mb-5 px-2.5 lg:mt-14 lg:mb-8"><p className="text-xl lg:text-2xl text-[#8E8E8E]">UPCOMING</p> <LineWithWidth10 /></div>
-					{
-						this.state.upcomingExhibitions!.map(
-							(exhibition: Exhibition) => {
-								return <ExhibitionItem exhibition={exhibition}/>
-							}
-						)
-					}
+					<ExhibitionItem exhibition={this.state.upcomingExhibition!}/>
 				</div>
 				<div className="w-full border-b border-[#D9DBE9] mt-20"></div>
 				<Thefooter />
@@ -70,7 +59,7 @@ interface ExhibitionProps{
 		<img className="w-full lg:w-5/12 h-96 lg:h-[420px] object-cover" src={props.exhibition.coverImage} /> 
 		<div className="w-full mt-3 lg:mt-0 lg:w-5/12">
 			<p className="text-3xl lg:text-5xl">{props.exhibition.name}</p>
-			<p className="text-base lg:text-xl text-[#787878] lg:pt-6">{props.exhibition.artist!.fullName}</p>
+			<p className="text-base lg:text-xl text-[#787878] lg:pt-6">{props.exhibition.curator}</p>
 			<div className="lg:py-2"><LineWithWidth10 /></div>
 			<p className="text-base lg:text-xl text-[#787878] mb-2 lg:mb-4">{props.exhibition.dateRange.startDate.toDateString()} - {props.exhibition.dateRange.startDate.toDateString()}</p>
 			<DescriptionComponent description={props.exhibition.description} />

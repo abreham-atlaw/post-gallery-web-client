@@ -17,6 +17,14 @@ interface TimeRange{
 
 }
 
+export enum ExhibitionStatus{
+
+	past,
+	current,
+	upcoming
+
+}
+
 export default class Exhibition implements Model<string>{
 
 	public id: string | null;
@@ -35,6 +43,8 @@ export default class Exhibition implements Model<string>{
 	public coverImage: string;
 	public artworkIds: string[];
 
+	public status: ExhibitionStatus;
+
 	public artist?: Artist;
 	public artworks?: Artwork[];
 
@@ -48,7 +58,8 @@ export default class Exhibition implements Model<string>{
 		venue: string,
 		curator: string,
 		coverImage: string,
-		artworkIds: string[]
+		artworkIds: string[],
+		status: ExhibitionStatus
 	){
 		this.id = id;
 		this.artistId = artistId;
@@ -60,6 +71,7 @@ export default class Exhibition implements Model<string>{
 		this.timeFrame = timeFrame
 		this.coverImage = coverImage
 		this.artworkIds = artworkIds
+		this.status = status;
 	}
 
 	getPK(): string | null {

@@ -7,6 +7,7 @@ export default class OrderDetailState extends AsyncState{
 
 	orderId: string
 	order?: Order
+	decisionState: AsyncState = new AsyncState();
 
 	constructor(orderId: string){
 		super();

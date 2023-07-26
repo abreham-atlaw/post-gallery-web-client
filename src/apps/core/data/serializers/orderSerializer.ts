@@ -1,5 +1,5 @@
 import Serializer from "@/lib/serializers/serializer"
-import Order from "../models/order";
+import Order, { OrderStatus } from "../models/order";
 import { DocumentData } from "firebase/firestore";
 import { DateSerializer } from "@/lib/serializers/fieldSerializers";
 import OrderPricing from "../models/orderPricing";
@@ -16,7 +16,7 @@ export default class OrderSerializer extends Serializer<Order, DocumentData>{
 			id: instance.id,
 			item_id: instance.itemId,
 			time: this.dateSerializer.serialize(instance.orderDateTime),
-			is_payment_complete: instance.isPaymentComplete,
+			status: Number(instance.status),
 			client_id: instance.clientId,
 			shipping_info_id: instance.shippingInfoId,
 			pricing: {
@@ -38,10 +38,9 @@ export default class OrderSerializer extends Serializer<Order, DocumentData>{
 			new OrderPricing(
 				data.pricing.item,
 				data.pricing.shipping,
-				
 			),
 			this.dateSerializer.deserialize(data.time),
-			data.is_payment_complete,
+			Object.values(OrderStatus).filter((v) => !isNaN(Number(v)))[data.status] as OrderStatus,
 			data.transaction_id
 		)
 	}

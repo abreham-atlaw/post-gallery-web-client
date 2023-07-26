@@ -4,16 +4,26 @@ import Artwork from "./artwork";
 import OrderPricing from "./orderPricing";
 
 
+export enum OrderStatus{
+
+	requested,
+	accepted,
+	rejected,
+	waitingShipment,
+	complete
+
+}
+
 export default class Order implements Model<string>{
 
 	public id: string | null;
 
 	public itemId: string;
-	public shippingInfoId: string;
+	public shippingInfoId: string | null;
 	public clientId: string;
 
 	public orderDateTime: Date;
-	public isPaymentComplete: boolean;
+	public status: OrderStatus;
 
 	public pricing: OrderPricing;
 
@@ -25,11 +35,11 @@ export default class Order implements Model<string>{
 	constructor(
 		id: string | null = null,
 		itemId: string,
-		shippingInfoId: string,
+		shippingInfoId: string | null,
 		clientId: string,
 		orderPricing: OrderPricing,
 		orderDateTime: Date | null = null ,
-		isPaymentComplete: boolean = false,
+		status: OrderStatus = OrderStatus.requested,
 		transactionId: string | null = null
 	){
 		this.id = id;
@@ -38,11 +48,11 @@ export default class Order implements Model<string>{
 			orderDateTime = new Date(Date.now())
 		}
 		this.orderDateTime = orderDateTime
-		this.isPaymentComplete = isPaymentComplete
 		this.shippingInfoId = shippingInfoId
 		this.clientId = clientId
 		this.pricing = orderPricing
 		this.transactionId = transactionId
+		this.status = status;
 	}
 
 	getPK(): string | null {

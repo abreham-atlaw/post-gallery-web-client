@@ -2,9 +2,10 @@ import ViewModel from "@/lib/viewmodel/viewmodel";
 import PaymentState from "../state/paymentState";
 import AsyncViewModel from "@/lib/viewmodel/asyncViewModel";
 import CoreProviders from "../../di/coreproviders";
+import { OrderStatus } from "../../data/models/order";
 
 
-export default class PaymentViewModel extends AsyncViewModel<PaymentState>{
+export default class ConfirmPaymentViewModel extends AsyncViewModel<PaymentState>{
 
 	private orderRepository = CoreProviders.provideOrderRepository();
 	private paymentRepository = CoreProviders.providePaymentRepository();
@@ -23,7 +24,7 @@ export default class PaymentViewModel extends AsyncViewModel<PaymentState>{
 		if(!isComplete){
 			return;
 		}
-		this.state.order!.isPaymentComplete = true
+		this.state.order!.status = OrderStatus.waitingShipment;
 		await this.orderRepository.save(this.state.order!)
 	}
 	

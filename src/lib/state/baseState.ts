@@ -14,7 +14,7 @@ class SlideState {
 export default class BaseState {
     public context: Record<string, any>;
     public initState = {
-        status: AsyncStatus.loading,
+        status: AsyncStatus.none,
         error: null,
     };
 

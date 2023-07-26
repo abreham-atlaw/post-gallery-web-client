@@ -13,7 +13,8 @@ export default class ClientSerializer extends Serializer<Client, DocumentData>{
 			uid: instance.id,
 			fullName: instance.fullName,
 			phoneNumber: instance.phoneNumber,
-			cart: this.cartSerializer.serialize(instance.cart)
+			cart: this.cartSerializer.serialize(instance.cart),
+			email: instance.email
 		}
 	}
 	deserialize(data: DocumentData): Client {
@@ -21,7 +22,8 @@ export default class ClientSerializer extends Serializer<Client, DocumentData>{
 			data.uid,
 			data.fullName, 
 			data.phoneNumber,
-			this.cartSerializer.deserialize(data.cart)
+			this.cartSerializer.deserialize(data.cart),
+			data.email
 		)
 	}
 	

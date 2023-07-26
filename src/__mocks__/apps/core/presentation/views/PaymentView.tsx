@@ -1,5 +1,5 @@
 import PaymentState from "@/apps/core/application/state/paymentState";
-import PaymentViewModel from "@/apps/core/application/viewmodels/paymentViewModel";
+import ConfirmPaymentViewModel from "@/apps/core/application/viewmodels/paymentViewModel";
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import { ReactNode } from "react";
@@ -11,10 +11,10 @@ interface PaymentViewProps{
 
 }
 
-export default class PaymentView extends ViewModelView<PaymentViewModel, PaymentViewProps, PaymentState>{
+export default class PaymentView extends ViewModelView<ConfirmPaymentViewModel, PaymentViewProps, PaymentState>{
 	
-	onCreateViewModel(state: PaymentState): PaymentViewModel {
-		return new PaymentViewModel(state, this.setState.bind(this));
+	onCreateViewModel(state: PaymentState): ConfirmPaymentViewModel {
+		return new ConfirmPaymentViewModel(state, this.setState.bind(this));
 	}
 	
 	onCreateState(): PaymentState {
