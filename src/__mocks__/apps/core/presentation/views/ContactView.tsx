@@ -18,14 +18,14 @@ export default function ContactView() {
             <NavBar isDark={true} />
         </div>
 
-        <div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Mulish">
-            <p className='mt-4 mb-4 lg:mb-14 text-2xl lg:text-4xl font-Mulish font-medium'>Contact</p>
+        <div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Lato">
+            <p className='mt-4 mb-4 lg:mb-14 text-2xl lg:text-4xl font-Lato font-medium'>Contact</p>
             <div className='flex flex-col lg:flex-row justify-between'>
                 <div className='w-full lg:w-1/2 lg:mr-28'>
                     <img className='w-full h-96 lg:h-min shadow-md object-cover lg:object-cover' src={about} />
                 </div>
                 <div className='w-full lg:w-1/2 mt-9 lg:mt-0'>
-                    <p className='mb-2 lg:mb-3 text-2xl lg:text-4xl font-Mulish font-light'>Post Gallery</p>
+                    <p className='mb-2 lg:mb-3 text-2xl lg:text-4xl font-Lato font-light'>Post Gallery</p>
                     <p className='text-xl font-light'> 
                         Skylight mall <br/>
                         Addis Ababa, Ethiopia<br/>

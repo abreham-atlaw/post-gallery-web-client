@@ -19,6 +19,12 @@ import DashboardState from '@/apps/admin/application/states/dashboardState';
 import Artwork from '@/apps/core/data/models/artwork';
 import Artist from '@/apps/core/data/models/artist';
 import Exhibition from '@/apps/core/data/models/exhibition';
+import EditArtistListView from './EditArtistListView';
+import EditArtWorkListView from './EditArtWorkListView';
+import EditExhibitionListView from './EditExhibitionListView';
+import OrderListView from '../OrdersListView';
+import OrdersListViewNew from './OrdersListView';
+import DashBoardMainListView from './DashBoardMainListView';
 
 
 export default class DashboardView extends ViewModelView<DashboardViewModel, any, DashboardState>{
@@ -135,46 +141,9 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
         {/* Your content here */}
         <div className={` ${activeItem === 'Page1' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-1/2`}>
           <SearchBar />
-          <p className='text-lg mt-4 mb-3 font-semibold'>In the last 30 days,</p>
-          <div className='w-full flex flex-row space-x-2'>
-            <div className="w-full px-2.5 flex items-end rounded-[4px] h-16 text-white bg-[url('./assets/dashGridBg.png')] bg-no-repeat bg-cover">
-              <div className='mb-1'>
-                <p className='text-2xl font-semibold'>30</p>
-                <p className='text-xs'>Total art work sold</p>
-              </div>
-            </div>
-            <div className="w-full px-2.5 flex items-end rounded-[4px] h-16 text-white bg-[url('./assets/dashGridBg.png')] bg-no-repeat bg-cover">
-              <div className='mb-1'>
-                <p className='text-2xl font-semibold'>51</p>
-                <p className='text-xs'>Artwork left to sell</p>
-              </div>
-            </div>
-            <div className="w-full px-2.5 flex items-end rounded-[4px] h-16 text-white bg-[url('./assets/dashGridBg.png')] bg-no-repeat bg-cover">
-              <div className='mb-1'>
-                <p className='text-2xl font-semibold'>$400,000</p>
-                <p className='text-xs'>Revenue generated</p>
-              </div>
-            </div>       
-          </div>
+          <DashBoardMainListView />
 
-          <p className='text-2xl font-Mulish mt-10'>Add</p>
-          <div className='w-full flex flex-row space-x-2 mt-2'>
-            <Link to="/admin/artist/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-8 mr-3' src={dashGrid1} />
-              <p>Add artist</p>
-            </Link>
-            <Link to="/admin/artwork/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-8 mr-3' src={dashGrid2} />
-              <p>Add art</p>
-            </Link>
-            <Link to="/admin/exhibition/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-8 mr-3' src={dashGrid3} />
-              <p>Add exhibition</p>
-            </Link>
-          </div>
-
-
-          <p className='text-2xl font-Mulish mt-10'>Edit</p>
+          <p className='text-2xl font-Lato mt-10'>Edit</p>
           <div className='w-full flex flex-row space-x-2 mt-2 mb-5'>     
             <div onClick={() => setActiveItem('editartist')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid1} />
@@ -193,104 +162,35 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
         </div>
 
 
-          {/*  here is edit art page in dashboard */}
+        {/*  here is orders page */}
 
-
-          <div className={` ${activeItem === 'editart' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+        <div className={` ${activeItem === 'Page3' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-8/12`}>
           <SearchBar />
-          <p className='text-2xl font-Mulish my-10'>Edit Art</p>  
-          <div className='flex flex-row flex-wrap'>
+          <OrdersListViewNew />
 
-			{
-				artworks.map(
-					(artwork) => <Link to={`/admin/artwork/edit/${artwork.getPK()}`} className='font-Mulish w-full lg:w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 mb-6 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-					<img className='w-32 h-full mr-5 object-cover' src={artwork.images[0]} />
-					<div className='flex flex-col'>
-					  <p className="text-2xl text-[#515151]">{artwork.name}</p>
-					  <div className="lg:py-2"><LineWithWidth10 /></div>
-					  {/* <p className="text-base  text-[#787878] ">Frehiwot Demisse</p> */}
-					  <p className="text-base text-[#787878] ">{artwork.creationDate.toDateString()}</p>
-					</div>
-				  </Link>
-				)
-			}
-
-            
-            {/* <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-32 h-full mr-5 object-cover' src={edit} />
-              <div className='flex flex-col'>
-                <p className="text-2xl text-[#515151]">Her Story</p>
-                <div className="lg:py-2"><LineWithWidth10 /></div>
-                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
-                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
-              </div>
-            </Link> */}
-          </div>
         </div>
 
-                  {/*  here is edit artist page in dashboard */}
+        {/*  here is edit art page in dashboard */}
 
-
-          <div className={` ${activeItem === 'editartist' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+        <div className={` ${activeItem === 'editart' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
           <SearchBar />
-          <p className='text-2xl font-Mulish my-10'>Edit Artist</p>  
-          <div className='flex flex-row flex-wrap'>
-			{
-				artists.map(
-					(artist: Artist) => <Link to={`/admin/artist/edit/${artist.getPK()}`} className='font-Mulish w-full lg:w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 mb-6 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-					<img className='w-32 h-full mr-5 object-cover' src={artist.avatar} />
-					<div className='flex flex-col'>
-					  <p className="text-2xl text-[#515151]">{artist.fullName}</p>
-					  <p className="text-base text-[#787878] ">{artist.email}</p>
-					</div>
-				  </Link>
-				)
-			}
+          <EditArtWorkListView / >
+        </div>
 
-            
-            {/* <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-32 h-full mr-5 object-cover' src={edit} />
-              <div className='flex flex-col'>
-                <p className="text-2xl text-[#515151]">Her Story</p>
-                <div className="lg:py-2"><LineWithWidth10 /></div>
-                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
-                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
-              </div>
-            </Link> */}
-          </div>
+         {/*  here is edit artist page in dashboard */}
+
+        <div className={` ${activeItem === 'editartist' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+          <SearchBar />
+          <EditArtistListView / > 
         </div>
 
         {/*  here is edit echibition page in dashboard */}
 
         <div className={` ${activeItem === 'editexhibition' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
           <SearchBar />
-          <p className='text-2xl font-Mulish my-10'>Edit Exhibitions</p>  
-          <div className='flex flex-row flex-wrap'>
-			{
-				exhibitions.map(
-					(exhibition: Exhibition) => <Link to={`/admin/exhibition/edit/${exhibition.getPK()}`} className='font-Mulish w-full lg:w-2/5 flex flex-row justify-start items-center h-32 pr-3 mr-5 mb-6 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-					<img className='w-32 h-full mr-5 object-cover' src={exhibition.coverImage} />
-					<div className='flex flex-col'>
-					  <p className="text-2xl text-[#515151]">{exhibition.name}</p>
-					  <div className="lg:py-2"><LineWithWidth10 /></div>
-					  <p className="text-base  text-[#787878] ">{exhibition.curator}</p>
-					  <p className="text-base text-[#787878] ">{exhibition.dateRange.startDate.toDateString()} - {exhibition.dateRange.endDate.toDateString()}</p>
-					</div>
-				  </Link>
-				)
-			}
-            
-            {/* <Link to="/" className='font-Mulish  w-1/2 flex flex-row justify-start items-center h-32 pr-3 font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-32 h-full mr-5 object-cover' src={edit} />
-              <div className='flex flex-col'>
-                <p className="text-2xl text-[#515151]">Her Story</p>
-                <div className="lg:py-2"><LineWithWidth10 /></div>
-                <p className="text-base  text-[#787878] ">Frehiwot Demisse</p>
-                <p className="text-base text-[#787878] ">Fri March 17- July 14</p>
-              </div>
-            </Link> */}
-          </div>
+          <EditExhibitionListView />
         </div>
+        
       </div>
     </div>
   );

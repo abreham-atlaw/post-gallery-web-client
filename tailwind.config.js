@@ -9,6 +9,7 @@ export default {
     extend: {
       fontFamily:{
         'Mulish': ['Mulish', 'sans-serif'],
+        'Lato': ['Lato', 'sans-serif'],
       }
     },
   },

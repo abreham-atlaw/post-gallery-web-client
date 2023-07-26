@@ -4,7 +4,7 @@ import DefaultFileUploadComponent, { DefaultImageUploadComponent } from "@/apps/
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
 import StatusToast from "@/lib/components/status/StatusToast";
 import ViewModelView from "@/lib/components/views/ViewModelView";
-import { FormEvent, ReactNode } from "react";
+import { FormEvent, ReactNode, useState } from "react";
 
 
 
@@ -15,12 +15,16 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditBlogVie
 		await this.getViewModel().save();
 	}
 
+	
+
 	onCreateMain(): ReactNode {
+		
 		return (<div>
 			<form onSubmit={this.handleSubmit} className="px-6 lg:px-14 py-12">
 				<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Blog</span></a>
 				<div className="w-full pt-10 pb-6 mb-3 border-b-2 border-[#C1C1C1] flex flex-row justify-between">
 					<p className="text-3xl lg:text-4xl font-bold">Upload Blog</p>
+					<Switcher />
 					<button type="submit" className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
 						<div className="justify-center text-sm lg:text-xl">Publish</div>
 					</button>
@@ -49,3 +53,32 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditBlogVie
 	}
 
 }
+
+const Switcher = () => {
+	const [isChecked, setIsChecked] = useState(false)
+  
+	const handleCheckboxChange = () => {
+	  setIsChecked(!isChecked)
+	}
+  
+	return (
+	  <>
+		<label className='flex cursor-pointer select-none items-center'>
+		  <div className='relative'>
+			<input
+			  type='checkbox'
+			  checked={isChecked}
+			  onChange={handleCheckboxChange}
+			  className='sr-only'
+			/>
+			<div className='box bg-[#00A3FF] block h-16 w-40 rounded-full'></div>
+			<div
+			  className={`dot absolute top-1 bg-white flex h-14 w-14 items-center justify-center rounded-full transition  ${
+				isChecked ? 'left-1' : 'right-1'
+			  }`}
+			></div>
+		  </div>
+		</label>
+	  </>
+	)
+  }
