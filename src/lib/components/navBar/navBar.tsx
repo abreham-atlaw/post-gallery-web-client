@@ -52,7 +52,7 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 					<a href="/" className='flex flex-row items-center space-x-10 text-3xl font-medium leading-none'>
 						<img className='w-20' src={this.props.isDark ? PG : PGwhite} />
 					</a>
-					<div className={` ${this.props.isDark ? "text-black" : "text-white"} font-Mulish lg:font-medium flex flex-row items-center space-x-6 font-[300] text-xl leading-none`}>
+					<div className={` ${this.props.isDark ? "text-black" : "text-white"} font-Lato lg:font-medium flex flex-row items-center space-x-6 font-[300] text-xl leading-none`}>
 						<Link to="/artists">Artist</Link>
 						<Link to="/exhibitions">Exhibition</Link>
 						<Link to="/blog">Press</Link>
@@ -72,12 +72,12 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 			  </div>
 			  <div className={` ${this.state.open ? 'hidden' : 'absolute'} flex flex-col justify-center items-center top-0 text-white text-3xl bg-black w-full h-screen lg:hidden z-10`}>
 					<img className='absolute h-7 top-5 right-5' onClick={() => {this.getViewModel().toggleOpen()}} src={MenuWhite} />
-					<Link to="/" className="font-Mulish font-medium text-end pb-2 ">Home</Link>
-					<Link to="/exhibitions" className="font-Mulish font-light text-end pb-2 ">Exhibition</Link>
-					<Link to="/search" className="font-Mulish font-light text-end pb-2 ">Shop</Link>
-					<Link to="/artist" className="font-Mulish font-light text-end pb-2 ">Artist</Link>
-					<Link to="/blog" className="font-Mulish font-light text-end pb-2 ">Blog</Link>
-					<Link to="/blog" className="font-Mulish font-light text-end pb-2 ">Art Fair</Link>
+					<Link to="/" className="font-Lato font-medium text-end pb-2 ">Home</Link>
+					<Link to="/exhibitions" className="font-Lato font-light text-end pb-2 ">Exhibition</Link>
+					<Link to="/search" className="font-Lato font-light text-end pb-2 ">Shop</Link>
+					<Link to="/artist" className="font-Lato font-light text-end pb-2 ">Artist</Link>
+					<Link to="/blog" className="font-Lato font-light text-end pb-2 ">Blog</Link>
+					<Link to="/blog" className="font-Lato font-light text-end pb-2 ">Art Fair</Link>
 				</div>
 			</div>
 	  

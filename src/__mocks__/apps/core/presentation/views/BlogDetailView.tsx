@@ -32,7 +32,7 @@ export default class BlogDetailView extends ViewModelView<BlogDetailViewModel, B
 					<NavBar isDark={true} />
 				</div>
 		
-				<div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Mulish">
+				<div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Lato">
 					<div className='hidden lg:inline'>
 						<div className='flex flex-row justify-between mt-4'>
 							<div className='w-1/2 mr-10'>

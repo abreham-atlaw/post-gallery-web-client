@@ -10,8 +10,8 @@ export default function AboutView() {
             <NavBar isDark={true} />
         </div>
 
-        <div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Mulish">
-            <p className='mt-4 mb-2 lg:mb-4 text-2xl lg:text-4xl font-Mulish'>About</p>
+        <div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Lato">
+            <p className='mt-4 mb-2 lg:mb-4 text-2xl lg:text-4xl font-Lato'>About</p>
             <div className='flex flex-col lg:flex-row justify-between'>
                 <div className='w-full lg:w-1/2 lg:mr-10'>
                     <p className='lg:text-xl mb-10 lg:mb-0 lg:mt-3 lg:leading-[35px] font-light'>

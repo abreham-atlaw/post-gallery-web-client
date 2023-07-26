@@ -100,7 +100,7 @@ export default class TheFooter extends React.Component<any, FooterState>{
                                 <img className='w-12' src={bgB} />
                             </div>
                         </div>
-                        <div className='w-1/2 flex-row align-end justify-between hidden lg:flex font-Mulish'>
+                        <div className='w-1/2 flex-row align-end justify-between hidden lg:flex font-Lato'>
                             <div className='w-1/2 flex flex-col space-y-3'>
                                 <p className='text-xl font-bold text-[#170F49] mb-6'>Services</p>
                                 <Link to="/ArtistList" className='text-lg text-[#6F6C90]'>Artworks</Link>

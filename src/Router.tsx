@@ -20,7 +20,7 @@ import OrderListView from "./__mocks__/apps/admin/presentation/views/OrdersListV
 import AdminLoginViewModel from "./apps/auth/application/viewmodels/adminloginViewModel";
 import AdminLoginView from "./__mocks__/apps/auth/presentation/views/AdminLoginView";
 import { Role } from "./apps/auth/data/models/accounts";
-import DashBoardView from "./__mocks__/apps/admin/presentation/views/DashboardView";
+import DashBoardView from "./__mocks__/apps/admin/presentation/views/DashBoard/DashboardView";
 import { RoutedArtistEditView } from "./__mocks__/apps/admin/presentation/views/EditArtistView";
 import { RoutedEditArtworkView } from "./__mocks__/apps/admin/presentation/views/EditArtworkView";
 import { RoutedEditExhibitionView } from "./__mocks__/apps/admin/presentation/views/EditExhibitionView";
