@@ -34,7 +34,6 @@ import AddBlogView from "./__mocks__/apps/admin/presentation/views/AddBlogView";
 import ComingSoon from "./__mocks__/apps/core/presentation/views/ComingSoon";
 import { RoutedCartView } from "./__mocks__/apps/core/presentation/views/CartView";
 import { RoutedOrderDetailView } from "./__mocks__/apps/admin/presentation/views/OrderDetailView";
-import TestView from "./__mocks__/apps/core/presentation/views/TestView";
 
 
 export default class PGRouter extends React.Component{
@@ -167,8 +166,6 @@ export default class PGRouter extends React.Component{
 				} />
 
 				
-
-				<Route path="/test" element={<TestView/>} />
 
 			</Routes>
 		)
