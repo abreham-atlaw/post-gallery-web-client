@@ -32,6 +32,8 @@ import AboutView from "./__mocks__/apps/core/presentation/views/AboutView";
 import ContactView from "./__mocks__/apps/core/presentation/views/ContactView";
 import AddBlogView from "./__mocks__/apps/admin/presentation/views/AddBlogView";
 import ComingSoon from "./__mocks__/apps/core/presentation/views/ComingSoon";
+import { RoutedCartView } from "./__mocks__/apps/core/presentation/views/CartView";
+import { RoutedOrderDetailView } from "./__mocks__/apps/admin/presentation/views/OrderDetailView";
 
 
 export default class PGRouter extends React.Component{
@@ -65,6 +67,12 @@ export default class PGRouter extends React.Component{
 				<Route path="/search" element={
 					<AuthenticatedComponent>
 						<SearchView/>
+					</AuthenticatedComponent>
+				}/>
+
+				<Route path="/cart/:artworkId" element={
+					<AuthenticatedComponent>
+						<RoutedCartView />
 					</AuthenticatedComponent>
 				}/>
 
@@ -145,11 +153,19 @@ export default class PGRouter extends React.Component{
 					</AuthenticatedComponent>
 				} />
 
+				<Route path="/admin/order/:id" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<RoutedOrderDetailView />
+					</AuthenticatedComponent>
+				} />
+
 				<Route path="/admin/blog/add" element={
 					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
 						<AddBlogView />
 					</AuthenticatedComponent>
 				} />
+
+				
 
 			</Routes>
 		)
