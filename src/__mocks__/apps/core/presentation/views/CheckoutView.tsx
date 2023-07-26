@@ -46,6 +46,11 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 
 	onCreateMain(): React.ReactNode {
 		if(this.state.status === AsyncStatus.done){
+			if(this.state.order!.isOnSite()){
+				window.open(this.state.paymentLink, "_self");
+				return <><p>You will be directed to the payment portal. If your browser does not automatically click the link below.</p>
+				<a href={this.state.paymentLink!}>To Payment Portal</a></>
+			}
 			return <p>Your order has been requested you'll receive an e-mail once the request is accepted. <a href="/">Go to Home</a></p>
 		}
 		return (

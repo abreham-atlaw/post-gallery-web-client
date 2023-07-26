@@ -1,5 +1,6 @@
 import PaymentState from "@/apps/core/application/state/paymentState";
 import ConfirmPaymentViewModel from "@/apps/core/application/viewmodels/paymentViewModel";
+import { OrderStatus } from "@/apps/core/data/models/order";
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import { ReactNode } from "react";
@@ -22,7 +23,7 @@ export default class PaymentView extends ViewModelView<ConfirmPaymentViewModel, 
 	}
 
 	onCreateMain(): ReactNode {
-		if(this.state.order?.isPaymentComplete){
+		if([OrderStatus.complete, OrderStatus.waitingShipment].includes(this.state.order!.status)){
 			return <h1>Payment Complete</h1>
 		}
 		return <div>

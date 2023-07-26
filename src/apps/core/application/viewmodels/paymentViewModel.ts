@@ -24,7 +24,12 @@ export default class ConfirmPaymentViewModel extends AsyncViewModel<PaymentState
 		if(!isComplete){
 			return;
 		}
-		this.state.order!.status = OrderStatus.waitingShipment;
+		if(this.state.order!.isOnSite()){
+			this.state.order!.status = OrderStatus.complete;
+		}
+		else{
+			this.state.order!.status = OrderStatus.waitingShipment;
+		}
 		await this.orderRepository.save(this.state.order!)
 	}
 	

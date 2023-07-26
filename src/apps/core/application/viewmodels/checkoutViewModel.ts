@@ -4,7 +4,7 @@ import CoreProviders from "../../di/coreproviders";
 import ShippingInfo from "../../data/models/shippingInfo";
 import CheckoutForm from "../forms/checkoutForm";
 import AuthProviders from "@/apps/auth/di/authProviders";
-import Order from "../../data/models/order";
+import Order, { OrderStatus } from "../../data/models/order";
 import Artwork from "../../data/models/artwork";
 import OrderPricing from "../../data/models/orderPricing";
 import { lstat } from "fs";
@@ -16,7 +16,8 @@ export default class CheckoutViewModel extends AsyncViewModel<CheckoutState>{
 	private orderRepository = CoreProviders.provideOrderRepository()
 	private shippingInfoRepository = CoreProviders.provideShippingRepository()
 	private itemRepository = CoreProviders.provideArtworkRepository()
-	
+	private paymentRepository = CoreProviders.providePaymentRepository()
+
 	private async createShippingInfo(form: CheckoutForm): Promise<ShippingInfo>{
 		let shippingInfo = new ShippingInfo(
 			null,
@@ -78,9 +79,27 @@ export default class CheckoutViewModel extends AsyncViewModel<CheckoutState>{
 		this.state.form.email.setValue(client!.email);
 	}
 
+	private async initializePayment(form: CheckoutForm, pricing: OrderPricing){
+		let response = await this.paymentRepository.chapaPayment(
+			{
+				firstName: form.firstName.getValue()!,
+				lastName: form.lastName.getValue()!,
+				email: form.email.getValue()!,
+				amount: pricing.getTotal(),
+				returnUrl: `http://localhost:5173/complete-payment/${this.state.order!.getPK()}/`.replaceAll(" ", "%20")
+			}
+		);
+		this.state.paymentLink = response.checkoutUrl;
+		this.state.order!.transactionId = response.transactionId;
+		await this.orderRepository.save(this.state.order!);
+	}
+
 	public async noShippimentCheckout(){
 		this.state.shippingInfo = null;
 		await this.processCheckout();
+		this.state.order!.status = OrderStatus.paymentFailed;
+		await this.orderRepository.save(this.state.order!);
+		await this.initializePayment(this.state.form, this.state.pricing!);
 		this.state.status = AsyncStatus.done;
 	}
 

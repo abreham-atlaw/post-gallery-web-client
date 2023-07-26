@@ -20,7 +20,7 @@ export default class CheckoutState extends AsyncState{
 	shippingInfo?: ShippingInfo | null;
 
 	shippingInfoState: AsyncState = new AsyncState()
-
+	paymentLink?: string;
 
 	constructor(itemId: string, shippingIncluded: boolean){
 		super();

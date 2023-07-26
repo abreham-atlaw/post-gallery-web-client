@@ -3,6 +3,7 @@ import { Item } from "firebase/analytics";
 import Artwork from "./artwork";
 import OrderPricing from "./orderPricing";
 import ShippingInfo from "./shippingInfo";
+import { Client } from "@/apps/auth/data/models/accounts";
 
 
 export enum OrderStatus{
@@ -11,7 +12,8 @@ export enum OrderStatus{
 	accepted,
 	rejected,
 	waitingShipment,
-	complete
+	complete,
+	paymentFailed
 
 }
 
@@ -20,7 +22,6 @@ export default class Order implements Model<string>{
 	public id: string | null;
 
 	public itemId: string;
-	public shippingInfo?: ShippingInfo | null;
 	public shippingInfoId: string | null;
 	public clientId: string;
 
@@ -32,7 +33,8 @@ export default class Order implements Model<string>{
 	public transactionId: string | null;
 
 	public item?: Artwork;
-
+	public shippingInfo?: ShippingInfo | null;
+	public client?: Client;
 
 	constructor(
 		id: string | null = null,
@@ -62,6 +64,9 @@ export default class Order implements Model<string>{
 	}
 	setPK(pk: string): void {
 		this.id = pk;
+	}
+	isOnSite(): boolean{
+		return this.shippingInfoId == null;
 	}
 
 }
