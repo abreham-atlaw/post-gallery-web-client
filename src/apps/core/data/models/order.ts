@@ -2,6 +2,7 @@ import Model from "@/lib/models/model";
 import { Item } from "firebase/analytics";
 import Artwork from "./artwork";
 import OrderPricing from "./orderPricing";
+import ShippingInfo from "./shippingInfo";
 
 
 export enum OrderStatus{
@@ -19,6 +20,7 @@ export default class Order implements Model<string>{
 	public id: string | null;
 
 	public itemId: string;
+	public shippingInfo?: ShippingInfo | null;
 	public shippingInfoId: string | null;
 	public clientId: string;
 

@@ -10,6 +10,7 @@ export default class OrderRepository extends FireStoreRepository<string, Order>{
 	
 	private primaryKeyGenerator;
 	private itemRepository = CoreProviders.provideArtworkRepository();
+	private shippingInfoRepository = CoreProviders.provideShippingRepository();
 
 	constructor(){
 		super(
@@ -28,6 +29,12 @@ export default class OrderRepository extends FireStoreRepository<string, Order>{
 	
 	public async attachForeignKeys(instance: Order): Promise<void> {
 		instance.item = await this.itemRepository.getByPrimaryKey(instance.itemId)
+		if(instance.shippingInfoId != null){
+			instance.shippingInfo = await this.shippingInfoRepository.getByPrimaryKey(instance.shippingInfoId);
+		}
+		else{
+			instance.shippingInfo = null;
+		}
 	}
 	
 }
