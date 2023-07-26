@@ -66,7 +66,7 @@ export default class CartView extends ViewModelView<CartViewModel, CartViewProps
                     <p className="text-3xl mt-3.5 underline">Shipping</p>
                     <div className="flex justify-between mt-5 text-xl pb-3.5 border-b-2 border-[#EFEFEF]">
                         <div className="flex items-center space-x-2">
-                            <label>Local</label>
+                            <label>On Site</label>
                             <input 
                             type="radio" 
                             name="radio" 
@@ -78,11 +78,14 @@ export default class CartView extends ViewModelView<CartViewModel, CartViewProps
                             />
                         </div>
                         <div className="flex items-center space-x-2">
-                            <label>International</label>
+                            <label>Delivery</label>
                             <input 
                             type="radio" 
                             name="radio" 
-                            value="international" 
+                            value="international"
+							onChange={(event) => {
+								this.getViewModel().setShipping((event.target.value === "shipping"))
+							}} 
                             className="form-radio text-blue-500 h-5 w-5"
                             />
                         </div>
@@ -105,9 +108,12 @@ export default class CartView extends ViewModelView<CartViewModel, CartViewProps
 				{/* ------------------------------------------ */}
 
 				<div className="hidden lg:inline lg:px-8 ">
-					<img className="h-8 mb-24 mt-14 mx-8" src={Back} />
+					<img className="h-8 mb-4 mt-4 mx-8" src={Back} />
 					<div className="flex flex-row justify-between items-start px-12">
-						
+					<div
+						className={`w-3/5 h-96 mb-2 bg-contain bg-no-repeat bg-center rounded-lg `}
+						style={{ backgroundImage: `url(${this.state.artwork!.images[0]})` }}
+					/>
 						<div className="bg-white w-4/12 rounded-xl px-10 py-10">
 							<div className="text-4xl">{this.state.artwork!.name}</div>
 							<div className="text-lg text-[#3A476A] mb-3" ><span className="text-lg text-[#3A476A]">by </span>{this.state.artwork!.artist!.fullName}</div>
@@ -121,7 +127,7 @@ export default class CartView extends ViewModelView<CartViewModel, CartViewProps
 							<div className="text-xl">Art Id: {this.state.artwork!.id}</div>
 							<div className="text-3xl font-medium">Price: {new String(this.state.artwork!.price)} ETB</div>
 
-							<p className="text-2xl underline">Description: {this.state.artwork?.description }</p>
+							<p className="text-2xl">Description: {this.state.artwork?.description }</p>
 							<div className="flex justify-between mt-5 text-xl pb-3.5 border-b-2 border-[#EFEFEF]">
 								<div className="flex items-center space-x-2">
 									<label>On-Site</label>
@@ -153,14 +159,6 @@ export default class CartView extends ViewModelView<CartViewModel, CartViewProps
 								<button className="justify-center text-2xl">Purchase</button>
 							</Link>
 						</div>
-					</div>
-					<p className="ml-10 text-2xl mt-18 mb-4">About the creator</p>
-					<div className="bg-white  rounded-xl px-10 py-10 mx-10 mb-10">
-						<div className="flex flex-row items-center">
-							<div className="w-14 h-14 mb-3 bg-[url('./assets/LoginRegisterBG.png')] bg-center bg-cover rounded-full"></div>
-							<p className="ml-2 text-2xl">{this.state.artwork!.artist?.fullName} </p>
-						</div>
-						<p className="text-base leading-5">{this.state.artwork!.artist?.biography}</p>
 					</div>
 				</div>
 			</div>
