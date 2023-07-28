@@ -11,7 +11,7 @@ import ArtworkRepository from "./artworkRepository";
 export default class OrderRepository extends FireStoreRepository<string, Order>{
 	
 	private primaryKeyGenerator;
-	private itemRepository = new ArtworkRepository();
+	private itemRepository = new ArtworkRepository(false);
 	private shippingInfoRepository = CoreProviders.provideShippingRepository();
 	private clientRepository = AuthProviders.provideClientRepository();
 

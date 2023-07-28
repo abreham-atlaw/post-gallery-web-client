@@ -8,7 +8,7 @@ import ArtistRepository from "@/apps/core/data/repositories/artistRepository";
 export default class OrderListViewModel extends ViewModel<OrderListState>{
 
 	private ordersRepository = new OrderRepository();
-	private artistRepository = new ArtistRepository();
+	private artistRepository = new ArtistRepository(false);
 
 	public async onInit(): Promise<void> {
 		await super.onInit();
