@@ -23,6 +23,7 @@ export default class EditArtworkViewModel extends AsyncViewModel<WriteArtworkSta
 		form.creationDate.setValue(artwork.creationDate)
 		form.mediaUsed.setValue(artwork.mediaUsed)
 		form.images.setValue(artwork.images)
+		form.visible.setValue(artwork.visible)
 	}
 
 	protected syncFormToArtwork(form: ArtworkForm){
@@ -40,6 +41,7 @@ export default class EditArtworkViewModel extends AsyncViewModel<WriteArtworkSta
 		artwork.creationDate = form.creationDate.getValue()!
 		artwork.mediaUsed = form.mediaUsed.getValue()!
 		artwork.images = form.images.getValue() as string[]
+		artwork.visible = form.visible.getValue()!
 	}
 
 	public async onInit(): Promise<void> {

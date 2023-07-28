@@ -22,6 +22,7 @@ export default class ArtworkForm extends Form{
 	mediaUsed: TextField = new TextField();
 
 	images: Field<string[]> = new Field<string[]>();
+	visible: Field<boolean>  = new Field<boolean>();
 
 	
 	getFields(): Field<any>[] {
@@ -35,7 +36,8 @@ export default class ArtworkForm extends Form{
 			this.dimensionDepth,
 			this.status,
 			this.creationDate,
-			this.mediaUsed
+			this.mediaUsed,
+			this.visible
 		]
 	}
 
