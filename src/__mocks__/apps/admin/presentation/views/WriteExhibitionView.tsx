@@ -1,3 +1,4 @@
+import SuccessfullView from "@/__mocks__/apps/core/presentation/views/SuccessView";
 import WriteExhibitionState from "@/apps/admin/application/states/writeExhibitionState";
 import EditExhibitionViewModel from "@/apps/admin/application/viewmodels/editExhibitionViewModel";
 import ArtistPrimaryKeyFieldComponent from "@/apps/admin/presentation/components/form/ArtistPrimaryKeyFieldComponent";
@@ -28,9 +29,7 @@ export default abstract class WriteExhibitionView<P> extends ViewModelView<EditE
 
 	onCreateMain(): ReactNode { 
 		if(this.state.status === AsyncStatus.done){
-			return (
-				<h1>Successfully created a new Exhibition: {this.state.exhibition!.id}. {this.state.exhibition!.name}</h1>
-			)
+			return <SuccessfullView title="Successfull" subTitle="Exhibition set Successfully!" />
 		}
 		return (
 			<div>

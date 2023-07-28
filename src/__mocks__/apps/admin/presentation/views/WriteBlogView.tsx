@@ -1,9 +1,11 @@
+import SuccessfullView from "@/__mocks__/apps/core/presentation/views/SuccessView";
 import WriteBlogState from "@/apps/admin/application/states/writeBlogState";
 import EditBlogViewModel from "@/apps/admin/application/viewmodels/editBlogViewModel";
 import DefaultFileUploadComponent, { DefaultImageUploadComponent } from "@/apps/core/presentation/components/DefaultFileUploadComponent";
 import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
 import StatusToast from "@/lib/components/status/StatusToast";
 import ViewModelView from "@/lib/components/views/ViewModelView";
+import { AsyncStatus } from "@/lib/state/asyncState";
 import { FormEvent, ReactNode, useState } from "react";
 
 
@@ -19,6 +21,9 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditBlogVie
 
 
 	onCreateMain(): ReactNode {
+		if(this.state.status === AsyncStatus.done){
+			return <SuccessfullView title="Successfull" subTitle="Blog set Successfully!" />
+		}
 		
 		return (
 		<div>

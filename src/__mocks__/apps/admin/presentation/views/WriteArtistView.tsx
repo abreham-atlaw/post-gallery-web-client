@@ -13,6 +13,7 @@ import PrefixInputField from "@/lib/components/form/PrefixInputFieldComponent";
 import StatusToast from "@/lib/components/status/StatusToast";
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import BooleanFieldComponent from "@/lib/components/form/BooleanFieldComponent";
+import SuccessfullView from "@/__mocks__/apps/core/presentation/views/SuccessView";
 
 
 export default abstract class WriteArtistView<P> extends ViewModelView<EditArtistViewModel, P, WriteArtistState>{
@@ -29,7 +30,7 @@ export default abstract class WriteArtistView<P> extends ViewModelView<EditArtis
 	onCreateMain(): React.ReactNode {
 
 		if(this.state.status === AsyncStatus.done){
-			return <h1 className="text-center">Artist Created Successfully!</h1>
+			return <SuccessfullView title="Successfull" subTitle="Artist set Successfully!" />
 		}
 		return (
 			<div>

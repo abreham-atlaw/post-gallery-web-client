@@ -1,4 +1,4 @@
-import menu from '@/assets/unsuccesfull.png'
+import menu from '@/assets/succesfull.png'
 import { components } from 'react-select'
 
 
@@ -9,10 +9,7 @@ interface BlogDetailProps{
   subTitle: string;
 }
 
-export default class SuccessfullView extends Component<BlogDetailProps> {
-
-  
-
+export default class UnSuccessfullView extends Component<BlogDetailProps> {
   render() {
     return (
         <div>

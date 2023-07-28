@@ -27,10 +27,10 @@ export default class OrderDetailView extends ViewModelView<OrderDetailViewModel,
 	onCreateMain(): ReactNode {
 		return (
 		<div>
-			<p className='text-2xl font-Lato mt-10 mb-5'>Request</p> 
-			<div className="flex flex-row justify-between items-start">
+			<p className='text-2xl font-Lato mb-5'>Request</p> 
+			<div className="flex flex-col lg:flex-row justify-between items-start mb-5">
 
-				<div className="w-5/12">
+				<div className="w-full lg:w-5/12">
 					<p className="text-4xl font-medium border-b-2 border-[#BCBCBC]">Checkout</p>
 					<div className="ml-4 mt-4">
 					<p className="text-3xl">Shipping Address:</p>
@@ -99,13 +99,13 @@ export default class OrderDetailView extends ViewModelView<OrderDetailViewModel,
 							<p>{this.state.order!.pricing.vat} ETB</p>  
 						</div>
 						<div className="flex flex-row justify-between text-base pr-8">
-							<p>VAT:  </p>
+							<p>Total Price:  </p>
 							<p>{ this.state.order!.pricing.getTotal() } ETB</p>  
 						</div>
 					</div>
 				</div>
 
-				<div className="w-5/12 flex flex-row">
+				<div className="w-full lg:w-5/12 mt-4 lg:mt-0 flex flex-row">
 					<div
 						className={`w-60 h-60 mr-6 bg-contain bg-no-repeat bg-center rounded-lg `}
 						style={{ backgroundImage: `url(${this.state.order!.item?.images[0]})` }}

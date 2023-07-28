@@ -33,7 +33,33 @@ export default class BlogDetailView extends ViewModelView<BlogDetailViewModel, B
 				</div>
 		
 				<div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Lato">
-					<div className='hidden lg:inline'>
+					<iframe
+					src={`${this.state.blog?.content}#toolbar=0&navpanes=0&scrollbar=0`}
+					className="h-[60rem]"
+					height="100%"
+					width="100%"
+					></iframe>
+				</div>
+		
+				<TheFooter />
+			</div>
+		  )
+	}
+
+}
+
+
+export function RoutedBlogDetailView(){
+	let params = useParams();
+	return <BlogDetailView blogId={params.id!}/>
+}
+
+
+{
+
+	/*
+	
+	<div className='hidden lg:inline'>
 						<div className='flex flex-row justify-between mt-4'>
 							<div className='w-1/2 mr-10'>
 								<p className='text-xl lg:text-4xl mt-2 lg:my-2'>{this.state.blog!.title}</p>
@@ -89,17 +115,6 @@ export default class BlogDetailView extends ViewModelView<BlogDetailViewModel, B
 						</div>
 		
 					</div>
-				</div>
-		
-				<TheFooter />
-			</div>
-		  )
-	}
-
-}
-
-
-export function RoutedBlogDetailView(){
-	let params = useParams();
-	return <BlogDetailView blogId={params.id!}/>
+	
+	*/
 }
