@@ -7,7 +7,7 @@ import { Gender } from "@/apps/core/data/models/gender";
 export default class AddArtistViewModel extends EditArtistViewModel{
 
 	protected syncFormToArtist(form: ArtistForm): void {
-		this.state.artist = new Artist(undefined, "", Gender.female, "", "", "", "",new Date(Date.now()), "")
+		this.state.artist = new Artist(undefined, "", Gender.female, "", "", "", "",new Date(Date.now()), "", true)
 		super.syncFormToArtist(form)
 	}
 

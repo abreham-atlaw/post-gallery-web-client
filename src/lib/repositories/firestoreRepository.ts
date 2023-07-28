@@ -99,6 +99,9 @@ export abstract class FireStoreRepository<P, M extends Model<P>> implements Repo
 			}
 			return instances;
 		}
+		if(data === undefined){
+			throw new InstanceNotFoundException(this.collectionName, "custom");
+		}
 		let value = await this.processDocumentData(data);
 		return value;
 

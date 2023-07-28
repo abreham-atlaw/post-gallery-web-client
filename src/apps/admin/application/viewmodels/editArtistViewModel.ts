@@ -8,7 +8,7 @@ import ArtistForm from "../forms/artistForm";
 
 export default class EditArtistViewModel extends AsyncViewModel<WriteArtistState>{
 
-	private repository: ArtistRepository = CoreProviders.provideArtistRepository()
+	private repository: ArtistRepository = new ArtistRepository(false);
 
 	private syncArtistToForm(form: ArtistForm, artist: Artist){
 		form.firstName.setValue(artist.fullName.split(" ")[0])
@@ -19,7 +19,8 @@ export default class EditArtistViewModel extends AsyncViewModel<WriteArtistState
 		form.gender.setValue(artist.gender)
 		form.nationality.setValue(artist.nationality)
 		form.phoneNumber.setValue(artist.phoneNumber)
-		form.avatar.setValue(artist.avatar)
+		form.avatar.setValue(artist.avatar),
+		form.visible.setValue(artist.visible)
 	}
 
 	protected syncFormToArtist(form: ArtistForm){
@@ -32,6 +33,7 @@ export default class EditArtistViewModel extends AsyncViewModel<WriteArtistState
 		artist.nationality = form.nationality.getValue()!
 		artist.phoneNumber = form.phoneNumber.getValue()!
 		artist.avatar = form.avatar.getValue()!
+		artist.visible = form.visible.getValue()!
 	}
 
 	public async onInit(): Promise<void> {

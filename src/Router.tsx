@@ -16,7 +16,6 @@ import HomeView from "./__mocks__/apps/core/presentation/views/HomeView";
 import LogoutView from "./__mocks__/apps/auth/presentation/views/logoutView";
 import CheckOutView, { RoutedCheckoutView } from "./__mocks__/apps/core/presentation/views/CheckoutView";
 import { RoutedPaymentView } from "./__mocks__/apps/core/presentation/views/PaymentView";
-import OrderListView from "./__mocks__/apps/admin/presentation/views/OrdersListView";
 import AdminLoginViewModel from "./apps/auth/application/viewmodels/adminloginViewModel";
 import AdminLoginView from "./__mocks__/apps/auth/presentation/views/AdminLoginView";
 import { Role } from "./apps/auth/data/models/accounts";
@@ -33,7 +32,7 @@ import ContactView from "./__mocks__/apps/core/presentation/views/ContactView";
 import AddBlogView from "./__mocks__/apps/admin/presentation/views/AddBlogView";
 import ComingSoon from "./__mocks__/apps/core/presentation/views/ComingSoon";
 import { RoutedCartView } from "./__mocks__/apps/core/presentation/views/CartView";
-import OrderDetailView, { RoutedOrderDetailView } from "./__mocks__/apps/admin/presentation/views/OrderDetailView";
+import OrderDetailView, { RoutedOrderDetailView } from "./__mocks__/apps/admin/presentation/views/DashBoard/OrderDetailView";
 
 
 export default class PGRouter extends React.Component{
@@ -150,17 +149,6 @@ export default class PGRouter extends React.Component{
 					</AuthenticatedComponent>
 				} />
 				
-				<Route path="/admin/orders/" element={
-					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
-						<OrderListView/>
-					</AuthenticatedComponent>
-				} />
-
-				<Route path="/admin/order/:id" element={
-					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
-						<RoutedOrderDetailView />
-					</AuthenticatedComponent>
-				} />
 
 				<Route path="/admin/blog/add" element={
 					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>

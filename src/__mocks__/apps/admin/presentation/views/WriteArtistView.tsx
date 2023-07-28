@@ -12,6 +12,7 @@ import { FieldComponent, FieldComponentProps } from "@/lib/components/form/Field
 import PrefixInputField from "@/lib/components/form/PrefixInputFieldComponent";
 import StatusToast from "@/lib/components/status/StatusToast";
 import ViewModelView from "@/lib/components/views/ViewModelView";
+import BooleanFieldComponent from "@/lib/components/form/BooleanFieldComponent";
 
 
 export default abstract class WriteArtistView<P> extends ViewModelView<EditArtistViewModel, P, WriteArtistState>{
@@ -34,8 +35,10 @@ export default abstract class WriteArtistView<P> extends ViewModelView<EditArtis
 			<div>
 			<form onSubmit={this.handleSubmit} className="px-6 lg:px-14 py-12 ">
 				<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Artist</span></a>
+				
 				<div className="w-full pt-10 pb-6 mb-3 border-b-2 border-[#C1C1C1] flex flex-row justify-between">
 					<p className="text-3xl lg:text-4xl font-bold">Upload Artist</p>
+					<BooleanFieldComponent field={this.state.form.visible}/>
 					<button className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
 						<div className="justify-center text-sm lg:text-xl">Publish</div>
 					</button>

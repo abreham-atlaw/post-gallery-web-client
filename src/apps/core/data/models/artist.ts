@@ -1,9 +1,9 @@
-import Model from "@/lib/models/model";
 import Artwork from "./artwork";
 import { Gender } from "./gender";
+import VisibilityModel from "./visiblityModel";
 
 
-export default class Artist implements Model<string>{
+export default class Artist extends VisibilityModel<string>{
 	
 	public id: string | null;
 	
@@ -27,8 +27,10 @@ export default class Artist implements Model<string>{
 		nationality: string,
 		biography: string,
 		dateOfBirth: Date,
-		avatar: string
+		avatar: string,
+		visible: boolean
 	){
+		super(visible);
 		this.id = id;
 		this.fullName = fullName;
 		this.gender = gender;

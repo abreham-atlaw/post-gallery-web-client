@@ -7,8 +7,8 @@ import ArtworkForm from "../forms/artworkForm";
 import ArtistRepository from "@/apps/core/data/repositories/artistRepository";
 
 export default class EditArtworkViewModel extends AsyncViewModel<WriteArtworkState>{
-	private repository: ArtworkRepository = CoreProviders.provideArtworkRepository()
-	private artistRepository: ArtistRepository = CoreProviders.provideArtistRepository();
+	private repository: ArtworkRepository = new ArtworkRepository(false);
+	private artistRepository: ArtistRepository = new ArtistRepository(false);
 
 
 	private syncArtworkToForm(form: ArtworkForm, artwork: Artwork){

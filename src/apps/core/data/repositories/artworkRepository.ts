@@ -7,11 +7,12 @@ import ArtworkSerializer from "../serializers/artworkSerializer";
 import ArtistRepository from "./artistRepository";
 import { DBConfigs } from "@/configs/data_configs";
 import { sleep } from "@/lib/utils/time";
+import { VisibilityRepository } from "./visibilityRepository";
 
 
 
 
-export default class ArtworkRepository extends FireStoreRepository<string, Artwork>{
+export default class ArtworkRepository extends VisibilityRepository<string, Artwork>{
 	
 	private static ID_PREFIX = "Pg"
 	private static ID_SERIAL_DIGITS = 5;
@@ -20,12 +21,13 @@ export default class ArtworkRepository extends FireStoreRepository<string, Artwo
 
 	private artistRepository?: ArtistRepository;
 
-	constructor(){
+	constructor(visibleOnly?: boolean){
 		super(
 			CoreProviders.provideFirestoreDB(),
 			"artwork",
 			"id",
 			new ArtworkSerializer(),
+			visibleOnly
 		)
 		this.pkGenerator = new SerialPkGenerator(this, DBConfigs.PRIMARY_KEY_PREFIX, DBConfigs.PRIMARY_KEY_SERIAL_DIGITS, " - AR")
 	}

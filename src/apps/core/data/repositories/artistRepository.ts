@@ -7,21 +7,23 @@ import ArtworkRepository from "./artworkRepository";
 import Artwork from "../models/artwork";
 import { DBConfigs } from "@/configs/data_configs";
 import { sleep } from "@/lib/utils/time";
+import { VisibilityRepository } from "./visibilityRepository";
 
 
 
-export default class ArtistRepository extends FireStoreRepository<string, Artist>{
+export default class ArtistRepository extends VisibilityRepository<string, Artist>{
 	
 	private pkGenerator: SerialPkGenerator<Artist>;
 
 	private artworkRepository: ArtworkRepository = CoreProviders.provideArtworkRepository();
 
-	constructor(){
+	constructor(visibleOnly?: boolean){
 		super(
 			CoreProviders.provideFirestoreDB(),
 			"artists",
 			"id",
 			new ArtistSerializer(),
+			visibleOnly
 		)
 		this.pkGenerator = new SerialPkGenerator(this, DBConfigs.PRIMARY_KEY_PREFIX, DBConfigs.PRIMARY_KEY_SERIAL_DIGITS, " - AT")
 	}

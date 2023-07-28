@@ -1,6 +1,7 @@
 import Model from "@/lib/models/model";
 import Artist from "./artist";
 import Artwork from "./artwork";
+import VisibilityModel from "./visiblityModel";
 
 
 interface DateRange{
@@ -25,7 +26,7 @@ export enum ExhibitionStatus{
 
 }
 
-export default class Exhibition implements Model<string>{
+export default class Exhibition extends VisibilityModel<string>{
 
 	public id: string | null;
 
@@ -59,8 +60,10 @@ export default class Exhibition implements Model<string>{
 		curator: string,
 		coverImage: string,
 		artworkIds: string[],
-		status: ExhibitionStatus
+		status: ExhibitionStatus,
+		visible: boolean
 	){
+		super(visible);
 		this.id = id;
 		this.artistId = artistId;
 		this.name = name;

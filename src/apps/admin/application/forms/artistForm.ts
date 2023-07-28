@@ -15,6 +15,7 @@ export default class ArtistForm extends Form{
 	dateOfBirth: Field<Date> = new Field<Date>()
 	biography: TextField = new TextField()
 	avatar: TextField = new TextField()
+	visible: Field<boolean>  = new Field<boolean>();
 	
 
 	getFields(): Field<any>[] {
@@ -26,7 +27,8 @@ export default class ArtistForm extends Form{
 			this.phoneNumber,
 			this.nationality,
 			this.dateOfBirth,
-			this.biography
+			this.biography,
+			this.visible
 		]
 	}
 

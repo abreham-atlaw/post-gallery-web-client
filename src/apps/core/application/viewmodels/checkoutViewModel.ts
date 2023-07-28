@@ -9,6 +9,7 @@ import Artwork from "../../data/models/artwork";
 import OrderPricing from "../../data/models/orderPricing";
 import { lstat } from "fs";
 import { AsyncStatus } from "@/lib/state/asyncState";
+import { ApiConfigs } from "@/configs/data_configs";
 
 
 export default class CheckoutViewModel extends AsyncViewModel<CheckoutState>{
@@ -86,7 +87,7 @@ export default class CheckoutViewModel extends AsyncViewModel<CheckoutState>{
 				lastName: form.lastName.getValue()!,
 				email: form.email.getValue()!,
 				amount: pricing.getTotal(),
-				returnUrl: `http://localhost:5173/complete-payment/${this.state.order!.getPK()}/`.replaceAll(" ", "%20")
+				returnUrl: `${ApiConfigs.HOST_URL}/complete-payment/${this.state.order!.getPK()}/`.replaceAll(" ", "%20")
 			}
 		);
 		this.state.paymentLink = response.checkoutUrl;

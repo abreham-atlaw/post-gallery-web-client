@@ -1,5 +1,6 @@
 import Model from "@/lib/models/model";
 import Artist from "./artist";
+import VisibilityModel from "./visiblityModel";
 
 
 export interface Dimension{
@@ -17,7 +18,7 @@ export enum Status{
 
 }
 
-export default class Artwork implements Model<string>{
+export default class Artwork extends VisibilityModel<string>{
 
 	public id: string | null;
 	public artistId: string;
@@ -44,8 +45,10 @@ export default class Artwork implements Model<string>{
 		status: Status,
 		creationDate: Date,
 		mediaUsed: string,
-		images: string[]
+		images: string[],
+		visible: boolean
 	){
+		super(visible);
 		this.id = id;
 		this.artistId = artistId;
 		this.name = name;

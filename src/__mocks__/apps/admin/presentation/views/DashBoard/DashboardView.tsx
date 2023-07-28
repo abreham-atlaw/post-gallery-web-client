@@ -22,10 +22,11 @@ import Exhibition from '@/apps/core/data/models/exhibition';
 import EditArtistListView from './EditArtistListView';
 import EditArtWorkListView from './EditArtWorkListView';
 import EditExhibitionListView from './EditExhibitionListView';
-import OrderListView from '../OrdersListView';
 import OrdersListViewNew from './OrdersListView';
 import DashBoardMainListView from './DashBoardMainListView';
-import OrderDetailView from '../OrderDetailView';
+import OrderDetailView from './OrderDetailView';
+import OrderListView from './OrdersListView';
+import Order from '@/apps/core/data/models/order';
 
 
 export default class DashboardView extends ViewModelView<DashboardViewModel, any, DashboardState>{
@@ -127,6 +128,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, isOpen, se
 const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
   const [activeItem, setActiveItem] = useState<string>('Page1');
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [currentOrderId, setCurrentOrderId] = useState<string>("");
 
   return (
     <div className="h-screen flex">
@@ -167,7 +169,10 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
 
         <div className={` ${activeItem === 'Page3' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-8/12`}>
           <SearchBar />
-          <OrderDetailView orderId={"PG - 00004 - OR"} />
+          <OrderListView onItemSelected={(order: Order) => {
+			setActiveItem("orderdetail")
+			setCurrentOrderId(order.getPK()!)
+			}} />
 
         </div>
 
@@ -191,6 +196,10 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
           <SearchBar />
           <EditExhibitionListView />
         </div>
+
+		<div className={` ${activeItem === 'orderdetail' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+			{(activeItem === 'orderdetail')?<OrderDetailView orderId={currentOrderId} />: <></>}
+        </div>
         
       </div>
     </div>
@@ -208,7 +217,6 @@ const SearchBar: React.FC = () => {
 
   const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    // Here you can do something with the searchTerm, for example, send it to an API.
     console.log(searchTerm);
   };
 

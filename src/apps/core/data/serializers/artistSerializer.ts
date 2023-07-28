@@ -18,7 +18,8 @@ export default class ArtistSerializer extends Serializer<Artist, DocumentData> {
 		nationality: instance.nationality,
 		biography: instance.biography,
 		date_of_birth: instance.dateOfBirth,
-		avatar: instance.avatar
+		avatar: instance.avatar,
+		visible: instance.visible
 	  };
 	}
   
@@ -32,7 +33,8 @@ export default class ArtistSerializer extends Serializer<Artist, DocumentData> {
 			data.nationality,
 			data.biography,
 			this.dateSerializer.deserialize(data.date_of_birth),
-			data.avatar
+			data.avatar,
+			data.visible
 		);
 	}
   

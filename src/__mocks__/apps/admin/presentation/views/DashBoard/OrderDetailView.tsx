@@ -33,45 +33,74 @@ export default class OrderDetailView extends ViewModelView<OrderDetailViewModel,
 				<div className="w-5/12">
 					<p className="text-4xl font-medium border-b-2 border-[#BCBCBC]">Checkout</p>
 					<div className="ml-4 mt-4">
-						<p className="text-3xl">Shipping Address:</p>
-						<div className="flex flex-row justify-between">
+					<p className="text-3xl">Shipping Address:</p>
+						{
+							this.state.order!.isOnSite()?
+							(<p className="text-3xl">On Site</p>):
+							<>
+						<div className="flex flex-row justify-between mt-4">
 							<div>
 								<p className="text-[#575757] leading-4">First Name</p>
-								<p className="text-xl font-medium">Abebe</p>
+								<p className="text-xl font-medium">{this.state.order!.client!.fullName.split(" ")[0]}</p>
 							</div>
 							<div>
-								<p className="text-[#575757] leading-4">First Name</p>
-								<p className="text-xl font-medium">Abebe</p>
+								<p className="text-[#575757] leading-4">Last Name</p>
+								<p className="text-xl font-medium">{this.state.order!.client!.fullName.split(" ")[1]}</p>
 							</div>
 						</div>
 						<div className="flex flex-row justify-between mt-4">
 							<div>
-								<p className="text-[#575757] leading-4">First Name</p>
-								<p className="text-xl font-medium">Abebe</p>
-							</div>
-							<div>
-								<p className="text-[#575757] leading-4">First Name</p>
-								<p className="text-xl font-medium">Abebe</p>
+								<p className="text-[#575757] leading-4">Address Description</p>
+								<p className="text-xl font-medium">{this.state.order!.shippingInfo?.address} || { this.state.order!.shippingInfo?.address2??""}</p>
 							</div>
 						</div>
+						<div className="flex flex-row justify-between mt-4">
+							<div>
+								<p className="text-[#575757] leading-4">Country</p>
+								<p className="text-xl font-medium">{this.state.order!.shippingInfo!.country}</p>
+							</div>
+							<div>
+								<p className="text-[#575757] leading-4">City</p>
+								<p className="text-xl font-medium">{this.state.order!.client!.fullName.split(" ")[1]}</p>
+							</div>
+						</div>
+						<div className="flex flex-row justify-between mt-4">
+							<div>
+								<p className="text-[#575757] leading-4">State/Region</p>
+								<p className="text-xl font-medium">{this.state.order!.shippingInfo?.region}</p>
+							</div>
+						</div>
+						<div className="flex flex-row justify-between mt-4">
+							<div>
+								<p className="text-[#575757] leading-4">Phone Number</p>
+								<p className="text-xl font-medium">{this.state.order!.shippingInfo?.phoneNumber}</p>
+							</div>
+							<div>
+								<p className="text-[#575757] leading-4">E-Mail</p>
+								<p className="text-xl font-medium">{this.state.order!.client!.email}</p>
+							</div>
+						</div>
+						</>
+						}
+						
 					</div>
 					<div className="">
 						<p className='text-2xl font-Lato mt-10 mb-5'>Estimated Total:</p> 
 						<div className="flex flex-row justify-between text-base pr-8">
 							<p>ArtWork Price:  </p>
-							<p>{this.state.order?.item!.price} ETB</p>  
+							<p>{this.state.order!.pricing.artPrice} ETB</p>  
 						</div>
 						<div className="flex flex-row justify-between text-base pr-8">
 							<p>Shipping Price:  </p>
-							<p>500 ETB</p>  
-						</div>
-						<div className="flex flex-row justify-between text-base pr-8">
-							<p>ArtWork Price:  </p>
-							<p>{this.state.order?.item!.price} ETB</p>  
+							<p>{this.state.order!.pricing.shippingPrice} ETB</p>  
 						</div>
 						<div className="flex flex-row justify-between text-base pr-8">
 							<p>VAT:  </p>
-							<p>{ this.state.order?.item!.price } * 0.15 ETB</p>  
+							<p>{this.state.order!.pricing.vat} ETB</p>  
+						</div>
+						<div className="flex flex-row justify-between text-base pr-8">
+							<p>VAT:  </p>
+							<p>{ this.state.order!.pricing.getTotal() } ETB</p>  
 						</div>
 					</div>
 				</div>

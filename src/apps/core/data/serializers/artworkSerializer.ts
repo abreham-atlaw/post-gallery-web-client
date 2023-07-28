@@ -19,7 +19,8 @@ export default class ArtworkSerializer extends Serializer<Artwork, DocumentData>
 		status: instance.status,
 		creation_date: this.dateSerializer.serialize(instance.creationDate),
 		media_used: instance.mediaUsed,
-		images: instance.images
+		images: instance.images,
+		visible: instance.visible
 	  };
 	}
   
@@ -34,7 +35,8 @@ export default class ArtworkSerializer extends Serializer<Artwork, DocumentData>
 		data.status,
 		this.dateSerializer.deserialize(data.creation_date),
 		data.mediaUsed,
-		data.images
+		data.images,
+		data.visible
 	  );
 	}
   

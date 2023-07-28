@@ -9,21 +9,23 @@ import { sleep } from "@/lib/utils/time";
 import ArtworkRepository from "./artworkRepository";
 import ArtistRepository from "./artistRepository";
 import { getDocs, query, where } from "firebase/firestore";
+import { VisibilityRepository } from "./visibilityRepository";
 
 
 
-export default class ExhibitionRepository extends FireStoreRepository<string, Exhibition>{
+export default class ExhibitionRepository extends VisibilityRepository<string, Exhibition>{
 	
 	private primaryKeyGenerator;
 	public artistRepository = new ArtistRepository();
 	public  artworkRepository = new ArtworkRepository();
 
-	constructor(){
+	constructor(visibleOnly?: boolean){
 		super(
 			CoreProviders.provideFirestoreDB(),
 			"exhibition",
 			"id",
-			new ExhibitionSerializer()
+			new ExhibitionSerializer(),
+			visibleOnly
 		);
 		this.primaryKeyGenerator = new SerialPkGenerator(this, DBConfigs.PRIMARY_KEY_PREFIX, DBConfigs.PRIMARY_KEY_SERIAL_DIGITS, " - EX");
 	}
