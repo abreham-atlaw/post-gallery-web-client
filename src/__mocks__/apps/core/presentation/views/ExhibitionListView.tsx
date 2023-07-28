@@ -58,17 +58,17 @@ interface ExhibitionProps{
 	  <Link to={`/exhibition/${props.exhibition.getPK()}`} className="w-full flex flex-col lg:flex-row justify-between px-3 mb-10 lg:px-20">
 		<img className="w-full lg:w-5/12 h-96 lg:h-[420px] object-cover" src={props.exhibition.coverImage} /> 
 		<div className="w-full mt-3 lg:mt-0 lg:w-5/12">
-			<p className="text-3xl lg:text-5xl">{props.exhibition.name}</p>
-			<p className="text-base lg:text-xl text-[#787878] lg:pt-6">{props.exhibition.curator}</p>
+			<p className="text-3xl font-[320] lg:text-[2.8rem]">{props.exhibition.name}</p>
+			<p className="text-base lg:text-[1.2rem] leading-7 font-light text-[#787878] lg:pt-6">{props.exhibition.curator}</p>
 			<div className="lg:py-2"><LineWithWidth10 /></div>
-			<p className="text-base lg:text-xl text-[#787878] mb-2 lg:mb-4">{props.exhibition.dateRange.startDate.toDateString()} - {props.exhibition.dateRange.startDate.toDateString()}</p>
-			<DescriptionComponent description={props.exhibition.description} />
+			<p className="text-base lg:text-[1.2rem] leading-7 font-light text-[#787878] mb-2 lg:mb-4">{props.exhibition.dateRange.startDate.toDateString()} - {props.exhibition.dateRange.startDate.toDateString()}</p>
+			<DescriptionComponents description={props.exhibition.description} />
 		</div>
 	  </Link>
 	);
   };
 
-  const DescriptionComponent = ({ description }: { description: String }) => {
+  const DescriptionComponents = ({ description }: { description: String }) => {
 	const [showMore, setShowMore] = useState(false);
   
 	const toggleShowMore = () => {
@@ -76,22 +76,22 @@ interface ExhibitionProps{
 	}
   
 	if (description.length <= 340) {
-	  return <p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description}</p>;
+	  return <p className=" text-base lg:text-[1.1rem] font-light text-[#787878]">{description}</p>;
 	}
   
 	if (showMore) {
 	  return (
 		<div>
-		  <p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description}</p>
-		  <button className="btn btn-primary leading-[1.7 rem] text-[1.25 rem] lg:text-2xl font-extralight lg:font-semibold" onClick={toggleShowMore}>Show Less</button>
+		  <p className="text-base lg:text-xs font-light text-[#787878]  ">{description}</p>
+		  <button className=" leading-[1.7 rem] text-[1.25 rem] lg:text-2xl font-extralight lg:font-semibold" onClick={toggleShowMore}>Show Less</button>
 		</div>
 	  );
 	}
   
 	return (
 	  <div>
-		<p className="text-base lg:text-2xl text-[#787878] leading-[16px] lg:leading-[28px]">{description.substring(0, 300)}...</p>
-		<button className="btn btn-primary text-[1.24 rem] font-medium lg:text-2xl lg:font-semibold" onClick={toggleShowMore}>Read More</button>
+		<p className="text-base lg:text-[1.1rem] font-light text-[#787878]  text-justify">{description.substring(0, 300)}...</p>
+		<button className="mt-3 btn btn-primary text-[1.24 rem] font-medium lg:text-xl lg:font-medium" onClick={toggleShowMore}>Read More</button>
 	  </div>
 	);
   }

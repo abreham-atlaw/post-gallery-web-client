@@ -4,12 +4,12 @@ import { Link, useParams } from "react-router-dom";
 import exhibition from '@/assets/mikiyas/Portrait.jpg'
 import share from '@/assets/share.png'
 import TheFooter from "@/lib/components/footer/footer";
-import collection from "@/assets/collection.png"
+import collection from "@/assets/col1.png"
 import face from "@/assets/Facebook.png"
 import youtube from "@/assets/YouTube.png"
 import insta from '@/assets/insta.png'
 import twitter from '@/assets/twitter.png'
-import Arexhibition from '@/assets/ArExhibition.png'
+import Arexhibition from '@/assets/col2.png'
 import { list } from "firebase/storage";
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import ArtistDetailViewModel from "@/apps/core/application/viewmodels/artistDetailViewModel";
@@ -38,7 +38,7 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 				<NavBar isDark={true} />
 			</div>
 			<div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16">
-				<p className="text-4xl font-light lg:text-6xl my-6 lg:my-10 ">Behind the canvas</p>
+				<p className="text-4xl font-light lg:text-[3.1rem] my-6 lg:my-10 ">Behind the canvas</p>
 				<div className="flex flex-col max-w-[1000px] m-auto lg:flex-row items-center justify-between">
 					<Link
 						to={`/`}
@@ -56,8 +56,8 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 								
 							}}>
 							
-								<p className="text-xl lg:text-3xl ">{this.state.artist!.fullName}</p>
-								<p className="text-xl  lg:text-2xl leading-4">{this.state.artist!.nationality}</p>
+								<p className="text-xl text-start lg:text-2xl ">{this.state.artist!.fullName}</p>
+								<p className="text-xl  lg:text-xl leading-4">{this.state.artist!.nationality}</p>
 								
 							</div>
 						</Link>
@@ -89,11 +89,11 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 	
 				</div>
 	
-				<p className="text-4xl font-light lg:text-6xl mt-8 mb-4 lg:mt-16 lg:mb-10 ">Available arts</p>
+				<p className="text-4xl font-light lg:text-[3.1rem] mt-8 mb-4 lg:mt-16 lg:mb-10 ">Available arts</p>
 				<Grid artworks={this.state.artist!.artworks!}/>
 	
-				<p className="text-4xl font-light lg:text-6xl mt-8 mb-4 lg:mt-16 lg:mb-10 font-Lato">Biography</p>
-				<p className="text-[3.45 rem] font-extralight font-Lato mb-8 lg:mb-14">{this.state.artist!.biography}</p>
+				<p className="text-4xl font-light lg:text-[3.1rem] mt-8 mb-4 lg:mt-16 lg:mb-10 font-Lato">Biography</p>
+				<p className="text-2xl font-light  text-justify font-Lato mb-8 lg:mb-14">{this.state.artist!.biography}</p>
 				<Link to={`/`} >
 					<div className="relative w-full text-white mb-8 lg:mb-16">
 						<img className='w-full h-52 lg:h-min shadow-sm object-cover rounded-2xl lg:object-contain' src={collection} />

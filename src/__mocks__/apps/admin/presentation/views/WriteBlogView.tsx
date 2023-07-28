@@ -38,7 +38,7 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditBlogVie
 					<p className="mt-8 mb-6">⚫<span className="text-2xl font-medium">   Blog details</span></p>
 					<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
 					
-					<div className="w-full lg:w-4/6">
+					<div className="w-full lg:w-4/6 mb-4">
 						<div className="text-xl text-[#5E5E64] font-medium mt-4 mb-2">
 							<label htmlFor="name">Title: <span className="text-red-500 required-dot"> *</span></label>
 							<div className="h-2"></div>
@@ -51,6 +51,7 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditBlogVie
 						<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Content <span className="text-red-500 required-dot"> *</span></p>
 						<DefaultFileUploadComponent field={this.state.form.content}/>
 					</div>
+					<Switcher />
 				</div>
 			</form>
 			<form onSubmit={this.handleSubmit} className={"px-6 lg:px-14 py-12"}>

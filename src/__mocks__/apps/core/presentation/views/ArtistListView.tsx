@@ -21,7 +21,7 @@ export default class ArtistListView extends ViewModelView<ArtistListViewModel, a
                 <NavBar isDark={true} />
             </div>
             <div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16">
-                <p className='text-5xl my-10'>Artist</p>
+                <p className='text-[2.7rem] font-light leading-8S my-10'>Artist</p>
                 <Grid artists={this.state.artists!} />
             </div>
             <TheFooter />
@@ -50,7 +50,7 @@ const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, link }) => (
         </div>
         <div className="w-full mt-5" >
             <div className="text-black text-start">
-                <h2 className="text-2xl leading-6 text-[#000000]"> {title} </h2>
+                <h2 className="text-[1.3rem] font-normal leading-6 text-[#000000]"> {title} </h2>
                 
             </div>
         </div>

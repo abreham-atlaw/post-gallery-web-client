@@ -85,9 +85,9 @@ export default class HomeView extends ViewModelView<ViewModel<HomeViewState>> {
                             <NavBar isDark={false} /> 
 							<div className="flex flex-row justify-between items-center">
 								<div className="text-white mb-6 pl-4">
-									<p className="text-3xl lg:text-6xl ">Her Story</p>
+									<p className="text-3xl font-[340] lg:text-[3.55rem]  ">Her Story</p>
 									
-									<p className="text-xl lg:text-3xl">17 Mar - 21 Nov</p>
+									<p className="text-xl font-[370] lg:text-[1.67 rem] leading-[2.5rem] ">17 Mar - 21 Nov</p>
 								</div>
 								<div className=" flex flex-row justify-between items-center pr-8 lg:pr-14">
 									<button onClick={this.nextSlide}>

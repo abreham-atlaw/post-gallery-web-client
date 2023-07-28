@@ -41,7 +41,7 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 						<p className="text-base lg:text-2xl text-black mr-2 lg:mr-8 uppercase">{this.state.exhibiton!.artist!.fullName}</p>
 						<p className="text-base lg:text-2xl text-[#787878]">{this.state.exhibiton!.dateRange.startDate.toDateString()} - {this.state.exhibiton!.dateRange.endDate.toDateString()}</p>
 					</div>
-					<p className="text-lg lg:text-2xl text-[#787878] leading-[18px] lg:leading-[28px]">
+					<p className="text-lg lg:text-2xl font-light text-justify text-[#787878] leading-[18px] lg:leading-[28px]">
 					{this.state.exhibiton!.description}
 					</p>
 				</div>
@@ -100,7 +100,7 @@ interface SlideShowProps {
 		<div className="flex">
 			 <div className="mx-auto px-3 lg:p-4 m-auto flex flex-row items-center justify-between lg:px-28">
 		<button
-		  className=" lg:p-2"
+		  className=" lg:p-2 lg:mr-14"
 		  onClick={handlePrev}
 		>
 		  <img className="w-4 h-5 lg:w-10 lg:h-12" src={back} />
@@ -120,7 +120,7 @@ interface SlideShowProps {
 				background: "linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 1.9%, rgba(0, 0, 0, 0) 100%)" 
 			}}>
 			
-				<p className="text-xl font-semibold lg:text-3xl lg:font-semibold">{artworks[activeIndex].name}</p>
+				<p className="text-xl font-semibold leading-[2.85rem] lg:text-3xl lg:font-semibold">{artworks[activeIndex].name}</p>
 				<p className="text-lg font-medium lg:text-2xl lg:font-medium leading-4">{artworks[activeIndex].artist!.fullName}</p>
 				<p className="text-lg font-medium lg:text-2xl lg:font-medium">{artworks[activeIndex].creationDate.getFullYear()}</p>
 			</div>
@@ -128,7 +128,7 @@ interface SlideShowProps {
 		
   
 		<button
-		  className="lg:p-2 "
+		  className="lg:p-2 lg:ml-14"
 		  onClick={handleNext}
 		>
 		  <img className="w-4 h-5 lg:w-10 lg:h-12" src={next} />
@@ -154,18 +154,18 @@ interface SlideShowProps {
 }
 
 const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) => (
-    <div className="w-full flex">
+    <div className=" flex">
 		<Link 
 		to={link}
-        className="w-full h-96 lg:h-72  bg-cover bg-center"
-		style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat" }}
+        className="relative w-full h-96 lg:h-72  bg-cover bg-center"
+		style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat",  }}
     >
-		<div className="w-full h-full flex items-end justify-center pb-4 shadow-md" >
-			<div className="text-white text-center">
-				<h2 className="font-bold">{title}</h2>
-				<p>{subtitle}</p>
+			<div className="w-full h-full flex items-end justify-center pb-4 shadow-md" >
+				<div className="text-white text-center">
+					<h2 className="font-bold">{title}</h2>
+					<p>{subtitle}</p>
+				</div>
 			</div>
-		</div>
     </Link>
 	</div>
 	
