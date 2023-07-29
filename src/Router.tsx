@@ -62,10 +62,11 @@ export default class PGRouter extends React.Component{
 				<Route path="/artwork/:id" element={<RoutedArtworkDetailView/>}/>
 				<Route path="/exhibitions/" element={<ExhibitionListView />}/>
 				<Route path="/exhibition/:id" element={<RoutedExhibitionDetailView />}/>
-				<Route path="/blogs/" element={<PublishmentListView type={PublishmentType.blog} />}/>
-				<Route path="/artfairs/" element={<PublishmentListView type={PublishmentType.artFair} />}/>
-				<Route path="/presses/" element={<PublishmentListView type={PublishmentType.press} />}/>
-				<Route path="/projects/" element={<PublishmentListView type={PublishmentType.project} />}/>
+
+				<Route path="/blogs/" element={<PublishmentListView key="blog" publishmentType={PublishmentType.blog} />}/>
+				<Route path="/presses/" element={<PublishmentListView key="presses" publishmentType={PublishmentType.press} />}/>
+				<Route path="/artfairs/" element={<PublishmentListView key="artfairs" publishmentType={PublishmentType.artFair} />}/>
+				<Route path="/projects/" element={<PublishmentListView key="projects" publishmentType={PublishmentType.project} />}/>
 				<Route path="/publishment/:id" element={<RoutedBlogDetailView />}/>
 				
 

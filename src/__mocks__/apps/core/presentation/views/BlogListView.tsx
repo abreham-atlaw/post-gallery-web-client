@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 interface PublishmentListViewProps{
 
-	type: PublishmentType
+	publishmentType: PublishmentType
 
 }
 
@@ -29,7 +29,7 @@ export default class PublishmentListView extends ViewModelView<BlogListViewModel
 	}
 	
 	onCreateState(): BlogListState {
-		return new BlogListState(this.props.type);
+		return new BlogListState(this.props.publishmentType);
 	}
 
 	onCreateMain(): ReactNode {
