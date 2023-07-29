@@ -29,10 +29,11 @@ import BlogListView from "./__mocks__/apps/core/presentation/views/BlogListView"
 import BlogDetailView, { RoutedBlogDetailView } from "./__mocks__/apps/core/presentation/views/BlogDetailView";
 import AboutView from "./__mocks__/apps/core/presentation/views/AboutView";
 import ContactView from "./__mocks__/apps/core/presentation/views/ContactView";
-import AddBlogView from "./__mocks__/apps/admin/presentation/views/AddBlogView";
 import ComingSoon from "./__mocks__/apps/core/presentation/views/ComingSoon";
 import { RoutedCartView } from "./__mocks__/apps/core/presentation/views/CartView";
 import OrderDetailView, { RoutedOrderDetailView } from "./__mocks__/apps/admin/presentation/views/DashBoard/OrderDetailView";
+import AddBlogPressView from "./__mocks__/apps/admin/presentation/views/AddBlogPressView";
+import AddProjectFairView from "./__mocks__/apps/admin/presentation/views/AddProjectFairView";
 
 
 export default class PGRouter extends React.Component{
@@ -150,9 +151,15 @@ export default class PGRouter extends React.Component{
 				} />
 				
 
-				<Route path="/admin/blog/add" element={
+				<Route path="/admin/blog-press/add" element={
 					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
-						<AddBlogView />
+						<AddBlogPressView />
+					</AuthenticatedComponent>
+				} />
+
+				<Route path="/admin/project-fair/add" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<AddProjectFairView />
 					</AuthenticatedComponent>
 				} />
 

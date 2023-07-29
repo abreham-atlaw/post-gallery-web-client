@@ -16,8 +16,7 @@ import NewsLetterSubscriptionRepository from "../data/repositories/newsLetterSub
 import NetworkApi from "@/lib/network/NetworkApi";
 import { ApiConfigs } from "@/configs/data_configs";
 import { PaymentRepository } from "../data/repositories/paymentRepository";
-import BlogRepository from "../data/repositories/blogRepository";
-import Blog from "../data/models/blog";
+import PublishmentRepository from "../data/repositories/publishmentRepository";
 
 
 
@@ -30,7 +29,7 @@ export default class CoreProviders{
 	private static orderRepository?: OrderRepository;
 	private static shippingInfoRepository?: ShippingInfoRepository;
 	private static newsLetterSubscriptionRepository?: NewsLetterSubscriptionRepository;
-	private static blogRepository?: BlogRepository;
+	private static publishmentRepository?: PublishmentRepository;
 
 	public static provideFirebaseApp(): FirebaseApp{
 		if(CoreProviders.app === undefined){
@@ -95,11 +94,11 @@ export default class CoreProviders{
 		return this.newsLetterSubscriptionRepository;
 	}
 
-	public static provideBlogRepository(): BlogRepository{
-		if(this.blogRepository === undefined){
-			this.blogRepository = new BlogRepository();
+	public static providePublishmentRepository(): PublishmentRepository{
+		if(this.publishmentRepository === undefined){
+			this.publishmentRepository = new PublishmentRepository();
 		}
-		return this.blogRepository;
+		return this.publishmentRepository;
 	}
 
 	public static provideDefaultFileStorage(): FileStorage{
