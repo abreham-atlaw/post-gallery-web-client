@@ -13,6 +13,7 @@ import { FieldComponent, FieldComponentProps } from "@/lib/components/form/Field
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import { AsyncStatus } from "@/lib/state/asyncState";
 import StatusToast from "@/lib/components/status/StatusToast";
+import menu from '@/assets/unsuccesfull.png'
 
 
 interface CheckoutViewProps{
@@ -51,7 +52,16 @@ export default class CheckOutView extends ViewModelView<CheckoutViewModel, Check
 				return <><p>You will be directed to the payment portal. If your browser does not automatically click the link below.</p>
 				<a href={this.state.paymentLink!}>To Payment Portal</a></>
 			}
-			return <p>Your order has been requested you'll receive an e-mail once the request is accepted. <a href="/">Go to Home</a></p>
+			return       <div>
+							<div className="flex flex-col w-full h-screen justify-center items-center max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16">
+								<img className='w-20' src={menu} />
+								<p className='py-4 font-Lato text-4xl'>Order placed Successfully.</p>
+								<p className='font-Lato w-2/3 text-4xl text-center'>Your order has been requested you'll receive an e-mail once the request is accepted.</p>
+								<a href="/" className="h-14 flex justify-center items-center  mt-20 bg-black rounded-3xl">	
+									<div className="font-medium text-2xl px-14 text-center text-white" >Go Back</div>
+								</a>
+							</div>
+						</div>
 		}
 		return (
 			<div className="bg-[#F6F6F6] min-h-screen" >

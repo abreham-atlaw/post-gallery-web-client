@@ -40,7 +40,7 @@ export default function
               <img className='w-8 mr-3' src={dashGrid2} />
               <p>Add Art</p>
             </Link>
-            <Link to="/admin/blog/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+            <Link to="/admin/blog-press/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid3} />
               <p>Add Blog</p>
             </Link>

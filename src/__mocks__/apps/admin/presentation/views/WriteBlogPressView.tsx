@@ -28,7 +28,7 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditPublish
 		this.dummyField.setValue(this.state.form.publishmentType.getValue()! === PublishmentType.blog);
 		return (
 		<div>
-			<form onSubmit={this.handleSubmit} className={"px-6 lg:px-14 py-12"}>
+			<form onSubmit={this.handleSubmit} className={` ${this.state.form.publishmentType.getValue() == PublishmentType.blog ? 'inline' : 'hidden' } px-6 lg:px-14 py-12`}>
 				<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Blog</span></a>
 				<div className="w-full pt-10 pb-6 mb-3 border-b-2 border-[#C1C1C1] flex flex-row justify-between">
 					<div className="flex flex-row justify-center items-center">
