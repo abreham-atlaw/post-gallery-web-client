@@ -43,7 +43,7 @@ export default class PublishmentListView extends ViewModelView<BlogListViewModel
 				<div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Lato lg:mb-6">
 					<p className='mt-3 mb-5 lg:mb-10 text-2xl lg:text-4xl font-Lato'>{this.TITLE_PUBLISHMENT_TYPE_MAPS[this.state.publishmentType]}</p>
 					<div className='flex flex-col lg:flex-row justify-between'>
-						{
+					{
 							this.state.blogs!.map(
 								(blog: Blog) => {
 									return (<Link to={`/publishment/${blog.getPK()}`} className='w-full lg:w-1/2 flex flex-col lg:mr-12'>
