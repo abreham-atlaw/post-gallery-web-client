@@ -4,13 +4,16 @@ import CoreProviders from "@/apps/core/di/coreproviders";
 import Exhibition from "@/apps/core/data/models/exhibition";
 import ExhibitionForm from "../forms/exhibitionForm";
 import { existsSync } from "fs";
+import ExhibitionRepository from "@/apps/core/data/repositories/exhibitionRepository";
+import ArtistRepository from "@/apps/core/data/repositories/artistRepository";
+import ArtworkRepository from "@/apps/core/data/repositories/artworkRepository";
 
 
 export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibitionState>{
 
-	private repository = CoreProviders.provideExhibitionRepository();
-	private artistRepository = CoreProviders.provideArtistRepository();
-	private artworkRepository = CoreProviders.provideArtworkRepository();
+	private repository = new ExhibitionRepository(false);
+	private artistRepository = new ArtistRepository(false);
+	private artworkRepository = new ArtworkRepository(false);
 
 	private syncExhibitionToForm(form: ExhibitionForm, exhibition: Exhibition) {
 		form.artistId.setValue(exhibition.artistId)
@@ -24,6 +27,7 @@ export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibit
 		form.endTime.setValue(exhibition.timeFrame.endTime)
 		form.coverImage.setValue(exhibition.coverImage)
 		form.artworkIds.setValue(exhibition.artworkIds)
+		form.visible.setValue(exhibition.visible)
 	}
 	
 	protected syncFormToExhibition(form: ExhibitionForm) {
@@ -43,6 +47,7 @@ export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibit
 		};
 		exhibition.coverImage = form.coverImage.getValue()!
 		exhibition.artworkIds = form.artworkIds.getValue()! as string[]
+		exhibition.visible = form.visible.getValue()!
 	}
 
 	public async onInit(): Promise<void> {

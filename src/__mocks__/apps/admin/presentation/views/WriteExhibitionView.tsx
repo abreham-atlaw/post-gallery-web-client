@@ -5,6 +5,7 @@ import ArtistPrimaryKeyFieldComponent from "@/apps/admin/presentation/components
 import ArtworkListPrimaryKeyFieldComponent from "@/apps/admin/presentation/components/form/ArtworkListPrimaryKeyFieldComponent";
 import CoreProviders from "@/apps/core/di/coreproviders";
 import { DefaultImageUploadComponent } from "@/apps/core/presentation/components/DefaultFileUploadComponent";
+import BooleanFieldComponent from "@/lib/components/form/BooleanFieldComponent";
 import DateFieldComponent from "@/lib/components/form/DateFieldComponent";
 import ListFieldComponent from "@/lib/components/form/ListFieldComponent";
 import NumberFieldComponent from "@/lib/components/form/NumberFieldComponent";
@@ -106,7 +107,7 @@ export default abstract class WriteExhibitionView<P> extends ViewModelView<EditE
 								(field: Field<string>) => <TextFieldComponent field={field} syncer={this.getViewModel().syncState}/>
 							}/> */}
 							<ArtworkListPrimaryKeyFieldComponent allArtworks={this.state.allArtworks!} field={this.state.form.artworkIds} syncer={this.getViewModel().syncState} />
-							<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
+							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Visibility</p><BooleanFieldComponent field={this.state.form.visible}/>
 						</div>
 					</div>
 				</form>

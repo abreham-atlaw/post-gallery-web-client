@@ -16,8 +16,8 @@ import { VisibilityRepository } from "./visibilityRepository";
 export default class ExhibitionRepository extends VisibilityRepository<string, Exhibition>{
 	
 	private primaryKeyGenerator;
-	public artistRepository = new ArtistRepository();
-	public  artworkRepository = new ArtworkRepository();
+	private artistRepository = new ArtistRepository(false);
+	private artworkRepository = new ArtworkRepository(false);
 
 	constructor(visibleOnly?: boolean){
 		super(

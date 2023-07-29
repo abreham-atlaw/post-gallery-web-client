@@ -19,7 +19,7 @@ export default class EditArtistViewModel extends AsyncViewModel<WriteArtistState
 		form.gender.setValue(artist.gender)
 		form.nationality.setValue(artist.nationality)
 		form.phoneNumber.setValue(artist.phoneNumber)
-		form.avatar.setValue(artist.avatar),
+		form.avatar.setValue(artist.avatar)
 		form.visible.setValue(artist.visible)
 	}
 

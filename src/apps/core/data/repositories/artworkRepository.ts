@@ -34,7 +34,7 @@ export default class ArtworkRepository extends VisibilityRepository<string, Artw
 	
 	private getArtistRepository(): ArtistRepository{
 		if(this.artistRepository === undefined){
-			this.artistRepository = new ArtistRepository();
+			this.artistRepository = new ArtistRepository(false);
 		}
 		return this.artistRepository;
 	}

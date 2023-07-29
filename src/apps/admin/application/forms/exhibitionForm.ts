@@ -22,6 +22,7 @@ export default class ExhibitionForm extends Form{
 
 	public coverImage = new TextField()
 	public artworkIds = new Field<string[]>()
+	visible: Field<boolean>  = new Field<boolean>();
 
 	getFields(): Field<any>[] {
 		return [
@@ -35,7 +36,8 @@ export default class ExhibitionForm extends Form{
 			this.startTime,
 			this.endTime,
 			this.coverImage,
-			this.artworkIds
+			this.artworkIds,
+			this.visible
 		]
 	}
 

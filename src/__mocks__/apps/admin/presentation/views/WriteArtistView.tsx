@@ -39,7 +39,6 @@ export default abstract class WriteArtistView<P> extends ViewModelView<EditArtis
 				
 				<div className="w-full pt-10 pb-6 mb-3 border-b-2 border-[#C1C1C1] flex flex-row justify-between">
 					<p className="text-3xl lg:text-4xl font-bold">Upload Artist</p>
-					<BooleanFieldComponent field={this.state.form.visible}/>
 					<button className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
 						<div className="justify-center text-sm lg:text-xl">Publish</div>
 					</button>
@@ -80,10 +79,10 @@ export default abstract class WriteArtistView<P> extends ViewModelView<EditArtis
 						<TextBoxComponent field={this.state.form.biography}/>
 						
 						<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Nationality</p> <TextFieldComponent field={this.state.form.nationality} syncer={this.getViewModel().syncState}/>
-						{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Achievement</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.getViewModel().syncState}/> */}
-						{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Special quote</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.getViewModel().syncState}/> */}
-						{/* <p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Previous Collection</p> <TextFieldComponent field={this.state.form.mediaUsed} syncer={this.getViewModel().syncState}/> */}
 						
+						<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Visibility</p><BooleanFieldComponent field={this.state.form.visible}/>
+						
+
 					</div>
 				</div>
 			</form>

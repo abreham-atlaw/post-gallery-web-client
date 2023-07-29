@@ -19,7 +19,6 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditBlogVie
 	}
 
 
-
 	onCreateMain(): ReactNode {
 		if(this.state.status === AsyncStatus.done){
 			return <SuccessfullView title="Successfull" subTitle="Blog set Successfully!" />

@@ -16,6 +16,7 @@ import MultiFileUploadFieldComponent from "@/lib/components/form/MultipleFileUpl
 import ArtistPrimaryKeyFieldComponent from "@/apps/admin/presentation/components/form/ArtistPrimaryKeyFieldComponent";
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import SuccessfullView from "@/__mocks__/apps/core/presentation/views/SuccessView";
+import BooleanFieldComponent from "@/lib/components/form/BooleanFieldComponent";
 
 
 export default abstract class WriteArtworkView<P> extends ViewModelView<EditArtworkViewModel, P, WriteArtworkState>{
@@ -70,6 +71,7 @@ export default abstract class WriteArtworkView<P> extends ViewModelView<EditArtw
 							<UnitFieldComponent field={this.state.form.price} syncer={this.getViewModel().syncState} options={["USD","ETB"]}/>
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Status  <span className="text-red-500 required-dot"> *</span></p>
 							<EnumFieldComponent enumClass={Status} field={this.state.form.status} syncer={this.getViewModel().syncState}/>
+							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Visibility</p><BooleanFieldComponent field={this.state.form.visible}/>
 
 						</div>
 					</div>
