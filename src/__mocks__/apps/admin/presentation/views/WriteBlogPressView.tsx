@@ -1,3 +1,4 @@
+import SuccessfullView from "@/__mocks__/apps/core/presentation/views/SuccessView";
 import WritePublishmentState from "@/apps/admin/application/states/writePublishmentState";
 import EditPublishmentViewModel from "@/apps/admin/application/viewmodels/editPublishmentViewModel";
 import { PublishmentType } from "@/apps/core/data/models/publishment";
@@ -7,6 +8,7 @@ import TextFieldComponent from "@/lib/components/form/TextFieldComponent";
 import StatusToast from "@/lib/components/status/StatusToast";
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import Field from "@/lib/forms/fields";
+import { AsyncStatus } from "@/lib/state/asyncState";
 import { FormEvent, ReactNode, useState } from "react";
 
 export default abstract class WriteBlogView<P> extends ViewModelView<EditPublishmentViewModel, P, WritePublishmentState>{
@@ -25,6 +27,10 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditPublish
 	}
 
 	onCreateMain(): ReactNode {
+		if(this.state.status === AsyncStatus.done){
+			return <SuccessfullView title="Successfull" subTitle={`${this.PUBLISHMENT_TYPE[this.state.form.publishmentType.getValue()!]} set Successfully!`} />
+		}
+
 		this.dummyField.setValue(this.state.form.publishmentType.getValue()! === PublishmentType.blog);
 		return (
 		<div>
