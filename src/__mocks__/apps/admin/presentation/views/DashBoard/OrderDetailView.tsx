@@ -1,3 +1,4 @@
+import SuccessfullView from "@/__mocks__/apps/core/presentation/views/SuccessView";
 import OrderDetailState from "@/apps/admin/application/states/orderDetailState";
 import OrderDetailViewModel from "@/apps/admin/application/viewmodels/orderDetailViewModel";
 import { OrderStatus } from "@/apps/core/data/models/order";
@@ -28,8 +29,30 @@ export default class OrderDetailView extends ViewModelView<OrderDetailViewModel,
 
 	onCreateMain(): ReactNode {
 		if(this.state.decisionState.status === AsyncStatus.done){
-			
+
+			let title: string, subTitle: string;
+			switch(this.state.order!.status){
+				
+				case OrderStatus.accepted:
+					title = "Order Accepted";
+					subTitle = "Order has been accepted succesfully. The client will receive an e-mail with directions to proceed."
+					break;
+				
+				case OrderStatus.rejected:
+					title = "Order Rejected";
+					subTitle = "Order has been rejected."
+					break;
+				
+				default:
+					title = "Order Shipment Confirmed";
+					subTitle = "Order shipment has been confirmed successfully. The client will receive an e-mail to notify them."
+					break;
+
+			}
+
+			return <SuccessfullView title={title} subTitle={subTitle}/>			
 		}
+
 		return (
 		<div>
 			<StatusToast asyncState={this.state.decisionState} />

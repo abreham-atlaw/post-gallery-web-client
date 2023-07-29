@@ -9,7 +9,7 @@ import BlogDetailViewModel from "@/apps/core/application/viewmodels/blogDetailVi
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import { ReactNode } from "react";
 import { useParams } from "react-router-dom";
-
+import { Document } from 'react-pdf'
 
 
 interface BlogDetailProps{
@@ -26,19 +26,15 @@ export default class BlogDetailView extends ViewModelView<BlogDetailViewModel, B
 	onCreateMain(): ReactNode {
 		return (
 			<div>
-
-
 				<div className='lg:pr-10 lg:pl-16 '>
 					<NavBar isDark={true} />
 				</div>
 		
-				<div className="max-w-[1280px] m-auto px-6 lg:p-4 lg:px-16 font-Lato">
+				<div className="w-full h-screen">
 					<iframe
-					src={`${this.state.blog?.content}#toolbar=0&navpanes=0&scrollbar=0`}
-					className="h-[60rem]"
-					height="100%"
-					width="100%"
-					></iframe>
+					src={`/assets/pdfjs/web/viewer.html?file=${this.state.blog!.content.replace("&", "%26")}`}
+					className='w-full h-screen'
+					/>
 				</div>
 		
 				<TheFooter />
