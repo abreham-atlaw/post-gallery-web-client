@@ -53,7 +53,7 @@ export default abstract class WriteProjectFairView<P> extends ViewModelView<Edit
 				</div>
 
 				<div className="lg:pl-8 ">
-					<p className="mt-8 mb-6">⚫<span className="text-2xl font-medium">   Blog details</span></p>
+					<p className="mt-8 mb-6">⚫<span className="text-2xl font-medium">   Fair details</span></p>
 					<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
 					
 					<div className="w-full lg:w-4/6 mb-4">

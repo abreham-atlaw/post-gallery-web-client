@@ -7,7 +7,7 @@ import CoreProviders from "../../di/coreproviders";
 
 export default class BlogDetailViewModel extends AsyncViewModel<BlogDetailState>{
 
-	private repository: PublishmentRepository = CoreProviders.provideBlogRepository();
+	private repository: PublishmentRepository = new PublishmentRepository();
 
 	public async onInit(): Promise<void> {
 		await super.onInit();

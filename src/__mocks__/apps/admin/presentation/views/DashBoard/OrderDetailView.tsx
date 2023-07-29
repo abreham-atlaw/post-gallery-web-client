@@ -2,7 +2,9 @@ import OrderDetailState from "@/apps/admin/application/states/orderDetailState";
 import OrderDetailViewModel from "@/apps/admin/application/viewmodels/orderDetailViewModel";
 import { OrderStatus } from "@/apps/core/data/models/order";
 import OrderSerializer from "@/apps/core/data/serializers/orderSerializer";
+import StatusToast from "@/lib/components/status/StatusToast";
 import ViewModelView from "@/lib/components/views/ViewModelView";
+import { AsyncStatus } from "@/lib/state/asyncState";
 import { ReactNode } from "react";
 import { useParams } from "react-router-dom";
 
@@ -25,8 +27,12 @@ export default class OrderDetailView extends ViewModelView<OrderDetailViewModel,
 
 
 	onCreateMain(): ReactNode {
+		if(this.state.decisionState.status === AsyncStatus.done){
+			
+		}
 		return (
 		<div>
+			<StatusToast asyncState={this.state.decisionState} />
 			<p className='text-2xl font-Lato mb-5'>Request</p> 
 			<div className="flex flex-col lg:flex-row justify-between items-start mb-5">
 
@@ -125,10 +131,33 @@ export default class OrderDetailView extends ViewModelView<OrderDetailViewModel,
 			</div>
 
 			
+
 			<div className="absolute bottom-5 right-5 flex flex-row">
-				<button className="mr-5 flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-sm" onClick={() => {this.getViewModel().acceptRequest()}}><p className="justify-center text-sm lg:text-xl">Accept request</p></button>
-				<button className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-sm" onClick={() => {this.getViewModel().rejectRequest()}}><p className="justify-center text-sm lg:text-xl">Reject request</p></button>
+				{
+					(this.state.order!.status === OrderStatus.requested)?
+					<>
+					<button className="mr-5 flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-sm" onClick={() => {this.getViewModel().acceptRequest()}}><p className="justify-center text-sm lg:text-xl">Accept request</p></button>
+					<button className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-sm" onClick={() => {this.getViewModel().rejectRequest()}}><p className="justify-center text-sm lg:text-xl">Reject request</p></button>
+					</>
+					:(this.state.order!.status === OrderStatus.waitingShipment)?
+					<button className="mr-5 flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-sm" onClick={() => {this.getViewModel().confirmShipment()}}><p className="justify-center text-sm lg:text-xl">Confirm Shipment</p></button>
+					:<></>
+				}
 			</div>
+
+			{/* {(this.state.decisionState.status === AsyncStatus.loading)?
+				(<div className="absolute bottom-5 right-5 flex flex-row">
+					<span className="mr-5 flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-sm">
+						Loading...
+					</span>
+				</div>):
+
+		
+		
+			})
+			
+			? */}
+			
 		</div>)
 	}
 
