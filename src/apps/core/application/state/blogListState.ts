@@ -1,5 +1,5 @@
 import { AsyncState } from "@/lib/state/asyncState";
-import Blog from "../../data/models/blog";
+import Blog from "../../data/models/publishment";
 
 
 

@@ -3,7 +3,7 @@ import NavBar from '@/lib/components/navBar/navBar'
 import collection from "@/assets/about.png"
 import BlogListState from "@/apps/core/application/state/blogListState";
 import BlogListViewModel from "@/apps/core/application/viewmodels/blogListViewModel";
-import Blog from "@/apps/core/data/models/blog";
+import Blog from "@/apps/core/data/models/publishment";
 import ViewModelView from "@/lib/components/views/ViewModelView"
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";

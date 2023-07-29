@@ -1,13 +1,13 @@
 import AsyncViewModel from "@/lib/viewmodel/asyncViewModel"
 import BlogDetailState from "../state/blogDetailState";
-import BlogRepository from "../../data/repositories/blogRepository";
+import PublishmentRepository from "../../data/repositories/publishmentRepository";
 import CoreProviders from "../../di/coreproviders";
 
 
 
 export default class BlogDetailViewModel extends AsyncViewModel<BlogDetailState>{
 
-	private repository: BlogRepository = CoreProviders.provideBlogRepository();
+	private repository: PublishmentRepository = CoreProviders.provideBlogRepository();
 
 	public async onInit(): Promise<void> {
 		await super.onInit();
