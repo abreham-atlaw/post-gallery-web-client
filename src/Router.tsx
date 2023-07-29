@@ -34,6 +34,8 @@ import { RoutedCartView } from "./__mocks__/apps/core/presentation/views/CartVie
 import OrderDetailView, { RoutedOrderDetailView } from "./__mocks__/apps/admin/presentation/views/DashBoard/OrderDetailView";
 import AddBlogPressView from "./__mocks__/apps/admin/presentation/views/AddBlogPressView";
 import AddProjectFairView from "./__mocks__/apps/admin/presentation/views/AddProjectFairView";
+import PublishmentListView from "./__mocks__/apps/core/presentation/views/BlogListView";
+import { PublishmentType } from "./apps/core/data/models/publishment";
 
 
 export default class PGRouter extends React.Component{
@@ -60,8 +62,11 @@ export default class PGRouter extends React.Component{
 				<Route path="/artwork/:id" element={<RoutedArtworkDetailView/>}/>
 				<Route path="/exhibitions/" element={<ExhibitionListView />}/>
 				<Route path="/exhibition/:id" element={<RoutedExhibitionDetailView />}/>
-				<Route path="/blogs/" element={<BlogListView />}/>
-				<Route path="/blog/:id" element={<RoutedBlogDetailView />}/>
+				<Route path="/blogs/" element={<PublishmentListView type={PublishmentType.blog} />}/>
+				<Route path="/artfairs/" element={<PublishmentListView type={PublishmentType.artFair} />}/>
+				<Route path="/presses/" element={<PublishmentListView type={PublishmentType.press} />}/>
+				<Route path="/projects/" element={<PublishmentListView type={PublishmentType.project} />}/>
+				<Route path="/publishment/:id" element={<RoutedBlogDetailView />}/>
 				
 
 				<Route path="/search" element={

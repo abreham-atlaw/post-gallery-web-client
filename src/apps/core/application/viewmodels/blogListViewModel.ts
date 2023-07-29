@@ -6,11 +6,11 @@ import CoreProviders from "../../di/coreproviders";
 
 export default class BlogListViewModel extends AsyncViewModel<BlogListState>{
 
-	private repository: PublishmentRepository = CoreProviders.provideBlogRepository();
+	private repository: PublishmentRepository = new PublishmentRepository(false);
 
 	public async onInit(): Promise<void> {
 		await super.onInit();
-		this.state.blogs = await this.repository.getAll();
+		this.state.blogs = await this.repository.getByType(this.state.publishmentType);
 	}
 
 }
