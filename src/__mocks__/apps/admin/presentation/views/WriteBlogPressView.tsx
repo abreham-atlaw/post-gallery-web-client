@@ -25,17 +25,19 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditPublish
 	}
 
 	onCreateMain(): ReactNode {
+		console.log(this.state.form.publishmentType.value)
 		this.dummyField.setValue(this.state.form.publishmentType.getValue()! === PublishmentType.blog);
 		return (
 		<div>
-			<form onSubmit={this.handleSubmit} className={` ${this.state.form.publishmentType.getValue() == PublishmentType.blog ? 'inline' : 'hidden' } px-6 lg:px-14 py-12`}>
-				<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Blog</span></a>
+			<form onSubmit={this.handleSubmit} className={`  px-6 lg:px-14 py-12`}>
+				<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className={` ${this.state.form.publishmentType.value == PublishmentType.blog ? 'inline' : 'hidden'} text-[#A1A6B3]`}>Upload Blog</span><span className={` ${this.state.form.publishmentType.value == PublishmentType.press ? 'inline' : 'hidden'} text-[#A1A6B3]`}>Upload Press</span></a>
 				<div className="w-full pt-10 pb-6 mb-3 border-b-2 border-[#C1C1C1] flex flex-row justify-between">
 					<div className="flex flex-row justify-center items-center">
 						<p className="text-3xl lg:text-4xl font-bold mr-5">Upload {this.PUBLISHMENT_TYPE[this.state.form.publishmentType.getValue()!]}</p>
 						<BooleanFieldComponent 
 						field={this.dummyField}
 						onText="Blog"
+						//syncer={this.getViewModel().syncState}
 						offText="Press" 
 						onChanged={(value: boolean) => {
 
@@ -45,6 +47,7 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditPublish
 							else{
 								this.state.form.publishmentType.setValue(PublishmentType.press);
 							}
+							this.getViewModel().syncState()
 						}}/>
 					</div>
 					<button type="submit" className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
@@ -53,7 +56,7 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditPublish
 				</div>
 
 				<div className="lg:pl-8 ">
-					<p className="mt-8 mb-6">⚫<span className="text-2xl font-medium">   Blog details</span></p>
+					<p className="mt-8 mb-6">⚫<span className={` ${this.state.form.publishmentType.value == PublishmentType.blog ? 'inline' : 'hidden'} text-2xl font-medium`} >   Blog details</span><span className={` ${this.state.form.publishmentType.value == PublishmentType.press ? 'inline' : 'hidden'} text-2xl font-medium`} >   Press details</span></p>
 					<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
 					
 					<div className="w-full lg:w-4/6 mb-4">

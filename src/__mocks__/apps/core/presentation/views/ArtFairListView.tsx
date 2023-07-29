@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 
 
-export default class BlogListView extends ViewModelView<BlogListViewModel, any, BlogListState>{
+export default class ArtFairListView extends ViewModelView<BlogListViewModel, any, BlogListState>{
 	
 	onCreateViewModel(state: BlogListState): BlogListViewModel {
 		return new BlogListViewModel(state, this.setState.bind(this));

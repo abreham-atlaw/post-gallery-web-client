@@ -29,10 +29,10 @@ export default abstract class WriteProjectFairView<P> extends ViewModelView<Edit
 		return (
 		<div>
 			<form onSubmit={this.handleSubmit} className={"px-6 lg:px-14 py-12"}>
-				<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className="text-[#A1A6B3]">Upload Blog</span></a>
+				<a href="/admin/Dashboard" className="text-xl font-medium">Dashboard/<span className={` ${this.state.form.publishmentType.value == PublishmentType.artFair ? 'inline' : 'hidden'} text-[#A1A6B3]`}>Upload Art Fair</span><span className={` ${this.state.form.publishmentType.value == PublishmentType.project ? 'inline' : 'hidden'} text-[#A1A6B3]`}>Upload Project</span></a>
 				<div className="w-full pt-10 pb-6 mb-3 border-b-2 border-[#C1C1C1] flex flex-row justify-between">
 					<div className="flex flex-row justify-center items-center">
-						<p className="text-3xl lg:text-4xl font-bold mr-5">Upload Art Fair</p>
+						<p className="text-3xl lg:text-4xl font-bold mr-5">Upload {this.PUBLISHMENT_TYPE[this.state.form.publishmentType.getValue()!]}</p>
 						<BooleanFieldComponent 
 						field={this.dummyField}
 						onText="Project"
@@ -45,6 +45,7 @@ export default abstract class WriteProjectFairView<P> extends ViewModelView<Edit
 							else{
 								this.state.form.publishmentType.setValue(PublishmentType.artFair);
 							}
+							this.getViewModel().syncState()
 						}}/>
 					</div>
 					<button type="submit" className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
@@ -53,7 +54,7 @@ export default abstract class WriteProjectFairView<P> extends ViewModelView<Edit
 				</div>
 
 				<div className="lg:pl-8 ">
-					<p className="mt-8 mb-6">⚫<span className="text-2xl font-medium">   Fair details</span></p>
+					<p className="mt-8 mb-6">⚫<span className="text-2xl font-medium">   {this.PUBLISHMENT_TYPE[this.state.form.publishmentType.getValue()!]} details</span></p>
 					<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
 					
 					<div className="w-full lg:w-4/6 mb-4">
