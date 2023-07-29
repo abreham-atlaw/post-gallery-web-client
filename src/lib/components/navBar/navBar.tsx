@@ -55,8 +55,8 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 					<div className={` ${this.props.isDark ? "text-black" : "text-white"} font-Lato lg:font-medium flex flex-row items-center space-x-6 font-[370] text-xl leading-none`}>
 						<Link to="/artists">Artist</Link>
 						<Link to="/exhibitions">Exhibition</Link>
-						<Link to="/blogs">Press</Link>
-						<Link to="/blogs">Art Fair</Link>
+						<Link to="/presses">Press</Link>
+						<Link to="/artfairs">Art Fair</Link>
 						<Link to="/contact">Contact</Link>
 				  {
 					clientSection					
