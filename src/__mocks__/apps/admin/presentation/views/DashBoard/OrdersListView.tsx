@@ -14,11 +14,11 @@ interface OrderListViewProps{
 export default class OrderListView extends ViewModelView<OrderListViewModel, OrderListViewProps, OrderListState>{
 	
 	STATUS_MAP = [
-		"Requested",
-		"Accepted",
-		"Rejected",
+		"Purchase Request",
+		"Waiting Payment",
+		"Rejected Request",
 		"Waiting Shipment",
-		"Complete",
+		"Purchase Complete",
 		"Payment Failed"
 	]
 

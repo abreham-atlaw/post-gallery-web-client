@@ -34,17 +34,22 @@ export default function
           <div className='w-full flex flex-row space-x-2 mt-2'>
             <Link to="/admin/artist/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid1} />
-              <p>Add artist</p>
+              <p>Add Artist</p>
             </Link>
             <Link to="/admin/artwork/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid2} />
-              <p>Add art</p>
+              <p>Add Art</p>
             </Link>
-            <Link to="/admin/exhibition/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+            <Link to="/admin/blog/add" className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
               <img className='w-8 mr-3' src={dashGrid3} />
-              <p>Add exhibition</p>
+              <p>Add Blog</p>
             </Link>
+            
           </div>
+          <Link to="/admin/exhibition/add" className='mt-4 w-4/12 flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+            <img className='w-8 mr-3' src={dashGrid3} />
+            <p>Add Exhibition</p>
+          </Link>
 
     </div>
   )

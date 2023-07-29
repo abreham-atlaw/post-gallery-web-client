@@ -15,6 +15,7 @@ import Upload from '@/assets/Upload.png'
 import MultiFileUploadFieldComponent from "@/lib/components/form/MultipleFileUploadFieldComponent";
 import ArtistPrimaryKeyFieldComponent from "@/apps/admin/presentation/components/form/ArtistPrimaryKeyFieldComponent";
 import ViewModelView from "@/lib/components/views/ViewModelView";
+import SuccessfullView from "@/__mocks__/apps/core/presentation/views/SuccessView";
 import BooleanFieldComponent from "@/lib/components/form/BooleanFieldComponent";
 
 
@@ -26,6 +27,10 @@ export default abstract class WriteArtworkView<P> extends ViewModelView<EditArtw
 	}
 
 	onCreateMain(): React.ReactNode {
+		if(this.state.status === AsyncStatus.done){
+			return <SuccessfullView title="Successfull" subTitle="Artwork set Successfully!" />
+		}
+
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit} className="px-14 py-12 ">
