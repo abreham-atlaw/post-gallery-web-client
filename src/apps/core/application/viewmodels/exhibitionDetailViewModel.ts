@@ -1,11 +1,12 @@
 import ViewModel from "@/lib/viewmodel/viewmodel";
 import ExhibitionDetailState from "../state/exhibitionDetailState";
 import CoreProviders from "../../di/coreproviders";
+import ExhibitionRepository from "../../data/repositories/exhibitionRepository";
 
 
 export default class ExhibitionDetailViewModel extends ViewModel<ExhibitionDetailState>{
 	
-	private repository = CoreProviders.provideExhibitionRepository()
+	private repository = new ExhibitionRepository(false);
 
 	public async onInit(): Promise<void> {
 		this.state.exhibiton = await this.repository.getByPrimaryKey(this.state.exhibitionID);	

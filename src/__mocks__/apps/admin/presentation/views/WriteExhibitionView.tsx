@@ -3,10 +3,12 @@ import WriteExhibitionState from "@/apps/admin/application/states/writeExhibitio
 import EditExhibitionViewModel from "@/apps/admin/application/viewmodels/editExhibitionViewModel";
 import ArtistPrimaryKeyFieldComponent from "@/apps/admin/presentation/components/form/ArtistPrimaryKeyFieldComponent";
 import ArtworkListPrimaryKeyFieldComponent from "@/apps/admin/presentation/components/form/ArtworkListPrimaryKeyFieldComponent";
+import { ExhibitionStatus } from "@/apps/core/data/models/exhibition";
 import CoreProviders from "@/apps/core/di/coreproviders";
 import { DefaultImageUploadComponent } from "@/apps/core/presentation/components/DefaultFileUploadComponent";
 import BooleanFieldComponent from "@/lib/components/form/BooleanFieldComponent";
 import DateFieldComponent from "@/lib/components/form/DateFieldComponent";
+import EnumFieldComponent from "@/lib/components/form/EnumFieldComponent";
 import ListFieldComponent from "@/lib/components/form/ListFieldComponent";
 import NumberFieldComponent from "@/lib/components/form/NumberFieldComponent";
 import TextFieldComponent, { TextBoxComponent } from "@/lib/components/form/TextFieldComponent";
@@ -101,6 +103,9 @@ export default abstract class WriteExhibitionView<P> extends ViewModelView<EditE
 								<p >Cover Image <span className="text-red-500 required-dot"> *</span></p>
 								<DefaultImageUploadComponent field={this.state.form.coverImage}/>
 							</div>
+							<div className="h-4"></div>
+							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Artworks  <span className="text-red-500 required-dot"> *</span></p>
+							<EnumFieldComponent enumClass={ExhibitionStatus} field={this.state.form.status} syncer={this.getViewModel().syncState}/>
 							<div className="h-4"></div>
 							<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Artworks  <span className="text-red-500 required-dot"> *</span></p>
 							{/* <ListFieldComponent field={this.state.form.artworkIds} generator={

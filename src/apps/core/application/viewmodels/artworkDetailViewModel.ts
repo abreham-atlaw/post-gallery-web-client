@@ -6,7 +6,7 @@ import CoreProviders from "../../di/coreproviders";
 
 export default class ArtworkDetailViewModel extends AsyncViewModel<ArtworkDetailState>{
 
-	private artworkRepository: ArtworkRepository = CoreProviders.provideArtworkRepository()
+	private artworkRepository: ArtworkRepository = new ArtworkRepository(false);
 
 	public async onInit(): Promise<void> {
 		this.state.artwork = await this.artworkRepository.getByPrimaryKey(this.state.artworkId)
