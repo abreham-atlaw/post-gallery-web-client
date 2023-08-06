@@ -7,7 +7,7 @@ import CoreProviders from "../../di/coreproviders";
 
 export default class ArtistDetailViewModel extends AsyncViewModel<ArtistDetailState>{
 
-	private repository: ArtistRepository = CoreProviders.provideArtistRepository();
+	private repository: ArtistRepository = new ArtistRepository(false);
 
 	public async onInit(): Promise<void> {
 		await super.onInit();

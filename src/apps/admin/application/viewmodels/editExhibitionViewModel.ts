@@ -28,6 +28,7 @@ export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibit
 		form.coverImage.setValue(exhibition.coverImage)
 		form.artworkIds.setValue(exhibition.artworkIds)
 		form.visible.setValue(exhibition.visible)
+		form.status.setValue(exhibition.status);
 	}
 	
 	protected syncFormToExhibition(form: ExhibitionForm) {
@@ -48,6 +49,7 @@ export default class EditExhibitionViewModel extends AsyncViewModel<WriteExhibit
 		exhibition.coverImage = form.coverImage.getValue()!
 		exhibition.artworkIds = form.artworkIds.getValue()! as string[]
 		exhibition.visible = form.visible.getValue()!
+		exhibition.status = form.status.getValue()!
 	}
 
 	public async onInit(): Promise<void> {

@@ -1,3 +1,5 @@
+import { ExhibitionStatus } from "@/apps/core/data/models/exhibition"
+import ArtistRepository from "@/apps/core/data/repositories/artistRepository"
 import CoreProviders from "@/apps/core/di/coreproviders"
 import Field, { ListField, PrimaryKeyField, TextField } from "@/lib/forms/fields"
 import Form from "@/lib/forms/form"
@@ -6,7 +8,7 @@ import Form from "@/lib/forms/form"
 
 export default class ExhibitionForm extends Form{
 	
-	public artistId = new PrimaryKeyField(CoreProviders.provideArtistRepository())
+	public artistId = new PrimaryKeyField(new ArtistRepository(false))
 
 	public name = new TextField()
 	public description = new TextField()
@@ -19,6 +21,8 @@ export default class ExhibitionForm extends Form{
 
 	public startTime = new Field<number>()
 	public endTime = new Field<number>()
+
+	public status = new Field<ExhibitionStatus>();
 
 	public coverImage = new TextField()
 	public artworkIds = new Field<string[]>()
@@ -37,7 +41,8 @@ export default class ExhibitionForm extends Form{
 			this.endTime,
 			this.coverImage,
 			this.artworkIds,
-			this.visible
+			this.visible,
+			this.status
 		]
 	}
 
