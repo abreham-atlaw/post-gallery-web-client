@@ -75,9 +75,9 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 					<Link to="/" className="font-Lato font-medium text-end pb-2 ">Home</Link>
 					<Link to="/exhibitions" className="font-Lato font-light text-end pb-2 ">Exhibition</Link>
 					<Link to="/search" className="font-Lato font-light text-end pb-2 ">Shop</Link>
-					<Link to="/artist" className="font-Lato font-light text-end pb-2 ">Artist</Link>
+					<Link to="/artists" className="font-Lato font-light text-end pb-2 ">Artist</Link>
 					<Link to="/blogs" className="font-Lato font-light text-end pb-2 ">Blog</Link>
-					<Link to="/blogs" className="font-Lato font-light text-end pb-2 ">Art Fair</Link>
+					<Link to="/artfairs" className="font-Lato font-light text-end pb-2 ">Art Fair</Link>
 				</div>
 			</div>
 	  

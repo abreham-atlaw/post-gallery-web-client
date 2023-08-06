@@ -42,7 +42,7 @@ export default class ExhibitionDetailView extends ViewModelView<ExhibitionDetail
 						<p className="text-base lg:text-2xl text-[#787878]">{this.state.exhibiton!.dateRange.startDate.toDateString()} - {this.state.exhibiton!.dateRange.endDate.toDateString()}</p>
 					</div>
 					<p className="text-lg lg:text-2xl font-light text-justify text-[#787878] leading-[18px] lg:leading-[28px]">
-					{this.state.exhibiton!.description}
+						<DescriptionComponent description={this.state.exhibiton!.description}/>
 					</p>
 				</div>
 				<div className="w-full flex flex-row items-center justify-center mt-6 mb-3 lg:mt-14 lg:mb-8"><p className="pl-6 lg:pl-16 text-base lg:text-2xl text-[#8E8E8E]">ARTWORKS</p> <LineWithWidth10 /></div>
@@ -100,7 +100,7 @@ interface SlideShowProps {
 		<div className="flex">
 			 <div className="mx-auto px-3 lg:p-4 m-auto flex flex-row items-center justify-between lg:px-28">
 		<button
-		  className=" lg:p-2 lg:mr-14"
+		  className=" p-2 lg:mr-14"
 		  onClick={handlePrev}
 		>
 		  <img className="w-4 h-5 lg:w-10 lg:h-12" src={back} />
@@ -128,7 +128,7 @@ interface SlideShowProps {
 		
   
 		<button
-		  className="lg:p-2 lg:ml-14"
+		  className="p-2 lg:ml-14"
 		  onClick={handleNext}
 		>
 		  <img className="w-4 h-5 lg:w-10 lg:h-12" src={next} />
@@ -154,20 +154,23 @@ interface SlideShowProps {
 }
 
 const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) => (
-    <div className=" flex">
-		<Link 
-		to={link}
-        className="relative w-full h-96 lg:h-72  bg-cover bg-center"
-		style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat",  }}
-    >
-			<div className="w-full h-full flex items-end justify-center pb-4 shadow-md" >
-				<div className="text-white text-center">
-					<h2 className="font-bold">{title}</h2>
-					<p>{subtitle}</p>
-				</div>
-			</div>
-    </Link>
+	<div>
+		<div className="flex">
+			<Link 
+				to={link}
+				className="relative w-full h-96 lg:h-72  bg-cover bg-center"
+				style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundRepeat: "no-repeat",  }}
+			>
+
+			</Link>
+		</div>
+		<div className="text-black flex flex-row space-x-2 justify-center font-bold pt-2 text-center pb-3 lg:pb-0">
+			<h2 >{title}, </h2>
+			<p> {subtitle}, </p>
+			<p> 2023</p>
+		</div>
 	</div>
+
 	
 );
 
@@ -182,3 +185,31 @@ const Grid: React.FC<GridProps> = ({ data }) => (
         ))}
     </div>
 );
+
+const DescriptionComponent = ({ description }: { description: String }) => {
+	const [showMore, setShowMore] = useState(false);
+  
+	const toggleShowMore = () => {
+	  setShowMore(!showMore);
+	}
+  
+	if (description.length <= 1000) {
+	  return <p className="text-lg lg:text-2xl font-light text-justify text-[#787878] leading-[18px] lg:leading-[28px]">{description}</p>;
+	}
+  
+	if (showMore) {
+	  return (
+		<div>
+		  <p className="text-lg lg:text-2xl font-light text-justify text-[#787878] leading-[18px] lg:leading-[28px]">{description}</p>
+		  <button className="btn btn-primary font-semibold" onClick={toggleShowMore}>Show Less</button>
+		</div>
+	  );
+	}
+  
+	return (
+	  <div>
+		<p className="text-lg lg:text-2xl font-light text-justify text-[#787878] leading-[18px] lg:leading-[28px]">{description.substring(0, 1000)}...</p>
+		<button className="btn btn-primary font-semibold" onClick={toggleShowMore}>Read More</button>
+	  </div>
+	);
+  }

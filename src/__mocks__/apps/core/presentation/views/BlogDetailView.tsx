@@ -30,10 +30,10 @@ export default class BlogDetailView extends ViewModelView<BlogDetailViewModel, B
 					<NavBar isDark={true} />
 				</div>
 		
-				<div className="w-full h-screen">
+				<div className="w-ful h-screen">
 					<iframe
-					src={`/assets/pdfjs/web/viewer.html?file=${this.state.blog!.content.replace("&", "%26")}`}
-					className='w-full h-screen'
+					src={`/assets/pdfjs/web/viewer.html?file=${this.state.blog!.content.replace("&", "%26")}.pdf#zoom=FitH`}
+					className='w-full h-full'
 					/>
 				</div>
 		

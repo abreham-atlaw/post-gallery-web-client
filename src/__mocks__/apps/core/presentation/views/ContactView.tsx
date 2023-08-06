@@ -27,11 +27,11 @@ export default function ContactView() {
                 <div className='w-full lg:w-1/2 mt-9 lg:mt-0'>
                     <p className='mb-2 lg:mb-3 text-2xl lg:text-4xl font-Lato font-light'>Post Gallery</p>
                     <p className='text-xl font-light'> 
-                        Skylight mall <br/>
+                        Ethiopian Skylight Hotel, Skylight Mall <br/>
                         Addis Ababa, Ethiopia<br/>
-                        Monday - Saturday, 10am - 1pm & 2 - 6pm<br/>
-                        Tel: +251 912345678<br/>
-                        Postgallery@gmail.com
+                        Monday - Sunday, 08:00 hours to 20:00 hours<br/>
+                        Tel: +251 911630817<br/>
+                        Info@post-gallery.com
                     </p>
                     <img className='w-full h-96 lg:h-60 mt-6 object-cover lg:object-cover' src={location} />
                     <div className='flex flex-row mt-6'>
@@ -56,15 +56,15 @@ export default function ContactView() {
                         <div className='w-1/2'>
                             <div className='flex flex-row align-center mb-3'>
                                 <img className='w-7 h-7 object-contain mr-2' src={mark} />
-                                <p className='text-base'>AA, Ethiopian Skylight Mall</p>
+                                <p className='text-base'>Ethiopian Skylight Hotel, Skylight Mall</p>
                             </div>
                             <div className='flex flex-row align-center mb-3'>
                                 <img className='w-7 h-7 object-contain mr-2' src={phone} />
-                                <p className='text-base'>0912345678</p>
+                                <p className='text-base'>+251911630817</p>
                             </div>
                             <div className='flex flex-row align-center mb-3'>
                                 <img className='w-7 h-7 object-contain mr-2' src={email} />
-                                <p className='text-base'>postgallery@gmail.com</p>
+                                <p className='text-base'>Info@post-gallery.com</p>
                             </div>
                         </div>
                         

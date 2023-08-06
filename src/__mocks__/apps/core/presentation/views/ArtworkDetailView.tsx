@@ -31,16 +31,15 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 					<div className="text-4xl">{this.state.artwork!.name}</div>
 					<div className="text-lg text-[#3A476A] mb-3" ><span className="text-lg text-[#3A476A]">by </span>{this.state.artwork!.artist!.fullName}</div>
 					<Slideshow images={this.state.artwork!.images} />
-					<p className="text-xl mt-3">Ethiopia</p>
-					<div className="text-xl">Year: {new String(this.state.artwork!.creationDate)}</div>
-					<div className="text-xl"><span>Dimensions:  </span> 
+					<div className="text-xl mt-4"><span className="font-semibold">Year: </span> {new String(this.state.artwork!.creationDate.getFullYear())}</div>
+					<div className="text-xl"><span className="font-semibold">Dimensions:  </span>  
 							{new String(this.state.artwork!.dimension.width)} W
 							{new String(this.state.artwork!.dimension.height)} H 
 							{new String(this.state.artwork!.dimension.depth)} D in
 					</div>
-					<div className="text-xl">Art Id: {this.state.artwork!.id}</div>
-					<div className="text-3xl font-medium">Price: {new String(this.state.artwork!.price)} ETB</div>
-					<p className="text-2xl underline">Description</p>
+					<div className="text-xl"><span className="font-semibold">Art ID: </span> {this.state.artwork!.id}</div>
+					<div className="text-3xl font-medium mb-3"><span className="font-semibold">Price: </span> {new String(this.state.artwork!.price)} ETB</div>
+					<p className="text-2xl font-semibold underline">Description</p>
 					<DescriptionComponent description={this.state.artwork!.description} />
 					<Link to={`/cart/${this.state.artwork?.id}`} className="flex justify-center items-center w-56 m-auto my-8 pt-2 pb-2.5 bg-black text-white rounded-full">
 						<div className="justify-center text-2xl">Purchase</div>
@@ -75,16 +74,16 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 						<div className="bg-white w-4/12 rounded-xl px-10 py-10">
 							<div className="text-4xl">{this.state.artwork!.name}</div>
 							<div className="text-lg text-[#3A476A] mb-3" ><span className="text-lg text-[#3A476A]">by </span>{this.state.artwork!.artist!.fullName}</div>
-							<p className="text-xl mt-3">Ethiopia</p>
-							<div className="text-xl">Year: {new String(this.state.artwork!.creationDate)}</div>
-							<div className="text-xl"><span>Dimensions:  </span> 
-									{new String(this.state.artwork!.dimension.width)} W
-									{new String(this.state.artwork!.dimension.height)} H 
-									{new String(this.state.artwork!.dimension.depth)} D in
+							
+							<div className="text-xl "><span className="font-semibold">Year:</span>  {this.state.artwork!.creationDate.getFullYear().toString()}</div>
+							<div className="text-xl"><span className="font-semibold">Dimensions:  </span> 
+									{new String(this.state.artwork!.dimension.width)}W .
+									{new String(this.state.artwork!.dimension.height)}H . 
+									{new String(this.state.artwork!.dimension.depth)}D in
 							</div>
-							<div className="text-xl">Art Id: {this.state.artwork!.id}</div>
-							<div className="text-3xl font-medium">Price: {new String(this.state.artwork!.price)} ETB</div>
-							<p className="text-2xl underline">Description</p>
+							<div className="text-xl"><span className="font-semibold">Art ID:</span> {this.state.artwork!.id}</div>
+							<div className="text-3xl mb-3">Price: {new String(this.state.artwork!.price)} ETB</div>
+							<p className="text-2xl underline font-semibold">Description</p>
 							<DescriptionComponent description={this.state.artwork!.description} />
 							<Link to={`/cart/${this.state.artwork?.id}`} className="flex justify-center items-center w-56 m-auto mt-8 pt-2 pb-2.5 bg-black text-white rounded-full">
 								<span className="justify-center text-2xl">Purchase</span>

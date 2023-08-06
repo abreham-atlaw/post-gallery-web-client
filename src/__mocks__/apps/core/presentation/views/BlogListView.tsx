@@ -19,7 +19,7 @@ export default class PublishmentListView extends ViewModelView<BlogListViewModel
 	
 	TITLE_PUBLISHMENT_TYPE_MAPS = [
 		"Blogs",
-		"Presses",
+		"Press",
 		"Projects",
 		"Art Fair"
 	]

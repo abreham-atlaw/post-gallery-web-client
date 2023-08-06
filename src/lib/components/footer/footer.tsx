@@ -103,25 +103,25 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         <div className='w-1/2 flex-row align-end justify-between hidden lg:flex font-Lato'>
                             <div className='w-1/2 flex flex-col space-y-3'>
                                 <p className='text-xl font-bold text-[#170F49] mb-6'>Services</p>
-                                <Link to="/ArtistList" className='text-lg text-[#6F6C90]'>Artworks</Link>
+                                <Link to="/artists" className='text-lg text-[#6F6C90]'>Artworks</Link>
                                 <Link to="/search" className='text-lg text-[#6F6C90]'>Shop</Link>
-                                <Link to="/blog" className='text-lg text-[#6F6C90]'>Art Fair</Link>
-                                <Link to="/blog" className='text-lg text-[#6F6C90]'>Press</Link>
+                                <Link to="/artfairs" className='text-lg text-[#6F6C90]'>Art Fair</Link>
+                                <Link to="/blogs" className='text-lg text-[#6F6C90]'>Blogs</Link>
                                 
                             </div>
                             <div className='w-1/2 flex flex-col space-y-3'>
                                 <p className='text-xl font-bold text-[#170F49] mb-6'>Company</p>
                                 <Link to="/about" className='text-lg text-[#6F6C90]'>About</Link>
                                 <Link to="/contact" className='text-lg text-[#6F6C90]'>Contact Us</Link>
-                                <Link to="/ArtistList" className='text-lg text-[#6F6C90]'>Artist</Link>
-                                <Link to="/blog" className='text-lg text-[#6F6C90]'>Press</Link>
+                                <Link to="/artists" className='text-lg text-[#6F6C90]'>Artist</Link>
+                                <Link to="/presses" className='text-lg text-[#6F6C90]'>Press</Link>
                                 
                             </div>
                             <div className='w-1/2 flex flex-col space-y-3'>
                                 <p className='text-xl font-bold text-[#170F49] mb-6'>Support</p>
-                                <p className='text-lg text-[#6F6C90]'>Getting started</p>
-                                <p className='text-lg text-[#6F6C90]'>Help center</p>
-                                <p className='text-lg text-[#6F6C90]'>Chat support</p>
+                                <Link to="/comingsoon" className='text-lg text-[#6F6C90]'>Getting started</Link>
+                                
+                                <Link to="/contact"  className='text-lg text-[#6F6C90]'>Messsage support</Link>
                             </div>
                         </div>
                         
@@ -134,10 +134,10 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         </div>
                         <div className='flex flex-row items-center space-x-3 '>
                             <img className='w-5 h-5 object-contain' src={face} />
-                            <img className='w-5 h-5 object-contain' src={twitter} />
+                            
                             <img className='w-5 h-5 object-contain' src={insta} />
                             <img className='w-6 h-6 object-contain' src={youtube} />
-                            <img className='w-5 h-5 object-contain' src={link} />
+                            
                         </div>
                     </div>
                 </div>
@@ -147,22 +147,22 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         <p className='text-xl font-semibold text-[#170F49] mb-8'>Contacts us</p>
                         <div className='flex flex-row mb-3'>
                             <img className='w-5 object-contain mr-3' src={email} />
-                            <p className='text-lg text-[#6F6C90] '>contact@post-gallery.com</p>
+                            <p className='text-lg text-[#6F6C90] '>Info@post-gallery.com</p>
                         </div>
                         <div className='flex flex-row mb-3'>
                             <img className='w-5 object-contain mr-3' src={phone} />
-                            <p className='text-lg text-[#6F6C90] '>(251) 9687 - 5892</p>
+                            <p className='text-lg text-[#6F6C90] '>+251911630817</p>
                         </div>
                         <div className='flex flex-row mb-3'>
                             <img className='w-5 object-contain mr-3' src={mark} />
-                            <p className='text-lg text-[#6F6C90] '>Ethiopian Skylight Mall, Bole, Addis Ababa, Ethiopia</p>
+                            <p className='text-lg text-[#6F6C90] '>Ethiopian Skylight Hotel, Skylight Mall, Bole, Addis Ababa, Ethiopia</p>
                         </div>
                         
                         <div className='flex flex-row items-center space-x-3 mt-3'>
                             <img className='w-5 h-5 object-contain' src={face} />
-                            <img className='w-5 h-5 object-contain' src={twitter} />
+                            
                             <img className='w-5 h-5 object-contain' src={insta} />
-                            <img className='w-5 h-5 object-contain' src={link} />
+                            
                             <img className='w-5 h-5 object-contain' src={youtube} />
                         </div>
                         <div className="w-full border-b border-[#D9DBE9] my-3"></div>
