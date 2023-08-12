@@ -1,6 +1,7 @@
 import Blog, { PublishmentType } from "@/apps/core/data/models/publishment";
 import EditPublishmentViewModel from "./editPublishmentViewModel";
 import Publishment from "@/apps/core/data/models/publishment";
+import ArtFair from "@/apps/core/data/models/artFair";
 
 
 export default class AddPublishmentViewModel extends EditPublishmentViewModel{
@@ -12,6 +13,16 @@ export default class AddPublishmentViewModel extends EditPublishmentViewModel{
 			"",
 			"",
 			PublishmentType.blog,
+			true
+		);
+	}
+
+	protected async getArtFair(): Promise<ArtFair> {
+		return new ArtFair(
+			null,
+			"",
+			"",
+			"",
 			true
 		);
 	}

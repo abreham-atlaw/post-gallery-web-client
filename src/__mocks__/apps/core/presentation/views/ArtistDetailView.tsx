@@ -94,7 +94,7 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 	
 				<p className="text-4xl font-light lg:text-[3.1rem] mt-8 mb-4 lg:mt-16 lg:mb-10 font-Lato">Biography</p>
 				<p className="text-2xl font-light  text-justify font-Lato mb-8 lg:mb-14">{this.state.artist!.biography}</p>
-				<Link to={`/`} >
+				{/* <Link to={`/`} >
 					<div className="relative w-full text-white mb-8 lg:mb-16">
 						<img className='w-full h-52 lg:h-min shadow-sm object-cover rounded-2xl lg:object-contain' src={collection} />
 						<div className="absolute top-1  text-start px-5 lg:pl-16 lg:pr-28 flex flex-col items-start justify-center h-full">
@@ -102,11 +102,13 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 							<p className="text-sm  lg:text-2xl leading-5 lg:leading-9 ">It is a painting that depicts the artist's own childhood home. The painting is dominated by warm colors, which create a sense of nostalgia and comfort. The artist's use of light and shadow suggests the passage of time and the artist's memories of the home.</p>
 						</div>
 					</div>
-				</Link>
+				</Link> */}
 	
 				<Link to={`/exhibitions`} >
 					<div className="relative w-full text-white lg:mb-16">
-						<img className='w-full h-52 lg:h-min shadow-sm object-cover rounded-2xl lg:object-contain' src={Arexhibition} />
+						<div className="w-full shadow-sm rounded-2xl lg:object-contain overflow-clip">
+							<img className='h-52 w-full object-cover rounded-2xl ' src={this.state.artist!.artworks![0].images[0]} />
+						</div>
 						<div className="absolute top-1  text-start px-5 lg:pl-16 lg:pr-28 flex flex-col items-start justify-center h-full">
 							<p className="text-3xl  lg:text-5xl lg:mb-4">Exhibition</p>
 							<p className="text-sm  lg:text-2xl leading-5 lg:leading-9 ">It is a painting that depicts the artist's own childhood home. The painting is dominated by warm colors, which create a sense of nostalgia and comfort. The artist's use of light and shadow suggests the passage of time and the artist's memories of the home.</p>

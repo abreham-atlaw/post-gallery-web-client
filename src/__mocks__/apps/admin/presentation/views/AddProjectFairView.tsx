@@ -4,11 +4,13 @@ import EditPublishmentViewModel from "@/apps/admin/application/viewmodels/editPu
 import AddPublishmentViewModel from "@/apps/admin/application/viewmodels/addPublishmentViewModel";
 import { PublishmentType } from "@/apps/core/data/models/publishment";
 import WriteProjectFairView from "./WriteProjectFairView";
+import AddArtFairViewModel from "@/apps/admin/application/viewmodels/addArtFairViewModel";
 
 
 export default class AddProjectFairView extends WriteProjectFairView<any>{
 	onCreateViewModel(state: WritePublishmentState): EditPublishmentViewModel {
-		return new AddPublishmentViewModel(state, this.setState.bind(this));
+		let viewModel = new AddPublishmentViewModel(state, this.setState.bind(this));
+		return viewModel;
 	}
 	onCreateState(): WritePublishmentState {
 		let state = new WritePublishmentState();
