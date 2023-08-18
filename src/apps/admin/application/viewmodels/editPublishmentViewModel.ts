@@ -6,6 +6,8 @@ import Blog from "@/apps/core/data/models/publishment";
 import EditArtFairViewModel from "./editArtFairViewModel";
 import ArtFair from "@/apps/core/data/models/artFair";
 import ArtFairRepository from "@/apps/core/data/repositories/artFairRepository";
+import Press from "@/apps/core/data/models/press";
+import PressRepository from "@/apps/core/data/repositories/pressRepository";
 
 
 
@@ -13,17 +15,17 @@ export default class EditPublishmentViewModel extends AsyncViewModel<WritePublis
 
 	private repository: PublishmentRepository = new PublishmentRepository();
 	private artFairRepository: ArtFairRepository = new ArtFairRepository(false);
-
+	private pressRepository: PressRepository = new PressRepository(false);
 	public artFairViewModel?: EditArtFairViewModel;
 
 	private syncToForm(){
 		let form = this.state.form;
 		let blog = this.state.publishment!;
-		form.content.setValue(blog.content);
-		form.cover.setValue(blog.cover);
-		form.title.setValue(blog.title);
-		form.publishmentType.setValue(blog.type);
-		form.visible.setValue(blog.visible)
+		form.content.value = blog.content;
+		form.cover.value = blog.cover;
+		form.title.value = blog.title;
+		form.publishmentType.value = blog.type;
+		form.visible.value = blog.visible;
 	}
 
 	private syncToPublishment(){
@@ -39,10 +41,19 @@ export default class EditPublishmentViewModel extends AsyncViewModel<WritePublis
 	private syncArtFairToForm(){
 		let form = this.state.artFairform;
 		let artFair = this.state.artFair!;
-		form.name.setValue(artFair.name);
-		form.cover.setValue(artFair.cover);
-		form.link.setValue(artFair.link);
-		form.visible.setValue(artFair.visible)
+		form.name.value = (artFair.name);
+		form.cover.value = (artFair.cover);
+		form.link.value = (artFair.link);
+		form.visible.value = (artFair.visible)
+	}
+
+	private syncPressToForm(){
+		let form = this.state.artFairform;
+		let press = this.state.press!;
+		form.name.value = (press.name);
+		form.cover.value = (press.cover);
+		form.link.value = (press.link);
+		form.visible.value = (press.visible)
 	}
 
 	private syncToArtFair(){
@@ -55,12 +66,27 @@ export default class EditPublishmentViewModel extends AsyncViewModel<WritePublis
 		artFair.visible = form.visible.getValue()!;
 	}
 
+	private syncToPress(){
+		let form = this.state.artFairform;
+		let press = this.state.press!;
+		
+		press.name = form.name.getValue()!;
+		press.link = form.link.getValue()!;
+		press.cover = form.cover.getValue()!;
+		press.visible = form.visible.getValue()!;
+	}
+
 	protected async getPublishment(): Promise<Blog>{
 		return await this.repository.getByPrimaryKey(this.state.publishmentId!);
 	}
 
 	protected async getArtFair(): Promise<ArtFair>{
 		return await this.artFairRepository.getByPrimaryKey(this.state.artFairId!);
+	}
+
+
+	protected async getPress(): Promise<Press>{
+		return await this.pressRepository.getByPrimaryKey(this.state.pressId!);
 	}
 
 	public async onInit(): Promise<void> {
@@ -75,6 +101,13 @@ export default class EditPublishmentViewModel extends AsyncViewModel<WritePublis
 		try{
 			this.state.artFair = await this.getArtFair();
 			this.syncArtFairToForm();
+		}
+		catch(ex){
+
+		}
+		try{
+			this.state.press = await this.getPress();
+			this.syncPressToForm();
 		}
 		catch(ex){
 
@@ -95,6 +128,14 @@ export default class EditPublishmentViewModel extends AsyncViewModel<WritePublis
 			this.syncToArtFair();
 			await this.artFairRepository.save(this.state.artFair!);
 		});
+	}
+
+	async savePress(){
+		await this.asyncCall(async () => {
+			await this.state.artFairform.validate(true);
+			this.syncToPress();
+			await this.pressRepository.save(this.state.press!);
+		})
 	}
 
 }

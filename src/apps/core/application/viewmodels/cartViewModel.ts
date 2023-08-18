@@ -2,13 +2,14 @@ import BaseState from "@/lib/state/baseState";
 import ViewModel from "@/lib/viewmodel/viewmodel";
 import CartState from "../state/cartState";
 import CoreProviders from "../../di/coreproviders";
+import ArtworkRepository from "../../data/repositories/artworkRepository";
 
 
 
 export default class CartViewModel extends ViewModel<CartState>{
 
 	_orderRepository = CoreProviders.provideOrderRepository();
-	_artworkRepository = CoreProviders.provideArtworkRepository();
+	_artworkRepository = new ArtworkRepository(false);
 
 	public async onInit(): Promise<void> {
 		await super.onInit();

@@ -63,13 +63,17 @@ export default class PGRouter extends React.Component{
 				}/>
 
 
-				<Route path="/artwork/:id" element={<RoutedArtworkDetailView/>}/>
+				<Route path="/artwork/:id" element={
+					<AuthenticatedComponent>
+						<RoutedArtworkDetailView/>
+					</AuthenticatedComponent>
+				}/>
 				<Route path="/exhibitions/" element={<ExhibitionListView />}/>
 				<Route path="/exhibition/:id" element={<RoutedExhibitionDetailView />}/>
 
 				<Route path="/blogs/" element={<PublishmentListView key="blog" publishmentType={PublishmentType.blog} />}/>
-				<Route path="/presses/" element={<PublishmentListView key="presses" publishmentType={PublishmentType.press} />}/>
-				<Route path="/artfairs/" element={<ArtFairListView key="artfairs" />}/>
+				<Route path="/presses/" element={<PublishmentListView key="presses" publishmentType={PublishmentType.blog} />}/>
+				<Route path="/artfairs/" element={<PublishmentListView key="projects" publishmentType={PublishmentType.project} />}/>
 				<Route path="/projects/" element={<PublishmentListView key="projects" publishmentType={PublishmentType.project} />}/>
 				<Route path="/publishment/:id" element={<RoutedBlogDetailView />}/>
 				
@@ -190,9 +194,6 @@ export default class PGRouter extends React.Component{
 						<RoutedEditFairView />
 					</AuthenticatedComponent>
 				} />
-
-				
-
 
 			</Routes>
 		)

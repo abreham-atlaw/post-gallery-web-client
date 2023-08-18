@@ -14,6 +14,7 @@ export default class AddArtFairViewModel extends EditArtFairViewModel{
 		);
 	}
 
+
 	public async onInit(): Promise<void> {
 		await super.onInit();
 	}

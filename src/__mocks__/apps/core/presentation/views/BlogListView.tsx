@@ -7,6 +7,7 @@ import Blog, { PublishmentType } from "@/apps/core/data/models/publishment";
 import ViewModelView from "@/lib/components/views/ViewModelView"
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import Press from '@/apps/core/data/models/press';
 
 
 interface PublishmentListViewProps{
@@ -53,7 +54,19 @@ export default class PublishmentListView extends ViewModelView<BlogListViewModel
 								)
 								}
 							)
-						}
+					}
+					{
+							this.state.presses!.map(
+								(press: Press) => {
+									return (<Link to={press.link} className='w-full lg:w-1/2 flex flex-col lg:mr-12'>
+									<img className='w-full h-52 lg:h-96 shadow-md object-cover lg:object-cover' src={press.cover} />
+									<p className='text-xl lg:text-4xl mt-2 lg:my-4'>{press.name}</p>
+								</Link>
+								)
+								}
+							)
+					}
+
 					</div>
 				</div>
 		

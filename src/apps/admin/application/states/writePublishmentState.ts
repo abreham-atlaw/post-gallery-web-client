@@ -4,6 +4,7 @@ import Publishment from "@/apps/core/data/models/publishment";
 import WriteArtFairState from "./writeArtFairState";
 import ArtFairForm from "../forms/artFairForm";
 import ArtFair from "@/apps/core/data/models/artFair";
+import Press from "@/apps/core/data/models/press";
 
 
 
@@ -15,7 +16,8 @@ export default class WritePublishmentState extends AsyncState{
 
 	artFairform = new ArtFairForm();
 	artFair?: ArtFair;
+	press?: Press;
 	artFairId?: string;
-
+	pressId?: string;
 
 }
