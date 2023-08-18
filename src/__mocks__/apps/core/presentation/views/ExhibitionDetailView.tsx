@@ -194,13 +194,25 @@ const DescriptionComponent = ({ description }: { description: String }) => {
 	}
   
 	if (description.length <= 1000) {
-	  return <p className="text-lg lg:text-2xl font-light text-justify text-[#787878] leading-[18px] lg:leading-[28px]">{description}</p>;
+	  return <div className="text-lg lg:text-2xl font-light text-justify text-[#787878] leading-[18px] lg:leading-[28px]">
+		{
+		description.split("\n").map(
+			(par: string) => {
+				return <p className="mt-5">{par}</p>
+		}
+	)}
+	</div>;
 	}
   
 	if (showMore) {
 	  return (
 		<div>
-		  <p className="text-lg lg:text-2xl font-light text-justify text-[#787878] leading-[18px] lg:leading-[28px]">{description}</p>
+		  <p className="text-lg lg:text-2xl font-light text-justify text-[#787878] leading-[18px] lg:leading-[28px]">{
+		description.split("\n").map(
+			(par: string) => {
+				return <p className="mt-5">{par}</p>
+		}
+	)}</p>
 		  <button className="btn btn-primary font-semibold" onClick={toggleShowMore}>Show Less</button>
 		</div>
 	  );

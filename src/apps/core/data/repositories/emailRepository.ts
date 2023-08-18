@@ -22,11 +22,11 @@ export default class EmailRepository{
 			to, 
 			`Inquiry for ${artworkName}`,
 			`
-Hi [user name],
+Hi ${clientName},
 
 Your inquiry for ${artworkName} has been accepted. The artwork is now available for purchase.
 
-You can view the artwork here: ${link}
+You can view the artwork here: ${link.replaceAll(" ", "%20")}
 
 If you have any questions, please contact us at info@post-gallery.com.
 
