@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import Back from '@/assets/back.png'
 import ViewModelView from "@/lib/components/views/ViewModelView";
 import SuccessfullView from "./SuccessView";
+import StatusToast from "@/lib/components/status/StatusToast";
 
 
 interface ArtworkDetailViewProps{
@@ -82,6 +83,7 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 					<div className="flex flex-row justify-between items-start px-12">
 						<Slideshow images={this.state.artwork!.images} />
 						<div className="bg-white w-4/12 rounded-xl px-10 py-10">
+							<StatusToast asyncState={this.state}/>
 							<div className="text-4xl">{this.state.artwork!.name}</div>
 							<div className="text-lg text-[#3A476A] mb-3" ><span className="text-lg text-[#3A476A]">by </span>{this.state.artwork!.artist!.fullName}</div>
 							
