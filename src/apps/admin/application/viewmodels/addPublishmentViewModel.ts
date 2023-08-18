@@ -13,7 +13,7 @@ export default class AddPublishmentViewModel extends EditPublishmentViewModel{
 			"",
 			"",
 			"",
-			PublishmentType.blog,
+			PublishmentType.project,
 			true
 		);
 	}

@@ -114,11 +114,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, isOpen, se
         active={activeItem === 'Page1'}
         onClick={() => handleClick('Page1')}
       />
-      {/* <SidebarItem 
-        title="Add" 
-        active={activeItem === 'Page2'}
-        onClick={() => handleClick('Page2')}
-      /> */}
       <SidebarItem 
         title="Orders" 
         active={activeItem === 'Page3'}
@@ -170,15 +165,17 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
               <img className='w-8 mr-3' src={dashGrid3} />
               <p>Edit exhibition</p>
             </div>
+		  </div>
+		  <div className='w-full flex flex-row space-x-2 mt-2 mb-5'>
 			<div onClick={() => setActiveItem('editblog')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-8 mr-3' src={dashGrid3} />
-              <p>Edit Blog</p>
-            </div>
+				<img className='w-8 mr-3' src={dashGrid3} />
+				<p>Edit Blog</p>
+			</div>
 			<div onClick={() => setActiveItem('editproject')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
-              <img className='w-8 mr-3' src={dashGrid3} />
-              <p>Edit Project</p>
-            </div>
-          </div>
+				<img className='w-8 mr-3' src={dashGrid3} />
+				<p>Edit Project</p>
+			</div>
+		  </div>
 
         </div>
 
