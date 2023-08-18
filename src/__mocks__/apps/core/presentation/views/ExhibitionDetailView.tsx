@@ -159,7 +159,7 @@ const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) 
 			<Link 
 				to={link}
 				className="relative w-full h-96 lg:h-72  bg-cover bg-center"
-				style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundRepeat: "no-repeat",  }}
+				style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat",  }}
 			>
 
 			</Link>

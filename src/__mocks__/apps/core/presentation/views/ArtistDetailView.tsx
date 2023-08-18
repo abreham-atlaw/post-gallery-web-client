@@ -93,7 +93,7 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 				<Grid artworks={this.state.artist!.artworks!}/>
 	
 				<p className="text-4xl font-light lg:text-[3.1rem] mt-8 mb-4 lg:mt-16 lg:mb-10 font-Lato">Biography</p>
-				<p className="text-2xl font-light  text-justify font-Lato mb-8 lg:mb-14">{this.state.artist!.biography}</p>
+				<p className="text-2xl font-light  text-justify font-Lato mb-8 lg:mb-14">{this.state.artist!.biography} </p>
 				<Link to={`/`} >
 					<div className="relative w-full text-white mb-8 lg:mb-16">
 						<img className='w-full h-52 lg:h-min shadow-sm object-cover rounded-2xl lg:object-contain' src={collection} />
@@ -165,40 +165,6 @@ const Grid: React.FC<GridProps> = ({artworks}) => (
         ))}
     </div>
 );
-
-const thedata = [
-    {
-        image: '/src/assets/mikiyas/art1.jpg',
-        name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf',
-        link: "/artwork/PG - 00031 - AR"
-    },
-    {
-        image: '/src/assets/mikiyas/art2.jpg',
-        name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf',
-        link: "/artwork/PG - 00032 - AR"
-    },
-    {
-        image: '/src/assets/mikiyas/art3.jpg',
-        name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf',
-        link: "/artwork/PG - 00033 - AR"
-    },
-    {
-        image: '/src/assets/mikiyas/art4.webp',
-        name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf',
-        link: "/artwork/PG - 00034 - AR"
-    },
-    {
-        image: '/src/assets/mikiyas/art5.jpg',
-        name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf',
-        link: "/artwork/PG - 00035 - AR"
-    },
-]
-
 
 export function RoutedArtistDetailView(){
 	let params = useParams();
