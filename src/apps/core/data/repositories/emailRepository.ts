@@ -17,6 +17,27 @@ export default class EmailRepository{
 		await this.api.execute(new SendEmailRequest(to, subject, message));
 	}
 
+	public async sendInquiryAcceptedEmail(to: string, clientName: string, artworkName: string, link: string){
+		await this.sendEmail(
+			to, 
+			`Inquiry for ${artworkName}`,
+			`
+Hi [user name],
+
+Your inquiry for ${artworkName} has been accepted. The artwork is now available for purchase.
+
+You can view the artwork here: ${link}
+
+If you have any questions, please contact us at info@post-gallery.com.
+
+Thank you for your interest in our artwork.
+
+Sincerely,
+POST GALLERY
+`
+		)
+	}
+
 	public async sendRequestAcceptedEmail(to: string, clientName: string, purchaseLink: string){
 		await this.sendEmail(
 			to,

@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Back from '@/assets/back.png'
 import ViewModelView from "@/lib/components/views/ViewModelView";
+import SuccessfullView from "./SuccessView";
 
 
 interface ArtworkDetailViewProps{
@@ -21,7 +22,14 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 		return new ArtworkDetailState(this.props.artworkID);
 	}
 
+	handleInquire = async () => {
+		await this.getViewModel().inquiry();
+	}
+
 	onCreateMain(): React.ReactNode {
+		if(this.state.status === AsyncStatus.done){
+			return <SuccessfullView title="Inquiry Submitted" subTitle="Your inquiry has been submitted successfully. You'll receive an email soon."/>
+		}
 		return (
 			<div className="bg-[#F6F6F6] min-h-screen" >
 				<div className="px-6 pt-12 pb-12 lg:hidden">
@@ -41,9 +49,11 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 					<div className="text-3xl font-medium mb-3"><span className="font-semibold">Price: </span> {new String(this.state.artwork!.price)} ETB</div>
 					<p className="text-2xl font-semibold underline">Description</p>
 					<DescriptionComponent description={this.state.artwork!.description} />
-					<Link to={`/cart/${this.state.artwork?.id}`} className="flex justify-center items-center w-56 m-auto my-8 pt-2 pb-2.5 bg-black text-white rounded-full">
-						<div className="justify-center text-2xl">Purchase</div>
-					</Link>
+					<button
+						onClick={this.handleInquire}
+						className="flex justify-center items-center w-56 m-auto my-8 pt-2 pb-2.5 bg-black text-white rounded-full">
+						<div className="justify-center text-2xl">Inquire</div>
+					</button>
 
 				</div>
 
@@ -85,9 +95,11 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 							<div className="text-3xl mb-3">Price: {new String(this.state.artwork!.price)} ETB</div>
 							<p className="text-2xl underline font-semibold">Description</p>
 							<DescriptionComponent description={this.state.artwork!.description} />
-							<Link to={`/cart/${this.state.artwork?.id}`} className="flex justify-center items-center w-56 m-auto mt-8 pt-2 pb-2.5 bg-black text-white rounded-full">
-								<span className="justify-center text-2xl">Purchase</span>
-							</Link>
+							<button 
+								onClick={this.handleInquire}
+								className="flex justify-center items-center w-56 m-auto mt-8 pt-2 pb-2.5 bg-black text-white rounded-full">
+								<span className="justify-center text-2xl">Inquire</span>
+							</button>
 						</div>
 					</div>
 				</div>

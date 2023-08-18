@@ -23,7 +23,12 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditPublish
 	private handleSubmit = async (event: FormEvent) => {
 
 		event.preventDefault()
-		await this.getViewModel().save();
+		if(this.state.form.publishmentType.getValue()! === PublishmentType.press){
+			await this.getViewModel().savePress();
+		}
+		else{
+			await this.getViewModel().save();
+		}
 	}
 
 	onCreateMain(): ReactNode {
@@ -63,20 +68,47 @@ export default abstract class WriteBlogView<P> extends ViewModelView<EditPublish
 					<p className="mt-8 mb-6">⚫<span className={` ${this.state.form.publishmentType.value == PublishmentType.blog ? 'inline' : 'hidden'} text-2xl font-medium`} >   Blog details</span><span className={` ${this.state.form.publishmentType.value == PublishmentType.press ? 'inline' : 'hidden'} text-2xl font-medium`} >   Press details</span></p>
 					<StatusToast asyncState={this.state} errorText={this.state.error?.message}/>
 					
-					<div className="w-full lg:w-4/6 mb-4">
-						<div className="text-xl text-[#5E5E64] font-medium mt-4 mb-2">
-							<label htmlFor="name">Title: <span className="text-red-500 required-dot"> *</span></label>
-							<div className="h-2"></div>
-							<TextFieldComponent field={this.state.form.title} syncer={this.getViewModel().syncState} />
-						</div>
-						<div className="h-4"></div>
-						<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Cover <span className="text-red-500 required-dot"> *</span></p>
-						<DefaultImageUploadComponent field={this.state.form.cover}/>
-						<div className="h-4"></div>
-						<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Content <span className="text-red-500 required-dot"> *</span></p>
-						<DefaultFileUploadComponent field={this.state.form.content}/>
-					</div>
-					<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Visibility</p><BooleanFieldComponent field={this.state.form.visible}/>
+					{
+							(this.state.form.publishmentType.getValue()! === PublishmentType.press)?
+							<>
+												<div className="w-full lg:w-4/6 mb-4">
+								<div className="text-xl text-[#5E5E64] font-medium mt-4 mb-2">
+									<label htmlFor="name">Title: <span className="text-red-500 required-dot"> *</span></label>
+									<div className="h-2"></div>
+									<TextFieldComponent field={this.state.artFairform.name} syncer={this.getViewModel().syncState} />
+								</div>
+								<div className="h-4"></div>
+								<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Link <span className="text-red-500 required-dot"> *</span></p>
+								<TextFieldComponent field={this.state.artFairform.link} syncer={this.getViewModel().syncState}/>
+								<div className="h-4"></div>
+								<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Cover <span className="text-red-500 required-dot"> *</span></p>
+								<DefaultFileUploadComponent field={this.state.artFairform.cover}/>
+
+
+							</div>
+								
+								<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Visibility</p><BooleanFieldComponent field={this.state.artFairform.visible}/>
+
+							</>:
+							<>
+									<div className="w-full lg:w-4/6 mb-4">
+								
+
+								<div className="text-xl text-[#5E5E64] font-medium mt-4 mb-2">
+									<label htmlFor="name">Title: <span className="text-red-500 required-dot"> *</span></label>
+									<div className="h-2"></div>
+									<TextFieldComponent field={this.state.form.title} syncer={this.getViewModel().syncState} />
+								</div>
+								<div className="h-4"></div>
+								<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Cover <span className="text-red-500 required-dot"> *</span></p>
+								<DefaultImageUploadComponent field={this.state.form.cover}/>
+								<div className="h-4"></div>
+								<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Content <span className="text-red-500 required-dot"> *</span></p>
+								<DefaultFileUploadComponent field={this.state.form.content}/>
+								</div>
+								<p className="text-xl text-[#5E5E64] font-medium mt-2.5 mb-2">Visibility</p><BooleanFieldComponent field={this.state.form.visible}/>
+							</>
+					}
 				</div>
 			</form>
 			{/* <form onSubmit={this.handleSubmit} className={"px-6 lg:px-14 py-12"}>

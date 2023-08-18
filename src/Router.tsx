@@ -36,6 +36,10 @@ import AddBlogPressView from "./__mocks__/apps/admin/presentation/views/AddBlogP
 import AddProjectFairView from "./__mocks__/apps/admin/presentation/views/AddProjectFairView";
 import PublishmentListView from "./__mocks__/apps/core/presentation/views/BlogListView";
 import { PublishmentType } from "./apps/core/data/models/publishment";
+import ArtFairListView from "./__mocks__/apps/core/presentation/views/ArtFairListView";
+import EditFairView, { RoutedEditFairView } from "./__mocks__/apps/admin/presentation/views/EditFairView";
+import { RoutedEditProjectView } from "./__mocks__/apps/admin/presentation/views/EditProjectView";
+import { RoutedEditBlogPressView } from "./__mocks__/apps/admin/presentation/views/EditBlogPressView";
 
 
 export default class PGRouter extends React.Component{
@@ -59,13 +63,17 @@ export default class PGRouter extends React.Component{
 				}/>
 
 
-				<Route path="/artwork/:id" element={<RoutedArtworkDetailView/>}/>
+				<Route path="/artwork/:id" element={
+					<AuthenticatedComponent>
+						<RoutedArtworkDetailView/>
+					</AuthenticatedComponent>
+				}/>
 				<Route path="/exhibitions/" element={<ExhibitionListView />}/>
 				<Route path="/exhibition/:id" element={<RoutedExhibitionDetailView />}/>
 
 				<Route path="/blogs/" element={<PublishmentListView key="blog" publishmentType={PublishmentType.blog} />}/>
-				<Route path="/presses/" element={<PublishmentListView key="presses" publishmentType={PublishmentType.press} />}/>
-				<Route path="/artfairs/" element={<PublishmentListView key="artfairs" publishmentType={PublishmentType.artFair} />}/>
+				<Route path="/presses/" element={<PublishmentListView key="presses" publishmentType={PublishmentType.blog} />}/>
+				<Route path="/artfairs/" element={<PublishmentListView key="projects" publishmentType={PublishmentType.project} />}/>
 				<Route path="/projects/" element={<PublishmentListView key="projects" publishmentType={PublishmentType.project} />}/>
 				<Route path="/publishment/:id" element={<RoutedBlogDetailView />}/>
 				
@@ -169,8 +177,23 @@ export default class PGRouter extends React.Component{
 					</AuthenticatedComponent>
 				} />
 
-				
+				<Route path="/admin/blog-press/edit/:id" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<RoutedEditBlogPressView />
+					</AuthenticatedComponent>
+				} />
 
+				<Route path="/admin/project/edit/:id" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<RoutedEditProjectView />
+					</AuthenticatedComponent>
+				} />
+
+				<Route path="/admin/fair/edit/:id" element={
+					<AuthenticatedComponent redirectTo="/admin/login" allowedRoles={[Role.admin]}>
+						<RoutedEditFairView />
+					</AuthenticatedComponent>
+				} />
 
 			</Routes>
 		)

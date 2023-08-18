@@ -2,75 +2,45 @@ import ViewModelView from "@/lib/components/views/ViewModelView";
 import NavBar from "@/lib/components/navBar/navBar";
 import TheFooter from "@/lib/components/footer/footer";
 import React from "react";
-import { Link } from "react-router-dom";
-import homeText from '@/assets/homeText.png'
-import artwork from '@/assets/artwork.png'
-import ViewModel from "@/lib/viewmodel/viewmodel";
-import BaseState from "@/lib/state/baseState";
 import back from '@/assets/backWhite.png'
 import next from '@/assets/nextWhite.png'
 import bgT from '@/assets/NewsBGT.png'
 import bgB from '@/assets/NewsBGB.png'
+import HomeState from "@/apps/core/application/state/homeState";
+import HomeViewModel from "@/apps/core/application/viewmodels/homeViewModel";
 
 
-const images = [
-    '/src/assets/background3.jpeg',
-    '/src/assets/background2.jpeg',
-    '/src/assets/background1.jpeg'
-];
-
-class SlideState {
-    slideIndex: number;
-    bgImage: string;
-
-    constructor() {
-        this.slideIndex = 0;
-        this.bgImage = '';
-    }
-}
-
-class HomeViewState extends BaseState {
-    slideState: SlideState;
-
-    constructor() {
-        super();  // initialize BaseState
-        this.slideState = new SlideState();  // initialize SlideState
-    }
-}
-
-export default class HomeView extends ViewModelView<ViewModel<HomeViewState>> {
-    onCreateViewModel(state: HomeViewState): ViewModel<HomeViewState> {
-        return new ViewModel(state, this.setState.bind(this))
+export default class HomeView extends ViewModelView<HomeViewModel, any, HomeState> {
+    
+	onCreateViewModel(state: HomeState): HomeViewModel {
+        return new HomeViewModel(state, this.setState.bind(this))
     }
 
-    onCreateState(): HomeViewState {
-        const state = new HomeViewState();
-        state.slideState.slideIndex = 0;
-        state.slideState.bgImage = images[0];
-        return state;
+    onCreateState(): HomeState {
+        return new HomeState();
     }
 
 	nextSlide = () => {
-		const newIndex = (this.state.slideState.slideIndex + 1) % images.length;
+		const newIndex = (this.state.slideState.slideIndex + 1) % this.state.images!.length;
 		this.setState({
 			...this.state,
 			slideState: {
 				...this.state.slideState,
 				slideIndex: newIndex,
-				bgImage: images[newIndex]
+				bgImage: this.state.images![newIndex]
 			}
 		});
 		console.log(this.state);
 	}
 
 	prevSlide = () => {
-		const newIndex = this.state.slideState.slideIndex > 0 ? this.state.slideState.slideIndex - 1 : images.length - 1;
+		const newIndex = this.state.slideState.slideIndex > 0 ? this.state.slideState.slideIndex - 1 : this.state.images!.length - 1;
 		this.setState({
 			...this.state,
 			slideState: {
 				...this.state.slideState,
 				slideIndex: newIndex,
-				bgImage: images[newIndex]
+				bgImage: this.state.images![newIndex]
 			}
 		});
 	}

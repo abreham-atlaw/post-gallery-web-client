@@ -27,6 +27,11 @@ import DashBoardMainListView from './DashBoardMainListView';
 import OrderDetailView from './OrderDetailView';
 import OrderListView from './OrdersListView';
 import Order from '@/apps/core/data/models/order';
+import Inquiry from '@/apps/core/data/models/inquiry';
+import InquiryListView from './InquiryListView';
+import InquiryDetailView from './InquiryDetailView';
+import EditBlogListView from './EditBlogListView';
+import { EditProjectListView } from './EditProjectListView';
 
 
 export default class DashboardView extends ViewModelView<DashboardViewModel, any, DashboardState>{
@@ -110,14 +115,14 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, isOpen, se
         onClick={() => handleClick('Page1')}
       />
       <SidebarItem 
-        title="Add" 
-        active={activeItem === 'Page2'}
-        onClick={() => handleClick('Page2')}
-      />
-      <SidebarItem 
         title="Orders" 
         active={activeItem === 'Page3'}
         onClick={() => handleClick('Page3')}
+      />
+	  <SidebarItem 
+        title="Inquiries" 
+        active={activeItem === 'Page4'}
+        onClick={() => handleClick('Page4')}
       />
       <img className='w-32 absolute bottom-2' src={logout} />
     </div>
@@ -160,7 +165,17 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
               <img className='w-8 mr-3' src={dashGrid3} />
               <p>Edit exhibition</p>
             </div>
-          </div>
+		  </div>
+		  <div className='w-full flex flex-row space-x-2 mt-2 mb-5'>
+			<div onClick={() => setActiveItem('editblog')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+				<img className='w-8 mr-3' src={dashGrid3} />
+				<p>Edit Blog</p>
+			</div>
+			<div onClick={() => setActiveItem('editproject')} className='w-full flex flex-row justify-start items-center h-16 px-3 text-base font-medium border-[3px] rounded-md border-[#D6D6D6]'>
+				<img className='w-8 mr-3' src={dashGrid3} />
+				<p>Edit Project</p>
+			</div>
+		  </div>
 
         </div>
 
@@ -172,6 +187,15 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
           <OrderListView onItemSelected={(order: Order) => {
 			setActiveItem("orderdetail")
 			setCurrentOrderId(order.getPK()!)
+			}} />
+
+        </div>
+
+		<div className={` ${activeItem === 'Page4' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-8/12`}>
+          <SearchBar />
+          <InquiryListView onItemSelected={(inquiry: Inquiry) => {
+			setActiveItem("inquirydetail")
+			setCurrentOrderId(inquiry.getPK()!)
 			}} />
 
         </div>
@@ -197,8 +221,22 @@ const App: React.FC<AppProps> = ({artworks, artists, exhibitions}) => {
           <EditExhibitionListView />
         </div>
 
+		<div className={` ${activeItem === 'editblog' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+          <SearchBar />
+          <EditBlogListView />
+        </div>
+
+		<div className={` ${activeItem === 'editproject' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+          <SearchBar />
+          <EditProjectListView />
+        </div>
+
 		<div className={` ${activeItem === 'orderdetail' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
 			{(activeItem === 'orderdetail')?<OrderDetailView orderId={currentOrderId} />: <></>}
+        </div>
+
+		<div className={` ${activeItem === 'inquirydetail' ? 'absolute' : 'hidden'} m-2 px-2 lg:ml-64 w-full lg:w-3/4`}>
+			{(activeItem === 'inquirydetail')?<InquiryDetailView inquiryId={currentOrderId} />: <></>}
         </div>
         
       </div>

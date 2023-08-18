@@ -1,6 +1,8 @@
 import Blog, { PublishmentType } from "@/apps/core/data/models/publishment";
 import EditPublishmentViewModel from "./editPublishmentViewModel";
 import Publishment from "@/apps/core/data/models/publishment";
+import ArtFair from "@/apps/core/data/models/artFair";
+import Press from "@/apps/core/data/models/press";
 
 
 export default class AddPublishmentViewModel extends EditPublishmentViewModel{
@@ -11,7 +13,27 @@ export default class AddPublishmentViewModel extends EditPublishmentViewModel{
 			"",
 			"",
 			"",
-			PublishmentType.blog,
+			PublishmentType.project,
+			true
+		);
+	}
+
+	protected async getArtFair(): Promise<ArtFair> {
+		return new ArtFair(
+			null,
+			"",
+			"",
+			"",
+			true
+		);
+	}
+
+	protected async getPress(): Promise<Press> {
+		return new Press(
+			null,
+			"",
+			"",
+			"",
 			true
 		);
 	}
