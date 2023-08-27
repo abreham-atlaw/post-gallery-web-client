@@ -15,8 +15,9 @@ export default class ExhibitionListViewModel extends ViewModel<ExhibitionListSta
 		await super.onInit();
 		this.repository.setAttachMode(false);
 
-		this.state.currentExhibition = await this.repository.getByStatus(ExhibitionStatus.current);
-		this.state.upcomingExhibition = await this.repository.getByStatus(ExhibitionStatus.upcoming);
+		this.state.currentExhibition = (await this.repository.getByStatus(ExhibitionStatus.current))[0];
+		this.state.upcomingExhibitions = await this.repository.getByStatus(ExhibitionStatus.upcoming);
+		this.state.pastExhibitions = await this.repository.getByStatus(ExhibitionStatus.past);
 		this.repository.setAttachMode(true);
 		await super.onInit();
 	}

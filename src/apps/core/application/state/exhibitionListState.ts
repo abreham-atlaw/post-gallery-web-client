@@ -6,6 +6,7 @@ import Exhibition from "../../data/models/exhibition";
 export default class ExhibitionListState extends BaseState{
 
 	currentExhibition?: Exhibition;
-	upcomingExhibition?: Exhibition;
+	upcomingExhibitions?: Exhibition[];
+	pastExhibitions?: Exhibition[];
 
 }

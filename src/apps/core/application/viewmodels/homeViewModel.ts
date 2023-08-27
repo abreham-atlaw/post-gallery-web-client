@@ -12,7 +12,7 @@ export default class HomeViewModel extends AsyncViewModel<HomeState>{
 
 	public async onInit(): Promise<void> {
 		await super.onInit();
-		let exhibition = await this.exhibitionRepository.getByStatus(ExhibitionStatus.current);
+		let exhibition = (await this.exhibitionRepository.getByStatus(ExhibitionStatus.current))[0];
 		this.state.images = exhibition.artworks!.map(
 			(artwork: Artwork) => artwork.images[0]
 		);

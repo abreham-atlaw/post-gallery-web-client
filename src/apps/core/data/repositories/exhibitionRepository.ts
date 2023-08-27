@@ -8,7 +8,7 @@ import { DBConfigs } from "@/configs/data_configs";
 import { sleep } from "@/lib/utils/time";
 import ArtworkRepository from "./artworkRepository";
 import ArtistRepository from "./artistRepository";
-import { getDocs, query, where } from "firebase/firestore";
+import { DocumentData, QueryDocumentSnapshot, getDocs, query, where } from "firebase/firestore";
 import { VisibilityRepository } from "./visibilityRepository";
 
 
@@ -34,14 +34,16 @@ export default class ExhibitionRepository extends VisibilityRepository<string, E
 		return this.primaryKeyGenerator.generateNewPK();
 	}
 
-	public async getByStatus(status: ExhibitionStatus): Promise<Exhibition>{
+	public async getByStatus(status: ExhibitionStatus): Promise<Exhibition[]>{
 		return await (this.firebaseFetch(
 			async () => {
 				let fetchQuery = query(this.collection, where("status", "==", status))
 				let docs = (await getDocs(fetchQuery)).docs;
-				return docs[0].data();
-			}, false
-		)) as Exhibition;
+				return docs.map((value: QueryDocumentSnapshot<DocumentData>) => {
+					return value.data();
+				});
+			}, true
+		)) as Exhibition[];
 	}
 	
 	public async attachForeignKeys(instance: Exhibition): Promise<void> {

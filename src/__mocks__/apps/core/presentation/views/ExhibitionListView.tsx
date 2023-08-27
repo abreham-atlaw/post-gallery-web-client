@@ -32,7 +32,19 @@ export default class ExhibitionListView extends ViewModelView<ExhibitionListView
 					<ExhibitionItem exhibition={this.state.currentExhibition!}/>
 					
 					<div className="w-full flex flex-row items-center justify-center mt-8 mb-5 px-2.5 lg:mt-14 lg:mb-8"><p className="text-xl lg:text-2xl text-[#8E8E8E]">UPCOMING</p> <LineWithWidth10 /></div>
-					<ExhibitionItem exhibition={this.state.upcomingExhibition!}/>
+					{
+						this.state.upcomingExhibitions!.map(
+							(exhibition: Exhibition) => <ExhibitionItem exhibition={exhibition} />
+						)
+					}
+
+					<div className="w-full flex flex-row items-center justify-center mt-8 mb-5 px-2.5 lg:mt-14 lg:mb-8"><p className="text-xl lg:text-2xl text-[#8E8E8E]">PAST</p> <LineWithWidth10 /></div>
+					{
+						this.state.pastExhibitions!.map(
+							(exhibition: Exhibition) => <ExhibitionItem exhibition={exhibition} />
+						)
+					}
+
 				</div>
 				<div className="w-full border-b border-[#D9DBE9] mt-20"></div>
 				<Thefooter />
