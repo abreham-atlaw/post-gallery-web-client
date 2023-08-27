@@ -30,7 +30,7 @@ export default class MobileSignUpView extends React.Component<any, SignupState>{
 
 	render(): React.ReactNode {
 		if(this.state.status === AsyncStatus.done){
-			return (<Navigate to="/home" />)
+			return (<Navigate to="/" />)
 		}
 		return (
 			<div className="bg-[url('./assets/LoginRegisterBG.png')] bg-center bg-cover min-h-screen w-screen text-white px-6 pt-6">
@@ -47,7 +47,7 @@ export default class MobileSignUpView extends React.Component<any, SignupState>{
 						<p className="text-xl mt-2.5">Password:</p> <TextFieldComponent field={this.state.form.password} syncer={this.viewModel.syncState}/>
                         <div className="flex flex-row justify-center text-center pt-2.5">
                             <p className="text-lg font-normal text-[#E1E1E1]">I do have an account? </p>
-                            <p className="text-lg font-medium">Sign In.</p>
+                            <a href="/auth/login/" className="text-lg font-medium">Sign In.</a>
                         </div>
                         <button className="flex justify-center items-center w-56 m-auto mt-3 pt-2 pb-2.5 bg-white text-black rounded-full">
                             <div className="justify-center text-2xl">Continue</div>

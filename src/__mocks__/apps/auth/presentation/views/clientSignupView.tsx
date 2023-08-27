@@ -48,6 +48,7 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 		return (
 			<div className="bg-[url('./assets/LoginBG.png')] bg-center bg-cover min-h-screen w-screen text-white">
 				<div className="lg:hidden">
+					<div className="h-6"></div>
 					<a href="/" className="text-6xl font-semibold p-6">PG</a>
 					<div className="bg-[url('./assets/WelcomePG.png')] bg-center bg-contain bg-no-repeat h-28 w-56 "></div>
 					<div className="pl-6 pr-6">
@@ -65,10 +66,10 @@ export default class ClientSignupView extends React.Component<any, SignupState>{
 							<div onClick={this.handleSignupGoogle} className="font-medium text-2xl text-center text-black">Continue with Apple</div>
 						</button>
 
-						<button onClick={this.handleSignupGoogle} className="flex flex-row justify-center items-center w-full mt-5 pt-2 pb-2.5 bg-white rounded-full">
+						<a href="/auth/signupMobile/" className="flex flex-row justify-center items-center w-full mt-5 pt-2 pb-2.5 bg-white rounded-full">
 							<img className="h-10 pr-3.5 bg-contain" src={PGLogin} />		
 							<div className="font-medium text-2xl text-center text-black">Post Gallary Account</div>
-						</button>
+						</a>
 
 					</div>
 					<form className="hidden" onSubmit={this.handleSignUpPG}>

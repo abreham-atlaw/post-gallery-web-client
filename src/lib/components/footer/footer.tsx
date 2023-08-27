@@ -133,10 +133,9 @@ export default class TheFooter extends React.Component<any, FooterState>{
                             <p className='text-lg text-[#6F6C90] underline'>SITE BY <span className='text-black text-md' style={{fontFamily: "playlist"}}> zenon-X</span></p>
                         </div>
                         <div className='flex flex-row items-center space-x-3 '>
-                            <img className='w-5 h-5 object-contain' src={face} />
-                            
-                            <img className='w-5 h-5 object-contain' src={insta} />
-                            <img className='w-6 h-6 object-contain' src={youtube} />
+                            <a href='https://www.facebook.com/Post-gallery-107223405799949/'><img className='w-5 h-5 object-contain' src={face} /></a>
+                            <a href='https://youtube.com/@PostGallery'><img className='w-6 h-6 object-contain' src={youtube} /></a>
+                            <a href='https://instagram.com/postgalleryet?igshid=MjEwN2IyYWYwYw=='><img className='w-5 h-5 object-contain' src={insta} /></a>
                             
                         </div>
                     </div>
@@ -159,11 +158,9 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         </div>
                         
                         <div className='flex flex-row items-center space-x-3 mt-3'>
-                            <img className='w-5 h-5 object-contain' src={face} />
-                            
-                            <img className='w-5 h-5 object-contain' src={insta} />
-                            
-                            <img className='w-5 h-5 object-contain' src={youtube} />
+                            <a href='https://www.facebook.com/Post-gallery-107223405799949/'><img className='w-5 h-5 object-contain' src={face} /></a>
+                            <a href='https://instagram.com/postgalleryet?igshid=MjEwN2IyYWYwYw=='><img className='w-5 h-5 object-contain' src={insta} /></a>
+                            <a href='https://youtube.com/@PostGallery'><img className='w-6 h-5 object-contain' src={youtube} /></a>
                         </div>
                         <div className="w-full border-b border-[#D9DBE9] my-3"></div>
                         
