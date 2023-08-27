@@ -40,6 +40,7 @@ import ArtFairListView from "./__mocks__/apps/core/presentation/views/ArtFairLis
 import EditFairView, { RoutedEditFairView } from "./__mocks__/apps/admin/presentation/views/EditFairView";
 import { RoutedEditProjectView } from "./__mocks__/apps/admin/presentation/views/EditProjectView";
 import { RoutedEditBlogPressView } from "./__mocks__/apps/admin/presentation/views/EditBlogPressView";
+import MobileSignUpView from "./__mocks__/apps/auth/presentation/views/mobileClientSignUpView";
 
 
 export default class PGRouter extends React.Component{
@@ -50,6 +51,7 @@ export default class PGRouter extends React.Component{
 			<Routes>
 				<Route path="/" element={<HomeView />} />
 				<Route path="/auth/signup/" element={<ClientSignupView />}/>
+				<Route path="/auth/signupMobile/" element={<MobileSignUpView />}/>
 				<Route path="/auth/login/" element={<LoginView />}/>
 				<Route path="/auth/logout/" element={<LogoutView />}/>
 				<Route path="/admin/login/" element={<AdminLoginView/>}/>

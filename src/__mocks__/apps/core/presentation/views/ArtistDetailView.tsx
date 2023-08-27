@@ -175,40 +175,6 @@ const Grid: React.FC<GridProps> = ({artworks}) => (
     </div>
 );
 
-const thedata = [
-    {
-        image: '/src/assets/mikiyas/art1.jpg',
-        name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf',
-        link: "/artwork/PG - 00031 - AR"
-    },
-    {
-        image: '/src/assets/mikiyas/art2.jpg',
-        name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf',
-        link: "/artwork/PG - 00032 - AR"
-    },
-    {
-        image: '/src/assets/mikiyas/art3.jpg',
-        name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf',
-        link: "/artwork/PG - 00033 - AR"
-    },
-    {
-        image: '/src/assets/mikiyas/art4.webp',
-        name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf',
-        link: "/artwork/PG - 00034 - AR"
-    },
-    {
-        image: '/src/assets/mikiyas/art5.jpg',
-        name: 'Mikiyas Sintayehu, Reflection',
-        date: 'asdf',
-        link: "/artwork/PG - 00035 - AR"
-    },
-]
-
-
 export function RoutedArtistDetailView(){
 	let params = useParams();
 	return <ArtistDetailView artistId={params.id!}/>

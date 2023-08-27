@@ -122,7 +122,7 @@ export default class LoginView extends React.Component<any, HomeViewState>{
 						<p className="text-lg font-normal pt-2.5">Show password</p>
 						<div className="flex flex-row justify-center text-center pt-2.5">
 							<p className="text-lg font-normal text-[#E1E1E1]">Doesn’t have an account? </p>
-							<p className="text-lg font-medium">Create Account</p>
+							<a href="/auth/signup"><p className="text-lg font-medium">Create Account</p></a>
 						</div>
 						<button className="flex flex-row justify-center items-center w-56 m-auto mb-6 mt-36 pt-2 pb-2.5 bg-white text-black rounded-full">
 							<div className="justify-center text-2xl">Continue</div>

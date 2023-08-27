@@ -74,10 +74,15 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 					<img className='absolute h-7 top-5 right-5' onClick={() => {this.getViewModel().toggleOpen()}} src={MenuWhite} />
 					<Link to="/" className="font-Lato font-medium text-end pb-2 ">Home</Link>
 					<Link to="/exhibitions" className="font-Lato font-light text-end pb-2 ">Exhibition</Link>
-					<Link to="/search" className="font-Lato font-light text-end pb-2 ">Shop</Link>
+					
 					<Link to="/artists" className="font-Lato font-light text-end pb-2 ">Artist</Link>
 					<Link to="/blogs" className="font-Lato font-light text-end pb-2 ">Blog</Link>
 					<Link to="/artfairs" className="font-Lato font-light text-end pb-2 ">Art Fair</Link>
+					<Link to="/contact" className="font-Lato font-light text-end pb-2 ">Contact</Link>
+					<Link to="/about" className="font-Lato font-light text-end pb-10 ">About Us</Link>
+					{
+					clientSection					
+				 	}
 				</div>
 			</div>
 	  
@@ -93,20 +98,20 @@ export default class NavBar extends ViewModelView<NavBarViewModel,NavBarProps, a
 	}
 
 	onCreateMain(): React.ReactNode {
-
 		return this.onCreateBar(
 		<>
 		{
 					(this.state.context.client === null)?
 					(
-						<div className={` ${this.props.isDark ? "text-black border-black" : "text-white border-white"} flex flex-row justify-center items-center w-32 h-10 border-[3px] rounded-full `}>
-							<Link to="/auth/login" className="text-xl">Join Us</Link>
+						<div className={` ${this.props.isDark && window.innerWidth >= 768 ? "text-black border-black" : "text-white border-white"} flex flex-row justify-center items-center w-32 h-10 border-[3px] rounded-full `}>
+							<Link  to="/auth/login" className="text-xl hidden lg:flex">Join Us</Link>
+							<Link  to="/auth/signup" className="text-xl lg:hidden">Join Us</Link>
 						</div>
 					):
 					(
 						<div className='relative'>
-							<div className={` ${this.props.isDark ? "text-black border-black" : "text-white border-white"}  flex flex-row justify-center items-center w-10 h-10 p-1 border-2 rounded-full`}>
-								<button onClick={() => this.getViewModel().toggleAccoutOpen()} className="text-2xl"><img className="col-12" src={this.props.isDark ? AccountDark : Account}/></button>
+							<div className={` ${this.props.isDark && window.innerWidth >= 768 ? "text-black border-black" : "text-white border-white"}  flex flex-row justify-center items-center w-10 h-10 p-1 border-2 rounded-full`}>
+								<button onClick={() => this.getViewModel().toggleAccoutOpen()} className="text-2xl"><img className="col-12" src={this.props.isDark && window.innerWidth >= 768  ? AccountDark : Account}/></button>
 							</div>
 							<div className={`${this.state.accountOpen ? 'absolute' : 'hidden'} flex flex-col px-4 py-1 bg-white mt-4  w-44 right-0 rounded-[12px] shadow-[0px_0px_50px_rgba(0,0,0,0.3)]`}>
 								<Link to="/auth/logout/" className=" font-semibold text-lg text-black text-center">LogOut</Link>  

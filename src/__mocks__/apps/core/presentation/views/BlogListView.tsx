@@ -19,10 +19,10 @@ interface PublishmentListViewProps{
 export default class PublishmentListView extends ViewModelView<BlogListViewModel, PublishmentListViewProps, BlogListState>{
 	
 	TITLE_PUBLISHMENT_TYPE_MAPS = [
-		"Blogs",
 		"Press",
-		"Projects",
-		"Art Fair"
+		"Blogs",
+		"Art Fair",
+		"Projects"
 	]
 
 	onCreateViewModel(state: BlogListState): BlogListViewModel {

@@ -36,22 +36,22 @@ export default function ContactView() {
                     <img className='w-full h-96 lg:h-60 mt-6 object-cover lg:object-cover' src={location} />
                     <div className='flex flex-row mt-6'>
                         <div className='w-1/2'>
-                            <div className='flex flex-row align-center mb-3'>
+                            <a href='https://instagram.com/postgalleryet?igshid=MjEwN2IyYWYwYw==' className='flex flex-row align-center mb-3'>
                                 <img className='w-7 h-7 object-contain mr-2' src={instagram} />
                                 <p className='text-base'>Instagram</p>
-                            </div>
+                            </a>
                             <div className='flex flex-row align-center mb-3'>
                                 <img className='w-7 h-7 object-contain mr-2' src={twitter} />
                                 <p className='text-base'>Twitter</p>
                             </div>
-                            <div className='flex flex-row align-center mb-3'>
+                            <a href='https://www.facebook.com/Post-gallery-107223405799949/' className='flex flex-row align-center mb-3'>
                                 <img className='w-7 h-7 object-contain mr-2' src={facebook} />
                                 <p className='text-base'>Facebook</p>
-                            </div>
-                            <div className='flex flex-row align-center mb-3'>
+                            </a>
+                            <a href='https://youtube.com/@PostGallery' className='flex flex-row align-center mb-3'>
                                 <img className='w-7 h-7 object-contain mr-2' src={youtube} />
                                 <p className='text-base'>Youtube</p>
-                            </div>
+                            </a>
                         </div>
                         <div className='w-1/2'>
                             <div className='flex flex-row align-center mb-3'>
