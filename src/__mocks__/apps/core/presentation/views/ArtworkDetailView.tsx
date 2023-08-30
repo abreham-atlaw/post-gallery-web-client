@@ -47,7 +47,6 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 							{new String(this.state.artwork!.dimension.depth)} D in
 					</div>
 					<div className="text-xl"><span className="font-semibold">Art ID: </span> {this.state.artwork!.id}</div>
-					<div className="text-3xl font-medium mb-3"><span className="font-semibold">Price: </span> {new String(this.state.artwork!.price)} ETB</div>
 					<p className="text-2xl font-semibold underline">Description</p>
 					<DescriptionComponent description={this.state.artwork!.description} />
 					<button
@@ -94,7 +93,6 @@ export default class ArtworkDetailView extends ViewModelView<ArtworkDetailViewMo
 									{new String(this.state.artwork!.dimension.depth)}D in
 							</div>
 							<div className="text-xl"><span className="font-semibold">Art ID:</span> {this.state.artwork!.id}</div>
-							<div className="text-3xl mb-3">Price: {new String(this.state.artwork!.price)} ETB</div>
 							<p className="text-2xl underline font-semibold">Description</p>
 							<DescriptionComponent description={this.state.artwork!.description} />
 							<button 
