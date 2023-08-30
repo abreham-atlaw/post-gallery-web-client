@@ -120,7 +120,7 @@ interface SlideShowProps {
 				background: "linear-gradient(2.3deg, rgba(0, 0, 0, 0.7) 1.9%, rgba(0, 0, 0, 0) 100%)" 
 			}}>
 			
-				<p className="text-xl font-semibold leading-[2.85rem] lg:text-3xl lg:font-semibold">{artworks[activeIndex].name}</p>
+				{/* <p className="text-xl font-semibold leading-[2.85rem] lg:text-3xl lg:font-semibold">{artworks[activeIndex].name}</p> */}
 				<p className="text-lg font-medium lg:text-2xl lg:font-medium leading-4">{artworks[activeIndex].artist!.fullName}</p>
 				<p className="text-lg font-medium lg:text-2xl lg:font-medium">{artworks[activeIndex].creationDate.getFullYear()}</p>
 			</div>

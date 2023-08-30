@@ -66,8 +66,8 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 	
 						<div className="flex flex-col items-center mt-7 lg:mt-0 w-full lg:w-5/12 px-4">
 							<p className="text-3xl">{this.state.artist!.fullName}</p>
-							<p className="text-xl mt-2 mb-4 lg:mt-5 lg:mb-10 text-center">“My work is about capturing moments of everyday life.”</p>
-							<div className="w-3/2 lg:w-5/12 flex flex-row items-center justify-between text-2xl font-medium text-center space-x-3">
+							{/* <p className="text-xl mt-2 mb-4 lg:mt-5 lg:mb-10 text-center">“My work is about capturing moments of everyday life.”</p> */}
+							<div className="w-3/2 lg:w-5/12 flex flex-row items-center justify-between text-2xl font-medium text-center space-x-3 mt-5">
 								<div><p>{this.state.artist!.artworks?.length}</p> <p>Available Arts</p></div>
 							</div>
 							<div className="w-11/12 max-w-sm lg:w-9/12 flex flex-row items-center justify-between mt-10">
@@ -75,7 +75,7 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 									<Link to="/auth/login" className="text-xl mr-3">Share</Link>
 									<img src={share} className="w-4 object-contain"/>
 								</div>
-								<div>
+								{/* <div>
 									<p className="text-lg">Find me at:</p>
 									<div className='flex flex-row items-center space-x-3 '>
 										<img className='w-5 h-4 object-contain' src={face} />
@@ -83,13 +83,13 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 										<img className='w-5 h-5 object-contain' src={insta} />
 										<img className='w-6 h-6 object-contain' src={youtube} />
 									</div>
-								</div>
+								</div> */}
 							</div>  
 						</div>
 	
 				</div>
 	
-				<p className="text-4xl font-light lg:text-[3.1rem] mt-8 mb-4 lg:mt-16 lg:mb-10 ">Available arts</p>
+				<p className="text-4xl font-light lg:text-[3.1rem] mt-8 mb-4 lg:mt-16 lg:mb-10 ">Works</p>
 				<Grid artworks={this.state.artist!.artworks!}/>
 	
 				<p className="text-4xl font-light lg:text-[3.1rem] mt-8 mb-4 lg:mt-16 lg:mb-10 font-Lato">Biography</p>
@@ -170,7 +170,10 @@ interface GridProps{
 const Grid: React.FC<GridProps> = ({artworks}) => (
     <div className="w-full px-2 lg:px-0 grid grid-flow-row-dense grid-cols-1 lg:grid-cols-4 lg:gap-6 gap-4 gap-y-6 lg:gap-y-14">
         {artworks.map((artwork, index) => (
-            <GridItem key={index} imageUrl={artwork.images[0]} title={artwork.name} subtitle={artwork.creationDate.toDateString()} link={`/artwork/${artwork.id}/`}/>
+            <GridItem key={index} imageUrl={artwork.images[0]} title={artwork.name} subtitle={artwork.creationDate.toLocaleString('default', {
+				month: "short",
+				year: "numeric"
+			})} link={`/artwork/${artwork.id}/`}/>
         ))}
     </div>
 );
