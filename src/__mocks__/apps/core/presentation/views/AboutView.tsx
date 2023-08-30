@@ -14,7 +14,7 @@ export default function AboutView() {
             <p className='mt-4 mb-2 lg:mb-4 text-2xl lg:text-4xl font-Lato'>About</p>
             <div className='flex flex-col lg:flex-row justify-between mb-6'>
                 <div className='w-full lg:w-1/2 lg:mr-10'>
-                    <p className='lg:text-xl mb-10 lg:mb-0 lg:mt-3 lg:leading-[35px] font-light'>
+                    <p className='lg:text-xl mb-10 lg:mb-0 lg:mt-3 lg:leading-[35px] font-light text-justify'>
                     Discover the captivating world of contemporary art at Post Gallery, an exceptional destination dedicated to artistic exploration. Nestled in the vibrant heart of Addis Ababa Bole, within the Ethiopian Skylight Mall, our gallery beckons art enthusiasts and curious minds alike. Open seven days a week, Post Gallery serves as a sanctuary for the convergence of creativity, communication, and societal transformation through art.
                     <br />
 At Post Gallery, we hold steadfast to the belief that art possesses the extraordinary power to communicate, express, and catalyze change. Our unwavering commitment is evident in our diverse array of exhibitions, events, and enriching educational programs that punctuate the calendar year. By showcasing thought-provoking works that challenge conventional perspectives, we kindle intellectual discourse and inspire the genesis of individual artistic journeys.
