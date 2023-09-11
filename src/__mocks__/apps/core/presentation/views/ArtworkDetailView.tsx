@@ -127,18 +127,18 @@ type SlideshowProps = {
 	return (
 	  <div className="flex flex-col lg:w-7/12">
 		<div className="flex flex-col lg:flex lg:flex-row">
-		<div className="lg:hidden w-full h-96 mb-2  bg-contain bg-center bg-no-repeat  rounded-lg" style={{ backgroundImage: `url(${images[currentImageIndex]})` }} />
+		<img className="lg:hidden w-full h-96 mb-2  bg-contain bg-center bg-no-repea object-contain object-centert  rounded-lg" src={images[currentImageIndex]} style={{ backgroundImage: `url(${images[currentImageIndex]})` }} />
 			<div className=" m-auto grid grid-cols-5 gap-4 lg:grid-rows-5 lg:grid-cols-none lg:mr-4">
 				{images.slice(0, 5).map((imageUrl, index) => (
-					<div
+					<img
 						key={imageUrl}
 						onClick={() => setCurrentImageIndex(index)}
-						className={`w-16 h-11 lg:w-24 lg:h-16 bg-cover cursor-pointer ${currentImageIndex === index ? 'border-4 border-black' : ''}`}
-						style={{ backgroundImage: `url(${imageUrl})` }}
+						className={`w-16 h-11 lg:w-24 lg:h-16 bg-cover object-cover cursor-pointer ${currentImageIndex === index ? 'border-4 border-black' : ''}`}
+						src={imageUrl}
 					/>
 				))}
 			</div>
-			<div className="hidden lg:inline w-full h-[30rem] mb-2 bg-contain bg-center bg-no-repeat rounded-lg" style={{ backgroundImage: `url(${images[currentImageIndex]})` }} />
+			<img className="hidden lg:inline w-full h-[30rem] mb-2 bg-contain object-contain object-center  bg-center bg-no-repeat rounded-lg" src={images[currentImageIndex]} style={{ backgroundImage: `url(${images[currentImageIndex]})` }} />
 		</div>
 		<div className="m-auto grid grid-cols-5 gap-2 mt-3">
 			{images.slice(0, 5).map((imageUrl, index) => (

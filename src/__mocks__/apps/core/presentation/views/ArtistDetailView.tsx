@@ -46,12 +46,12 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 						//   style={{ backgroundImage: `url(${artworks[activeIndex].images[0]})`, height: `${calcHeight(artworks[activeIndex].dimension)*(window.innerWidth * 0.75)}px`}}
 						
 						>
-							<div className="h-min max-h-min lg:h-80 lg:max-h-[500px]">
-								<img src={this.state.artist!.avatar} className="h-full rounded-3xl"/>
+							<div className="h-min max-h-[430px] lg:h-80 lg:max-h-[500px]">
+								<img src={this.state.artist!.avatar} className="h-full max-h-[430px]  rounded-3xl"/>
 							</div>
 	
 	
-							<div className="absolute w-full h-full flex flex-col pl-8 items-start justify-end pb-8 lg:pb-6 pt-6 rounded-3xl" style={{ 
+							<div className="absolute w-full h-min max-h-[430px]  flex flex-col pl-8 items-start justify-end pb-8 lg:pb-6 pt-6 rounded-3xl" style={{ 
 								background: `linear-gradient(360deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.00) 100%)`
 								
 							}}>
@@ -111,16 +111,21 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 					</div>
 				</Link> */}
 	
-				<Link to={`/exhibitions`} >
-					<div className="relative w-full text-white lg:mb-16">
-						<div className="w-full shadow-sm rounded-2xl lg:object-contain overflow-clip">
-							<img className='h-52 w-full object-cover rounded-2xl ' src={this.state.artist!.artworks![0].images[0]} />
-						</div>
-						<div className="absolute top-1  text-start px-5 lg:pl-16 lg:pr-28 flex flex-col items-start justify-center h-full">
-							<p className="text-3xl  lg:text-5xl lg:mb-4">Exhibition</p>
-							<p className="text-sm  lg:text-2xl leading-5 lg:leading-9 ">It is a painting that depicts the artist's own childhood home. The painting is dominated by warm colors, which create a sense of nostalgia and comfort. The artist's use of light and shadow suggests the passage of time and the artist's memories of the home.</p>
-						</div>
-					</div>
+				<Link to={`/exhibitions`} className={`relative  flex flex-col items-center justify-end text-white shadow-sm mb-16 text-center  bg-no-repeat bg-contain object-cover`} >
+							<div className="w-full shadow-sm rounded-2xl lg:object-cover overflow-clip">
+								<img src={this.state.artist!.artworks![0].images[0]} className="h-72 w-full object-cover rounded-3xl"/>
+							</div>
+	
+							<div className="absolute w-full h-72  flex flex-col pl-8 items-start justify-end pb-8 lg:pb-6 pt-6 rounded-3xl" style={{ 
+								background: `linear-gradient(360deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.00) 100%)`
+								
+							}}>
+								<div className="absolute top-1  text-start px-5 lg:pl-16 lg:pr-28 flex flex-col items-start justify-center h-full">
+									<p className="text-3xl  lg:text-5xl lg:mb-4">Exhibition</p>
+									<p className="text-sm  lg:text-2xl leading-5 lg:leading-9 ">It is a painting that depicts the artist's own childhood home. The painting is dominated by warm colors, which create a sense of nostalgia and comfort. The artist's use of light and shadow suggests the passage of time and the artist's memories of the home.</p>
+								</div>
+								
+							</div>
 				</Link>
 	
 			</div>
@@ -149,6 +154,7 @@ const GridItem: React.FC<GridItemProps> = ({ imageUrl, title, subtitle, link }) 
                 className="w-full h-96 lg:h-72  bg-cover bg-center shadow-md"
                 style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
             >
+				<img className="w-full h-96 lg:h-72 bg-cover bg-center" src={imageUrl} />
             </Link>
         </div>
         <div className="w-full mt-3" >
