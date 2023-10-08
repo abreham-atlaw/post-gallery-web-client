@@ -18,6 +18,7 @@ export default class HomeViewModel extends AsyncViewModel<HomeState>{
 		);
 		this.state.slideState.slideIndex = 0;
 		this.state.slideState.bgImage = this.state.images[0];
+		this.state.exhibition = exhibition;
 	}
 
 }

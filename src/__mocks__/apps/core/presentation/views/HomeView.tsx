@@ -55,9 +55,10 @@ export default class HomeView extends ViewModelView<HomeViewModel, any, HomeStat
                             <NavBar isDark={false} /> 
 							<div className="flex flex-row justify-between items-center">
 								<div className="text-white mb-6 pl-4">
-									<p className="text-3xl font-[340] lg:text-[3.55rem]  ">Her Story</p>
+									<p className="text-3xl font-[340] lg:text-[3.55rem]  ">{this.state.exhibition?.name}</p>
 									
-									<p className="text-xl font-[370] lg:text-[1.67 rem] leading-[2.5rem] ">17 Mar - 21 Nov</p>
+									<p className="text-xl font-[370] lg:text-[1.67 rem] leading-[2.5rem] ">{
+									this.state.exhibition?.dateRange.startDate.toLocaleString('default', {day: "numeric", month: "short"})} - {this.state.exhibition?.dateRange.startDate.toLocaleString('default', {day: "numeric", month: "short"})}</p>
 								</div>
 								<div className=" flex flex-row justify-between items-center pr-8 lg:pr-14">
 									<button onClick={this.nextSlide}>
