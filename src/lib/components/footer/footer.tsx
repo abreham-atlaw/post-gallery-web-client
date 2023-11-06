@@ -130,7 +130,7 @@ export default class TheFooter extends React.Component<any, FooterState>{
                     <div className='flex flex-row mb-3 justify-between px-14 max-w-[1280px] m-auto'>
                         <div className='flex flex-row'>
                             <p className='text-lg text-[#6F6C90] mr-16'>COPYRIGHT © 2023 POST GALLERY</p>
-                            <p className='text-lg text-[#6F6C90] underline'>SITE BY <span className='text-black text-md' style={{fontFamily: "playlist"}}> zenon-X</span></p>
+                            {/* <p className='text-lg text-[#6F6C90] underline'>SITE BY <span className='text-black text-md' style={{fontFamily: "playlist"}}> zenon-X</span></p> */}
                         </div>
                         <div className='flex flex-row items-center space-x-3 '>
                             <a href='https://www.facebook.com/Post-gallery-107223405799949/'><img className='w-5 h-5 object-contain' src={face} /></a>
@@ -166,7 +166,7 @@ export default class TheFooter extends React.Component<any, FooterState>{
                         
                         <div className="flex">
                             <p className='text-sm text-[#6F6C90] mr-auto'>COPYRIGHT © 2023 POST GALLERY</p>
-                            <span className='text-[#6F6C90] underline'>SITE BY <span className="text-black" style={{"fontFamily": "playlist"}}>zenon-X</span></span>
+                            {/* <span className='text-[#6F6C90] underline'>SITE BY <span className="text-black" style={{"fontFamily": "playlist"}}>zenon-X</span></span> */}
                         </div>
                     </div>
                 </div>
