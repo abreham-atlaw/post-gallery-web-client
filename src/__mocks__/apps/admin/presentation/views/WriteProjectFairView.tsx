@@ -25,6 +25,9 @@ export default abstract class WriteProjectFairView<P> extends ViewModelView<Edit
 	private handleSubmit = async (event: FormEvent) => {
 
 		event.preventDefault()
+		if(this.state.status === AsyncStatus.loading){
+			return;
+		}
 		if(this.state.form.publishmentType.getValue()! === PublishmentType.artFair){
 			await this.getViewModel().saveArtFair();
 		}
@@ -61,7 +64,7 @@ export default abstract class WriteProjectFairView<P> extends ViewModelView<Edit
 						}}/>
 					</div>
 					<button type="submit" className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
-						<div className="justify-center text-sm lg:text-xl">Publish</div>
+						<div className="justify-center text-sm lg:text-xl">{(this.state.status === AsyncStatus.loading) ? "Loading..." : "Publish" }</div>
 					</button>
 				</div>
 

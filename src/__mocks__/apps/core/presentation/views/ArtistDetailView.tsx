@@ -162,7 +162,6 @@ const Grid: React.FC<GridProps> = ({artworks}) => (
     <div className="w-full px-2 lg:px-0 grid grid-flow-row-dense grid-cols-1 lg:grid-cols-4 lg:gap-6 gap-4 gap-y-6 lg:gap-y-14">
         {artworks.map((artwork, index) => (
             <GridItem key={index} imageUrl={artwork.images[0]} title={artwork.name} subtitle={artwork.creationDate.toLocaleString('default', {
-				month: "short",
 				year: "numeric"
 			})} link={`/artwork/${artwork.id}/`}/>
         ))}
