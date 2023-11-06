@@ -24,6 +24,9 @@ export default abstract class WriteArtistView<P> extends ViewModelView<EditArtis
 
 	handleSubmit = async (event: FormEvent) => {
 		event.preventDefault()
+		if(this.state.status === AsyncStatus.loading){
+			return;
+		}
 		await this.getViewModel().save()
 	}
 
@@ -40,7 +43,7 @@ export default abstract class WriteArtistView<P> extends ViewModelView<EditArtis
 				<div className="w-full pt-10 pb-6 mb-3 border-b-2 border-[#C1C1C1] flex flex-row justify-between">
 					<p className="text-3xl lg:text-4xl font-bold">Upload Artist</p>
 					<button className="flex items-center px-4 py-1 lg:px-12 lg:pt-2 lg:pb-2 bg-black text-white rounded-full">
-						<div className="justify-center text-sm lg:text-xl">Publish</div>
+						<div className="justify-center text-sm lg:text-xl">{(this.state.status === AsyncStatus.loading) ? "Loading..." : "Publish" }</div>
 					</button>
 				</div>
 
