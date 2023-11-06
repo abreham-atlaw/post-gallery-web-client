@@ -104,7 +104,7 @@ export default class TheFooter extends React.Component<any, FooterState>{
                             <div className='w-1/2 flex flex-col space-y-3'>
                                 <p className='text-xl font-bold text-[#170F49] mb-6'>Services</p>
                                 <Link to="/artists" className='text-lg text-[#6F6C90]'>Artworks</Link>
-                                <Link to="/search" className='text-lg text-[#6F6C90]'>Shop</Link>
+                                <Link to="/search" className='text-lg text-[#6F6C90]'>Inquiries</Link>
                                 <Link to="/artfairs" className='text-lg text-[#6F6C90]'>Art Fair</Link>
                                 <Link to="/blogs" className='text-lg text-[#6F6C90]'>Blogs</Link>
                                 

@@ -73,7 +73,7 @@ interface ExhibitionProps{
 			<p className="text-3xl font-[320] lg:text-[2.8rem]">{props.exhibition.name}</p>
 			<p className="text-base lg:text-[1.2rem] leading-7 font-light text-[#787878] lg:pt-6">{props.exhibition.curator}</p>
 			<div className="lg:py-2"><LineWithWidth10 /></div>
-			<p className="text-base lg:text-[1.2rem] leading-7 font-light text-[#787878] mb-2 lg:mb-4">{props.exhibition.dateRange.startDate.toDateString()} - {props.exhibition.dateRange.startDate.toDateString()}</p>
+			<p className="text-base lg:text-[1.2rem] leading-7 font-light text-[#787878] mb-2 lg:mb-4">{props.exhibition.dateRange.startDate.toDateString()} - {props.exhibition.dateRange.endDate.toDateString()}</p>
 			<DescriptionComponents description={props.exhibition.description} />
 		</div>
 	  </Link>

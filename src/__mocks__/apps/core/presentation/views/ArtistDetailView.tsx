@@ -67,14 +67,15 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 						<div className="flex flex-col items-center mt-7 lg:mt-0 w-full lg:w-5/12 px-4">
 							<p className="text-3xl">{this.state.artist!.fullName}</p>
 							{/* <p className="text-xl mt-2 mb-4 lg:mt-5 lg:mb-10 text-center">“My work is about capturing moments of everyday life.”</p> */}
-							<div className="w-3/2 lg:w-5/12 flex flex-row items-center justify-between text-2xl font-medium text-center space-x-3 mt-5">
-								<div><p>{this.state.artist!.artworks?.length}</p> <p>Available Arts</p></div>
+							<div className="w-3/2 lg:w-5/12 text-2xl font-medium text-center mt-5">
+								<div><p>{this.state.artist!.artworks?.length}</p> <p>Works</p></div>
 							</div>
-							<div className="w-11/12 max-w-sm lg:w-9/12 flex flex-row items-center justify-between mt-10">
-								<div className={` border-black flex flex-row justify-center items-center px-4 py-5 h-10 border-2 rounded-md `}>
+								<div className={` border-black flex flex-row justify-center mt-10 items-center px-4 py-5 h-10 border-2 rounded-md `}>
 									<Link to="/auth/login" className="text-xl mr-3">Share</Link>
 									<img src={share} className="w-4 object-contain"/>
 								</div>
+							<div className="w-11/12 max-w-sm lg:w-9/12 flex flex-row items-center justify-between">
+
 								{/* <div>
 									<p className="text-lg">Find me at:</p>
 									<div className='flex flex-row items-center space-x-3 '>
@@ -111,22 +112,6 @@ export default class ArtistDetailView extends ViewModelView<ArtistDetailViewMode
 					</div>
 				</Link> */}
 	
-				<Link to={`/exhibitions`} className={`relative  flex flex-col items-center justify-end text-white shadow-sm mb-16 text-center  bg-no-repeat bg-contain object-cover`} >
-							<div className="w-full shadow-sm rounded-2xl lg:object-cover overflow-clip">
-								<img src={this.state.artist!.artworks![0].images[0]} className="h-72 w-full object-cover rounded-3xl"/>
-							</div>
-	
-							<div className="absolute w-full h-72  flex flex-col pl-8 items-start justify-end pb-8 lg:pb-6 pt-6 rounded-3xl" style={{ 
-								background: `linear-gradient(360deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.00) 100%)`
-								
-							}}>
-								<div className="absolute top-1  text-start px-5 lg:pl-16 lg:pr-28 flex flex-col items-start justify-center h-full">
-									<p className="text-3xl  lg:text-5xl lg:mb-4">Exhibition</p>
-									<p className="text-sm  lg:text-2xl leading-5 lg:leading-9 ">It is a painting that depicts the artist's own childhood home. The painting is dominated by warm colors, which create a sense of nostalgia and comfort. The artist's use of light and shadow suggests the passage of time and the artist's memories of the home.</p>
-								</div>
-								
-							</div>
-				</Link>
 	
 			</div>
 			<TheFooter />
